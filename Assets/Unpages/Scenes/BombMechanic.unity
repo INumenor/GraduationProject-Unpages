@@ -2756,7 +2756,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 454.45703, y: 72.458145}
+  m_CellSize: {x: 382.49963, y: 97.97759}
   m_Spacing: {x: 6, y: 6}
   m_Constraint: 1
   m_ConstraintCount: 1
