@@ -4960,7 +4960,7 @@ namespace Fusion.Editor {
 
       //
       // [Obsolete("Do not use", true)]
-      // public new int userData => throw new NotImplementedException();
+      // public new int userData => 
     }
     
     class InternalTreeView : TreeView {
@@ -6244,7 +6244,7 @@ namespace Fusion.Editor {
       }
 
       public void Reset() {
-        throw new NotImplementedException();
+        
       }
     }
     
