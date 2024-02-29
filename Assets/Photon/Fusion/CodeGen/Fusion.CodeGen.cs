@@ -3669,7 +3669,7 @@ namespace Fusion.CodeGen {
     }
 
     public override ILPostProcessResult Process(ICompiledAssembly compiledAssembly) {
-      throw new NotImplementedException();
+      
     }
 
     public override bool WillProcess(ICompiledAssembly compiledAssembly) {
