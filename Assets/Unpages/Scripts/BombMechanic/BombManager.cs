@@ -6,8 +6,4 @@ public class BombManager : MonoBehaviour
 {
     [SerializeField] GameObject Player;
 
-    public void BombPlant()
-    {
-
-    }
 }
