@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7099868800434697647}
   - component: {fileID: 7939455342661737826}
   - component: {fileID: 7681831331623654176}
+  - component: {fileID: -1682722348895603109}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -184,6 +185,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4653b87ac3494429b2b0831ff461ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSpeed: 6
+  MoveSpeed: 6
   JumpForce: 6
   GravityValue: -9.81
+  bombPrefab: {fileID: 124052, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
+--- !u!114 &-1682722348895603109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3427390762055927473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c013adb1262c15e499382a65e8bed24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveInput: {fileID: -6992197736188067503, guid: 5a671bfb82736bf4aa689da76cc6bff4, type: 3}
+  _jumpInput: {fileID: 4348518766428248117, guid: 5a671bfb82736bf4aa689da76cc6bff4, type: 3}
+  _bombInput: {fileID: 1186253662891506763, guid: 5a671bfb82736bf4aa689da76cc6bff4, type: 3}

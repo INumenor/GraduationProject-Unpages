@@ -10,11 +10,11 @@ public class NetworkManager : MonoBehaviour , INetworkRunnerCallbacks
 {
     public static NetworkManager Instance {get; private set;}
 
-    public NetworkRunner runner;
+    public NetworkRunner SessionRunner;
 
     [SerializeField] private GameObject networkRunnerPrefab;
     [SerializeField] private NetworkObject playerPreafab;
-    [SerializeField] private NetworkObject networkCharacterPrefab;
+    //[SerializeField] private NetworkObject networkCharacterPrefab;
 
     //public delegate void OnPlayerSpawn(NetworkRunner runner, PlayerRef playerRef);
     //public event OnPlayerSpawn onPlayerSpawn;
@@ -40,8 +40,8 @@ public class NetworkManager : MonoBehaviour , INetworkRunnerCallbacks
 
     private void CreateNetworkRunner() 
     {
-        if(!runner) runner = Instantiate(networkRunnerPrefab,transform).GetComponent<NetworkRunner>();
-        runner.AddCallbacks(this);
+        if(!SessionRunner) SessionRunner = Instantiate(networkRunnerPrefab,transform).GetComponent<NetworkRunner>();
+        SessionRunner.AddCallbacks(this);
     }
 
     public async void ConnectGame()
@@ -54,7 +54,7 @@ public class NetworkManager : MonoBehaviour , INetworkRunnerCallbacks
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
         };
 
-        var connectionResult = await runner.StartGame(args);
+        var connectionResult = await SessionRunner.StartGame(args);
 
         if (connectionResult.Ok)
         {
@@ -70,7 +70,7 @@ public class NetworkManager : MonoBehaviour , INetworkRunnerCallbacks
     {
         if (player == runner.LocalPlayer)
         {
-            runner.Spawn(playerPreafab, transform.position, transform.rotation, player);
+            runner.Spawn(playerPreafab,new Vector3(transform.position.x , transform.position.y+1f ,transform.position.z), transform.rotation, player);
             //runner.Spawn(networkCharacterPrefab,Vector3.zero,Quaternion.identity,player);
             Debug.Log(runner + player.ToString());
             //onPlayerSpawn.Invoke(runner, player);

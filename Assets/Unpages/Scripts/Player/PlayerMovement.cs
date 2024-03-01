@@ -10,10 +10,13 @@ public class PlayerMovement : NetworkBehaviour
 
     private CharacterController _controller;
 
-    public float PlayerSpeed = 6f;
+    public float MoveSpeed = 6f;
 
     public float JumpForce = 10f;
     public float GravityValue = -9.81f;
+
+
+    [SerializeField] private GameObject bombPrefab;
 
     private void Awake()
     {
@@ -22,39 +25,51 @@ public class PlayerMovement : NetworkBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            _jumpPressed = true;
-        }
+        //if (Input.GetButtonDown("Jump"))
+        //{
+        //    _jumpPressed = true;
+        //}
     }
 
     public override void FixedUpdateNetwork()
     {
-        // Only move own player and not every other player. Each player controls its own player object.
-        if (HasStateAuthority == false)
+        if (HasStateAuthority == false)  return;
+
+        base.FixedUpdateNetwork();
+
+        if (GetInput<PlayerInputData>(out var inputData))
         {
-            return;
+            //transform.Translate(inputData.Direction * Runner.DeltaTime * MoveSpeed);
+
+            if (_controller.isGrounded)
+            {
+                _velocity = new Vector3(0, -1, 0);
+            }
+
+            Vector3 move = (inputData.Direction * Runner.DeltaTime * MoveSpeed);
+
+            _velocity.y += GravityValue * Runner.DeltaTime;
+
+            if (inputData.isJumped == 1 && _controller.isGrounded)
+            {
+                _velocity.y += JumpForce;
+            }
+            _controller.Move((inputData.Direction * Runner.DeltaTime * MoveSpeed) + _velocity * Runner.DeltaTime);
+
+            if (move != Vector3.zero)
+            {
+                gameObject.transform.forward = move;
+            }
+
+            _jumpPressed = false;
+
+            if(inputData.isBombDrop == 1)
+            {
+                Debug.Log("Girdim");
+                //BombManager.BombInstance.DropBomb();
+            }
         }
-
-        if (_controller.isGrounded)
-        {
-            _velocity = new Vector3(0, -1, 0);
-        }
-
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * PlayerSpeed;
-
-        _velocity.y += GravityValue * Runner.DeltaTime;
-        if (_jumpPressed && _controller.isGrounded)
-        {
-            _velocity.y += JumpForce;
-        }
-        _controller.Move(move + _velocity * Runner.DeltaTime);
-
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-        }
-
-        _jumpPressed = false;
+        
+        
     }
 }
