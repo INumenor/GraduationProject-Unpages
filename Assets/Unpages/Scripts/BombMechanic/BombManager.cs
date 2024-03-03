@@ -5,16 +5,13 @@ using UnityEngine.UIElements;
 
 public class BombManager : MonoBehaviour
 {
-    [SerializeField] GameObject Player;
 
     [SerializeField] private GameObject bombPrefab;
-    public static BombManager BombInstance { get; set; }
 
-    public void DropBomb()
+    public void DropBomb(GameObject playerPreb)
     {
-        Debug.Log("sA");
-              Instantiate(bombPrefab, new Vector3(Mathf.RoundToInt(Player.transform.position.x),
-              bombPrefab.transform.position.y, Mathf.RoundToInt(Player.transform.position.z)),
-              bombPrefab.transform.rotation);
+        Instantiate(bombPrefab, new Vector3(Mathf.RoundToInt(playerPreb.transform.position.x),
+        bombPrefab.transform.position.y, Mathf.RoundToInt(playerPreb.transform.position.z)),
+        bombPrefab.transform.rotation);
     }
 }

@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Grab",
+                    "name": "GrabAndDrop",
                     "type": "Button",
                     "id": "8ac9ff7b-0930-470a-9ee1-4a6ba9453d8b",
                     "expectedControlType": "Button",
@@ -116,7 +116,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Grab",
+                    "action": "GrabAndDrop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

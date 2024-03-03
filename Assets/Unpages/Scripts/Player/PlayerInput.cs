@@ -15,22 +15,25 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
     [SerializeField]
     private InputActionReference _jumpInput;
     [SerializeField]
-    private InputActionReference _bombInput;
+    private InputActionReference _bombInput; 
+    [SerializeField]
+    private InputActionReference _dropAndGrapInput;
 
     private void OnEnable()
     {
         _moveInput.action.Enable();
         _jumpInput.action.Enable();
         _bombInput.action.Enable();
+        _dropAndGrapInput.action.Enable();
     }
     private void OnDisable()
     {
         _moveInput.action.Disable();
         _jumpInput.action.Disable();
         _bombInput.action.Disable();
+        _dropAndGrapInput.action.Disable();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         NetworkManager.Instance.SessionRunner.AddCallbacks(this);
@@ -45,8 +48,8 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
 
         inputData.Direction = direction3D;
         inputData.isJumped = _jumpInput.action.ReadValue<float>();
-        Debug.Log(_bombInput.action.ReadValue<float>());
         inputData.isBombDrop = _bombInput.action.ReadValue<float>();
+        inputData.isPlayerGrapandDrop = _dropAndGrapInput.action.ReadValue<float>();
 
         input.Set(inputData);
     }

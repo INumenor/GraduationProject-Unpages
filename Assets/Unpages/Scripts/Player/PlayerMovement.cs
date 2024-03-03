@@ -15,38 +15,35 @@ public class PlayerMovement : NetworkBehaviour
     public float JumpForce = 10f;
     public float GravityValue = -9.81f;
 
-
-    [SerializeField] private GameObject bombPrefab;
+    public GameObject pObject;
 
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
     }
 
-    void Update()
+    public void PlayerMove()
     {
-        //if (Input.GetButtonDown("Jump"))
-        //{
-        //    _jumpPressed = true;
-        //}
-    }
-
-    public override void FixedUpdateNetwork()
-    {
-        if (HasStateAuthority == false)  return;
-
-        base.FixedUpdateNetwork();
-
         if (GetInput<PlayerInputData>(out var inputData))
         {
-            //transform.Translate(inputData.Direction * Runner.DeltaTime * MoveSpeed);
+            Vector3 move = (inputData.Direction * Runner.DeltaTime * MoveSpeed);
 
+            _controller.Move((inputData.Direction * Runner.DeltaTime * MoveSpeed) + _velocity * Runner.DeltaTime);
+
+            if (move != Vector3.zero)
+            {
+                gameObject.transform.forward = move;
+            }
+        }
+    }
+    public void PlayerJump()
+    {
+        if (GetInput<PlayerInputData>(out var inputData))
+        {
             if (_controller.isGrounded)
             {
                 _velocity = new Vector3(0, -1, 0);
             }
-
-            Vector3 move = (inputData.Direction * Runner.DeltaTime * MoveSpeed);
 
             _velocity.y += GravityValue * Runner.DeltaTime;
 
@@ -54,22 +51,39 @@ public class PlayerMovement : NetworkBehaviour
             {
                 _velocity.y += JumpForce;
             }
-            _controller.Move((inputData.Direction * Runner.DeltaTime * MoveSpeed) + _velocity * Runner.DeltaTime);
-
-            if (move != Vector3.zero)
-            {
-                gameObject.transform.forward = move;
-            }
-
             _jumpPressed = false;
-
-            if(inputData.isBombDrop == 1)
-            {
-                Debug.Log("Girdim");
-                //BombManager.BombInstance.DropBomb();
-            }
         }
-        
-        
     }
+
+    public void PlayerGrabAndDrop(GameObject cube = null)
+    {
+            if(pObject == null)
+            {
+                cube.transform.SetParent(this.transform, true);   
+                pObject = cube;
+            }
+            //else if (pObject != null)
+            //{
+            //    Debug.Log("Tsasda");
+            //    pObject.transform.parent = null;
+            //}
+    }
+
+
+    //public override void FixedUpdateNetwork()
+    //{
+
+
+    //    base.FixedUpdateNetwork();
+
+
+    //        //transform.Translate(inputData.Direction * Runner.DeltaTime * MoveSpeed);
+
+    //        //if(inputData.isBombDrop == 1)
+    //        //{
+    //        //    Debug.Log("Girdim");
+    //        //    BombManager.BombInstance.DropBomb();
+    //        //}
+    //    }
+    //}
 }
