@@ -12,16 +12,17 @@ public class PlayerAction : NetworkBehaviour
     //
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private BombManager bombManager;
+    [SerializeField] private PlayerInteraction playerInteraction;
 
-    public GameObject oObject;
+    public GameObject grabbableObject;
     //public bool isTriggered = false;
 
     //----->
-    //private void Start()
-    //{
-    //    bombManager = FindAnyObjectByType<BombManager>();
-    //}
-
+    private void Start()
+    {
+        //bombManager = FindAnyObjectByType<BombManager>();
+        GameService.Instance.playerAction = this;
+    }
 
     public override void FixedUpdateNetwork()
     {
@@ -47,13 +48,14 @@ public class PlayerAction : NetworkBehaviour
                 bombManager.DropBomb(this.gameObject);
             }
 
-            if (inputData.isPlayerGrapandDrop == 1)
+            if (inputData.isPlayerGrapandDrop == 1 && grabbableObject)
             {
-                playerMovement.PlayerGrabAndDrop(oObject);
+                playerInteraction.PlayerGrabAndDrop(grabbableObject);
             }
         }
 
         base.FixedUpdateNetwork();
     }
 
+    
 }

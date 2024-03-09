@@ -9,11 +9,11 @@ public class Interaction : MonoBehaviour
     {
         Debug.Log("Test");
        // playerAction.isTriggered = true;
-        playerAction.oObject = other.gameObject;
+        playerAction.grabbableObject = other.gameObject;
     }
     private void OnTriggerExit(Collider other)
     {
         //playerAction.isTriggered = false;
-        playerAction.oObject = null;
+        playerAction.grabbableObject = null;
     }
 }

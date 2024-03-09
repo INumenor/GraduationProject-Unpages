@@ -15,7 +15,7 @@ public class PlayerMovement : NetworkBehaviour
     public float JumpForce = 10f;
     public float GravityValue = -9.81f;
 
-    public GameObject pObject;
+    
 
     private void Awake()
     {
@@ -55,19 +55,7 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
-    public void PlayerGrabAndDrop(GameObject cube = null)
-    {
-            if(pObject == null)
-            {
-                cube.transform.SetParent(this.transform, true);   
-                pObject = cube;
-            }
-            //else if (pObject != null)
-            //{
-            //    Debug.Log("Tsasda");
-            //    pObject.transform.parent = null;
-            //}
-    }
+   
 
 
     //public override void FixedUpdateNetwork()
