@@ -41,10 +41,10 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
+        PlayerInputData inputData = new PlayerInputData();
+
         Vector2 direction2D = _moveInput.action.ReadValue<Vector2>();
         Vector3 direction3D = new Vector3(direction2D.x, 0, direction2D.y);
-
-        PlayerInputData inputData = new PlayerInputData();
 
         inputData.Direction = direction3D;
         inputData.isJumped = _jumpInput.action.ReadValue<float>();

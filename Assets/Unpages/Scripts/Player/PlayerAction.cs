@@ -16,10 +16,11 @@ public class PlayerAction : NetworkBehaviour
     public GameObject oObject;
     //public bool isTriggered = false;
 
-    private void Start()
-    {
-        bombManager = FindAnyObjectByType<BombManager>();
-    }
+    //----->
+    //private void Start()
+    //{
+    //    bombManager = FindAnyObjectByType<BombManager>();
+    //}
 
 
     public override void FixedUpdateNetwork()
