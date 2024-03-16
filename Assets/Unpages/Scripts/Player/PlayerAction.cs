@@ -14,6 +14,8 @@ public class PlayerAction : NetworkBehaviour
     [SerializeField] private BombManager bombManager;
     [SerializeField] private PlayerInteraction playerInteraction;
 
+    public  bool isGrabbable = false;
+
     public GameObject grabbableObject;
     //public bool isTriggered = false;
 
@@ -48,14 +50,19 @@ public class PlayerAction : NetworkBehaviour
                 bombManager.DropBomb(this.gameObject);
             }
 
-            if (inputData.isPlayerGrapandDrop == 1 && grabbableObject)
+            if (!isGrabbable && inputData.isPlayerGrapandDrop == 1)
             {
-                playerInteraction.PlayerGrabAndDrop(grabbableObject);
+                playerInteraction.PlayerGrabAndDropItem(grabbableObject);
+            }
+            else if (isGrabbable && inputData.isPlayerGrapandDrop == 1)
+            {
+                playerInteraction.PlayerGrabAndDropItem();
             }
         }
 
         base.FixedUpdateNetwork();
     }
+
 
     
 }

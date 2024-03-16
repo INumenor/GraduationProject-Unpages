@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Unpages.Network;
 
 public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
 {
