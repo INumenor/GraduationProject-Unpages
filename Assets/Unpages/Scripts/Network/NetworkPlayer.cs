@@ -17,9 +17,9 @@ namespace Unpages.Network{
         [Button]
         public override void Spawned()
         {
-            NetworkManager.Instance.SetPlayer(Object.InputAuthority, this);
+            //NetworkManager.Instance.SetPlayer(Object.InputAuthority, this);
             //NetworkManager.Instance.SessionRunner.GetComponent<NetworkEvents>().PlayerJoined.AddListener(SetPlayer);
-            //SetPlayer(Object.InputAuthority);
+            SetPlayer(Runner,Object.InputAuthority);
             
 
             //NetworkManager.Instance.SetPlayer(Object.InputAuthority, this);

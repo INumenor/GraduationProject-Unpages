@@ -44,6 +44,7 @@ namespace Unpages.Network
 
         private void Start()
         {
+            PlayerList = new();
             ConnectGame();
         }
 
@@ -79,8 +80,8 @@ namespace Unpages.Network
         {
             if (player == runner.LocalPlayer)
             {
-                //runner.Spawn(playerPreafab, position: transform.position, rotation: transform.rotation, player, flags: NetworkSpawnFlags.DontDestroyOnLoad);
-                runner.Spawn(networkCharacterPrefab,Vector3.zero,Quaternion.identity,player);
+                runner.Spawn(playerPreafab, position: transform.position, rotation: transform.rotation, player, flags: NetworkSpawnFlags.DontDestroyOnLoad);
+                //runner.Spawn(networkCharacterPrefab,Vector3.zero,Quaternion.identity,player);
                 Debug.Log(runner + player.ToString());
                 //onPlayerSpawn.Invoke(runner, player);
             }

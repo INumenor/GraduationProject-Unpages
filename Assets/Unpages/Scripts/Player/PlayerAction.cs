@@ -11,7 +11,7 @@ public class PlayerAction : NetworkBehaviour
 
     //
     [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private BombManager bombManager;
+    [SerializeField] public BombManager bombManager;
     [SerializeField] private PlayerInteraction playerInteraction;
 
     public  bool isGrabbable = false;
@@ -47,7 +47,7 @@ public class PlayerAction : NetworkBehaviour
 
             if (inputData.isBombDrop == 1)
             {
-                bombManager.DropBomb(this.gameObject);
+                bombManager.DropBomb(this.gameObject , Runner ,Object.StateAuthority);
             }
 
             if (!isGrabbable && inputData.isPlayerGrapandDrop == 1)
