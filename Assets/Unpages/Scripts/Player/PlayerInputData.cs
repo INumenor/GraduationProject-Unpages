@@ -8,4 +8,5 @@ public struct PlayerInputData : INetworkInput
     public Vector3 Direction;
     public float isJumped;
     public float isBombDrop;
+    public float isPlayerGrapandDrop;
 }

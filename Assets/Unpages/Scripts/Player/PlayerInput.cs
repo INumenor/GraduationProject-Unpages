@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Unpages.Network;
 
 public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
 {
@@ -15,22 +16,25 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
     [SerializeField]
     private InputActionReference _jumpInput;
     [SerializeField]
-    private InputActionReference _bombInput;
+    private InputActionReference _bombInput; 
+    [SerializeField]
+    private InputActionReference _dropAndGrapInput;
 
     private void OnEnable()
     {
         _moveInput.action.Enable();
         _jumpInput.action.Enable();
         _bombInput.action.Enable();
+        _dropAndGrapInput.action.Enable();
     }
     private void OnDisable()
     {
         _moveInput.action.Disable();
         _jumpInput.action.Disable();
         _bombInput.action.Disable();
+        _dropAndGrapInput.action.Disable();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         NetworkManager.Instance.SessionRunner.AddCallbacks(this);
@@ -38,15 +42,15 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
+        PlayerInputData inputData = new PlayerInputData();
+
         Vector2 direction2D = _moveInput.action.ReadValue<Vector2>();
         Vector3 direction3D = new Vector3(direction2D.x, 0, direction2D.y);
 
-        PlayerInputData inputData = new PlayerInputData();
-
         inputData.Direction = direction3D;
         inputData.isJumped = _jumpInput.action.ReadValue<float>();
-        Debug.Log(_bombInput.action.ReadValue<float>());
         inputData.isBombDrop = _bombInput.action.ReadValue<float>();
+        inputData.isPlayerGrapandDrop = _dropAndGrapInput.action.ReadValue<float>();
 
         input.Set(inputData);
     }

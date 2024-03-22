@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,16 +7,33 @@ using UnityEngine.UIElements;
 
 public class BombManager : MonoBehaviour
 {
-    [SerializeField] GameObject Player;
 
-    [SerializeField] private GameObject bombPrefab;
-    public static BombManager BombInstance { get; set; }
+    [SerializeField] private NetworkObject bombPrefab;
+    private bool _isInActivationDelay;
 
-    public void DropBomb()
+    [Header("Player Bomb Attributes")]
+    public int bombCounter = 2; 
+
+    public void DropBomb(GameObject playerPreb ,NetworkRunner Runner,PlayerRef playerRef)
     {
-        Debug.Log("sA");
-              Instantiate(bombPrefab, new Vector3(Mathf.RoundToInt(Player.transform.position.x),
-              bombPrefab.transform.position.y, Mathf.RoundToInt(Player.transform.position.z)),
-              bombPrefab.transform.rotation);
+
+        if (!_isInActivationDelay && bombCounter > 0) 
+        { 
+        Runner.Spawn(bombPrefab, new Vector3(Mathf.RoundToInt(playerPreb.transform.position.x),
+        bombPrefab.transform.position.y, Mathf.RoundToInt(playerPreb.transform.position.z)),
+        bombPrefab.transform.rotation,playerRef);
+            bombCounter--;
+            //Instantiate(bombPrefab, new Vector3(Mathf.RoundToInt(playerPreb.transform.position.x),
+            //bombPrefab.transform.position.y, Mathf.RoundToInt(playerPreb.transform.position.z)),
+            //bombPrefab.transform.rotation);
+        }
+        StartActivationDelay();
+    }
+
+    public async void StartActivationDelay()
+    {
+        _isInActivationDelay = true;
+        await UniTask.WaitForSeconds(1f, cancellationToken: destroyCancellationToken);
+        _isInActivationDelay = false;
     }
 }
