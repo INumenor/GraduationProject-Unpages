@@ -1,4 +1,5 @@
 namespace Unpages.Network{
+    using Cysharp.Threading.Tasks;
     using Fusion;
     using Sirenix.OdinInspector;
     using System.Collections;
@@ -20,11 +21,13 @@ namespace Unpages.Network{
             //NetworkManager.Instance.SetPlayer(Object.InputAuthority, this);
             //NetworkManager.Instance.SessionRunner.GetComponent<NetworkEvents>().PlayerJoined.AddListener(SetPlayer);
             SetPlayer(Runner,Object.InputAuthority);
-            
 
             //NetworkManager.Instance.SetPlayer(Object.InputAuthority, this);
 
         }
+
+        
+
         public void SetPlayer(NetworkRunner runner, PlayerRef playerRef)
         {
             NetworkManager.Instance.SetPlayer(playerRef, this);

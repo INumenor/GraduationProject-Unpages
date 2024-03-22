@@ -7,6 +7,7 @@ public class GameService : MonoBehaviour
 {
     #region References
     public PlayerAction playerAction;
+    public NetworkItems networkItems;
     #endregion
 
 

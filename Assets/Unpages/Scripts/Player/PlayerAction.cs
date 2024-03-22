@@ -1,7 +1,10 @@
+using Cysharp.Threading.Tasks;
 using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unpages.Network;
+using NetworkPlayer = Unpages.Network.NetworkPlayer;
 
 public class PlayerAction : NetworkBehaviour
 {
@@ -24,6 +27,21 @@ public class PlayerAction : NetworkBehaviour
     {
         //bombManager = FindAnyObjectByType<BombManager>();
         GameService.Instance.playerAction = this;
+        TryGetPlayer();
+    }
+    private async UniTask<NetworkPlayer> TryGetPlayer()
+    {
+        NetworkPlayer networkPlayer = null;
+        while (networkPlayer == null)
+        {
+            networkPlayer = NetworkManager.Instance.GetPlayer(Object.StateAuthority);
+            Debug.LogWarning("TryToGet");
+            await UniTask.WaitForSeconds(1, cancellationToken: destroyCancellationToken);
+
+        }
+        networkPlayer.networkCharacter = GetComponent<NetworkObject>();
+        return networkPlayer;
+
     }
 
     public override void FixedUpdateNetwork()
@@ -59,8 +77,7 @@ public class PlayerAction : NetworkBehaviour
                 playerInteraction.PlayerGrabAndDropItem();
             }
         }
-
-        base.FixedUpdateNetwork();
+        //base.FixedUpdateNetwork();
     }
 
 

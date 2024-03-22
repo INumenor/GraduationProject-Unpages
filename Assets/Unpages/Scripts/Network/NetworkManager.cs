@@ -1,9 +1,11 @@
 namespace Unpages.Network
 {
+    using Cysharp.Threading.Tasks;
     using Fusion;
     using Fusion.Sockets;
     using System;
     using System.Collections.Generic;
+    using System.Threading;
     using UnityEngine;
     using UnityEngine.SceneManagement;
 
@@ -76,6 +78,35 @@ namespace Unpages.Network
             }
         }
 
+        private static readonly int maxAttempt = 30;
+        public static async UniTask<NetworkPlayer> GetPlayerAsync(CancellationToken token, Action<NetworkPlayer> action = default, PlayerRef ply = default)
+        {
+            int attempt = 0;
+            NetworkPlayer player = null;
+
+            while (player == null && attempt <= maxAttempt)
+            {
+                if (Instance != null)
+                {
+                    if (Instance.SessionRunner.State == NetworkRunner.States.Running)
+                    {
+                        player = Instance.GetPlayer(ply);
+                        if (player != null)
+                        {
+                            action?.Invoke(player);
+                            return player;
+                        }
+                    }
+
+                }
+
+                await UniTask.WaitForSeconds(1, token.IsCancellationRequested);
+                attempt++;
+            }
+            if (player == null) Debug.LogError("player not found. Attempt: " + attempt);
+            return player;
+        }
+
         public void SpawnPlayer(NetworkRunner runner, PlayerRef player)
         {
             if (player == runner.LocalPlayer)
@@ -104,6 +135,23 @@ namespace Unpages.Network
             }
 
             OnNetworkPlayerCreated?.Invoke(playerRef, player);
+        }
+
+        public NetworkPlayer GetPlayer(PlayerRef ply = default)
+        {
+            if (!SessionRunner)
+                return null;
+            if (ply == default)
+                ply = SessionRunner.LocalPlayer;
+            if (PlayerList.TryGetValue(ply, out NetworkPlayer player))
+            {
+                return player;
+            }
+            else
+            {
+                Debug.LogWarning("Player: " + ply.PlayerId + " Network Player not found.");
+                return null;
+            }
         }
 
         public void CharacterSpawn(PlayerRef playerRef)
