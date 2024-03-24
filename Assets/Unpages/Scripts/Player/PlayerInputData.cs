@@ -9,4 +9,5 @@ public struct PlayerInputData : INetworkInput
     public float isJumped;
     public float isBombDrop;
     public float isPlayerGrapandDrop;
+    public float isCameraChange;
 }

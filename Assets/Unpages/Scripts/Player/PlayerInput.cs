@@ -19,6 +19,8 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
     private InputActionReference _bombInput; 
     [SerializeField]
     private InputActionReference _dropAndGrapInput;
+    [SerializeField]
+    private InputActionReference _cameraInput;
 
     private void OnEnable()
     {
@@ -26,6 +28,7 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
         _jumpInput.action.Enable();
         _bombInput.action.Enable();
         _dropAndGrapInput.action.Enable();
+        _cameraInput.action.Enable();
     }
     private void OnDisable()
     {
@@ -33,6 +36,7 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
         _jumpInput.action.Disable();
         _bombInput.action.Disable();
         _dropAndGrapInput.action.Disable();
+        _cameraInput.action.Disable();
     }
 
     void Start()
@@ -48,9 +52,11 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
         Vector3 direction3D = new Vector3(direction2D.x, 0, direction2D.y);
 
         inputData.Direction = direction3D;
+        inputData.isCameraChange = _cameraInput.action.ReadValue<float>();
         inputData.isJumped = _jumpInput.action.ReadValue<float>();
         inputData.isBombDrop = _bombInput.action.ReadValue<float>();
         inputData.isPlayerGrapandDrop = _dropAndGrapInput.action.ReadValue<float>();
+        
 
         input.Set(inputData);
     }

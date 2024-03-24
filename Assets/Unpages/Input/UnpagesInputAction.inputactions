@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Camera",
+                    "type": "Button",
+                    "id": "7810de83-cc85-4c84-a170-a3022f397a01",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "GrabAndDrop",
                     "type": "Button",
                     "id": "8ac9ff7b-0930-470a-9ee1-4a6ba9453d8b",
@@ -128,6 +137,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Bomb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa6f1545-9dc7-47dd-b109-44d692e78c5a",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

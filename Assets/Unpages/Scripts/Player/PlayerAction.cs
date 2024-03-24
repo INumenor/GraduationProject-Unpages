@@ -16,6 +16,7 @@ public class PlayerAction : NetworkBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] public BombManager bombManager;
     [SerializeField] private PlayerInteraction playerInteraction;
+    [SerializeField] private PlayerCamera playerCamera;
 
     public  bool isGrabbable = false;
 
@@ -75,6 +76,11 @@ public class PlayerAction : NetworkBehaviour
             else if (isGrabbable && inputData.isPlayerGrapandDrop == 1)
             {
                 playerInteraction.PlayerGrabAndDropItem();
+            }
+            Debug.Log(inputData.isCameraChange);
+            if(inputData.isCameraChange == 1)
+            {
+                playerCamera.Camera();
             }
         }
         //base.FixedUpdateNetwork();
