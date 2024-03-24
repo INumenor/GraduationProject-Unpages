@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Fusion;
-using System.Collections;
-using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,17 +10,21 @@ public class BombManager : MonoBehaviour
     [SerializeField] private NetworkObject bombPrefab;
     private bool _isInActivationDelay;
 
-    [Header("Player Bomb Attributes")]
-    public int bombCounter = 2; 
 
-    public void DropBomb(GameObject playerPreb ,NetworkRunner Runner,PlayerRef playerRef)
+
+    [Header("Player Bomb Attributes")]
+    public int bombSize = 1;
+    public int bombCounter = 2;
+
+    [Button]
+    public void DropBomb(GameObject playerPreb, NetworkRunner Runner, PlayerRef playerRef)
     {
 
-        if (!_isInActivationDelay && bombCounter > 0) 
-        { 
-        Runner.Spawn(bombPrefab, new Vector3(Mathf.RoundToInt(playerPreb.transform.position.x),
-        bombPrefab.transform.position.y, Mathf.RoundToInt(playerPreb.transform.position.z)),
-        bombPrefab.transform.rotation,playerRef);
+        if (!_isInActivationDelay && bombCounter > 0)
+        {
+            Runner.Spawn(bombPrefab, new Vector3(Mathf.RoundToInt(playerPreb.transform.position.x),
+            bombPrefab.transform.position.y, Mathf.RoundToInt(playerPreb.transform.position.z)),
+            bombPrefab.transform.rotation, playerRef);
             bombCounter--;
             //Instantiate(bombPrefab, new Vector3(Mathf.RoundToInt(playerPreb.transform.position.x),
             //bombPrefab.transform.position.y, Mathf.RoundToInt(playerPreb.transform.position.z)),

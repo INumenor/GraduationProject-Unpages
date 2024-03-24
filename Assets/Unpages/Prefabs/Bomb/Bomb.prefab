@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9255c6bb1f3c5d4bb069525401882ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 177540, guid: 69dfce71c987ee94ebd40421847e3c8e, type: 3}
+  explosionPrefab: {fileID: 6941301047096099186, guid: 99ace82de5ae1ee4fbd6eb9c81312de5, type: 3}
 --- !u!114 &2952983368268198422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,7 +564,7 @@ ParticleSystem:
         m_RotationOrder: 0
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -617,7 +617,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
