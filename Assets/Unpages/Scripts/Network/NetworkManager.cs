@@ -23,8 +23,7 @@ namespace Unpages.Network
         public static Dictionary<PlayerRef,NetworkPlayer> PlayerList { get; private set; }
         //[SerializeField] private NetworkObject networkCharacterPrefab;
 
-        public Action<PlayerRef, NetworkPlayer> OnNetworkPlayerCreated { get; private set; }
-
+        public Action<PlayerRef, NetworkPlayer> OnNetworkPlayerCreated ; /*{ get; private set; }*/
 
 
         //public delegate void OnPlayerSpawn(NetworkRunner runner, PlayerRef playerRef);
