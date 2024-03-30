@@ -9,7 +9,9 @@ public class ExplosionTrigger : MonoBehaviour
         Debug.Log(other.name);
         if (other.CompareTag("TouchableItem"))
         {
-            other.gameObject.SetActive(false);
+            GameService.Instance.gameControl.ObjectSpawn(other.gameObject.transform);
+            Destroy(other.gameObject);
+            //other.gameObject.SetActive(false);
         }
     }
 }

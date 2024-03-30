@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class NetworkItems : MonoBehaviour
 {
-    public List<NetworkObject> networkItems;
+    public List<ItemInfo> networkItems;
 
     public NetworkObject GetNetworkItem(string gameObject)
     {
-        foreach (NetworkObject networkObject in networkItems)
+        foreach (ItemInfo networkObject in networkItems)
         {
-            if(networkObject.name == gameObject)
+            if(networkObject.item.name == gameObject)
                 {
-                    return networkObject;
+                    return networkObject.item;
                 }
         }
         return null;
