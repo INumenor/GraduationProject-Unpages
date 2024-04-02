@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unpages.Network;
 
-public class GameControl : MonoBehaviour
+public class GameControl : NetworkBehaviour
 {
     public void ObjectSpawn(Transform spawnPoint)
     {
@@ -16,7 +16,8 @@ public class GameControl : MonoBehaviour
             {
                 Debug.Log(itemInfo.name + " " + randomNumber);
                 //Instantiate(itemInfo.item, spawnPoint);
-                NetworkManager.Instance.SessionRunner.Spawn(itemInfo.item, spawnPoint.position, spawnPoint.transform.rotation);
+                NetworkObject networkObject = NetworkManager.Instance.SessionRunner.Spawn(itemInfo.item, spawnPoint.position, spawnPoint.transform.rotation);
+                networkObject.name = itemInfo.name;
                 //Runner.Spawn(itemInfo.item,position: spawnPoint.position,rotation : spawnPoint.rotation,Object.StateAuthority);
             }
         }

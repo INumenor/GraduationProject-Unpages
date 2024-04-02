@@ -75,7 +75,7 @@ public class PlayerAction : NetworkBehaviour
             }
             else if (isGrabbable && inputData.isPlayerGrapandDrop == 1)
             {
-                playerInteraction.PlayerGrabAndDropItem();
+                playerInteraction.PlayerGrabAndDropItem(null);
             }
             Debug.Log(inputData.isCameraChange);
             if(inputData.isCameraChange == 1)

@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 7152774734982961225}
   - component: {fileID: 5045039604066498265}
   - component: {fileID: 4515964099041702478}
+  - component: {fileID: -3166128714669777198}
   m_Layer: 6
-  m_Name: Tomato
+  m_Name: LettuceFood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6827513887203246678, guid: 3e06c3b48c1f40e4090028356eb3ccf0, type: 3}
+  - {fileID: -8723117744264820893, guid: 3e06c3b48c1f40e4090028356eb3ccf0, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 2886568876
+  SortKey: 3237742612
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
@@ -169,3 +170,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-3166128714669777198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7533961367178541783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53278220452b4d247b285415239c4dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

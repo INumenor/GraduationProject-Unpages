@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1247341859562060496}
   - component: {fileID: 7445518785124897135}
   - component: {fileID: 1133309456765106625}
+  - component: {fileID: -8065890571960684100}
   m_Layer: 6
   m_Name: Lettuce_Slice
   m_TagString: Untagged
@@ -169,3 +170,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.19999999, y: 0.010099106, z: 0.20002228}
   m_Center: {x: 0, y: 0.004950446, z: 0}
+--- !u!114 &-8065890571960684100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4883688726746626202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53278220452b4d247b285415239c4dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

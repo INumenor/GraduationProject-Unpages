@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8131801213e94d41a375a18667f82e8, type: 3}
-  m_Name: LettuceSlice
+  m_Name: InfoScriptableObject 1
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,7 +21,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  item: {fileID: 2034953539275823545, guid: f4b292b98c6b7fb459b5217633d57763, type: 3}
-  isSpawnable: 0
+  item: {fileID: 5297776789206368421, guid: d308fd05419a447429ed2656ee8b850a, type: 3}
+  isSpawnable: 1
   minRandomGameSpawn: 0
   maxRandomGameSpawn: 0

@@ -7,18 +7,21 @@ using Fusion;
 
 public class PlayerInteraction : NetworkBehaviour
 {
-    public NetworkObject pObject;
+    public NetworkObject interactionObject;
     //public NetworkObject testObject;
     private bool _isInActivationDelay;
 
-    public void PlayerGrabAndDropItem(GameObject gameobject = null)
+    public void PlayerGrabAndDropItem(GameObject interactableObject)
     {
         if (_isInActivationDelay) return;
-        if (pObject == null)
-        {           
-            PlayerGrabItem(GameService.Instance.networkItems.GetNetworkItem(gameobject.name));
+        Debug.Log(interactableObject);
+        if (interactableObject != null && interactionObject == null)
+        {
+            interactableObject.GetComponent<NetworkObject>().ReleaseStateAuthority();
+
+            PlayerGrabItem(GameService.Instance.networkItems.GetNetworkItem(interactableObject.name));
             StartActivationDelay();
-            Destroy(gameobject);
+            Destroy(interactableObject);
         }
         else 
         {
@@ -29,30 +32,30 @@ public class PlayerInteraction : NetworkBehaviour
 
     public void PlayerGrabItem(NetworkObject networkObject = null)
     {
-        if (pObject == null)
+        if (interactionObject == null)
         {
-            NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, new Vector3(transform.position.x,transform.position.y+1.5f,transform.position.z),this.transform.rotation,Object.StateAuthority);
+            NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, new Vector3(transform.position.x,transform.position.y+1.5f,transform.position.z),this.transform.rotation,Object.InputAuthority);
             item.transform.SetParent(transform);
             item.gameObject.GetComponent<Rigidbody>().useGravity = false;
             item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             item.name = networkObject.name;
-            pObject = item;   
+            interactionObject = item;   
             GameService.Instance.playerAction.isGrabbable = true;
         }
     }
 
     public void PlayerDropItem()
     {
-        if (pObject != null)
+        if (interactionObject != null)
         {
             Vector3 spawnPosition = transform.position + transform.forward * 1f;
-            NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(pObject, spawnPosition, this.transform.rotation, Object.StateAuthority);
-            item.name = pObject.name;
+            NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(interactionObject, spawnPosition, this.transform.rotation, Object.StateAuthority);
+            item.name = interactionObject.name;
             item.gameObject.GetComponent<Rigidbody>().useGravity = true;
             item.gameObject.GetComponent<Rigidbody>().isKinematic = false ;
-            Runner.Despawn(pObject);
-            pObject.transform.parent = null;
-            pObject = null;
+            Runner.Despawn(interactionObject);
+            interactionObject.transform.parent = null;
+            interactionObject = null;
             GameService.Instance.playerAction.isGrabbable = false;
         }
     }

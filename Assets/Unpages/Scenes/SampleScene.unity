@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkItems:
-  - {fileID: 5508827088554109635, guid: 87ed4d7f1713fdc42b69e4f6cd4639dd, type: 3}
-  - {fileID: 5297776789206368421, guid: d308fd05419a447429ed2656ee8b850a, type: 3}
+  - {fileID: 11400000, guid: d128ecbf12b993245a83986ad9e74c85, type: 2}
+  - {fileID: 11400000, guid: ee06532685f4321448e4091985830652, type: 2}
 --- !u!4 &50049990
 Transform:
   m_ObjectHideFlags: 0
@@ -601,6 +601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAction: {fileID: 0}
   networkItems: {fileID: 50049989}
+  gameControl: {fileID: 0}
 --- !u!4 &1876197242
 Transform:
   m_ObjectHideFlags: 0
@@ -627,7 +628,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 18054311775144127, guid: 87ed4d7f1713fdc42b69e4f6cd4639dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4.35
       objectReference: {fileID: 0}
     - target: {fileID: 18054311775144127, guid: 87ed4d7f1713fdc42b69e4f6cd4639dd, type: 3}
       propertyPath: m_LocalPosition.y
