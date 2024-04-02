@@ -441,10 +441,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: crate_low
       objectReference: {fileID: 0}
-    - target: {fileID: 2515326832953796010, guid: fddba8e56f18eb849945a43db6fe9cf2, type: 3}
-      propertyPath: m_TagString
-      value: TouchableItem
-      objectReference: {fileID: 0}
     - target: {fileID: 3000502090943987472, guid: fddba8e56f18eb849945a43db6fe9cf2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

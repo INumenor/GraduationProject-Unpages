@@ -28,8 +28,10 @@ public class SpawnFoodBox : MonoBehaviour
     public void Spawn(PlayerRef playerRef, NetworkPlayer player)
     {
         Debug.Log(playerRef.PlayerId);
-        if (playerRef.PlayerId==1)
+        Debug.Log(NetworkManager.Instance.GetPlayer() + "aaa");
+        if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient)
         {
+            Debug.Log("içerde");
             while (_wallSpawnedCount < 30)
             {
                 SpawnWallObject();
