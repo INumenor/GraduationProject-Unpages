@@ -1,9 +1,11 @@
 using Cysharp.Threading.Tasks;
+using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unpages.Network;
 
-public class PlayerCamera : MonoBehaviour
+public class PlayerCamera : NetworkBehaviour
 {
     [SerializeField] private Camera _playerCamera;
     [SerializeField] private Camera _mainCamera;
@@ -11,8 +13,12 @@ public class PlayerCamera : MonoBehaviour
     private bool _isInActivationDelay;
     private void Start()
     {
-        GameObject gameObject = GameObject.FindGameObjectWithTag("TopDowmCamera");
-        _mainCamera = gameObject.GetComponent<Camera>();
+        if(Runner.LocalPlayer == Object.StateAuthority) 
+        {
+           _playerCamera.gameObject.SetActive(true);
+            GameObject gameObject = GameObject.FindGameObjectWithTag("TopDowmCamera");
+            _mainCamera = gameObject.GetComponent<Camera>();
+        }
     }
 
 
