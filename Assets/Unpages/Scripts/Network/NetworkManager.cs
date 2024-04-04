@@ -20,6 +20,9 @@ namespace Unpages.Network
         [SerializeField] private NetworkObject playerPreafab;
         [SerializeField] private NetworkObject networkCharacterPrefab;
 
+        [SerializeField] private Transform Player1SpawnPoint;
+        [SerializeField] private Transform Player2SpawnPoint;
+
         public static Dictionary<PlayerRef,NetworkPlayer> PlayerList { get; private set; }
         //[SerializeField] private NetworkObject networkCharacterPrefab;
 
@@ -156,10 +159,20 @@ namespace Unpages.Network
         public void CharacterSpawn(PlayerRef playerRef)
         {
             if (playerRef == SessionRunner.LocalPlayer && networkCharacterPrefab != null)
-            {
-                NetworkObject networkPlayerObject = SessionRunner.Spawn(networkCharacterPrefab, new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z), transform.rotation, playerRef, (runner, obj) => { });
-
-                PlayerList[playerRef].networkCharacter = networkPlayerObject;
+            {               
+                NetworkObject networkPlayerObject;
+                if (playerRef.PlayerId == 1)
+                {
+                    networkPlayerObject = SessionRunner.Spawn(networkCharacterPrefab, new Vector3(Player1SpawnPoint.position.x, Player1SpawnPoint.position.y + 1f, Player1SpawnPoint.position.z), transform.rotation, playerRef, (runner, obj) => { });
+                    networkPlayerObject.gameObject.transform.GetChild(1).gameObject.layer= LayerMask.NameToLayer("Player1Kitchen");                  
+                    PlayerList[playerRef].networkCharacter = networkPlayerObject;
+                }
+                else
+                {
+                    networkPlayerObject = SessionRunner.Spawn(networkCharacterPrefab, new Vector3(Player2SpawnPoint.position.x, Player2SpawnPoint.position.y + 1f, Player2SpawnPoint.position.z), transform.rotation, playerRef, (runner, obj) => { });
+                    networkPlayerObject.gameObject.transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("Player2Kitchen");
+                    PlayerList[playerRef].networkCharacter = networkPlayerObject;
+                }
 
             }
         }
