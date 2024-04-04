@@ -23,7 +23,8 @@ public class BombExplosion : MonoBehaviour
             //Instantiate(bombExplosionParticalPrefabs, new Vector3(transform.position.x + i, transform.position.y, transform.position.z + i), Quaternion.identity, transform);
             //Instantiate(bombExplosionParticalPrefabs, new Vector3(transform.position.x - i, transform.position.y, transform.position.z - i), Quaternion.identity, transform);
             //Instantiate(bombExplosionParticalPrefabs, new Vector3(transform.position.x - i, transform.position.y, transform.position.z + i), Quaternion.identity, transform);
-        }   
+        }
+        GameService.Instance.playerAction.bombManager.bombCounter++;
         Destroy(gameObject, .3f);
     }
 }

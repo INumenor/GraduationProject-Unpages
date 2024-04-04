@@ -24,11 +24,14 @@ public class PlayerAction : NetworkBehaviour
     //public bool isTriggered = false;
 
     //----->
-    private void Start()
+    private async void Start()
     {
         //bombManager = FindAnyObjectByType<BombManager>();
+        if (Object.HasStateAuthority) 
+        {
         GameService.Instance.playerAction = this;
-        TryGetPlayer();
+        await TryGetPlayer();
+        }
     }
     private async UniTask<NetworkPlayer> TryGetPlayer()
     {

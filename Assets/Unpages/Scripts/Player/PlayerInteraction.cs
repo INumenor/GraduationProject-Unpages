@@ -21,7 +21,7 @@ public class PlayerInteraction : NetworkBehaviour
 
             PlayerGrabItem(GameService.Instance.networkItems.GetNetworkItem(interactableObject.name));
             StartActivationDelay();
-            Destroy(interactableObject);
+            Runner.Despawn(interactableObject.GetComponent<NetworkObject>());
         }
         else 
         {
