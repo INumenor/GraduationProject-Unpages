@@ -7,14 +7,14 @@ public class NetworkItems : MonoBehaviour
 {
     public List<ItemInfo> networkItems;
 
-    public NetworkObject GetNetworkItem(string gameObject)
+    public NetworkObject GetNetworkItem(ItemType itemType)
     {
-        foreach (ItemInfo networkObject in networkItems)
+        foreach (ItemInfo itemObject in networkItems)
         {
-            if(networkObject.item.name == gameObject)
-                {
-                    return networkObject.item;
-                }
+            if(itemObject.itemType == itemType)
+            {
+                return itemObject.item;
+            }
         }
         return null;
     }

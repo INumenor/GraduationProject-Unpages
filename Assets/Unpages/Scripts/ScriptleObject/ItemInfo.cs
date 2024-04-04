@@ -8,6 +8,7 @@ using UnityEngine;
 public class ItemInfo : SerializedScriptableObject
 {
     public NetworkObject item;
+    public ItemType itemType;
     public bool isSpawnable;
     [Range(0,100)]public int minRandomGameSpawn;
     [Range(0,100)]public int maxRandomGameSpawn;

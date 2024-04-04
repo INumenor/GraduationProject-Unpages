@@ -22,6 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   item: {fileID: 2034953539275823545, guid: f4b292b98c6b7fb459b5217633d57763, type: 3}
+  itemType: 3
   isSpawnable: 0
   minRandomGameSpawn: 0
   maxRandomGameSpawn: 0

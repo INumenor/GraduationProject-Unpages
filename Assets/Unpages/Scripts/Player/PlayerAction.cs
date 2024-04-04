@@ -21,6 +21,7 @@ public class PlayerAction : NetworkBehaviour
     public  bool isGrabbable = false;
 
     public GameObject grabbableObject;
+    public ItemType grabbableObjectType;
     //public bool isTriggered = false;
 
     //----->
@@ -74,11 +75,11 @@ public class PlayerAction : NetworkBehaviour
 
             if (!isGrabbable && inputData.isPlayerGrapandDrop == 1)
             {
-                playerInteraction.PlayerGrabAndDropItem(grabbableObject);
+                playerInteraction.PlayerGrabAndDropItem(grabbableObjectType,grabbableObject);
             }
             else if (isGrabbable && inputData.isPlayerGrapandDrop == 1)
             {
-                playerInteraction.PlayerGrabAndDropItem(null);
+                playerInteraction.PlayerGrabAndDropItem(ItemType.Null, null);
             }
             Debug.Log(inputData.isCameraChange);
             if(inputData.isCameraChange == 1)

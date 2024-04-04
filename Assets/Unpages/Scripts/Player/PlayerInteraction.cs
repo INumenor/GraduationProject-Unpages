@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Cysharp.Threading.Tasks;
-using Unpages.Network;
 using Fusion;
+using UnityEngine;
+using Unpages.Network;
 
 public class PlayerInteraction : NetworkBehaviour
 {
@@ -11,19 +9,19 @@ public class PlayerInteraction : NetworkBehaviour
     //public NetworkObject testObject;
     private bool _isInActivationDelay;
 
-    public void PlayerGrabAndDropItem(GameObject interactableObject)
+    public void PlayerGrabAndDropItem(ItemType itemType, GameObject interactableObject)
     {
         if (_isInActivationDelay) return;
         Debug.Log(interactableObject);
         if (interactableObject != null && interactionObject == null)
         {
             interactableObject.GetComponent<NetworkObject>().ReleaseStateAuthority();
-
-            PlayerGrabItem(GameService.Instance.networkItems.GetNetworkItem(interactableObject.name));
+            PlayerGrabItem(GameService.Instance.networkItems.GetNetworkItem(itemType));
             StartActivationDelay();
-            Runner.Despawn(interactableObject.GetComponent<NetworkObject>());
+            //interactableObject.GetComponent<Item>().RPC_Despawn();
+            RPC_Despawn(interactableObject.GetComponent<NetworkObject>());
         }
-        else 
+        else
         {
             PlayerDropItem();
             StartActivationDelay();
@@ -34,12 +32,12 @@ public class PlayerInteraction : NetworkBehaviour
     {
         if (interactionObject == null)
         {
-            NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, new Vector3(transform.position.x,transform.position.y+1.5f,transform.position.z),this.transform.rotation,Object.InputAuthority);
+            NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), this.transform.rotation, Object.InputAuthority);
             item.transform.SetParent(transform);
             item.gameObject.GetComponent<Rigidbody>().useGravity = false;
             item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             item.name = networkObject.name;
-            interactionObject = item;   
+            interactionObject = item;
             GameService.Instance.playerAction.isGrabbable = true;
         }
     }
@@ -52,7 +50,7 @@ public class PlayerInteraction : NetworkBehaviour
             NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(interactionObject, spawnPosition, this.transform.rotation, Object.StateAuthority);
             item.name = interactionObject.name;
             item.gameObject.GetComponent<Rigidbody>().useGravity = true;
-            item.gameObject.GetComponent<Rigidbody>().isKinematic = false ;
+            item.gameObject.GetComponent<Rigidbody>().isKinematic = false;
             Runner.Despawn(interactionObject);
             interactionObject.transform.parent = null;
             interactionObject = null;
@@ -64,5 +62,11 @@ public class PlayerInteraction : NetworkBehaviour
         _isInActivationDelay = true;
         await UniTask.WaitForSeconds(.1f, cancellationToken: destroyCancellationToken);
         _isInActivationDelay = false;
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]//------> Change
+    public void RPC_Despawn(NetworkObject networkObject)
+    {
+        NetworkManager.Instance.SessionRunner.Despawn(networkObject);
     }
 }
