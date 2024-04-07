@@ -15,6 +15,11 @@ public class Item : MonoBehaviour, IInteractable
         GameService.Instance.playerAction.grabbableObjectType = foodType;
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        
+    }
+
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_Despawn()
     {
