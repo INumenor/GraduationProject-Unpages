@@ -76,6 +76,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: TouchableItem
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e19fcd50e2d0e6749af0c97e8ae6148f, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e19fcd50e2d0e6749af0c97e8ae6148f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

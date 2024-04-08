@@ -10,6 +10,7 @@ TagManager:
   - TouchableItem
   - UntouchableItem
   - Floor
+  - Item
   layers:
   - Default
   - TransparentFX

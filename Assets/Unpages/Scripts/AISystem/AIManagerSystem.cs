@@ -25,5 +25,8 @@ public class AIManagerSystem : SerializedMonoBehaviour
     {
         mouseList["Mouse1"].gameObject.GetComponent<MouseAI>().MouseAgentDestination(targetPosition);
     }
-
+    public void ReturnBase()
+    {
+        mouseList["Mouse1"].gameObject.GetComponent<MouseAI>().MouseAgentDestination(agentBase.position);
+    }
 }

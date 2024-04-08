@@ -35,7 +35,7 @@ public class PlayerInteraction : NetworkBehaviour
             NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), this.transform.rotation, Object.InputAuthority);
             item.transform.SetParent(transform);
             item.gameObject.GetComponent<Rigidbody>().useGravity = false;
-            item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            //item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             item.name = networkObject.name;
             interactionObject = item;
             GameService.Instance.playerAction.isGrabbable = true;

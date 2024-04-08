@@ -10,6 +10,7 @@ public class Item : MonoBehaviour, IInteractable
 {
     public ItemType foodType;
     int ItemTime = 0;
+
     public void Interact(InteractorData interactorData)
     {
         //GameService.Instance.playerAction.grabbableObject =this.gameObject;
@@ -22,13 +23,20 @@ public class Item : MonoBehaviour, IInteractable
         if (other.gameObject.CompareTag("Floor"))
         {           
             ItemTime++;
-            Debug.Log(ItemTime+ " ýtem time");
+            Debug.Log(ItemTime);
             if (ItemTime > 1000)
             {
                 GameService.Instance.aiManagerSystem.Init(transform.position);
              
             }
         }
+    }
+    private void OnCollisionExit(Collision col)
+    {
+            ItemTime = 0;
+            Debug.Log("gelmeeeeeeeeeeeeeeeeeeeeeeeeeeeeeek");
+            GameService.Instance.aiManagerSystem.ReturnBase();
+            Debug.Log("çalýþmaaaaaaaaaaaaaaaaaaaaaaaaaaaaaak");               
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
