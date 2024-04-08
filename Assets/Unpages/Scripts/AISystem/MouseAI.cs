@@ -5,7 +5,9 @@ using UnityEngine.AI;
 
 public class MouseAI : MonoBehaviour
 {
-    public NavMeshAgent mouseAgent;
-
-
+    public NavMeshAgent mouseAgent;   
+    public void MouseAgentDestination(Vector3 targetPosition)
+    {
+        mouseAgent.SetDestination(targetPosition);
+    }
 }

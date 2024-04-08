@@ -9,6 +9,7 @@ public class GameService : MonoBehaviour
     public PlayerAction playerAction;
     public NetworkItems networkItems;
     public GameControl gameControl;
+    public AIManagerSystem aiManagerSystem;
     #endregion
 
 

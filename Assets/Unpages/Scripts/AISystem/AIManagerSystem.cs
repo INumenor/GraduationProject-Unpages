@@ -1,18 +1,29 @@
+using Fusion;
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unpages.Network;
 
-public class AIManagerSystem : MonoBehaviour
+public class AIManagerSystem : SerializedMonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private NetworkObject mouseAgent;
+    [SerializeField] private Transform agentBase;
+    public Dictionary<string,NetworkObject> mouseList=new Dictionary<string, NetworkObject>();
+
+    public void MouseSpawned()
     {
         
+        if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient)
+        {          
+            mouseList.Add("Mouse1", NetworkManager.Instance.SessionRunner.Spawn(mouseAgent, agentBase.position, agentBase.rotation));
+            mouseList.Add("Mouse2" ,NetworkManager.Instance.SessionRunner.Spawn(mouseAgent, agentBase.position, agentBase.rotation));    
+            
+        }
+    }
+    public void Init(Vector3 targetPosition)
+    {
+        mouseList["Mouse1"].gameObject.GetComponent<MouseAI>().MouseAgentDestination(targetPosition);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

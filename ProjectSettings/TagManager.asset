@@ -9,6 +9,7 @@ TagManager:
   - TopDowmCamera
   - TouchableItem
   - UntouchableItem
+  - Floor
   layers:
   - Default
   - TransparentFX

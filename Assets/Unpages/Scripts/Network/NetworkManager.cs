@@ -166,6 +166,7 @@ namespace Unpages.Network
                     networkPlayerObject = SessionRunner.Spawn(networkCharacterPrefab, new Vector3(Player1SpawnPoint.position.x, Player1SpawnPoint.position.y + 1f, Player1SpawnPoint.position.z), transform.rotation, playerRef, (runner, obj) => { });
                     networkPlayerObject.gameObject.transform.GetChild(1).gameObject.layer= LayerMask.NameToLayer("Player1Kitchen");                  
                     PlayerList[playerRef].networkCharacter = networkPlayerObject;
+                    GameService.Instance.aiManagerSystem.MouseSpawned();
                 }
                 else
                 {

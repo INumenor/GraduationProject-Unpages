@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 using Unpages.Network;
+using Unity.VisualScripting;
 
 public enum ItemType {Tomato,Bread,Chess,Lettuce,Null}
 public class Item : MonoBehaviour, IInteractable
 {
     public ItemType foodType;
+    int ItemTime = 0;
     public void Interact(InteractorData interactorData)
     {
         //GameService.Instance.playerAction.grabbableObject =this.gameObject;
@@ -15,9 +17,18 @@ public class Item : MonoBehaviour, IInteractable
         GameService.Instance.playerAction.grabbableObjectType = foodType;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionStay(Collision other)
     {
-        
+        if (other.gameObject.CompareTag("Floor"))
+        {           
+            ItemTime++;
+            Debug.Log(ItemTime+ " ýtem time");
+            if (ItemTime > 1000)
+            {
+                GameService.Instance.aiManagerSystem.Init(transform.position);
+             
+            }
+        }
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
