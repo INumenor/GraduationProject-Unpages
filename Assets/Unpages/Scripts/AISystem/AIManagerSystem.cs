@@ -28,9 +28,6 @@ public class AIManagerSystem : SerializedMonoBehaviour
             //mouseList.Add("Mouse1", NetworkManager.Instance.SessionRunner.Spawn(mouseAgent, agentBase.position, agentBase.rotation));
            // mouseList.Add("Mouse2" ,NetworkManager.Instance.SessionRunner.Spawn(mouseAgent, agentBase.position, agentBase.rotation));
            // 
-           Debug.Log(mouseList["Mouse1"].transform.position+"mouseeeeeeeeeeeeeeeeeeeeee");
-
-
         }
     }
     public void Init(Vector3 targetPosition)

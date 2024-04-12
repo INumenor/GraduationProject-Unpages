@@ -22,12 +22,10 @@ public class Item : MonoBehaviour, IInteractable
     {
         if (other.gameObject.CompareTag("Floor"))
         {           
-            ItemTime++;
-            Debug.Log(ItemTime);
+            if(ItemTime < 101 ) ItemTime++;
             if (ItemTime == 100 /*1000*/)
             {
                 GameService.Instance.aiManagerSystem.Init(transform.position);
-             
             }
         }
     }

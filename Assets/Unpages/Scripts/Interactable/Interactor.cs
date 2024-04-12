@@ -30,7 +30,7 @@ public class Interactor : MonoBehaviour
         else if (targetObject.layer == LayerMask.NameToLayer("MouseInteractable"))
         {
             Debug.Log("Selam");
-            other.gameObject.GetComponent<MouseAI>().DropItem();
+            GameService.Instance.aiManagerSystem.mouseList["Mouse1"].GetComponent<MouseAI>().DropItem();
         }
     }
     private void OnTriggerExit(Collider other)
