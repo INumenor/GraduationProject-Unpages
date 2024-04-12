@@ -10,22 +10,27 @@ public class AIManagerSystem : SerializedMonoBehaviour
 {
     [SerializeField] private NetworkObject mouseAgent;
     [SerializeField] private Transform agentBase;
-    public Dictionary<string,NetworkObject> mouseList=new Dictionary<string, NetworkObject>();
+    public Dictionary<string, NetworkObject> mouseList;/*=new Dictionary<string, NetworkObject>();*/
 
     public NavMeshSurface meshSurface;
 
     public void AreaBake()
     {
+        
         meshSurface.BuildNavMesh();
+      //  MouseSpawned();      
     }
     public void MouseSpawned()
     {
         
         if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient)
         {          
-            mouseList.Add("Mouse1", NetworkManager.Instance.SessionRunner.Spawn(mouseAgent, agentBase.position, agentBase.rotation));
-            mouseList.Add("Mouse2" ,NetworkManager.Instance.SessionRunner.Spawn(mouseAgent, agentBase.position, agentBase.rotation));    
-            
+            //mouseList.Add("Mouse1", NetworkManager.Instance.SessionRunner.Spawn(mouseAgent, agentBase.position, agentBase.rotation));
+           // mouseList.Add("Mouse2" ,NetworkManager.Instance.SessionRunner.Spawn(mouseAgent, agentBase.position, agentBase.rotation));
+           // 
+           Debug.Log(mouseList["Mouse1"].transform.position+"mouseeeeeeeeeeeeeeeeeeeeee");
+
+
         }
     }
     public void Init(Vector3 targetPosition)
