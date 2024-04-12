@@ -26,11 +26,11 @@ public class Interactor : MonoBehaviour
                 interactorData.InteractorObject = other.gameObject;
                 interactable.Interact(interactorData);
             }
-        
-        else
-        {
-            Debug.LogError("There is no IInteractable on this object: " + other.name);
         }
+        else if (targetObject.layer == LayerMask.NameToLayer("MouseInteractable"))
+        {
+            Debug.Log("Selam");
+            other.gameObject.GetComponent<MouseAI>().DropItem();
         }
     }
     private void OnTriggerExit(Collider other)

@@ -24,7 +24,7 @@ public class Item : MonoBehaviour, IInteractable
         {           
             ItemTime++;
             Debug.Log(ItemTime);
-            if (ItemTime > 1000)
+            if (ItemTime == 100 /*1000*/)
             {
                 GameService.Instance.aiManagerSystem.Init(transform.position);
              
@@ -34,10 +34,11 @@ public class Item : MonoBehaviour, IInteractable
     private void OnCollisionExit(Collision col)
     {
             ItemTime = 0;
-            Debug.Log("gelmeeeeeeeeeeeeeeeeeeeeeeeeeeeeeek");
-            GameService.Instance.aiManagerSystem.ReturnBase();
-            Debug.Log("çalýþmaaaaaaaaaaaaaaaaaaaaaaaaaaaaaak");               
+            Debug.Log("TurnBase :" + ItemTime);
+            GameService.Instance.aiManagerSystem.ReturnBase();            
     }
+
+
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_Despawn()

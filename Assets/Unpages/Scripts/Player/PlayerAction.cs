@@ -49,6 +49,11 @@ public class PlayerAction : NetworkBehaviour
 
     }
 
+    public void RPC_Trigger(NetworkObject networkObject)
+    {
+        playerInteraction.RPC_Despawn(networkObject);
+    }
+
     public override void FixedUpdateNetwork()
     {
         if (HasStateAuthority == false) return;

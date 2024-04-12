@@ -41,6 +41,7 @@ public class SpawnFoodBox : MonoBehaviour
                     SpawnBoxObject();
                 }
             }
+            GameService.Instance.aiManagerSystem.AreaBake();
         }       
     }
     private void SpawnBoxObject()

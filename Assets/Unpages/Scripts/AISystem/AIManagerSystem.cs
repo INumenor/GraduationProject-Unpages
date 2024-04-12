@@ -2,6 +2,7 @@ using Fusion;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 using Unpages.Network;
 
@@ -11,6 +12,12 @@ public class AIManagerSystem : SerializedMonoBehaviour
     [SerializeField] private Transform agentBase;
     public Dictionary<string,NetworkObject> mouseList=new Dictionary<string, NetworkObject>();
 
+    public NavMeshSurface meshSurface;
+
+    public void AreaBake()
+    {
+        meshSurface.BuildNavMesh();
+    }
     public void MouseSpawned()
     {
         

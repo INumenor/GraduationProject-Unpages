@@ -51,7 +51,8 @@ public class PlayerInteraction : NetworkBehaviour
             item.name = interactionObject.name;
             item.gameObject.GetComponent<Rigidbody>().useGravity = true;
             item.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            Runner.Despawn(interactionObject);
+            RPC_Despawn(interactionObject);
+            //Runner.Despawn(interactionObject);
             interactionObject.transform.parent = null;
             interactionObject = null;
             GameService.Instance.playerAction.isGrabbable = false;
