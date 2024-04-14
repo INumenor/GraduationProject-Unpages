@@ -31,24 +31,28 @@ public class MouseAI : NetworkBehaviour
             GameService.Instance.playerAction.RPC_Trigger(other.GetComponent<NetworkObject>());
             GameService.Instance.aiManagerSystem.ReturnBase();
         }
-        else if (other.CompareTag("MouseBase") && grabbleNetworkObject)
+        else if (other.CompareTag("MouseBase"))
         {
-            IsMouseGrab=false;
-            grabbleNetworkObject = null;
+            if (grabbleNetworkObject) 
+            {
+                IsMouseGrab = false;
+                grabbleNetworkObject = null;
+            }
+            mouseAgent.speed = 5;
         }
     }
 
     public void DropItem()
     {
-        if (grabbleNetworkObject)
+        if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient && grabbleNetworkObject)
         {
             Vector3 spawnPosition = transform.position + -transform.forward * 2f;
             NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(grabbleNetworkObject, spawnPosition, this.transform.rotation, Object.StateAuthority);
             item.name = grabbleNetworkObject.name;
             item.gameObject.GetComponent<Rigidbody>().useGravity = true;
-            //Runner.Despawn(grabbleNetworkObject);
             IsMouseGrab=false;
             grabbleNetworkObject = null;
+            mouseAgent.speed = 50;
         }
     }
     public void MouseGrabCheck()
