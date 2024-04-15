@@ -39,6 +39,7 @@ public class PlayerInteraction : NetworkBehaviour
             item.name = networkObject.name;
             interactionObject = item;
             GameService.Instance.playerAction.isGrabbable = true;
+            GameService.Instance.playerAction.keepObject = item.gameObject;
         }
     }
 
@@ -56,6 +57,7 @@ public class PlayerInteraction : NetworkBehaviour
             interactionObject.transform.parent = null;
             interactionObject = null;
             GameService.Instance.playerAction.isGrabbable = false;
+            GameService.Instance.playerAction.keepObject = null;
         }
     }
     public async void StartActivationDelay()

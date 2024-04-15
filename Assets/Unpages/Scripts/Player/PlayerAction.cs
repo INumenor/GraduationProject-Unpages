@@ -8,11 +8,6 @@ using NetworkPlayer = Unpages.Network.NetworkPlayer;
 
 public class PlayerAction : NetworkBehaviour
 {
-    //This Facade pattern used metod in code 
-
-    //[SerializeField] GameObject PlayerPrefab;
-
-    //
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] public BombManager bombManager;
     [SerializeField] private PlayerInteraction playerInteraction;
@@ -20,9 +15,16 @@ public class PlayerAction : NetworkBehaviour
 
     public  bool isGrabbable = false;
 
+    [Header("KeepObject")]
+    public GameObject keepObject;
+    //public ItemType keepObjectType;
+
+    [Header("GrabbleObject")]
     public GameObject grabbableObject;
     public ItemType grabbableObjectType;
     //public bool isTriggered = false;
+
+    public GameObject playerInteractionKitchenObject;
 
     //----->
     private async void Start()
@@ -54,6 +56,15 @@ public class PlayerAction : NetworkBehaviour
         playerInteraction.RPC_Despawn(networkObject);
     }
 
+    public void TriggerObjcet(Collider Objcet)
+    {
+        if(Objcet.CompareTag("Item")) grabbableObject = Objcet.gameObject;
+        else if(Objcet.CompareTag("Cupboard"))
+        {
+            playerInteractionKitchenObject = Objcet.gameObject;
+        }
+    }
+
     public override void FixedUpdateNetwork()
     {
         if (HasStateAuthority == false) return;
@@ -78,15 +89,24 @@ public class PlayerAction : NetworkBehaviour
                 bombManager.DropBomb(this.gameObject , Runner ,Object.StateAuthority);
             }
 
-            if (!isGrabbable && inputData.isPlayerGrapandDrop == 1)
+            if (inputData.isPlayerGrapandDrop == 1)
             {
-                playerInteraction.PlayerGrabAndDropItem(grabbableObjectType,grabbableObject);
+                if (playerInteractionKitchenObject && keepObject)
+                {
+
+                }
+                else
+                {
+                    if (!isGrabbable)
+                    {
+                        playerInteraction.PlayerGrabAndDropItem(grabbableObjectType, grabbableObject);
+                    }
+                    else if (isGrabbable)
+                    {
+                        playerInteraction.PlayerGrabAndDropItem(ItemType.Null, null);
+                    }
+                }
             }
-            else if (isGrabbable && inputData.isPlayerGrapandDrop == 1)
-            {
-                playerInteraction.PlayerGrabAndDropItem(ItemType.Null, null);
-            }
-            Debug.Log(inputData.isCameraChange);
             if(inputData.isCameraChange == 1)
             {
                 playerCamera.Camera();

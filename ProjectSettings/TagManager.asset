@@ -12,6 +12,7 @@ TagManager:
   - Floor
   - Item
   - MouseBase
+  - Cupboard
   layers:
   - Default
   - TransparentFX

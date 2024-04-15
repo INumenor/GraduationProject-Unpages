@@ -7,13 +7,12 @@ public class Interaction : MonoBehaviour
     [SerializeField] PlayerAction playerAction; 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Test");
-       // playerAction.isTriggered = true;
-        playerAction.grabbableObject = other.gameObject;
+        playerAction.TriggerObjcet(other);
     }
     private void OnTriggerExit(Collider other)
     {
         //playerAction.isTriggered = false;
         playerAction.grabbableObject = null;
+        playerAction.playerInteractionKitchenObject = null;
     }
 }

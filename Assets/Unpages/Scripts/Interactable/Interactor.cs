@@ -29,7 +29,6 @@ public class Interactor : MonoBehaviour
         }
         else if (targetObject.layer == LayerMask.NameToLayer("MouseInteractable"))
         {
-            Debug.Log("Selam");
             GameService.Instance.aiManagerSystem.mouseList["Mouse1"].GetComponent<MouseAI>().DropItem();
         }
     }
