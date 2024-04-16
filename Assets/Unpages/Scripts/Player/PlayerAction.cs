@@ -56,12 +56,12 @@ public class PlayerAction : NetworkBehaviour
         playerInteraction.RPC_Despawn(networkObject);
     }
 
-    public void TriggerObjcet(Collider Objcet)
+    public void TriggerObjcet(Collider Object)
     {
-        if(Objcet.CompareTag("Item")) grabbableObject = Objcet.gameObject;
-        else if(Objcet.CompareTag("Cupboard"))
+        if(Object.CompareTag("Item")) grabbableObject = Object.gameObject;
+        else if(Object.CompareTag("Cupboard"))
         {
-            playerInteractionKitchenObject = Objcet.gameObject;
+            playerInteractionKitchenObject = Object.gameObject;
         }
     }
 
