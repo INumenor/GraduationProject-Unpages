@@ -47,7 +47,8 @@ public class PlayerInteraction : NetworkBehaviour
     {
         if (interactionObject != null)
         {
-            Vector3 spawnPosition = transform.position + transform.forward * 1f;
+            Vector3 playerPosition = new Vector3(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y), Mathf.RoundToInt(transform.position.z));
+            Vector3 spawnPosition = playerPosition + transform.forward * 1f;
             NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(interactionObject, spawnPosition, this.transform.rotation, Object.StateAuthority);
             item.name = interactionObject.name;
             item.gameObject.GetComponent<Rigidbody>().useGravity = true;
