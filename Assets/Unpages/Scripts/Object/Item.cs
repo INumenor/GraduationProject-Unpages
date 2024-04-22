@@ -5,7 +5,7 @@ using Fusion;
 using Unpages.Network;
 using Unity.VisualScripting;
 
-public enum ItemType {Tomato,Bread,Chess,Lettuce,Null}
+public enum ItemType {Tomato,Bread,Cheese,Lettuce,Null}
 public class Item : MonoBehaviour, IInteractable
 {
     public ItemType foodType;

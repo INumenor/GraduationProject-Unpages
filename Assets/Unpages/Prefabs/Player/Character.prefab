@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7939455342661737826}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 4647906390030779770}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,7 +250,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -333,8 +333,10 @@ MonoBehaviour:
   playerInteraction: {fileID: 4146116576328907147}
   playerCamera: {fileID: 4647906390030779770}
   isGrabbable: 0
+  keepObject: {fileID: 0}
   grabbableObject: {fileID: 0}
   grabbableObjectType: 4
+  playerInteractionKitchenObject: {fileID: 0}
 --- !u!114 &4661063772404637166
 MonoBehaviour:
   m_ObjectHideFlags: 0

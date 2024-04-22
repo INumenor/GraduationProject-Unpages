@@ -93,7 +93,7 @@ public class PlayerAction : NetworkBehaviour
             {
                 if (playerInteractionKitchenObject && keepObject)
                 {
-
+                    
                 }
                 else
                 {

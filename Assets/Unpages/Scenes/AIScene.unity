@@ -3361,6 +3361,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
+      propertyPath: m_TagString
+      value: Trash
+      objectReference: {fileID: 0}
     - target: {fileID: 4173241031698997641, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.024
@@ -3445,12 +3449,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1.2254257}
-  m_Center: {x: 0, y: 0, z: 0.11271286}
+  m_Size: {x: 1, y: 1.2323431, z: 1.3182993}
+  m_Center: {x: 0, y: 0.11617176, z: 0.15914965}
 --- !u!1 &1290727945
 GameObject:
   m_ObjectHideFlags: 0
@@ -4671,7 +4675,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
