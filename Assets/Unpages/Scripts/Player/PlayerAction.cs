@@ -8,10 +8,10 @@ using NetworkPlayer = Unpages.Network.NetworkPlayer;
 
 public class PlayerAction : NetworkBehaviour
 {
-    [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] public BombManager bombManager;
-    [SerializeField] private PlayerInteraction playerInteraction;
-    [SerializeField] private PlayerCamera playerCamera;
+    public PlayerMovement playerMovement;
+    public BombManager bombManager;
+    public PlayerInteraction playerInteraction;
+    public PlayerCamera playerCamera;
 
     public  bool isGrabbable = false;
 
@@ -56,13 +56,9 @@ public class PlayerAction : NetworkBehaviour
         playerInteraction.RPC_Despawn(networkObject);
     }
 
-    public void TriggerObjcet(Collider Object)
+    public void TriggerObject(Collider Object)
     {
         if(Object.CompareTag("Item")) grabbableObject = Object.gameObject;
-        else if(Object.CompareTag("Cupboard"))
-        {
-            playerInteractionKitchenObject = Object.gameObject;
-        }
     }
 
     public override void FixedUpdateNetwork()
@@ -91,9 +87,10 @@ public class PlayerAction : NetworkBehaviour
 
             if (inputData.isPlayerGrapandDrop == 1)
             {
-                if (playerInteractionKitchenObject && keepObject)
+                if (playerInteractionKitchenObject)
                 {
-                    
+                    Debug.Log("Geldim");
+                    GameService.Instance.kitchenMechanics.SetKitchenObject(playerInteractionKitchenObject);
                 }
                 else
                 {

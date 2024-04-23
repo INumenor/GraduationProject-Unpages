@@ -28,6 +28,12 @@ public class PlayerInteraction : NetworkBehaviour
         }
     }
 
+    public void PlayerStorageGrab(NetworkObject interactableObject)
+    {
+        PlayerGrabItem(interactableObject);
+        StartActivationDelay();
+    }
+
     public void PlayerGrabItem(NetworkObject networkObject = null)
     {
         if (interactionObject == null)

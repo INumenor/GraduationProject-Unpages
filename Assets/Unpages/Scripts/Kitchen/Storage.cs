@@ -1,3 +1,6 @@
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -7,57 +10,37 @@ using UnityEngine;
 public class Storage : MonoBehaviour
 {
     PlayerInteraction playerInteraction;
-    public ItemType itemTpye;
-    int tomatoCount = 0;
-    int cheeseCount = 0;
-    int lettuceCount = 0;
-    private void OnTriggerEnter(Collider other)
+    public ItemType itemType;
+     int storageFoodCount=0;
+
+
+    public void DropItemStorage(GameObject gameObject)
     {
-        if (this.gameObject.name == other.gameObject.name)
+        if (gameObject.GetComponent<Item>().foodType == itemType && storageFoodCount<5)
         {
-            DropItemStorage(other);
-        }
-        if (other.CompareTag("Player"))
-        {
-            if(GameService.Instance.playerAction.grabbableObject == null)
-            {
-                GetItemStorage();
-            }          
-        }        
-    }
-    public void DropItemStorage(Collider other)
-    {
-        switch (other.gameObject.name)
-        {
-            case "TomatoFood":
-                if (tomatoCount < 5)
-                {
-                    tomatoCount++;
-                    itemTpye = ItemType.Tomato;
-                    Destroy(other.gameObject);
-                }
-                break;
-            case "CheeseFood":
-                if (cheeseCount < 5)
-                {
-                    cheeseCount++;
-                    itemTpye = ItemType.Cheese;
-                    Destroy(other.gameObject);
-                }
-                break;
-            case "LettuceFood":
-                if (lettuceCount < 5)
-                {
-                    lettuceCount++;
-                    itemTpye = ItemType.Lettuce;
-                    Destroy(other.gameObject);
-                }
-                break;
+            storageFoodCount++;
+            GameService.Instance.playerAction.RPC_Trigger(gameObject.GetComponent<NetworkObject>());
+            GameService.Instance.playerAction.isGrabbable = false;
+            GameService.Instance.playerAction.keepObject = null;
+
         }
     }
     public void GetItemStorage()
     {
-        Debug.Log(GameService.Instance.networkItems.GetNetworkItem(itemTpye) + "olmak");
-        playerInteraction.PlayerGrabItem(GameService.Instance.networkItems.GetNetworkItem(itemTpye));
+        Debug.Log("aaaa");
+        if (storageFoodCount > 0)
+        {
+
+            GameService.Instance.playerAction.playerInteraction.PlayerStorageGrab(GameService.Instance.networkItems.GetNetworkItem(itemType));
+            storageFoodCount--;
+        }     
     }
+
+    public void InteractStorage()
+    {
+
+        GameService.Instance.playerAction.playerInteractionKitchenObject = this.gameObject;
+
+    }
+   
 }

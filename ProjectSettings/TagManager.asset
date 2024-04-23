@@ -14,6 +14,9 @@ TagManager:
   - MouseBase
   - Cupboard
   - Trash
+  - Storage
+  - ChoppingBoard
+  - Plate
   layers:
   - Default
   - TransparentFX
@@ -27,7 +30,7 @@ TagManager:
   - Floor
   - MouseInteractable
   - MouseBase
-  - 
+  - KitchenInteractable
   - 
   - 
   - 

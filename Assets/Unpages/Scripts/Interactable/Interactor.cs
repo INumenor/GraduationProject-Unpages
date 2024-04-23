@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 [System.Serializable]
 public struct InteractorData
 {
@@ -31,6 +30,24 @@ public class Interactor : MonoBehaviour
         {
             GameService.Instance.aiManagerSystem.mouseList["Mouse1"].GetComponent<MouseAI>().DropItem();
         }
+        else if (targetObject.layer == LayerMask.NameToLayer("KitchenInteractable"))
+        {
+            switch (other.tag)
+            {
+                case "Storage":
+                    other.gameObject.GetComponent<Storage>().InteractStorage();
+                    break;
+                case "Trash":
+                    //other.gameObject.GetComponent<Storage>().InteractStorage();
+                    break;
+                case "Plate":
+                    //other.gameObject.GetComponent<Storage>().InteractStorage();
+                    break;
+                case "ChoppingBoard":
+                    //other.gameObject.GetComponent<Storage>().InteractStorage();
+                    break;
+            }
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -46,6 +63,10 @@ public class Interactor : MonoBehaviour
             {
                 Debug.LogError("There is no IInteractable on this object: " + other.name);
             }
+        }
+        else if (targetObject.layer == LayerMask.NameToLayer("KitchenInteractable"))
+        {
+            GameService.Instance.playerAction.playerInteractionKitchenObject = null;
         }
     }
 }

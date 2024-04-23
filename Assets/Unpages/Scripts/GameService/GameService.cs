@@ -7,6 +7,7 @@ public class GameService : MonoBehaviour
 {
     #region References
     public PlayerAction playerAction;
+    public KitchenMechanics kitchenMechanics;
     public NetworkItems networkItems;
     public GameControl gameControl;
     public AIManagerSystem aiManagerSystem;

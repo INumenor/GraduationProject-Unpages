@@ -7,7 +7,7 @@ public class Interaction : MonoBehaviour
     [SerializeField] PlayerAction playerAction; 
     private void OnTriggerEnter(Collider other)
     {
-        playerAction.TriggerObjcet(other);
+        playerAction.TriggerObject(other);
     }
     private void OnTriggerExit(Collider other)
     {
