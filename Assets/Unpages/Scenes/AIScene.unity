@@ -1156,6 +1156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
+  storageFoodCount: 2
 --- !u!1 &689553884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1863,7 +1864,7 @@ Transform:
   m_GameObject: {fileID: 800728771}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.176, y: 0.291, z: 17.894}
+  m_LocalPosition: {x: 20.18, y: 0.291, z: 17.894}
   m_LocalScale: {x: 0.6545246, y: 0.47723, z: 0.69}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4137,6 +4138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
+  storageFoodCount: 2
 --- !u!1 &1733287640
 GameObject:
   m_ObjectHideFlags: 0
@@ -4738,6 +4740,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1958472727}
+    - targetCorrespondingSourceObject: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1958472728}
+    - targetCorrespondingSourceObject: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1958472729}
   m_SourcePrefab: {fileID: 100100000, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
 --- !u!4 &1958472726 stripped
 Transform:
@@ -4765,6 +4773,40 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.69, z: 1.1873474}
   m_Center: {x: 0, y: 0, z: 0.093673706}
+--- !u!114 &1958472728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530955209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c432e991d8eaf8479b75e1d4dc23bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  choppingCount: 0
+  isFull: 0
+  item: {fileID: 0}
+--- !u!114 &1958472729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530955209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 3352499506
+  ObjectInterest: 1
+  Flags: 1
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 1958472728}
 --- !u!1 &1971444017 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
@@ -4804,6 +4846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
+  storageFoodCount: 2
 --- !u!1 &1986256463
 GameObject:
   m_ObjectHideFlags: 0
@@ -5039,6 +5082,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2057840975}
+    - targetCorrespondingSourceObject: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2057840976}
   m_SourcePrefab: {fileID: 100100000, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
 --- !u!4 &2057840974 stripped
 Transform:
@@ -5064,8 +5110,20 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.69, z: 1.1538484}
-  m_Center: {x: 2.0498007e-16, y: 0, z: 0.076924175}
+  m_Size: {x: 0.7485571, y: 1.69, z: 0.95310944}
+  m_Center: {x: -0.12572148, y: 0, z: 0.37316123}
+--- !u!114 &2057840976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850478702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e6cf2a38b3e994cb579da64887dfec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2090337273 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
@@ -5105,6 +5163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 3
+  storageFoodCount: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -38,13 +38,13 @@ public class Interactor : MonoBehaviour
                     other.gameObject.GetComponent<Storage>().InteractStorage();
                     break;
                 case "Trash":
-                    //other.gameObject.GetComponent<Storage>().InteractStorage();
+                    other.gameObject.GetComponent<Trash>().InteractTrash();
                     break;
                 case "Plate":
                     //other.gameObject.GetComponent<Storage>().InteractStorage();
                     break;
                 case "ChoppingBoard":
-                    //other.gameObject.GetComponent<Storage>().InteractStorage();
+                    other.gameObject.GetComponent<Chopping>().InteractChoppingBoard();
                     break;
             }
         }

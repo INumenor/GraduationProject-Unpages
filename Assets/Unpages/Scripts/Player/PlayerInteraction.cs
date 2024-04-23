@@ -33,6 +33,11 @@ public class PlayerInteraction : NetworkBehaviour
         PlayerGrabItem(interactableObject);
         StartActivationDelay();
     }
+    public void PlayerChoppingGrab(NetworkObject interactableObject)
+    {
+        PlayerGrabItem(interactableObject);
+        StartActivationDelay();
+    }
 
     public void PlayerGrabItem(NetworkObject networkObject = null)
     {

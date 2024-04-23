@@ -9,46 +9,47 @@ public class KitchenMechanics : MonoBehaviour
     private bool _isInActivationDelay;
     public void SetKitchenObject(GameObject gameObject)
     {
-        Debug.Log("sela"+gameObject.name);
-        StartActivationDelay();
+        if (_isInActivationDelay) return;
         switch (gameObject.tag)
         {
             case "Storage":
                 FoodStorage(gameObject);
                 break;
             case "Trash":
-                Trash();
+                Trash(gameObject);
                 break;
             case "Plate":
                 FoodPreparation();
                 break;
             case "ChoppingBoard":
-                FoodChopping();
+                FoodChopping(gameObject);
                 break;
         }
-    }
-   public void FoodStorage(GameObject gameObject)
-    {
-        if (!GameService.Instance.playerAction.keepObject) gameObject.GetComponent<Storage>().GetItemStorage();
-        else gameObject.GetComponent<Storage>().DropItemStorage(GameService.Instance.playerAction.keepObject);
+        StartActivationDelay();
 
     }
-   public void FoodChopping()
+    public void FoodStorage(GameObject gameObject)
     {
+        if (GameService.Instance.playerAction.keepObject !=null) { gameObject.GetComponent<Storage>().DropItemStorage(GameService.Instance.playerAction.keepObject); }
+        else { gameObject.GetComponent<Storage>().GetItemStorage(); }
 
+    }
+   public void FoodChopping(GameObject gameObject)
+    {
+        gameObject.GetComponent<Chopping>().GrabAndDropChoppingBoard(GameService.Instance.playerAction.keepObject); 
     }
     public void FoodPreparation()
     {
 
     }
-    public void Trash()
+    public void Trash(GameObject gameObject)
     {
-
+        gameObject.GetComponent<Trash>().TrashObject(GameService.Instance.playerAction.keepObject);
     }
     public async void StartActivationDelay()
     {
         _isInActivationDelay = true;
-        await UniTask.WaitForSeconds(15f, cancellationToken: destroyCancellationToken);
+        await UniTask.WaitForSeconds(0.2f, cancellationToken: destroyCancellationToken);
         _isInActivationDelay = false;
     }
 }
