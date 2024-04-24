@@ -104,6 +104,10 @@ public class PlayerAction : NetworkBehaviour
                     }
                 }
             }
+            if (inputData.isFeaturesUse == 1)
+            {
+            
+            }
             if(inputData.isCameraChange == 1)
             {
                 playerCamera.Camera();

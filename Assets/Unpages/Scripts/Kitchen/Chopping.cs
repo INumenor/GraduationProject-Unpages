@@ -26,6 +26,10 @@ public class Chopping :NetworkBehaviour
             isFull = true;
         }
     }
+    public void ChoppingFood()
+    {
+
+    }
     public void SpawnFood()
     {
         NetworkObject networkObject=GameService.Instance.networkItems.GetNetworkItem(itemType);
