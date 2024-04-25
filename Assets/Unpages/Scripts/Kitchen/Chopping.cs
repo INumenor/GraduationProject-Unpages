@@ -7,14 +7,16 @@ using Unpages.Network;
 public class Chopping :NetworkBehaviour
 {
     public ItemType itemType;
-    public int choppingCount;
+    public int choppingCount=0;
     public bool isFull =false;
     public NetworkObject item;
-    public void GrabAndDropChoppingBoard(GameObject gameObject)// sonra bu itema bir kez e ile vurulursa o objede despawn olup yerine kesilmiþ hali gelicek ve bu vurma sayýlarýný tutmasý gerekecek 5'ten fazla vurulamayacak ve eðer alýnýp tekrar konulursa kaldýðý yerden devam etmesi gerekecek eðer tabaða konmaya çalýþýlýnýrsa koyulmamasý gerekli.
+    public NetworkObject itemSlice;
+    public void GrabAndDropChoppingBoard(GameObject gameObject)// objeyi doðradýktan sonra ele alýnca eski halindeki objeden baþka bir tane spawn oluyo sanýrým hata var
     {
         if (!gameObject && isFull && itemType!=null)
         {        
             GrabFood();
+            itemType =ItemType.Null;
             DespawnFood(item);
             isFull = false;
         }     
@@ -26,9 +28,18 @@ public class Chopping :NetworkBehaviour
             isFull = true;
         }
     }
-    public void ChoppingFood()
+    public void ChoppingFood(GameObject gameObject)
     {
-
+        if (!gameObject && isFull && choppingCount==0)
+        {
+            choppingCount++;
+            DespawnFood(item);
+            SpawnSliceFood();
+        }
+        else if(!gameObject && isFull && choppingCount>0 && choppingCount < 5)
+        {
+            choppingCount++;
+        }
     }
     public void SpawnFood()
     {
@@ -39,9 +50,18 @@ public class Chopping :NetworkBehaviour
         item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         item.name = networkObject.name;
     }
-    public void DespawnFood(NetworkObject gameObject)
+    public void SpawnSliceFood()
     {
-        GameService.Instance.playerAction.RPC_Trigger(gameObject);
+        NetworkObject networkObject = GameService.Instance.networkItems.GetNetworkItemSlice(itemType);
+        itemSlice = NetworkManager.Instance.SessionRunner.Spawn(networkObject, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), this.transform.rotation, Object.InputAuthority);
+        itemSlice.transform.SetParent(transform);
+        itemSlice.gameObject.GetComponent<Rigidbody>().useGravity = false;
+        itemSlice.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        itemSlice.name = networkObject.name;
+    }
+    public void DespawnFood(NetworkObject networkObject)
+    {
+        GameService.Instance.playerAction.RPC_Trigger(networkObject);
     }
     public void GrabFood()
     {
@@ -51,6 +71,7 @@ public class Chopping :NetworkBehaviour
     {
 
         GameService.Instance.playerAction.playerInteractionKitchenObject = this.gameObject;
+        Debug.Log("kdfokoef");
 
     }
 }

@@ -19,10 +19,27 @@ public class KitchenMechanics : MonoBehaviour
                 Trash(gameObject);
                 break;
             case "Plate":
-                FoodPreparation();
                 break;
             case "ChoppingBoard":
-                FoodChopping(gameObject);
+                GrabFoodChopping(gameObject);
+                break;
+        }
+        StartActivationDelay();
+
+    }
+    public void ActionKitchenObject(GameObject gameObject)
+    {
+        if (_isInActivationDelay) return;
+        switch (gameObject.tag)
+        {
+            //case "Storage":         
+            //    break;
+            //case "Trash":       
+            //    break;
+            //case "Plate":            
+            //    break;
+            case "ChoppingBoard":
+                ChoppingFood(gameObject);
                 break;
         }
         StartActivationDelay();
@@ -34,13 +51,17 @@ public class KitchenMechanics : MonoBehaviour
         else { gameObject.GetComponent<Storage>().GetItemStorage(); }
 
     }
-   public void FoodChopping(GameObject gameObject)
+   public void GrabFoodChopping(GameObject gameObject)
     {
         gameObject.GetComponent<Chopping>().GrabAndDropChoppingBoard(GameService.Instance.playerAction.keepObject); 
     }
+    public void ChoppingFood(GameObject gameObject)
+    {
+        gameObject.GetComponent<Chopping>().ChoppingFood(GameService.Instance.playerAction.keepObject);
+    }
     public void FoodPreparation()
     {
-
+        
     }
     public void Trash(GameObject gameObject)
     {

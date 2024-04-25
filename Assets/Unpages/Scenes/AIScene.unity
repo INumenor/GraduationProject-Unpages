@@ -3671,13 +3671,14 @@ MonoBehaviour:
   networkItems:
   - {fileID: 11400000, guid: d314622514af6be4fa92eab7ff2382ff, type: 2}
   - {fileID: 11400000, guid: 8193283f6f586d14c8606c7e5a08137f, type: 2}
-  - {fileID: 11400000, guid: a6a7f42d2ba03c441ab951b9754d05b4, type: 2}
   - {fileID: 11400000, guid: e941168e1d400a64d8c8de641bb8bf25, type: 2}
-  - {fileID: 11400000, guid: 22ae739bd9cd9fe4a9b41c7de7f1c5e8, type: 2}
   - {fileID: 11400000, guid: 14befe13c976d784ca48b2aa6fc5d687, type: 2}
-  - {fileID: 11400000, guid: b519a1175587a604fb5116a486acda95, type: 2}
   - {fileID: 11400000, guid: d128ecbf12b993245a83986ad9e74c85, type: 2}
   - {fileID: 11400000, guid: ee06532685f4321448e4091985830652, type: 2}
+  networkItemsSlice:
+  - {fileID: 11400000, guid: a6a7f42d2ba03c441ab951b9754d05b4, type: 2}
+  - {fileID: 11400000, guid: 22ae739bd9cd9fe4a9b41c7de7f1c5e8, type: 2}
+  - {fileID: 11400000, guid: b519a1175587a604fb5116a486acda95, type: 2}
 --- !u!4 &1328692519
 Transform:
   m_ObjectHideFlags: 0
@@ -4789,6 +4790,7 @@ MonoBehaviour:
   choppingCount: 0
   isFull: 0
   item: {fileID: 0}
+  itemSlice: {fileID: 0}
 --- !u!114 &1958472729
 MonoBehaviour:
   m_ObjectHideFlags: 0
