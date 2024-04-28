@@ -184,3 +184,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodType: 1
+  choppingCount: 0
+  isSliced: 1

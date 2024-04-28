@@ -11,6 +11,7 @@ public class Item : MonoBehaviour, IInteractable
     public ItemType foodType;
     public int choppingCount = 0;
     int ItemTime = 0;
+    public bool isSliced;
 
     public void Interact(InteractorData interactorData)
     {
