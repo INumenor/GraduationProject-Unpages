@@ -9,7 +9,8 @@ public class PlayerAnimationControl : NetworkBehaviour
 
     private void Start()
     {
-        
+        if (HasStateAuthority == false) return;
+
         GameService.Instance.playerAnimationControl = this;
     }
 
@@ -37,8 +38,22 @@ public class PlayerAnimationControl : NetworkBehaviour
     {
         characterAnimator.SetBool("isJumping", true);
     }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterDontJumping()
     {
         characterAnimator.SetBool("isJumping", false);
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_CharacterKichenAction()
+    {
+        characterAnimator.SetBool("isKitchenAction", true);
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_CharacterDontKichenAction()
+    {
+        characterAnimator.SetBool("isKitchenAction", false);
     }
 }

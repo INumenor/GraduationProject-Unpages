@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8131801213e94d41a375a18667f82e8, type: 3}
-  m_Name: ChesseSlice
+  m_Name: TomatoChopped
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,8 +21,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  item: {fileID: 760196262361725648, guid: d9e4f8230b5d1a84197e2188124cba5f, type: 3}
-  itemType: 2
-  isSpawnable: 0
-  minRandomGameSpawn: 0
-  maxRandomGameSpawn: 0
+  item: {fileID: 2663199683426887152, guid: b993cbdf571913549a4ed31ace1af199, type: 3}
+  randomBurgerGame: 0
+  randomPizzaGame: 0

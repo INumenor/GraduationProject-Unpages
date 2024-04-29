@@ -65,6 +65,7 @@ public class PlayerAction : NetworkBehaviour
     {
         if (HasStateAuthority == false) return;
 
+        GameService.Instance.playerAnimationControl.RPC_CharacterDontKichenAction();
         if (GetInput<PlayerInputData>(out var inputData))
         {
             playerMovement.PlayerMove();
@@ -110,6 +111,7 @@ public class PlayerAction : NetworkBehaviour
                 {
                     Debug.Log("burasi mi");
                     GameService.Instance.kitchenMechanics.ActionKitchenObject(playerInteractionKitchenObject);
+                    GameService.Instance.playerAnimationControl.RPC_CharacterKichenAction();
                 }
                 
             }
