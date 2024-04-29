@@ -45,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7533961367178541783}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 599530405527473323, guid: e63e70e602f731643bd03cce0ac2d354, type: 3}
 --- !u!23 &9167063650955289397
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8723117744264820893, guid: 3e06c3b48c1f40e4090028356eb3ccf0, type: 3}
+  - {fileID: -1724080987372072942, guid: c8212c07754831a43871c6eca3810012, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -184,3 +184,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodType: 3
   choppingCount: 5
+  isSliced: 0
