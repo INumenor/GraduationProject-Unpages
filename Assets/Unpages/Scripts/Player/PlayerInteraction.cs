@@ -16,7 +16,14 @@ public class PlayerInteraction : NetworkBehaviour
         if (interactableObject != null && interactionObject == null)
         {
             interactableObject.GetComponent<NetworkObject>().ReleaseStateAuthority();
-            PlayerGrabItem(GameService.Instance.networkItems.GetNetworkItem(itemType));
+            if (!interactableObject.GetComponent<Item>().isSliced)
+            {
+                PlayerGrabItem(GameService.Instance.networkItems.GetNetworkItem(itemType));
+            }
+            else
+            {
+                PlayerGrabItem(GameService.Instance.networkItems.GetNetworkItemSlice(itemType));
+            }
             StartActivationDelay();
             //interactableObject.GetComponent<Item>().RPC_Despawn();
             RPC_Despawn(interactableObject.GetComponent<NetworkObject>());
@@ -33,11 +40,20 @@ public class PlayerInteraction : NetworkBehaviour
         PlayerGrabItem(interactableObject);
         StartActivationDelay();
     }
-
+    public void PlayerChoppingGrab(NetworkObject interactableObject)
+    {
+        PlayerGrabItem(interactableObject);
+        StartActivationDelay();
+    }
+    public void PlayerPlateGrab(NetworkObject interactableObject)
+    {
+        PlayerGrabItem(interactableObject);
+        StartActivationDelay();
+    }
     public void PlayerGrabItem(NetworkObject networkObject = null)
     {
         if (interactionObject == null)
-        {
+        {   
             NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), this.transform.rotation, Object.InputAuthority);
             item.transform.SetParent(transform);
             item.gameObject.GetComponent<Rigidbody>().useGravity = false;

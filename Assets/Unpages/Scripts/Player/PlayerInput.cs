@@ -21,6 +21,8 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
     private InputActionReference _dropAndGrapInput;
     [SerializeField]
     private InputActionReference _cameraInput;
+    [SerializeField]
+    private InputActionReference _featuresInput;
 
     private void OnEnable()
     {
@@ -29,6 +31,7 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
         _bombInput.action.Enable();
         _dropAndGrapInput.action.Enable();
         _cameraInput.action.Enable();
+        _featuresInput.action.Enable();
     }
     private void OnDisable()
     {
@@ -37,6 +40,7 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
         _bombInput.action.Disable();
         _dropAndGrapInput.action.Disable();
         _cameraInput.action.Disable();
+        _featuresInput.action.Disable();
     }
 
     void Start()
@@ -56,6 +60,7 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
         inputData.isJumped = _jumpInput.action.ReadValue<float>();
         inputData.isBombDrop = _bombInput.action.ReadValue<float>();
         inputData.isPlayerGrapandDrop = _dropAndGrapInput.action.ReadValue<float>();
+        inputData.isFeaturesUse = _featuresInput.action.ReadValue<float>();
         
 
         input.Set(inputData);

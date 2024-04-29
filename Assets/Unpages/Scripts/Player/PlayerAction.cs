@@ -104,6 +104,15 @@ public class PlayerAction : NetworkBehaviour
                     }
                 }
             }
+            if (inputData.isFeaturesUse == 1)
+            {
+                if (playerInteractionKitchenObject)
+                {
+                    Debug.Log("burasi mi");
+                    GameService.Instance.kitchenMechanics.ActionKitchenObject(playerInteractionKitchenObject);
+                }
+                
+            }
             if(inputData.isCameraChange == 1)
             {
                 playerCamera.Camera();

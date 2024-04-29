@@ -9,46 +9,70 @@ public class KitchenMechanics : MonoBehaviour
     private bool _isInActivationDelay;
     public void SetKitchenObject(GameObject gameObject)
     {
-        Debug.Log("sela"+gameObject.name);
-        StartActivationDelay();
+        if (_isInActivationDelay) return;
         switch (gameObject.tag)
         {
             case "Storage":
                 FoodStorage(gameObject);
                 break;
             case "Trash":
-                Trash();
+                Trash(gameObject);
                 break;
             case "Plate":
-                FoodPreparation();
+                FoodPreparation(gameObject);
                 break;
             case "ChoppingBoard":
-                FoodChopping();
+                GrabFoodChopping(gameObject);
                 break;
         }
-    }
-   public void FoodStorage(GameObject gameObject)
-    {
-        if (!GameService.Instance.playerAction.keepObject) gameObject.GetComponent<Storage>().GetItemStorage();
-        else gameObject.GetComponent<Storage>().DropItemStorage(GameService.Instance.playerAction.keepObject);
+        StartActivationDelay();
 
     }
-   public void FoodChopping()
+    public void ActionKitchenObject(GameObject gameObject)
     {
+        if (_isInActivationDelay) return;
+        switch (gameObject.tag)
+        {
+            //case "Storage":         
+            //    break;
+            //case "Trash":       
+            //    break;
+            //case "Plate":
+            //    FoodPreparation(gameObject);
+            //    break;
+            case "ChoppingBoard":
+                ChoppingFood(gameObject);
+                break;
+        }
+        StartActivationDelay();
 
     }
-    public void FoodPreparation()
+    public void FoodStorage(GameObject gameObject)
     {
+        if (GameService.Instance.playerAction.keepObject !=null) { gameObject.GetComponent<Storage>().DropItemStorage(GameService.Instance.playerAction.keepObject); }
+        else { gameObject.GetComponent<Storage>().GetItemStorage(); }
 
     }
-    public void Trash()
+   public void GrabFoodChopping(GameObject gameObject)
     {
-
+        gameObject.GetComponent<Chopping>().GrabAndDropChoppingBoard(GameService.Instance.playerAction.keepObject); 
+    }
+    public void ChoppingFood(GameObject gameObject)
+    {
+        gameObject.GetComponent<Chopping>().ChoppingFood(GameService.Instance.playerAction.keepObject);
+    }
+    public void FoodPreparation(GameObject gameObject)
+    {
+        gameObject.GetComponent<Plate>().GrabAndDropPlate(GameService.Instance.playerAction.keepObject);
+    }
+    public void Trash(GameObject gameObject)
+    {
+        gameObject.GetComponent<Trash>().TrashObject(GameService.Instance.playerAction.keepObject);
     }
     public async void StartActivationDelay()
     {
         _isInActivationDelay = true;
-        await UniTask.WaitForSeconds(15f, cancellationToken: destroyCancellationToken);
+        await UniTask.WaitForSeconds(1f, cancellationToken: destroyCancellationToken);
         _isInActivationDelay = false;
     }
 }
