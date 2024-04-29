@@ -1,28 +1,33 @@
+using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimationControl : MonoBehaviour
+public class PlayerAnimationControl : NetworkBehaviour
 {
     public Animator characterAnimator;
 
     private void Start()
     {
+        
         GameService.Instance.playerAnimationControl = this;
     }
 
-    public void CharacterIdle()
+    [Rpc(RpcSources.StateAuthority,RpcTargets.All)]
+    public void RPC_CharacterIdle()
     {
         characterAnimator.SetBool("isRunning", false);
         characterAnimator.SetBool("isGrabbing", false);
     }
 
-    public void CharacterGrabbing()
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_CharacterGrabbing()
     {
         characterAnimator.SetBool("isGrabbing", true);
     }
 
-    public void CharacterRunning() 
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_CharacterRunning() 
     {
         characterAnimator.SetBool("isRunning", true);
     }

@@ -35,16 +35,21 @@ public class PlayerMovement : NetworkBehaviour
                 gameObject.transform.forward = move;
                 if (GameService.Instance.playerAction.keepObject)
                 {
-                    GameService.Instance.playerAnimationControl.CharacterGrabbing();
+                    GameService.Instance.playerAnimationControl.RPC_CharacterGrabbing();
+                    GameService.Instance.playerAction.playerMovement.MoveSpeed = 4;
+
                 }
                 else
                 {
-                    GameService.Instance.playerAnimationControl.CharacterRunning();
+                    GameService.Instance.playerAnimationControl.RPC_CharacterRunning();
+                    GameService.Instance.playerAction.playerMovement.MoveSpeed = 7.5f;
+
                 }
             }
             else
             {
-                GameService.Instance.playerAnimationControl.CharacterIdle();
+                GameService.Instance.playerAnimationControl.RPC_CharacterIdle();
+                GameService.Instance.playerAction.playerMovement.MoveSpeed = 6;
             }
         }
     }
