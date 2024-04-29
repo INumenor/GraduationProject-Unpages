@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2cc4fc1d698c23743b727a6d71ad5790, type: 3}
       propertyPath: m_Name
-      value: food_ingredient_cheese_chopped
+      value: Cheese_Chopped
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -67,10 +67,10 @@ PrefabInstance:
       addedObject: {fileID: 4164970553872935198}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2cc4fc1d698c23743b727a6d71ad5790, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8666146464785665224}
+      addedObject: {fileID: -8165453930195252318}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2cc4fc1d698c23743b727a6d71ad5790, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -8165453930195252318}
+      addedObject: {fileID: 2637357628632640191}
   m_SourcePrefab: {fileID: 100100000, guid: 2cc4fc1d698c23743b727a6d71ad5790, type: 3}
 --- !u!1 &6704040920465430782 stripped
 GameObject:
@@ -138,8 +138,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &8666146464785665224
-MeshCollider:
+--- !u!114 &-8165453930195252318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6704040920465430782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53278220452b4d247b285415239c4dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodType: 2
+  choppingCount: 0
+  isSliced: 1
+--- !u!135 &2637357628632640191
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -156,22 +171,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8592017057765988957, guid: 2cc4fc1d698c23743b727a6d71ad5790, type: 3}
---- !u!114 &-8165453930195252318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6704040920465430782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53278220452b4d247b285415239c4dfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foodType: 2
-  choppingCount: 0
-  isSliced: 1
+  serializedVersion: 3
+  m_Radius: 0.3
+  m_Center: {x: 0.11, y: 0.12499756, z: 0.0010239258}

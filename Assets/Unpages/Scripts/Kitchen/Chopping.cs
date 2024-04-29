@@ -21,6 +21,8 @@ public class Chopping :NetworkBehaviour
     public Image circleBarBackground;
     public RectTransform circleBarRectTransform;
 
+    public Transform itemAnchorPoint;
+
     private bool _isInActivationDelay;
     public void GrabAndDropChoppingBoard(GameObject gameObject)// objeyi doðradýktan sonra ele alýnca eski halindeki objeden baþka bir tane spawn oluyo sanýrým hata var
     {
@@ -69,7 +71,7 @@ public class Chopping :NetworkBehaviour
     }
     public void SpawnFood(NetworkObject networkObject)
     {
-        item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), this.transform.rotation, Object.InputAuthority);
+        item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, itemAnchorPoint.position, this.transform.rotation, Object.InputAuthority);
         item.transform.SetParent(transform);
         item.gameObject.GetComponent<Rigidbody>().useGravity = false;
         item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -78,7 +80,7 @@ public class Chopping :NetworkBehaviour
     }
     public void SpawnSliceFood(NetworkObject networkObject)
     {
-        itemSlice = NetworkManager.Instance.SessionRunner.Spawn(networkObject, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), this.transform.rotation, Object.InputAuthority);
+        itemSlice = NetworkManager.Instance.SessionRunner.Spawn(networkObject, itemAnchorPoint.position, this.transform.rotation, Object.InputAuthority);
         itemSlice.transform.SetParent(transform);
         itemSlice.gameObject.GetComponent<Rigidbody>().useGravity = false;
         itemSlice.gameObject.GetComponent<Rigidbody>().isKinematic = true;

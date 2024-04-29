@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.988
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.004999995
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.0370002
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
       propertyPath: m_LocalRotation.w
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
       propertyPath: m_LocalRotation.y
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kitchen_Plates
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
+      propertyPath: m_TagString
+      value: Plate
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -59,6 +67,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
       insertIndex: -1
       addedObject: {fileID: 305950852139017028}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8348568322293378592}
   m_SourcePrefab: {fileID: 100100000, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
 --- !u!1 &7218118894695962098 stripped
 GameObject:
@@ -86,3 +97,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0028846, y: 1.1496184, z: 1.1317167}
   m_Center: {x: -0.001442194, y: 0.5748092, z: 0.065858245}
+--- !u!114 &8348568322293378592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7218118894695962098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5b6ec0d8defb84293e378baf159459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platePrefab: {fileID: 105516810065189154, guid: 44cee5c61851f1a4ab0460d7402f31a5, type: 3}

@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2663199683426887152}
   - component: {fileID: 5438734339476961811}
   - component: {fileID: 8330321013055800213}
-  - component: {fileID: 8655816607807310840}
   - component: {fileID: -3689438286274483220}
+  - component: {fileID: 5527381568641701909}
   m_Layer: 6
   m_Name: Tomato_Chopped
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 3290624840982767151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0020735, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.4147, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -149,8 +149,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &8655816607807310840
-MeshCollider:
+--- !u!114 &-3689438286274483220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3290624840982767151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53278220452b4d247b285415239c4dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodType: 0
+  choppingCount: 0
+  isSliced: 1
+--- !u!135 &5527381568641701909
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -167,22 +182,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2265868382279325625, guid: 81fd418bc9c85934ea9c8a009681d8cc, type: 3}
---- !u!114 &-3689438286274483220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3290624840982767151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53278220452b4d247b285415239c4dfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foodType: 0
-  choppingCount: 0
-  isSliced: 1
+  serializedVersion: 3
+  m_Radius: 0.18
+  m_Center: {x: -0.012500048, y: 0.07500782, z: 0.000000007450581}
