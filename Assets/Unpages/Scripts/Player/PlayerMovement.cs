@@ -60,6 +60,7 @@ public class PlayerMovement : NetworkBehaviour
             if (_controller.isGrounded)
             {
                 _velocity = new Vector3(0, -1, 0);
+                GameService.Instance.playerAnimationControl.RPC_CharacterDontJumping();
             }
 
             _velocity.y += GravityValue * Runner.DeltaTime;
@@ -67,6 +68,7 @@ public class PlayerMovement : NetworkBehaviour
             if (inputData.isJumped == 1 && _controller.isGrounded)
             {
                 _velocity.y += JumpForce;
+                GameService.Instance.playerAnimationControl.RPC_CharacterJumping();
             }
             _jumpPressed = false;
         }

@@ -18,6 +18,7 @@ public class PlayerAnimationControl : NetworkBehaviour
     {
         characterAnimator.SetBool("isRunning", false);
         characterAnimator.SetBool("isGrabbing", false);
+        characterAnimator.SetBool("isJumping", false);
     }
 
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
@@ -30,5 +31,14 @@ public class PlayerAnimationControl : NetworkBehaviour
     public void RPC_CharacterRunning() 
     {
         characterAnimator.SetBool("isRunning", true);
+    }
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_CharacterJumping()
+    {
+        characterAnimator.SetBool("isJumping", true);
+    }
+    public void RPC_CharacterDontJumping()
+    {
+        characterAnimator.SetBool("isJumping", false);
     }
 }
