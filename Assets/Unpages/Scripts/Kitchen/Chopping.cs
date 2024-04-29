@@ -36,15 +36,15 @@ public class Chopping :NetworkBehaviour
         }     
         else
         {
-            itemType = GameService.Instance.playerAction.keepObject.GetComponent<Item>().foodType;
-            if (GameService.Instance.playerAction.keepObject.GetComponent<Item>().isSliced)
+            itemType = GameService.Instance.playerAction.keepObject.GetComponent<FoodItem>().foodType;
+            if (GameService.Instance.playerAction.keepObject.GetComponent<FoodItem>().isSliced)
             {
                 SpawnFood(GameService.Instance.networkItems.GetNetworkItemSlice(itemType));
                 isSlice = true;
             }
             else
             {
-                SpawnFood(GameService.Instance.networkItems.GetNetworkItem(itemType));
+                SpawnFood(GameService.Instance.networkItems.GetNetworkFoodItem(itemType));
             }
             DespawnFood(gameObject.GetComponent<NetworkObject>());
             isFull = true;
@@ -74,7 +74,7 @@ public class Chopping :NetworkBehaviour
         item.gameObject.GetComponent<Rigidbody>().useGravity = false;
         item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         item.name = networkObject.name;
-        itemChoppingCount = item.GetComponent<Item>().choppingCount;
+        itemChoppingCount = item.GetComponent<FoodItem>().choppingCount;
     }
     public void SpawnSliceFood(NetworkObject networkObject)
     {
@@ -97,7 +97,7 @@ public class Chopping :NetworkBehaviour
         }
         else
         {
-            GameService.Instance.playerAction.playerInteraction.PlayerChoppingGrab(GameService.Instance.networkItems.GetNetworkItem(itemType));
+            GameService.Instance.playerAction.playerInteraction.PlayerChoppingGrab(GameService.Instance.networkItems.GetNetworkFoodItem(itemType));
         }
         isSlice = false;
     }

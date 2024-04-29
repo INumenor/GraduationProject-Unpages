@@ -16,7 +16,7 @@ public class Storage : MonoBehaviour
 
     public void DropItemStorage(GameObject gameObject)
     {
-        Item item = gameObject.GetComponent<Item>();
+        FoodItem item = gameObject.GetComponent<FoodItem>();
         if (item.foodType == itemType && storageFoodCount<5 && !item.isSliced)
         {
             storageFoodCount++;
@@ -29,7 +29,7 @@ public class Storage : MonoBehaviour
     {
         if (storageFoodCount > 0)
         {
-            GameService.Instance.playerAction.playerInteraction.PlayerStorageGrab(GameService.Instance.networkItems.GetNetworkItem(itemType));
+            GameService.Instance.playerAction.playerInteraction.PlayerStorageGrab(GameService.Instance.networkItems.GetNetworkFoodItem(itemType));
             storageFoodCount--;
         }     
     }

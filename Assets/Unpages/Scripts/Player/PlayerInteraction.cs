@@ -16,9 +16,9 @@ public class PlayerInteraction : NetworkBehaviour
         if (interactableObject != null && interactionObject == null)
         {
             interactableObject.GetComponent<NetworkObject>().ReleaseStateAuthority();
-            if (!interactableObject.GetComponent<Item>().isSliced)
+            if (!interactableObject.GetComponent<FoodItem>().isSliced)
             {
-                PlayerGrabItem(GameService.Instance.networkItems.GetNetworkItem(itemType));
+                PlayerGrabItem(GameService.Instance.networkItems.GetNetworkFoodItem(itemType));
             }
             else
             {

@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class NetworkItems : MonoBehaviour
 {
-    public List<ItemInfo> networkItems;
+    public List<ItemInfo> networkFoodItems;
     public List<ItemInfo> networkItemsSlice;
+    public List<ItemInfo> networkItems;
 
-    public NetworkObject GetNetworkItem(ItemType itemType)
+    public NetworkObject GetNetworkFoodItem(ItemType itemType)
     {
-        foreach (ItemInfo itemObject in networkItems)
+        foreach (ItemInfo itemObject in networkFoodItems)
         {
             if(itemObject.itemType == itemType)
             {
@@ -30,4 +31,15 @@ public class NetworkItems : MonoBehaviour
         }
         return null;
     }
+    //public NetworkObject GetNetworkItem(OtherItemType itemType)
+    //{     
+    //    foreach(ItemInfo item in networkItems)
+    //    {
+    //        if(item.itemType== itemType)
+    //        {
+    //            return item.item;
+    //        }
+    //    }
+    //    return null;
+    //}
 }

@@ -14,7 +14,6 @@ public class Plate : NetworkBehaviour//tabak yerinden tabak alýnabilecek. Tabak 
         if (!gameObject)
         {
             GetPlate();
-            Debug.Log("tabaðý al");
         }
         else
         {
@@ -30,7 +29,6 @@ public class Plate : NetworkBehaviour//tabak yerinden tabak alýnabilecek. Tabak 
     }
     public void GetPlate()
     {
-        Debug.Log("oluþtu tabak");
             GameService.Instance.playerAction.playerInteraction.PlayerPlateGrab(platePrefab);               
     }
     public void SpawnPlate(NetworkObject networkObject)

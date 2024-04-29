@@ -26,7 +26,7 @@ public class MouseAI : NetworkBehaviour
             //item.transform.SetParent(grabbleGameObjcetParent);
             //item.gameObject.GetComponent<Rigidbody>().useGravity = false;
             //grabbleNetworkObject = item;
-            grabbleNetworkObject = GameService.Instance.networkItems.GetNetworkItem(other.GetComponent<Item>().foodType);
+            grabbleNetworkObject = GameService.Instance.networkItems.GetNetworkFoodItem(other.GetComponent<FoodItem>().foodType);
             IsMouseGrab = true;
             GameService.Instance.playerAction.RPC_Trigger(other.GetComponent<NetworkObject>());
             GameService.Instance.aiManagerSystem.ReturnBase();
