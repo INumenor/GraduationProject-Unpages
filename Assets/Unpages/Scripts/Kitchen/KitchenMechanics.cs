@@ -19,6 +19,7 @@ public class KitchenMechanics : MonoBehaviour
                 Trash(gameObject);
                 break;
             case "Plate":
+                FoodPreparation(gameObject);
                 break;
             case "ChoppingBoard":
                 GrabFoodChopping(gameObject);
@@ -36,7 +37,8 @@ public class KitchenMechanics : MonoBehaviour
             //    break;
             //case "Trash":       
             //    break;
-            //case "Plate":            
+            //case "Plate":
+            //    FoodPreparation(gameObject);
             //    break;
             case "ChoppingBoard":
                 ChoppingFood(gameObject);
@@ -59,9 +61,9 @@ public class KitchenMechanics : MonoBehaviour
     {
         gameObject.GetComponent<Chopping>().ChoppingFood(GameService.Instance.playerAction.keepObject);
     }
-    public void FoodPreparation()
+    public void FoodPreparation(GameObject gameObject)
     {
-        
+        gameObject.GetComponent<Plate>().GrabAndDropPlate(GameService.Instance.playerAction.keepObject);
     }
     public void Trash(GameObject gameObject)
     {

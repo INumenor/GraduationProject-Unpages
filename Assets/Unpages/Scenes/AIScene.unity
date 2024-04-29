@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6538,7 +6538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Plate
       objectReference: {fileID: 0}
     - target: {fileID: 4173241031698997641, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6603,6 +6603,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
       insertIndex: -1
       addedObject: {fileID: 788512786}
+    - targetCorrespondingSourceObject: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 788512787}
   m_SourcePrefab: {fileID: 100100000, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
 --- !u!4 &788512785 stripped
 Transform:
@@ -6630,6 +6633,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2235903, y: 1.69, z: 0.8690202}
   m_Center: {x: -0.11179513, y: 0, z: 0.34730187}
+--- !u!114 &788512787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754064779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5b6ec0d8defb84293e378baf159459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platePrefab: {fileID: 105516810065189154, guid: 44cee5c61851f1a4ab0460d7402f31a5, type: 3}
 --- !u!1 &790984761
 GameObject:
   m_ObjectHideFlags: 0
@@ -7920,7 +7936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
       propertyPath: m_TagString
-      value: ChoppingBoard
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4173241031698997641, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
       propertyPath: m_LocalPosition.x

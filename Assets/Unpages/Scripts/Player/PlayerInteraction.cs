@@ -45,7 +45,11 @@ public class PlayerInteraction : NetworkBehaviour
         PlayerGrabItem(interactableObject);
         StartActivationDelay();
     }
-
+    public void PlayerPlateGrab(NetworkObject interactableObject)
+    {
+        PlayerGrabItem(interactableObject);
+        StartActivationDelay();
+    }
     public void PlayerGrabItem(NetworkObject networkObject = null)
     {
         if (interactionObject == null)
