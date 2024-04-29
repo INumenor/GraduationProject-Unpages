@@ -6,6 +6,10 @@ public class PlayerAnimationControl : MonoBehaviour
 {
     public Animator characterAnimator;
 
+    private void Start()
+    {
+        GameService.Instance.playerAnimationControl = this;
+    }
 
     public void CharacterIdle()
     {
@@ -15,11 +19,11 @@ public class PlayerAnimationControl : MonoBehaviour
 
     public void CharacterGrabbing()
     {
-
+        characterAnimator.SetBool("isGrabbing", true);
     }
 
     public void CharacterRunning() 
     {
-
+        characterAnimator.SetBool("isRunning", true);
     }
 }
