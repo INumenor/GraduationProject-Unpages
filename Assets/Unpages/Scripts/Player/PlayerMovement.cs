@@ -8,7 +8,7 @@ public class PlayerMovement : NetworkBehaviour
     private Vector3 _velocity;
     private bool _jumpPressed;
 
-    private CharacterController _controller;
+    public CharacterController _controller;
 
     public float MoveSpeed = 6f;
 
@@ -17,10 +17,10 @@ public class PlayerMovement : NetworkBehaviour
 
     
 
-    private void Awake()
-    {
-        _controller = GetComponent<CharacterController>();
-    }
+    //private void Awake()
+    //{
+    //    _controller = GetComponent<CharacterController>();
+    //}
 
     public void PlayerMove()
     {
@@ -33,6 +33,18 @@ public class PlayerMovement : NetworkBehaviour
             if (move != Vector3.zero)
             {
                 gameObject.transform.forward = move;
+                if (GameService.Instance.playerAction.keepObject)
+                {
+                    GameService.Instance.playerAnimationControl.CharacterGrabbing();
+                }
+                else
+                {
+                    GameService.Instance.playerAnimationControl.CharacterRunning();
+                }
+            }
+            else
+            {
+                GameService.Instance.playerAnimationControl.CharacterIdle();
             }
         }
     }
