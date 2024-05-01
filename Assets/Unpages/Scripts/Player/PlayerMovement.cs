@@ -35,20 +35,25 @@ public class PlayerMovement : NetworkBehaviour
                 gameObject.transform.forward = move;
                 if (GameService.Instance.playerAction.keepObject)
                 {
-                    GameService.Instance.playerAnimationControl.RPC_CharacterGrabbing();
+                    GameService.Instance.playerAction.isGrabbing = true;
+                    //GameService.Instance.playerAnimationControl.RPC_CharacterGrabbing();
                     GameService.Instance.playerAction.playerMovement.MoveSpeed = 4;
 
                 }
                 else
                 {
-                    GameService.Instance.playerAnimationControl.RPC_CharacterRunning();
+                    GameService.Instance.playerAction.isRunning = true;
+                    GameService.Instance.playerAction.isGrabbing = false;
+                    //GameService.Instance.playerAnimationControl.RPC_CharacterRunning();
                     GameService.Instance.playerAction.playerMovement.MoveSpeed = 7.5f;
 
                 }
             }
             else
             {
-                GameService.Instance.playerAnimationControl.RPC_CharacterIdle();
+                GameService.Instance.playerAction.isRunning = false;
+                GameService.Instance.playerAction.isGrabbing = false;
+                //GameService.Instance.playerAnimationControl.RPC_CharacterIdle();
                 GameService.Instance.playerAction.playerMovement.MoveSpeed = 6;
             }
         }
@@ -60,7 +65,8 @@ public class PlayerMovement : NetworkBehaviour
             if (_controller.isGrounded)
             {
                 _velocity = new Vector3(0, -1, 0);
-                GameService.Instance.playerAnimationControl.RPC_CharacterDontJumping();
+                //GameService.Instance.playerAnimationControl.RPC_CharacterDontJumping();
+                GameService.Instance.playerAction.isJumping = false;
             }
 
             _velocity.y += GravityValue * Runner.DeltaTime;
@@ -68,7 +74,9 @@ public class PlayerMovement : NetworkBehaviour
             if (inputData.isJumped == 1 && _controller.isGrounded)
             {
                 _velocity.y += JumpForce;
-                GameService.Instance.playerAnimationControl.RPC_CharacterJumping();
+                //GameService.Instance.playerAnimationControl.RPC_CharacterJumping();
+                GameService.Instance.playerAction.isJumping = true;
+
             }
             _jumpPressed = false;
         }

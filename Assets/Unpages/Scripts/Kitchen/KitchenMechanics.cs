@@ -44,7 +44,7 @@ public class KitchenMechanics : MonoBehaviour
                 ChoppingFood(gameObject);
                 break;
         }
-        GameService.Instance.playerAnimationControl.RPC_CharacterKichenAction();
+        GameService.Instance.playerAction.isKitchenAction = true;
         StartActivationDelay();
 
     }
