@@ -13,6 +13,14 @@ public class PlayerAction : NetworkBehaviour
     public PlayerInteraction playerInteraction;
     public PlayerCamera playerCamera;
 
+    public bool isGrabbing;
+    public bool isRunning;
+    public bool isJumping;
+    public bool isKitchenAction;
+
+
+    public IState currentState;
+
     public  bool isGrabbable = false;
 
     [Header("KeepObject")]
@@ -33,9 +41,19 @@ public class PlayerAction : NetworkBehaviour
         if (Object.HasStateAuthority) 
         {
         GameService.Instance.playerAction = this;
+        currentState = new IdleState();
+        currentState.EnterState();
         await TryGetPlayer();
         }
     }
+
+    public void ChangeState(IState newState)
+    {
+        currentState.ExitState();
+        currentState = newState;
+        currentState.EnterState();
+    }
+
     private async UniTask<NetworkPlayer> TryGetPlayer()
     {
         NetworkPlayer networkPlayer = null;
@@ -65,6 +83,8 @@ public class PlayerAction : NetworkBehaviour
     {
         if (HasStateAuthority == false) return;
 
+        currentState.UpdateState();
+        //GameService.Instance.playerAnimationControl.RPC_CharacterDontKichenAction();
         if (GetInput<PlayerInputData>(out var inputData))
         {
             playerMovement.PlayerMove();
@@ -110,10 +130,17 @@ public class PlayerAction : NetworkBehaviour
                 {
                     Debug.Log("burasi mi");
                     GameService.Instance.kitchenMechanics.ActionKitchenObject(playerInteractionKitchenObject);
+                    //GameService.Instance.playerAnimationControl.RPC_CharacterKichenAction();
+                    isKitchenAction = true;
                 }
                 
             }
-            if(inputData.isCameraChange == 1)
+            else
+            {
+                isKitchenAction = false;
+
+            }
+            if (inputData.isCameraChange == 1)
             {
                 playerCamera.Camera();
             }

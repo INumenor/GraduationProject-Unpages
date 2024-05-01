@@ -44,6 +44,7 @@ public class KitchenMechanics : MonoBehaviour
                 ChoppingFood(gameObject);
                 break;
         }
+        GameService.Instance.playerAction.isKitchenAction = true;
         StartActivationDelay();
 
     }

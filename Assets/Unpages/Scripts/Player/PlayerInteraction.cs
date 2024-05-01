@@ -6,6 +6,8 @@ using Unpages.Network;
 public class PlayerInteraction : NetworkBehaviour
 {
     public NetworkObject interactionObject;
+
+    public Transform itemAnchorPoint;
     //public NetworkObject testObject;
     private bool _isInActivationDelay;
 
@@ -54,10 +56,10 @@ public class PlayerInteraction : NetworkBehaviour
     {
         if (interactionObject == null)
         {   
-            NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), this.transform.rotation, Object.InputAuthority);
+            NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, itemAnchorPoint.position, this.transform.rotation, Object.InputAuthority);
             item.transform.SetParent(transform);
             item.gameObject.GetComponent<Rigidbody>().useGravity = false;
-            //item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             item.name = networkObject.name;
             interactionObject = item;
             GameService.Instance.playerAction.isGrabbable = true;
