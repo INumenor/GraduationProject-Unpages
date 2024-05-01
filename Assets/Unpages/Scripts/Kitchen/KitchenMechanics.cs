@@ -63,7 +63,7 @@ public class KitchenMechanics : MonoBehaviour
     }
     public void FoodPreparation(GameObject gameObject)
     {
-        gameObject.GetComponent<Plate>().GrabAndDropPlate(GameService.Instance.playerAction.keepObject);
+        gameObject.GetComponent<PlateKitchen>().GrabAndDropPlate(GameService.Instance.playerAction.keepObject);
     }
     public void Trash(GameObject gameObject)
     {

@@ -41,7 +41,7 @@ public class Interactor : MonoBehaviour
                     other.gameObject.GetComponent<Trash>().InteractTrash();
                     break;
                 case "Plate":
-                    other.gameObject.GetComponent<Plate>().InteractPlateArea();
+                    other.gameObject.GetComponent<PlateKitchen>().InteractPlateArea();
                     break;
                 case "ChoppingBoard":
                     other.gameObject.GetComponent<Chopping>().InteractChoppingBoard();
