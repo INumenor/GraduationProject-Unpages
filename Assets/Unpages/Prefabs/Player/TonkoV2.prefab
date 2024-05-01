@@ -1100,7 +1100,7 @@ Transform:
   m_GameObject: {fileID: 5987617279424536901}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: -0.0672, z: 0.0423}
+  m_LocalPosition: {x: 0, y: -0.0524, z: 0.01}
   m_LocalScale: {x: 0.034672, y: 0.034672, z: 0.034672}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1133,10 +1133,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
-  m_Height: 0.97
+  m_Radius: 0.6
+  m_Height: 1.5
   m_Direction: 0
-  m_Center: {x: 0, y: 0.47, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!54 &5319842752556180481
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1672,6 +1672,10 @@ MonoBehaviour:
   bombManager: {fileID: 6242913129753619603}
   playerInteraction: {fileID: 4219550076795375029}
   playerCamera: {fileID: 247904878623844965}
+  isGrabbing: 0
+  isRunning: 0
+  isJumping: 0
+  isKitchenAction: 0
   isGrabbable: 0
   keepObject: {fileID: 0}
   grabbableObject: {fileID: 0}
