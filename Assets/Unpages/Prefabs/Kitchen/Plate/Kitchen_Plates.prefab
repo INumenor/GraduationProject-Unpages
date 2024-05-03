@@ -69,7 +69,7 @@ PrefabInstance:
       addedObject: {fileID: 305950852139017028}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8348568322293378592}
+      addedObject: {fileID: 4652026129727206417}
   m_SourcePrefab: {fileID: 100100000, guid: c585dc1bee21c284384287fd66b1bf43, type: 3}
 --- !u!1 &7218118894695962098 stripped
 GameObject:
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0028846, y: 1.1496184, z: 1.1317167}
   m_Center: {x: -0.001442194, y: 0.5748092, z: 0.065858245}
---- !u!114 &8348568322293378592
+--- !u!114 &4652026129727206417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,7 +106,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7218118894695962098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae5b6ec0d8defb84293e378baf159459, type: 3}
+  m_Script: {fileID: 11500000, guid: d53aa385160ddf646b60539ff1fe2825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platePrefab: {fileID: 105516810065189154, guid: 44cee5c61851f1a4ab0460d7402f31a5, type: 3}
+  plateNetworkObject: {fileID: -8338275208414846468, guid: 7b005171a2294f44a8ba7d1e8627e9cd, type: 3}
+  plateLimit: 0
+  platesObjects: []

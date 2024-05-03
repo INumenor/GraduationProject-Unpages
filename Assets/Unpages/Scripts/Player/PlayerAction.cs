@@ -109,7 +109,6 @@ public class PlayerAction : NetworkBehaviour
             {
                 if (playerInteractionKitchenObject)
                 {
-                    Debug.Log("Geldim");
                     GameService.Instance.kitchenMechanics.SetKitchenObject(playerInteractionKitchenObject);
                 }
                 else

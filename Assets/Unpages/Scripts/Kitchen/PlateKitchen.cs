@@ -15,20 +15,23 @@ public class PlateKitchen : NetworkBehaviour
 
     public void GrabAndDropPlate(GameObject gameObject)//tabak yerine gidið bastýðýnda tabak almasý ancak tabak olan bir yere bastýðýnda eli boþsa önündeki tabaðý almasý lazým ve eðer elinde varsa da tabaðý koymasý gerekiyor.
     {
+        Debug.Log("aaaaaa");
         if (!gameObject && plateLimit > 0)
         {
             GetPlate();
         }
-        else if(gameObject && gameObject.GetComponent<ItemInfo>().itemType == ItemType.Plate)
+        else if(gameObject && gameObject.GetComponent<FoodItem>().foodType == ItemType.Plate)
         {
-            DropPlate();
             Debug.Log("tabaðý býrak");
+            DropPlate(gameObject.GetComponent<NetworkObject>());
         }
     }
 
-    public void DropPlate()
+    public void DropPlate(NetworkObject networkObject)
     {
-        DespawnPlate(plateNetworkObject);
+        DespawnPlate(networkObject);
+        GameService.Instance.playerAction.isGrabbable = false;
+        GameService.Instance.playerAction.keepObject = null;
         plateLimit++;
         Debug.Log("tabak yok olup oluþtu");
     }

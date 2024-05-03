@@ -1,50 +1,72 @@
-using Cysharp.Threading.Tasks;
 using Fusion;
-using System.Collections;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using Unpages.Network;
 
-public class Plate : NetworkBehaviour//tabak yerinden tabak alýnabilecek. Tabak boþ alanlara konulabilecek. Tabaðýn içerisine doðranmýþ sebzeler konulabilecek diðerleri konulamayacak.tabaðýn olduðu yerdeki bir yere yemekler konulabilecek ve tabaðýn içerisinde spawn edilecek ya da hazýr spawn edilmiþ halleri açýlacak.
+public class Plate : SerializedMonoBehaviour//tabak yerinden tabak alï¿½nabilecek. Tabak boï¿½ alanlara konulabilecek. Tabaï¿½ï¿½n iï¿½erisine doï¿½ranmï¿½ï¿½ sebzeler konulabilecek diï¿½erleri konulamayacak.tabaï¿½ï¿½n olduï¿½u yerdeki bir yere yemekler konulabilecek ve tabaï¿½ï¿½n iï¿½erisinde spawn edilecek ya da hazï¿½r spawn edilmiï¿½ halleri aï¿½ï¿½lacak.
 {
-    public NetworkObject platePrefab;
+    //public NetworkObject platePrefab;
 
-    public void GrabAndDropPlate(GameObject gameObject)//tabak yerine gidið bastýðýnda tabak almasý ancak tabak olan bir yere bastýðýnda eli boþsa önündeki tabaðý almasý lazým ve eðer elinde varsa da tabaðý koymasý gerekiyor.
+    public Dictionary<int, GameObject> anchorPointsPlate = new Dictionary<int, GameObject>();
+
+    [Button]
+    public void SetFoodOnPlate(GameObject gameObject)
     {
-        if (!gameObject)
+        for (int i = 0; i < anchorPointsPlate.Count; i++)
         {
-            GetPlate();
-        }
-        else
-        {
-            DropPlate();
-            Debug.Log("tabaðý býrak");
+            if (anchorPointsPlate[i].transform.childCount == 0)
+            {
+                plateSpawn(gameObject,GameService.Instance.networkItems.GetNetworkItemPlate(gameObject.GetComponent<FoodItem>().foodType));
+            }
         }
     }
-    public void DropPlate()
+
+    public void plateSpawn(GameObject gameObject , NetworkObject networkObject)
     {
-        DespawnPlate(platePrefab);
-        SpawnPlate(platePrefab);
-        Debug.Log("tabak yok olup oluþtu");
+        NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, transform.position , this.transform.rotation);
+        item.transform.SetParent(gameObject.transform);
+        item.gameObject.GetComponent<Rigidbody>().useGravity = false;
+        item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        item.name = networkObject.name;
     }
-    public void GetPlate()
-    {
-            GameService.Instance.playerAction.playerInteraction.PlayerPlateGrab(platePrefab);               
-    }
-    public void SpawnPlate(NetworkObject networkObject)
-    {
-        platePrefab = NetworkManager.Instance.SessionRunner.Spawn(networkObject, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), this.transform.rotation, Object.InputAuthority);
-        platePrefab.transform.SetParent(transform);
-        platePrefab.gameObject.GetComponent<Rigidbody>().useGravity = false;
-        platePrefab.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        platePrefab.name = networkObject.name;
-    }
-    public void DespawnPlate(NetworkObject networkObject)
-    {
-        GameService.Instance.playerAction.RPC_Trigger(networkObject);
-    }
-    public void InteractPlateArea()
-    {
-        GameService.Instance.playerAction.playerInteractionKitchenObject = this.gameObject;
-    }
+
+    //public void GrabAndDropPlate(GameObject gameObject)//tabak yerine gidiï¿½ bastï¿½ï¿½ï¿½nda tabak almasï¿½ ancak tabak olan bir yere bastï¿½ï¿½ï¿½nda eli boï¿½sa ï¿½nï¿½ndeki tabaï¿½ï¿½ almasï¿½ lazï¿½m ve eï¿½er elinde varsa da tabaï¿½ï¿½ koymasï¿½ gerekiyor.
+    //{
+    //    if (!gameObject)
+    //    {
+    //        GetPlate();
+    //    }
+    //    else
+    //    {
+    //        DropPlate();
+    //        Debug.Log("tabaï¿½ï¿½ bï¿½rak");
+    //    }
+    //}
+    //public void DropPlate()
+    //{
+    //    DespawnPlate(platePrefab);
+    //    SpawnPlate(platePrefab);
+    //    Debug.Log("tabak yok olup oluï¿½tu");
+    //}
+    //public void GetPlate()
+    //{
+    //        GameService.Instance.playerAction.playerInteraction.PlayerPlateGrab(platePrefab);               
+    //}
+    //public void SpawnPlate(NetworkObject networkObject)
+    //{
+    //    platePrefab = NetworkManager.Instance.SessionRunner.Spawn(networkObject, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), this.transform.rotation, Object.InputAuthority);
+    //    platePrefab.transform.SetParent(transform);
+    //    platePrefab.gameObject.GetComponent<Rigidbody>().useGravity = false;
+    //    platePrefab.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+    //    platePrefab.name = networkObject.name;
+    //}
+    //public void DespawnPlate(NetworkObject networkObject)
+    //{
+    //    GameService.Instance.playerAction.RPC_Trigger(networkObject);
+    //}
+    //public void InteractPlateArea()
+    //{
+    //    GameService.Instance.playerAction.playerInteractionKitchenObject = this.gameObject;
+    //}
 }

@@ -36,6 +36,7 @@ public class AIManagerSystem : SerializedMonoBehaviour
     }
     public void ReturnBase()
     {
+        if(NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient)
         mouseList["Mouse1"].gameObject.GetComponent<MouseAI>().MouseAgentDestination(agentBase.position);
     }
 }

@@ -8,6 +8,7 @@ public class NetworkItems : MonoBehaviour
     public List<ItemInfo> networkFoodItems;
     public List<ItemInfo> networkItemsSlice;
     public List<ItemInfo> networkItems;
+    public List<ItemInfo> networkItemsPlates;
 
     public NetworkObject GetNetworkFoodItem(ItemType itemType)
     {
@@ -31,6 +32,19 @@ public class NetworkItems : MonoBehaviour
         }
         return null;
     }
+
+    public NetworkObject GetNetworkItemPlate(ItemType itemType)
+    {
+        foreach (ItemInfo itemSliceObject in networkItemsPlates)
+        {
+            if (itemSliceObject.itemType == itemType)
+            {
+                return itemSliceObject.item;
+            }
+        }
+        return null;
+    }
+
     //public NetworkObject GetNetworkItem(OtherItemType itemType)
     //{     
     //    foreach(ItemInfo item in networkItems)
