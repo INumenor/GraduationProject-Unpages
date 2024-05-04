@@ -1,49 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Fusion;
-using Unpages.Network;
-using Unity.VisualScripting;
-
-public enum ItemType {Tomato,Bread,Cheese,Lettuce,Plate,Null}
-public class FoodItem : MonoBehaviour, IInteractable
+public enum FoodType { Tomato, Bread, Cheese, Lettuce, Null }
+public class FoodItem : Item
 {
-    public ItemType foodType;
-    public int choppingCount = 0;
-    int ItemTime = 0;
+    public FoodType foodType;
+    public int choppingCount;
     public bool isSliced;
-
-    public void Interact(InteractorData interactorData)
+    public bool isPlateHolder;
+    public FoodInteract foodInteract;
+    public override void AddComponentInteract()
     {
-        //GameService.Instance.playerAction.grabbableObject =this.gameObject;
-        GameService.Instance.playerAction.grabbableObject = interactorData.InteractorObject;
-        GameService.Instance.playerAction.grabbableObjectType = foodType;
+        base.AddComponentInteract();
+        foodInteract = gameObject.AddComponent<FoodInteract>();
     }
 
-    private void OnCollisionStay(Collision other)
-    {
-        if (other.gameObject.CompareTag("Floor"))
-        {           
-            if(ItemTime < 101 ) ItemTime++;
-            if (ItemTime == 100 /*1000*/)
-            {
-                GameService.Instance.aiManagerSystem.Init(transform.position);
-            }
-        }
-    }
-    private void OnCollisionExit(Collision col)
-    {
-            ItemTime = 0;
-            Debug.Log("TurnBase :" + ItemTime);
-            GameService.Instance.aiManagerSystem.ReturnBase();            
-    }
-
-
-
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_Despawn()
-    {
-        //Destroy(gameObject);
-        NetworkManager.Instance.SessionRunner.Despawn(GetComponent<NetworkObject>());
-    }
+    //public void Interact(InteractorData interactorData)
+    //{
+    //    //GameService.Instance.playerAction.grabbableObject =this.gameObject;
+    //    GameService.Instance.playerAction.grabbableObject = interactorData.InteractorObject;
+    //    GameService.Instance.playerAction.grabbableObjectType = foodType;
+    //}
 }

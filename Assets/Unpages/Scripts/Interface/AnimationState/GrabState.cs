@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GrabState : IState
 {
+    public StateManager stateManager { get; set; }
+
     public void EnterState()
     {
         RPC_CharacterGrabbing();
@@ -17,25 +19,25 @@ public class GrabState : IState
 
     public void UpdateState()
     {
-        if (!GameService.Instance.playerAction.isGrabbing)
+        if (!stateManager.isGrabbing)
         {
-            GameService.Instance.playerAction.ChangeState(new IdleState());
+            stateManager.ChangeState(new IdleState());
         }
-        else if(GameService.Instance.playerAction.isJumping)
+        else if(stateManager.isJumping)
         {
-            GameService.Instance.playerAction.ChangeState(new JumpState());
+            stateManager.ChangeState(new JumpState());
         }
             
     }
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterGrabbing()
     {
-        GameService.Instance.playerAnimationControl.characterAnimator.SetBool("isGrabbing", true);
+       stateManager.characterAnimator.SetBool("isGrabbing", true);
     }
 
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterDontGrabbing()
     {
-        GameService.Instance.playerAnimationControl.characterAnimator.SetBool("isGrabbing", false);
+        stateManager.characterAnimator.SetBool("isGrabbing", false);
     }
 }

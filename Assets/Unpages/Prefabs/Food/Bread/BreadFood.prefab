@@ -182,6 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53278220452b4d247b285415239c4dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0
+  objcetInteract: {fileID: 0}
   foodType: 1
-  choppingCount: 5
+  choppingCount: 0
   isSliced: 0
+  isPlateHolder: 1

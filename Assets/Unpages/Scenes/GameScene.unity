@@ -330,6 +330,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1750056485}
     m_Modifications:
+    - target: {fileID: 2715326018075485482, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
+      propertyPath: SortKey
+      value: 1169563062
+      objectReference: {fileID: 0}
     - target: {fileID: 4902537982672877545, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
       propertyPath: m_Name
       value: Kitchen_ServiceArea
@@ -392,6 +396,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1750056485}
     m_Modifications:
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 3809848417
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner (1)
@@ -454,6 +462,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1750056485}
     m_Modifications:
+    - target: {fileID: 2149441030163502787, guid: bfe26087c541057499169c9b493d0190, type: 3}
+      propertyPath: SortKey
+      value: 3266525672
+      objectReference: {fileID: 0}
     - target: {fileID: 4652026129727206417, guid: bfe26087c541057499169c9b493d0190, type: 3}
       propertyPath: plateLimit
       value: 5
@@ -715,6 +727,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 294257959}
     m_Modifications:
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 921146504
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner
@@ -777,6 +793,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1750056485}
     m_Modifications:
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 3221916441
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner (3)
@@ -1015,6 +1035,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1750056485}
     m_Modifications:
+    - target: {fileID: 1846325850161898710, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 2926949139
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 1363121029
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.000015
@@ -1272,6 +1300,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 1690988792
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1334,6 +1366,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 1368040568
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1352,6 +1388,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1750056485}
     m_Modifications:
+    - target: {fileID: 1846325850161898710, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 163172319
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 2894311505
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.999987
@@ -1457,6 +1501,10 @@ PrefabInstance:
     - target: {fileID: 7695745002120009076, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 3025518347
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1596,7 +1644,7 @@ MonoBehaviour:
   networkItems: {fileID: 1875248911}
   gameControl: {fileID: 1218952533}
   aiManagerSystem: {fileID: 1386869475}
-  playerAnimationControl: {fileID: 0}
+  spawnObject: {fileID: 0}
 --- !u!4 &697803423
 Transform:
   m_ObjectHideFlags: 0
@@ -1614,6 +1662,7 @@ Transform:
   - {fileID: 1218952534}
   - {fileID: 1386869477}
   - {fileID: 2077348643}
+  - {fileID: 1762762899}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &704804417
@@ -1896,6 +1945,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 294257959}
     m_Modifications:
+    - target: {fileID: 2715326018075485482, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
+      propertyPath: SortKey
+      value: 4001400613
+      objectReference: {fileID: 0}
     - target: {fileID: 4902537982672877545, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
       propertyPath: m_Name
       value: Kitchen_ServiceArea
@@ -2004,6 +2057,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3165455233057437910, guid: a33d04740d6e87c4e914327735502d6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798966572840390749, guid: a33d04740d6e87c4e914327735502d6f, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8705049477171640944, guid: a33d04740d6e87c4e914327735502d6f, type: 3}
@@ -2399,6 +2456,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1750056485}
     m_Modifications:
+    - target: {fileID: 2715326018075485482, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
+      propertyPath: SortKey
+      value: 3792336624
+      objectReference: {fileID: 0}
     - target: {fileID: 4902537982672877545, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
       propertyPath: m_Name
       value: Kitchen_ServiceArea (1)
@@ -2609,6 +2670,10 @@ PrefabInstance:
     - target: {fileID: 7695745002120009076, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 2589787392
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3428,6 +3493,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 294257959}
     m_Modifications:
+    - target: {fileID: 2715326018075485482, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
+      propertyPath: SortKey
+      value: 1690624547
+      objectReference: {fileID: 0}
     - target: {fileID: 4902537982672877545, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
       propertyPath: m_Name
       value: Kitchen_ServiceArea (1)
@@ -3694,6 +3763,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 294257959}
     m_Modifications:
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 932291544
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner (1)
@@ -3890,6 +3963,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 35942004
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3908,6 +3985,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1750056485}
     m_Modifications:
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 1427085436
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner
@@ -3970,6 +4051,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 294257959}
     m_Modifications:
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 2825854166
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner (1)
@@ -4032,6 +4117,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 294257959}
     m_Modifications:
+    - target: {fileID: 1846325850161898710, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 2022977340
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 459149230
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23
@@ -4075,6 +4168,14 @@ PrefabInstance:
     - target: {fileID: 4185393535067561054, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Storage_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620522341115169463, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: foodType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620522341115169463, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: storageFoodCount
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4184,6 +4285,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 294257959}
     m_Modifications:
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 133142385
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner
@@ -4592,6 +4697,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 294257959}
     m_Modifications:
+    - target: {fileID: 1846325850161898710, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 2798063178
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 1234235068
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -4636,6 +4749,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kitchen_Storage_2
       objectReference: {fileID: 0}
+    - target: {fileID: 4620522341115169463, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: foodType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620522341115169463, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: storageFoodCount
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4646,6 +4767,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
   m_PrefabInstance: {fileID: 1754289950}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1762762898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1762762899}
+  - component: {fileID: 1762762900}
+  - component: {fileID: 1762762901}
+  m_Layer: 0
+  m_Name: SpawnObjcetSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1762762899
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762762898}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 697803423}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1762762900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762762898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333bca751566a1d48aa33c1ad59abab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1762762901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762762898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 1824704672
+  ObjectInterest: 1
+  Flags: 131073
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 1762762900}
 --- !u!1001 &1820871522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4744,6 +4928,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 294257959}
     m_Modifications:
+    - target: {fileID: 1846325850161898710, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 923142630
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 3654281816
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -4787,6 +4979,10 @@ PrefabInstance:
     - target: {fileID: 4185393535067561054, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Storage_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620522341115169463, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: storageFoodCount
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4849,6 +5045,10 @@ PrefabInstance:
     - target: {fileID: 7695745002120009076, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 907464676
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5048,6 +5248,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 791735741
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5099,7 +5303,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b519a1175587a604fb5116a486acda95, type: 2}
   networkItems:
   - {fileID: 0}
-  networkItemsPlates: []
+  networkPlate: {fileID: 0}
 --- !u!4 &1875248912
 Transform:
   m_ObjectHideFlags: 0
@@ -5123,6 +5327,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1750056485}
     m_Modifications:
+    - target: {fileID: 1846325850161898710, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 735249494
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 3466388680
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.006
@@ -5229,6 +5441,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 3783480027
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5247,6 +5463,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 294257959}
     m_Modifications:
+    - target: {fileID: 1846325850161898710, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 2427814426
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 863986316
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23
@@ -5290,6 +5514,14 @@ PrefabInstance:
     - target: {fileID: 4185393535067561054, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Storage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620522341115169463, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: foodType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620522341115169463, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: storageFoodCount
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5461,6 +5693,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1750056485}
     m_Modifications:
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 1120975283
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner (2)
@@ -5523,6 +5759,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1750056485}
     m_Modifications:
+    - target: {fileID: 1846325850161898710, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 1078864752
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 3810003938
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.999987
@@ -5629,6 +5873,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 294257959}
     m_Modifications:
+    - target: {fileID: 2149441030163502787, guid: bfe26087c541057499169c9b493d0190, type: 3}
+      propertyPath: SortKey
+      value: 3050970642
+      objectReference: {fileID: 0}
     - target: {fileID: 4652026129727206417, guid: bfe26087c541057499169c9b493d0190, type: 3}
       propertyPath: plateLimit
       value: 5

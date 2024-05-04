@@ -12,27 +12,26 @@ public class PlayerAction : NetworkBehaviour
     public BombManager bombManager;
     public PlayerInteraction playerInteraction;
     public PlayerCamera playerCamera;
+    public StateManager stateManager;
 
-    public bool isGrabbing;
-    public bool isRunning;
-    public bool isJumping;
-    public bool isKitchenAction;
+    //public IState currentState;
+
+    //Player Anchor Point
+    public Transform playerAnchorPoint;
 
 
-    public IState currentState;
-
-    public  bool isGrabbable = false;
+    public bool isGrabbable = false;
 
     [Header("KeepObject")]
-    public GameObject keepObject;
+    public NetworkObject keepObject;
     //public ItemType keepObjectType;
 
     [Header("GrabbleObject")]
-    public GameObject grabbableObject;
-    public ItemType grabbableObjectType;
+    public NetworkObject interactionObjcet;
+    public ItemType interactionObjcetType;
     //public bool isTriggered = false;
 
-    public GameObject playerInteractionKitchenObject;
+    public NetworkObject playerInteractionKitchenObject;
 
     //----->
     private async void Start()
@@ -41,18 +40,18 @@ public class PlayerAction : NetworkBehaviour
         if (Object.HasStateAuthority) 
         {
         GameService.Instance.playerAction = this;
-        currentState = new IdleState();
-        currentState.EnterState();
+        //currentState = new IdleState();
+        //currentState.EnterState();
         await TryGetPlayer();
         }
     }
 
-    public void ChangeState(IState newState)
-    {
-        currentState.ExitState();
-        currentState = newState;
-        currentState.EnterState();
-    }
+    //public void ChangeState(IState newState)
+    //{
+    //    currentState.ExitState();
+    //    currentState = newState;
+    //    currentState.EnterState();
+    //}
 
     private async UniTask<NetworkPlayer> TryGetPlayer()
     {
@@ -69,21 +68,21 @@ public class PlayerAction : NetworkBehaviour
 
     }
 
-    public void RPC_Trigger(NetworkObject networkObject)
+    public void RPC_Despawn(NetworkObject networkObject)
     {
         playerInteraction.RPC_Despawn(networkObject);
     }
 
     public void TriggerObject(Collider Object)
     {
-        if(Object.CompareTag("Item")) grabbableObject = Object.gameObject;
+        if(Object.CompareTag("Item")) interactionObjcet = Object.GetComponent<NetworkObject>();
     }
 
     public override void FixedUpdateNetwork()
     {
         if (HasStateAuthority == false) return;
 
-        currentState.UpdateState();
+        //currentState.UpdateState();
         //GameService.Instance.playerAnimationControl.RPC_CharacterDontKichenAction();
         if (GetInput<PlayerInputData>(out var inputData))
         {
@@ -109,17 +108,35 @@ public class PlayerAction : NetworkBehaviour
             {
                 if (playerInteractionKitchenObject)
                 {
-                    GameService.Instance.kitchenMechanics.SetKitchenObject(playerInteractionKitchenObject);
+                    //Bunu Burada Yapma Delay koyamýyorsun *************************
+
+                    GameService.Instance.kitchenMechanics.SelectKitchenAction(
+                        playerInteractionKitchenObject,
+                        keepObject,
+                        playerInteractionKitchenObject.GetComponent<KitchenObject>().kitchenObjectType,
+                        playerAnchorPoint);
+
+                    //if (isGrabbable)
+                    //{
+                    //    GameService.Instance.kitchenMechanics.KitchenObjectDropItem
+                    //        (playerInteractionKitchenObject, playerInteractionKitchenObject.GetComponent<KitchenObject>().kitchenObjectType);
+                    //}
+                    //else if (!isGrabbable)
+                    //{
+                    //    GameService.Instance.kitchenMechanics.KitchenObjectGrabItem
+                    //        (playerInteractionKitchenObject,playerInteractionKitchenObject.GetComponent<KitchenObject>().kitchenObjectType,playerAnchorPoint);
+                    //    //GameService.Instance.kitchenMechanics.SetKitchenObject(playerInteractionKitchenObject);
+                    //}
                 }
                 else
                 {
                     if (!isGrabbable)
                     {
-                        playerInteraction.PlayerGrabAndDropItem(grabbableObjectType, grabbableObject);
+                        playerInteraction.PlayerGrabObject(interactionObjcetType, interactionObjcet);
                     }
                     else if (isGrabbable)
                     {
-                        playerInteraction.PlayerGrabAndDropItem(ItemType.Null, null);
+                        playerInteraction.PlayerDrobObject(keepObject);
                     }
                 }
             }
@@ -128,15 +145,15 @@ public class PlayerAction : NetworkBehaviour
                 if (playerInteractionKitchenObject)
                 {
                     Debug.Log("burasi mi");
-                    GameService.Instance.kitchenMechanics.ActionKitchenObject(playerInteractionKitchenObject);
+                    //GameService.Instance.kitchenMechanics.ActionKitchenObject(playerInteractionKitchenObject);
                     //GameService.Instance.playerAnimationControl.RPC_CharacterKichenAction();
-                    isKitchenAction = true;
+                    stateManager.isKitchenAction = true;
                 }
                 
             }
             else
             {
-                isKitchenAction = false;
+                stateManager.isKitchenAction = false;
 
             }
             if (inputData.isCameraChange == 1)

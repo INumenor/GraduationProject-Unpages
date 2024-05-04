@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RunState : IState
 {
+    public StateManager stateManager { get; set; }
+
     public void EnterState()
     {
         RPC_CharacterRunning();
@@ -17,13 +19,13 @@ public class RunState : IState
 
     public void UpdateState()
     {
-        if (GameService.Instance.playerAction.isJumping)
+        if (stateManager.isJumping)
         {
-            GameService.Instance.playerAction.ChangeState(new JumpState());
+           stateManager.ChangeState(new JumpState());
         }
-        else if (!GameService.Instance.playerAction.isRunning)
+        else if (!stateManager.isRunning)
         {
-            GameService.Instance.playerAction.ChangeState(new IdleState());
+           stateManager.ChangeState(new IdleState());
         }
         
     }
@@ -31,12 +33,12 @@ public class RunState : IState
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterRunning()
     {
-        GameService.Instance.playerAnimationControl.characterAnimator.SetBool("isRunning", true);
+        stateManager.characterAnimator.SetBool("isRunning", true);
     }
 
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterDontRunning()
     {
-        GameService.Instance.playerAnimationControl.characterAnimator.SetBool("isRunning", false);
+        stateManager.characterAnimator.SetBool("isRunning", false);
     }
 }

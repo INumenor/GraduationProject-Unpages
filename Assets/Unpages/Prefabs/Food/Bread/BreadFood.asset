@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   item: {fileID: 7152774734982961225, guid: 3ad8a7cedd0876e49a7a24a7a04b6074, type: 3}
-  itemType: 1
+  foodtype: 1
   isSpawnable: 1
   minRandomGameSpawn: 0
   maxRandomGameSpawn: 30

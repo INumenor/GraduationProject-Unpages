@@ -1100,7 +1100,7 @@ Transform:
   m_GameObject: {fileID: 5987617279424536901}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: -0.0524, z: 0.01}
+  m_LocalPosition: {x: 0, y: -0.0374, z: 0.0113}
   m_LocalScale: {x: 0.034672, y: 0.034672, z: 0.034672}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1133,9 +1133,9 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6
-  m_Height: 1.5
-  m_Direction: 0
+  m_Radius: 0.4
+  m_Height: 0.6
+  m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!54 &5319842752556180481
 Rigidbody:
@@ -1487,7 +1487,8 @@ GameObject:
   - component: {fileID: 6242913129753619603}
   - component: {fileID: 4219550076795375029}
   - component: {fileID: 247904878623844965}
-  - component: {fileID: 7770308947653098220}
+  - component: {fileID: 8832382488721072074}
+  - component: {fileID: 6543497796288071708}
   m_Layer: 0
   m_Name: TonkoV2
   m_TagString: Untagged
@@ -1556,7 +1557,8 @@ MonoBehaviour:
   - {fileID: 6265987209088614195}
   - {fileID: 4219550076795375029}
   - {fileID: 247904878623844965}
-  - {fileID: 7770308947653098220}
+  - {fileID: 8832382488721072074}
+  - {fileID: 6543497796288071708}
 --- !u!114 &6189350198531924518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1592,8 +1594,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.2
-  m_Height: 11.9
+  m_Radius: 3
+  m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 5, z: 0}
 --- !u!143 &8065298162835608123
@@ -1615,8 +1617,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 11.9
-  m_Radius: 3.2
+  m_Height: 10
+  m_Radius: 3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -1672,14 +1674,12 @@ MonoBehaviour:
   bombManager: {fileID: 6242913129753619603}
   playerInteraction: {fileID: 4219550076795375029}
   playerCamera: {fileID: 247904878623844965}
-  isGrabbing: 0
-  isRunning: 0
-  isJumping: 0
-  isKitchenAction: 0
+  stateManager: {fileID: 6543497796288071708}
+  playerAnchorPoint: {fileID: 835527270749366859}
   isGrabbable: 0
   keepObject: {fileID: 0}
-  grabbableObject: {fileID: 0}
-  grabbableObjectType: 4
+  interactionObjcet: {fileID: 0}
+  interactionObjcetType: 4
   playerInteractionKitchenObject: {fileID: 0}
 --- !u!114 &6242913129753619603
 MonoBehaviour:
@@ -1708,8 +1708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde8b138a19abd141ac173a64b4667b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionObject: {fileID: 0}
-  itemAnchorPoint: {fileID: 835527270749366859}
 --- !u!114 &247904878623844965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1724,7 +1722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerCamera: {fileID: 3133918582811993240}
   _mainCamera: {fileID: 0}
---- !u!114 &7770308947653098220
+--- !u!114 &8832382488721072074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1733,10 +1731,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 8520188694227489318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7539250029eb06347933965d431a6e22, type: 3}
+  m_Script: {fileID: 11500000, guid: 333bca751566a1d48aa33c1ad59abab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6543497796288071708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520188694227489318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66dbd8ab8212af3458e6e210e43b44e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterAnimator: {fileID: 6514754251844787376}
+  playerAction: {fileID: 6265987209088614195}
+  isGrabbing: 0
+  isRunning: 0
+  isJumping: 0
+  isKitchenAction: 0
 --- !u!1 &8748265097726127362
 GameObject:
   m_ObjectHideFlags: 0

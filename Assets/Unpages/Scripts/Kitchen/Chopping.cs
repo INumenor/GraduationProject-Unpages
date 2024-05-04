@@ -38,15 +38,15 @@ public class Chopping :NetworkBehaviour
         }     
         else
         {
-            itemType = GameService.Instance.playerAction.keepObject.GetComponent<FoodItem>().foodType;
+            //itemType = GameService.Instance.playerAction.keepObject.GetComponent<FoodItem>().foodType;
             if (GameService.Instance.playerAction.keepObject.GetComponent<FoodItem>().isSliced)
             {
-                SpawnFood(GameService.Instance.networkItems.GetNetworkItemSlice(itemType));
+                //SpawnFood(GameService.Instance.networkItems.GetNetworkItemSlice(itemType));
                 isSlice = true;
             }
             else
             {
-                SpawnFood(GameService.Instance.networkItems.GetNetworkFoodItem(itemType));
+                //SpawnFood(GameService.Instance.networkItems.GetNetworkFoodItem(itemType));
             }
             DespawnFood(gameObject.GetComponent<NetworkObject>());
             isFull = true;
@@ -65,7 +65,7 @@ public class Chopping :NetworkBehaviour
         else if(!gameObject && isFull && choppingCount == itemChoppingCount)
         {
             DespawnFood(item);
-            SpawnSliceFood(GameService.Instance.networkItems.GetNetworkItemSlice(itemType));
+            //SpawnSliceFood(GameService.Instance.networkItems.GetNetworkItemSlice(itemType));
             isSlice = true;
         }
     }
@@ -89,24 +89,24 @@ public class Chopping :NetworkBehaviour
     }
     public void DespawnFood(NetworkObject networkObject)
     {
-        GameService.Instance.playerAction.RPC_Trigger(networkObject);
+        GameService.Instance.playerAction.RPC_Despawn(networkObject);
     }
     public void GrabFood()
     {
         if(isSlice)
         {
-            GameService.Instance.playerAction.playerInteraction.PlayerChoppingGrab(GameService.Instance.networkItems.GetNetworkItemSlice(itemType));
+            //GameService.Instance.playerAction.playerInteraction.PlayerChoppingGrab(GameService.Instance.networkItems.GetNetworkItemSlice(itemType));
         }
         else
         {
-            GameService.Instance.playerAction.playerInteraction.PlayerChoppingGrab(GameService.Instance.networkItems.GetNetworkFoodItem(itemType));
+            //GameService.Instance.playerAction.playerInteraction.PlayerChoppingGrab(GameService.Instance.networkItems.GetNetworkFoodItem(itemType));
         }
         isSlice = false;
     }
     public void InteractChoppingBoard()
     {
 
-        GameService.Instance.playerAction.playerInteractionKitchenObject = this.gameObject;
+        //GameService.Instance.playerAction.playerInteractionKitchenObject = this.gameObject;
     }
 
     public async void StartActivationDelay()

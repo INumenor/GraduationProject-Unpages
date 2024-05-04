@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7152774734982961225}
   - component: {fileID: 5045039604066498265}
   - component: {fileID: 4515964099041702478}
-  - component: {fileID: -619464702420099271}
+  - component: {fileID: -795124965920639757}
   m_Layer: 6
   m_Name: TomatoFood
   m_TagString: Item
@@ -170,7 +170,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-619464702420099271
+--- !u!114 &-795124965920639757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,6 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53278220452b4d247b285415239c4dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0
+  objcetInteract: {fileID: 0}
   foodType: 0
-  choppingCount: 10
+  choppingCount: 5
   isSliced: 0
+  isPlateHolder: 0

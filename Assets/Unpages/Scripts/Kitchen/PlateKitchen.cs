@@ -15,16 +15,16 @@ public class PlateKitchen : NetworkBehaviour
 
     public void GrabAndDropPlate(GameObject gameObject)//tabak yerine gidið bastýðýnda tabak almasý ancak tabak olan bir yere bastýðýnda eli boþsa önündeki tabaðý almasý lazým ve eðer elinde varsa da tabaðý koymasý gerekiyor.
     {
-        Debug.Log("aaaaaa");
-        if (!gameObject && plateLimit > 0)
-        {
-            GetPlate();
-        }
-        else if(gameObject && gameObject.GetComponent<FoodItem>().foodType == ItemType.Plate)
-        {
-            Debug.Log("tabaðý býrak");
-            DropPlate(gameObject.GetComponent<NetworkObject>());
-        }
+        //Debug.Log("aaaaaa");
+        //if (!gameObject && plateLimit > 0)
+        //{
+        //    GetPlate();
+        //}
+        //else if(gameObject && gameObject.GetComponent<FoodItem>().foodType == ItemType.Plate)
+        //{
+        //    Debug.Log("tabaðý býrak");
+        //    DropPlate(gameObject.GetComponent<NetworkObject>());
+        //}
     }
 
     public void DropPlate(NetworkObject networkObject)
@@ -37,15 +37,15 @@ public class PlateKitchen : NetworkBehaviour
     }
     public void GetPlate()
     {
-        GameService.Instance.playerAction.playerInteraction.PlayerPlateGrab(plateNetworkObject);
+        //GameService.Instance.playerAction.playerInteraction.PlayerPlateGrab(plateNetworkObject);
         plateLimit --;
     }
     public void DespawnPlate(NetworkObject networkObject)
     {
-        GameService.Instance.playerAction.RPC_Trigger(networkObject);
+        GameService.Instance.playerAction.RPC_Despawn(networkObject);
     }
     public void InteractPlateArea()
     {
-        GameService.Instance.playerAction.playerInteractionKitchenObject = this.gameObject;
+        //GameService.Instance.playerAction.playerInteractionKitchenObject = this.gameObject;
     }
 }
