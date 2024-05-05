@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2195819740958890788}
   m_Layer: 6
   m_Name: Tomato_Chopped
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
-  objcetInteract: {fileID: 0}
   foodType: 0
   choppingCount: 0
   isSliced: 0
+  isPlateHolder: 0
+  foodInteract: {fileID: 0}

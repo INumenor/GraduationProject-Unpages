@@ -266,16 +266,13 @@ PrefabInstance:
       addedObject: {fileID: -8986002218692646372}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70d6f13337dc89e4aa2bb1bab8c6271e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2521819301019201279}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70d6f13337dc89e4aa2bb1bab8c6271e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6106854300509309926}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70d6f13337dc89e4aa2bb1bab8c6271e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 569290358201943655}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 70d6f13337dc89e4aa2bb1bab8c6271e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 708660761896351496}
+      addedObject: {fileID: 4202406754029105716}
   m_SourcePrefab: {fileID: 100100000, guid: 70d6f13337dc89e4aa2bb1bab8c6271e, type: 3}
 --- !u!4 &4983789309773956293 stripped
 Transform:
@@ -321,21 +318,6 @@ MonoBehaviour:
   SyncParent: 1
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 0
---- !u!114 &2521819301019201279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5648122324751687295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53278220452b4d247b285415239c4dfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foodType: 4
-  choppingCount: 0
-  isSliced: 0
 --- !u!65 &6106854300509309926
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -384,7 +366,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &708660761896351496
+--- !u!114 &4202406754029105716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -393,100 +375,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5648122324751687295}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae5b6ec0d8defb84293e378baf159459, type: 3}
+  m_Script: {fileID: 11500000, guid: b069d7a5b5527f54190bc796cc8bc3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 5160378529722156706}
-    - {fileID: 6274524140106436286}
-    - {fileID: 3707290191539270790}
-    - {fileID: 6515290171121292203}
-    - {fileID: 4218731426988875632}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: anchorPointsPlate
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[UnityEngine.GameObject,
-        UnityEngine.CoreModule]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 5
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 0
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 3
-    - Name: $v
-      Entry: 10
-      Data: 3
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 4
-    - Name: $v
-      Entry: 10
-      Data: 4
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+  itemType: 2
+  plateInteract: {fileID: 0}

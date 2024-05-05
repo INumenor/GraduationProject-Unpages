@@ -11,12 +11,14 @@ public class PlateItem : Item
 
     //public NetworkObject platePrefab;
 
+    public PlateInteract plateInteract;
+
     public Dictionary<int, GameObject> anchorPointsPlate = new Dictionary<int, GameObject>();
 
     public override void AddComponentInteract()
     {
         base.AddComponentInteract();
-        //objcetInteract = gameObject.AddComponent<FoodInteract>();
+        plateInteract = gameObject.AddComponent<PlateInteract>();
 
     }
 

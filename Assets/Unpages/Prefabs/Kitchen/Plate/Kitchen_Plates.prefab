@@ -115,8 +115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53aa385160ddf646b60539ff1fe2825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plateNetworkObject: {fileID: -8338275208414846468, guid: 7b005171a2294f44a8ba7d1e8627e9cd, type: 3}
-  plateLimit: 0
+  anchorPoints: {fileID: 0}
+  kitchenObjectType: 0
+  onTheCupboardObject: {fileID: 0}
+  plateNetworkObject: {fileID: 0}
+  plateLimit: 5
   platesObjects: []
 --- !u!114 &2149441030163502787
 MonoBehaviour:
@@ -134,8 +137,7 @@ MonoBehaviour:
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 4652026129727206417}
+  NetworkedBehaviours: []
 --- !u!114 &8956932802625532388
 MonoBehaviour:
   m_ObjectHideFlags: 0

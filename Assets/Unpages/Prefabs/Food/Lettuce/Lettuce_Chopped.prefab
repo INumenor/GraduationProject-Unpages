@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -8065890571960684100}
   m_Layer: 6
   m_Name: Lettuce_Chopped
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,8 +183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
-  objcetInteract: {fileID: 0}
   foodType: 3
   choppingCount: 0
   isSliced: 1
   isPlateHolder: 0
+  foodInteract: {fileID: 0}

@@ -110,7 +110,7 @@ public class PlayerAction : NetworkBehaviour
                 {
                     //Bunu Burada Yapma Delay koyamýyorsun *************************
 
-                    GameService.Instance.kitchenMechanics.SelectKitchenAction(
+                    GameService.Instance.kitchenMechanics.SelectKitchenGD(
                         playerInteractionKitchenObject,
                         keepObject,
                         playerInteractionKitchenObject.GetComponent<KitchenObject>().kitchenObjectType,
@@ -144,10 +144,11 @@ public class PlayerAction : NetworkBehaviour
             {
                 if (playerInteractionKitchenObject)
                 {
-                    Debug.Log("burasi mi");
-                    //GameService.Instance.kitchenMechanics.ActionKitchenObject(playerInteractionKitchenObject);
+                    GameService.Instance.kitchenMechanics.SelectKitchenAction(playerInteractionKitchenObject,
+                        keepObject,
+                        playerInteractionKitchenObject.GetComponent<KitchenObject>().kitchenObjectType);
                     //GameService.Instance.playerAnimationControl.RPC_CharacterKichenAction();
-                    stateManager.isKitchenAction = true;
+                    
                 }
                 
             }

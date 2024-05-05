@@ -11,28 +11,28 @@ public class NetworkItems : MonoBehaviour
     public NetworkObject networkPlate;
 
 
-    public NetworkObject GetNetworkFoodItem(FoodType itemType)
+    public NetworkObject GetNetworkFoodItem(FoodType foodType)
     {
         foreach (FoodInfo itemObject in networkFoodItems)
         {
-            if(itemObject.foodtype == itemType)
+            if(itemObject.foodtype == foodType)
             {
                 return itemObject.item;
             }
         }
         return null;
     }
-    //public NetworkObject GetNetworkItemSlice(ItemType itemType)
-    //{
-    //    foreach(FoodInfo itemSliceObject in networkItemsSlice)
-    //    {
-    //        if (itemSliceObject.foodtype == itemType)
-    //        {
-    //            return itemSliceObject.item;
-    //        }
-    //    }
-    //    return null;
-    //}
+    public NetworkObject GetNetworkItemSlice(FoodType foodType)
+    {
+        foreach (FoodInfo itemSliceObject in networkItemsSlice)
+        {
+            if (itemSliceObject.foodtype == foodType)
+            {
+                return itemSliceObject.item;
+            }
+        }
+        return null;
+    }
 
     public NetworkObject GetNetworkItemPlate(ItemType itemType)
     {

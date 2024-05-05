@@ -5301,9 +5301,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a6a7f42d2ba03c441ab951b9754d05b4, type: 2}
   - {fileID: 11400000, guid: 22ae739bd9cd9fe4a9b41c7de7f1c5e8, type: 2}
   - {fileID: 11400000, guid: b519a1175587a604fb5116a486acda95, type: 2}
-  networkItems:
-  - {fileID: 0}
-  networkPlate: {fileID: 0}
+  networkItems: []
+  networkPlate: {fileID: -8338275208414846468, guid: 7b005171a2294f44a8ba7d1e8627e9cd, type: 3}
 --- !u!4 &1875248912
 Transform:
   m_ObjectHideFlags: 0
@@ -5881,13 +5880,17 @@ PrefabInstance:
       propertyPath: plateLimit
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4652026129727206417, guid: bfe26087c541057499169c9b493d0190, type: 3}
+      propertyPath: kitchenObjectType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7218118894695962098, guid: bfe26087c541057499169c9b493d0190, type: 3}
       propertyPath: m_Name
       value: Kitchen_Plates
       objectReference: {fileID: 0}
     - target: {fileID: 8025476420586377032, guid: bfe26087c541057499169c9b493d0190, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20
+      value: 19.98
       objectReference: {fileID: 0}
     - target: {fileID: 8025476420586377032, guid: bfe26087c541057499169c9b493d0190, type: 3}
       propertyPath: m_LocalPosition.y

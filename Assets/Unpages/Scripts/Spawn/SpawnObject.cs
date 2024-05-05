@@ -100,6 +100,33 @@ public class SpawnObject : NetworkBehaviour
 
     #endregion
 
+    #region Spawn of Object Drop into ChoppingBoard
+
+    public NetworkObject SpawnChoppedItem(NetworkObject defautObjcet,NetworkObject choppedObject,Transform anchorPoint,bool isInteractor)
+    {
+        NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(choppedObject, anchorPoint.position, this.transform.rotation, Object.StateAuthority);
+        item.name = choppedObject.name;
+        item.transform.SetParent(anchorPoint);
+        item.gameObject.GetComponent<Rigidbody>().useGravity = false;
+        item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        RPC_Despawn(defautObjcet);
+        GameService.Instance.playerAction.isGrabbable = false;
+        GameService.Instance.playerAction.keepObject = null;
+        if (isInteractor) item.GetComponent<Item>().AddComponentInteract();
+        return item;
+    }
+
+    #endregion
+
+    #region Plate Drop
+
+    public void PlateDrop(NetworkObject plateObject)
+    {
+
+    }
+
+    #endregion
+
     #region RPC_System
     [Rpc(RpcSources.All, RpcTargets.All)]//------> Change
     public void RPC_Despawn(NetworkObject networkObject)

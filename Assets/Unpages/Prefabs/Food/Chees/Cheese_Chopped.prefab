@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cheese_Chopped
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2cc4fc1d698c23743b727a6d71ad5790, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2cc4fc1d698c23743b727a6d71ad5790, type: 3}
+      propertyPath: m_TagString
+      value: Item
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -150,9 +158,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53278220452b4d247b285415239c4dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0
   foodType: 2
   choppingCount: 0
   isSliced: 1
+  isPlateHolder: 0
+  foodInteract: {fileID: 0}
 --- !u!135 &2637357628632640191
 SphereCollider:
   m_ObjectHideFlags: 0

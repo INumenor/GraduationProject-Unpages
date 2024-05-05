@@ -5,7 +5,7 @@ public class KitchenMechanics : MonoBehaviour
 {
     private bool _isInActivationDelay;
 
-    public void SelectKitchenAction(NetworkObject kitchenObject ,NetworkObject keepObject, KitchenObjectType kitchenObjectType, Transform anchorPoint)
+    public void SelectKitchenGD(NetworkObject kitchenObject ,NetworkObject keepObject, KitchenObjectType kitchenObjectType, Transform anchorPoint)
     {
         if (_isInActivationDelay) return;
 
@@ -54,6 +54,27 @@ public class KitchenMechanics : MonoBehaviour
         //    default:
         //        break;
         //}
+        StartActivationDelay();
+    }
+
+    public void SelectKitchenAction(NetworkObject kitchenObject, NetworkObject keepObject, KitchenObjectType kitchenObjectType)
+    {
+        if (_isInActivationDelay) return;
+
+        if (keepObject == null)
+        {
+            switch (kitchenObjectType)
+            {
+                case KitchenObjectType.ChoppingBoard:
+                    kitchenObject.GetComponent<Chopping>().ChoppingFood();
+                    break;
+                default: break;
+            }
+        }
+        else
+        {
+            //KitchenObjectDropItem(kitchenObject, keepObject, kitchenObjectType);
+        }
         StartActivationDelay();
     }
 

@@ -5282,7 +5282,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c432e991d8eaf8479b75e1d4dc23bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 0
+  anchorPoints: {fileID: 2484313536223814057}
+  kitchenObjectType: 5
+  onTheCupboardObject: {fileID: 0}
+  itemType: 4
   choppingCount: 0
   isFull: 0
   isSlice: 0
@@ -5308,8 +5311,7 @@ MonoBehaviour:
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 7798966572840390749}
+  NetworkedBehaviours: []
 --- !u!114 &7911135784569108370
 MonoBehaviour:
   m_ObjectHideFlags: 0
