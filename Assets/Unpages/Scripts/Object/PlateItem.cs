@@ -20,10 +20,13 @@ public class PlateItem : Item
 
     public List<FoodType> foodTypes = new List<FoodType>();
 
-    public override void AddComponentInteract()
+    public override void RPCTrigger()
     {
-        base.AddComponentInteract();
-        plateInteract = gameObject.AddComponent<PlateInteract>();
+        if(isInteractable && !plateInteract)
+        {
+            plateInteract = gameObject.AddComponent<PlateInteract>();
+        } 
+        
     }
 
     public void DropItem(NetworkObject keepObject)

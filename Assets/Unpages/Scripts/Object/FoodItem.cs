@@ -1,3 +1,5 @@
+using Fusion;
+
 public enum FoodType { Tomato, Bread, Cheese, Lettuce, Null }
 public class FoodItem : Item
 {
@@ -6,11 +8,16 @@ public class FoodItem : Item
     public bool isProcessed;
     public bool isPlateHolder;
     public FoodInteract foodInteract;
-    public override void AddComponentInteract()
+
+    
+    public override void RPCTrigger()
     {
-        base.AddComponentInteract();
-        foodInteract = gameObject.AddComponent<FoodInteract>();
+        if(isInteractable && !foodInteract)
+        {
+            foodInteract = gameObject.AddComponent<FoodInteract>();
+        }
     }
+        
 
     //public void Interact(InteractorData interactorData)
     //{

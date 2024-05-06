@@ -106,6 +106,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1247341859562060496}
+  - {fileID: -8065890571960684100}
 --- !u!114 &1247341859562060496
 MonoBehaviour:
   m_ObjectHideFlags: 0
