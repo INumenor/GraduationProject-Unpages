@@ -9,14 +9,18 @@ public class StateManager : NetworkBehaviour
     public Animator characterAnimator;
     public PlayerAction playerAction;
 
-    public bool isGrabbing;
-    public bool isRunning;
-    public bool isJumping;
-    public bool isKitchenAction;
+    [Networked] public NetworkBool isGrabbing { get; set; }
+    [Networked] public NetworkBool isRunning { get; set; }
+    [Networked] public NetworkBool isJumping { get; set; }
+    [Networked] public NetworkBool isKitchenAction { get; set; }
+    //public bool isGrabbing;
+    //public bool isRunning;
+    //public bool isJumping;
+    //public bool isKitchenAction;
 
     void Start()
     {
-        if (!HasInputAuthority) return;
+        //if (!HasStateAuthority) return;
         currentState = new IdleState();
         currentState.stateManager = this;
         currentState.EnterState();
@@ -24,6 +28,7 @@ public class StateManager : NetworkBehaviour
 
     public void ChangeState(IState newState)
     {
+        //if (!HasStateAuthority) return;
         currentState.ExitState();
         currentState = newState;
         currentState.stateManager = this;
@@ -32,6 +37,7 @@ public class StateManager : NetworkBehaviour
 
     private void Update()
     {
+        //if (!HasStateAuthority) return;
         currentState.UpdateState();
     }
 

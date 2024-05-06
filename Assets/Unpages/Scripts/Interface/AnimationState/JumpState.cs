@@ -10,7 +10,6 @@ public class JumpState : IState
     public void EnterState()
     {
         RPC_CharacterJumping();
-        Debug.Log("içerde");
     }
 
     public void ExitState()
@@ -26,13 +25,11 @@ public class JumpState : IState
         }
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterJumping()
     {
         stateManager.characterAnimator.SetBool("isJumping", true);
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterDontJumping()
     {
         stateManager.characterAnimator.SetBool("isJumping", false);

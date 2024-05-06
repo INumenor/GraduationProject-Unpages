@@ -1,6 +1,5 @@
 using Cysharp.Threading.Tasks;
 using Fusion;
-using UnityEngine;
 using Unpages.Network;
 
 public class PlayerInteraction : NetworkBehaviour
@@ -37,20 +36,19 @@ public class PlayerInteraction : NetworkBehaviour
     {
         if (_isInActivationDelay) return;
 
-        NetworkObject networkObject=null;
+        NetworkObject networkObject = null;
         if (interactionObjcet)
         {
             switch (itemType)
             {
                 case ItemType.Food:
                     //Deðiþicek
-                    if(!interactionObjcet.GetComponent<FoodItem>().isSliced) networkObject = GameService.Instance.networkItems.GetNetworkFoodItem(interactionObjcet.GetComponent<FoodItem>().foodType);
-                    else if(interactionObjcet.GetComponent<FoodItem>().isSliced) networkObject = GameService.Instance.networkItems.GetNetworkItemSlice(interactionObjcet.GetComponent<FoodItem>().foodType);
-                    GameService.Instance.spawnObject.PlayerGrabItem(networkObject,GameService.Instance.playerAction.playerAnchorPoint,false,interactionObjcet);
+                    if (!interactionObjcet.GetComponent<FoodItem>().isProcessed) networkObject = GameService.Instance.networkItems.GetNetworkFoodItem(interactionObjcet.GetComponent<FoodItem>().foodType);
+                    else if (interactionObjcet.GetComponent<FoodItem>().isProcessed) networkObject = GameService.Instance.networkItems.GetNetworkItemSlice(interactionObjcet.GetComponent<FoodItem>().foodType);
+                    GameService.Instance.spawnObject.PlayerGrabItem(networkObject, GameService.Instance.playerAction.playerAnchorPoint, false, interactionObjcet);
                     break;
                 case ItemType.Plate:
-                    networkObject = GameService.Instance.networkItems.GetNetworkItemPlate(ItemType.Plate);
-                    GameService.Instance.spawnObject.PlayerPlateGrab(networkObject, GameService.Instance.playerAction.playerAnchorPoint,false,interactionObjcet);
+                    GameService.Instance.spawnObject.PlayerGrabPlate(GameService.Instance.networkItems.GetNetworkItemPlate(ItemType.Plate), GameService.Instance.playerAction.playerAnchorPoint, false, interactionObjcet);
                     break;
                 case ItemType.Other:
                     break;
@@ -61,14 +59,14 @@ public class PlayerInteraction : NetworkBehaviour
         StartActivationDelay();
     }
 
-    public void PlayerDrobObject(NetworkObject keepObject, ItemType itemType , NetworkObject interactionObjcet)
+    public void PlayerDrobObject(NetworkObject keepObject, ItemType itemType, NetworkObject interactionObjcet)
     {
         if (_isInActivationDelay) return;
 
         NetworkObject networkObject;
         if (keepObject)
         {
-            if(itemType == ItemType.Plate)
+            if (itemType == ItemType.Plate)
             {
                 interactionObjcet.GetComponent<PlateItem>().DropItem(keepObject);
             }
@@ -76,7 +74,7 @@ public class PlayerInteraction : NetworkBehaviour
             {
                 GameService.Instance.spawnObject.PlayerDropItem(keepObject, true);
             }
-            
+
         }
         StartActivationDelay();
     }

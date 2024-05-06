@@ -29,13 +29,12 @@ public class GrabState : IState
         }
             
     }
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+
     public void RPC_CharacterGrabbing()
     {
        stateManager.characterAnimator.SetBool("isGrabbing", true);
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterDontGrabbing()
     {
         stateManager.characterAnimator.SetBool("isGrabbing", false);

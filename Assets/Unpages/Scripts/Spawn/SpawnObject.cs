@@ -1,5 +1,4 @@
 using Fusion;
-using System.Collections.Generic;
 using UnityEngine;
 using Unpages.Network;
 
@@ -7,19 +6,19 @@ public class SpawnObject : NetworkBehaviour
 {
     private void Start()
     {
+        if (!Object.HasStateAuthority) return;
         GameService.Instance.spawnObject = this;
     }
     #region PlayerGroundGrabandDropItem
-    public void PlayerGrabItem(NetworkObject networkObject, Transform anchorPoint ,bool isIntetactor,NetworkObject interactionObjcet)
+    public void PlayerGrabItem(NetworkObject networkObject, Transform anchorPoint, bool isIntetactor, NetworkObject interactionObjcet)
     {
-        //if (interactionObject == null)
-        //{
-        NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, anchorPoint.position , this.transform.rotation,Object.StateAuthority);
+
+        NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, anchorPoint.position, this.transform.rotation, Object.StateAuthority);
         item.transform.SetParent(anchorPoint);
         item.gameObject.GetComponent<Rigidbody>().useGravity = false;
         item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         item.name = networkObject.name;
-        //interactionObject = item;
+
         GameService.Instance.playerAction.isGrabbable = true;
         GameService.Instance.playerAction.keepObject = item;
         GameService.Instance.playerAction.interactionObjcet = null;
@@ -29,13 +28,13 @@ public class SpawnObject : NetworkBehaviour
 
         if (interactionObjcet)
         {
-            interactionObjcet.ReleaseStateAuthority();
+            //interactionObjcet.ReleaseStateAuthority();
             RPC_Despawn(interactionObjcet);
         }
         //}
     }
 
-    public void PlayerDropItem(NetworkObject interactionObjcet , bool isInteractor)
+    public void PlayerDropItem(NetworkObject interactionObjcet, bool isInteractor)
     {
         //if (interactionObject != null)
         //{
@@ -46,35 +45,48 @@ public class SpawnObject : NetworkBehaviour
         item.gameObject.GetComponent<Rigidbody>().useGravity = true;
         item.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         RPC_Despawn(interactionObjcet);
-        //Runner.Despawn(interactionObject); //--> Change
+
         GameService.Instance.playerAction.isGrabbable = false;
         GameService.Instance.playerAction.keepObject = null;
+
+        if (interactionObjcet.GetComponent<Item>().itemType == ItemType.Plate && interactionObjcet.GetComponent<PlateItem>().networkFoodRecipe)
+        {
+            PlateItem plateItem = interactionObjcet.GetComponent<PlateItem>();
+            item.GetComponent<PlateItem>().GrabItem(plateItem.networkFoodRecipe);
+        }
+
         if (isInteractor) item.GetComponent<Item>().AddComponentInteract();
 
     }
     #endregion
     #region CupboardGrabandDropItem
-    public void PlayerGrabCupboardItem(NetworkObject networkObject, Transform anchorPoint, bool isIntetactor/* NetworkObject interactionObjcet*/)
+    public void PlayerGrabCupboardItem(NetworkObject interactionObjcet, Transform anchorPoint, bool isIntetactor/* NetworkObject interactionObjcet*/)
     {
         //if (interactionObject == null)
         //{
-        NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, anchorPoint.position, this.transform.rotation, Object.StateAuthority);
+        NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(interactionObjcet, anchorPoint.position, this.transform.rotation, Object.StateAuthority);
         item.transform.SetParent(anchorPoint);
         item.gameObject.GetComponent<Rigidbody>().useGravity = false;
         item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        item.name = networkObject.name;
+        item.name = interactionObjcet.name;
         //interactionObject = item;
         GameService.Instance.playerAction.isGrabbable = true;
         GameService.Instance.playerAction.keepObject = item;
 
+        if (interactionObjcet.GetComponent<Item>().itemType == ItemType.Plate && interactionObjcet.GetComponent<PlateItem>().networkFoodRecipe)
+        {
+            PlateItem plateItem = interactionObjcet.GetComponent<PlateItem>();
+            item.GetComponent<PlateItem>().GrabItem(plateItem.networkFoodRecipe);
+        }
+
         if (isIntetactor) item.GetComponent<Item>().AddComponentInteract();
-        networkObject.ReleaseStateAuthority();
-        if (networkObject) RPC_Despawn(networkObject);
+        interactionObjcet.ReleaseStateAuthority();
+        if (interactionObjcet) RPC_Despawn(interactionObjcet);
 
         //}
     }
 
-    public NetworkObject PlayerDropCupboardItem(NetworkObject interactionObjcet,Transform anchorPoint ,bool isInteractor)
+    public NetworkObject PlayerDropCupboardItem(NetworkObject interactionObjcet, Transform anchorPoint, bool isInteractor)
     {
         //if (interactionObject != null)
         //{
@@ -87,6 +99,13 @@ public class SpawnObject : NetworkBehaviour
         //Runner.Despawn(interactionObject); //--> Change
         GameService.Instance.playerAction.isGrabbable = false;
         GameService.Instance.playerAction.keepObject = null;
+
+        if (interactionObjcet.GetComponent<Item>().itemType == ItemType.Plate && interactionObjcet.GetComponent<PlateItem>().networkFoodRecipe)
+        {
+            PlateItem plateItem = interactionObjcet.GetComponent<PlateItem>();
+            item.GetComponent<PlateItem>().GrabItem(plateItem.networkFoodRecipe);
+        }
+
         if (isInteractor) item.GetComponent<Item>().AddComponentInteract();
         return item;
     }
@@ -103,9 +122,20 @@ public class SpawnObject : NetworkBehaviour
 
     #endregion
 
+    #region Destroy of Object Plate into Plate
+
+    public void DestroyDropItemKitchenPlate(NetworkObject interactionObjcet)
+    {
+        RPC_Despawn(interactionObjcet);
+        GameService.Instance.playerAction.isGrabbable = false;
+        GameService.Instance.playerAction.keepObject = null;
+    }
+
+    #endregion
+
     #region Spawn of Object Drop into ChoppingBoard
 
-    public NetworkObject SpawnChoppedItem(NetworkObject defautObjcet,NetworkObject choppedObject,Transform anchorPoint,bool isInteractor)
+    public NetworkObject SpawnChoppedItem(NetworkObject defautObjcet, NetworkObject choppedObject, Transform anchorPoint, bool isInteractor)
     {
         NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(choppedObject, anchorPoint.position, this.transform.rotation, Object.StateAuthority);
         item.name = choppedObject.name;
@@ -123,7 +153,7 @@ public class SpawnObject : NetworkBehaviour
 
     #region Spawn of Food Recipe into Plate
 
-    public NetworkObject SpawnFoodRecipe(NetworkObject interactionObjcet, Transform anchorPoint , NetworkObject keepObject)
+    public NetworkObject SpawnFoodRecipe(NetworkObject interactionObjcet, Transform anchorPoint, NetworkObject keepObject)
     {
         NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(interactionObjcet, anchorPoint.position, this.transform.rotation, Object.StateAuthority);
         item.name = interactionObjcet.name;
@@ -141,16 +171,17 @@ public class SpawnObject : NetworkBehaviour
         item.transform.SetParent(anchorPoint);
         return item;
     }
+    #endregion
+    #region Player Plate Grab and Drop
 
-    public void PlayerPlateGrab(NetworkObject networkObject, Transform anchorPoint, bool isIntetactor, NetworkObject interactionObjcet)
+    public void PlayerGrabPlate(NetworkObject networkObject, Transform anchorPoint, bool isIntetactor, NetworkObject interactionObjcet)
     {
-        
+
         NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, anchorPoint.position, this.transform.rotation, Object.StateAuthority);
         item.transform.SetParent(anchorPoint);
         item.gameObject.GetComponent<Rigidbody>().useGravity = false;
         item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         item.name = networkObject.name;
-        //interactionObject = item;
         GameService.Instance.playerAction.isGrabbable = true;
         GameService.Instance.playerAction.keepObject = item;
         GameService.Instance.playerAction.interactionObjcet = null;
@@ -170,15 +201,6 @@ public class SpawnObject : NetworkBehaviour
             RPC_Despawn(interactionObjcet);
         }
         //}
-    }
-
-    #endregion
-
-    #region Plate Drop
-
-    public void PlateDrop(NetworkObject plateObject)
-    {
-
     }
 
     #endregion

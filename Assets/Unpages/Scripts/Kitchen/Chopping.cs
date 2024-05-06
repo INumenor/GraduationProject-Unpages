@@ -41,11 +41,12 @@ public class Chopping : KitchenObject
 
     public void ChoppingFood()
     {
-        if(onTheCupboardObject != null && onTheCupboardObject.GetComponent<Item>().itemType == ItemType.Food)
+        if(onTheCupboardObject != null && onTheCupboardObject.GetComponent<Item>().itemType == ItemType.Food && !onTheCupboardObject.GetComponent<FoodItem>().isProcessed)
         {
             foodChoppingCount = onTheCupboardObject.GetComponent<FoodItem>().choppingCount;
             if(choppingCount < foodChoppingCount)
             {
+                GameService.Instance.playerAction.stateManager.isKitchenAction = true;
                 choppingCount++;
                 CheckUI();
             }

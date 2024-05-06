@@ -25,13 +25,11 @@ public class KitchenState : IState
         }
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterKichenAction()
     {
         stateManager.characterAnimator.SetBool("isKitchenAction", true);
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterDontKichenAction()
     {
         stateManager.characterAnimator.SetBool("isKitchenAction", false);

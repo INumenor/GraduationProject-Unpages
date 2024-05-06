@@ -30,13 +30,11 @@ public class RunState : IState
         
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterRunning()
     {
         stateManager.characterAnimator.SetBool("isRunning", true);
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterDontRunning()
     {
         stateManager.characterAnimator.SetBool("isRunning", false);

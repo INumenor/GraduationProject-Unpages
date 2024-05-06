@@ -161,8 +161,8 @@ MonoBehaviour:
   itemType: 0
   foodType: 2
   choppingCount: 0
-  isSliced: 1
-  isPlateHolder: 0
+  isProcessed: 1
+  isPlateHolder: 1
   foodInteract: {fileID: 0}
 --- !u!135 &2637357628632640191
 SphereCollider:

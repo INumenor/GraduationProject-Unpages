@@ -3,7 +3,7 @@ public class FoodItem : Item
 {
     public FoodType foodType;
     public int choppingCount;
-    public bool isSliced;
+    public bool isProcessed;
     public bool isPlateHolder;
     public FoodInteract foodInteract;
     public override void AddComponentInteract()

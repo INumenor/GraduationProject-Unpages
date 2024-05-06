@@ -4,7 +4,7 @@ using UnityEngine;
 public class KitchenMechanics : MonoBehaviour
 {
     private bool _isInActivationDelay;
-
+    #region Select Kitchen Player Drop And Grap
     public void SelectKitchenGD(NetworkObject kitchenObject ,NetworkObject keepObject, KitchenObjectType kitchenObjectType, Transform anchorPoint)
     {
         if (_isInActivationDelay) return;
@@ -72,9 +72,9 @@ public class KitchenMechanics : MonoBehaviour
         StartActivationDelay();
     }
 
+    #endregion
 
-
-
+    #region Kitchen Objcet Player Action
     public void SelectKitchenAction(NetworkObject kitchenObject, NetworkObject keepObject, KitchenObjectType kitchenObjectType)
     {
         if (_isInActivationDelay) return;
@@ -95,7 +95,7 @@ public class KitchenMechanics : MonoBehaviour
         }
         StartActivationDelay();
     }
-
+    #endregion
 
     //public void SetKitchenObject(GameObject gameObject)
     //{

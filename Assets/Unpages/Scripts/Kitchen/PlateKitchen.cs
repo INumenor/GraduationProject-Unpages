@@ -17,6 +17,7 @@ public class PlateKitchen : KitchenObject
     {
         if(networkObject.GetComponent<Item>().itemType == ItemType.Plate)
         {
+            GameService.Instance.spawnObject.DestroyDropItemKitchenPlate(networkObject);
             plateLimit++;
         }
     }

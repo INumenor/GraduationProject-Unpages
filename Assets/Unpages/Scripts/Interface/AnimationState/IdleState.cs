@@ -39,7 +39,6 @@ public class IdleState : IState
         }
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterIdle()
     {
         stateManager.characterAnimator.SetBool("isRunning", false);

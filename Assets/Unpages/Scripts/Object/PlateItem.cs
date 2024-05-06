@@ -28,7 +28,7 @@ public class PlateItem : Item
 
     public void DropItem(NetworkObject keepObject)
     {
-        if (ItemType.Food == keepObject.GetComponent<Item>().itemType)
+        if (ItemType.Food == keepObject.GetComponent<Item>().itemType && keepObject.GetComponent<FoodItem>().isPlateHolder)
         {
             bool isThere = false;
             foreach (FoodType foodType in foodTypes)
@@ -40,15 +40,15 @@ public class PlateItem : Item
             }
             if (!isThere)
             {
+                if(networkFoodRecipe != null)GameService.Instance.spawnObject.RPC_Despawn(networkFoodRecipe);
                 foodTypes.Add(keepObject.GetComponent<FoodItem>().foodType);
                 networkFoodRecipe = GameService.Instance.spawnObject.SpawnFoodRecipe(GameService.Instance.networkItems.GetNetworkFoodRecipes(foodTypes),anchorPoint,keepObject);
             }
         } 
     }
 
-    public  void GrabItem(NetworkObject networkObject)
+    public void GrabItem(NetworkObject networkObject)
     {
-
         networkFoodRecipe = GameService.Instance.spawnObject.ReSpawnFoodRecipe(networkObject,anchorPoint);
     }
 

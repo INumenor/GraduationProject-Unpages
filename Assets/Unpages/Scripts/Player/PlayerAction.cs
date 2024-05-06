@@ -80,7 +80,7 @@ public class PlayerAction : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (HasStateAuthority == false) return;
+        if (Object.HasStateAuthority == false) return;
 
         //currentState.UpdateState();
         //GameService.Instance.playerAnimationControl.RPC_CharacterDontKichenAction();
@@ -108,25 +108,11 @@ public class PlayerAction : NetworkBehaviour
             {
                 if (playerInteractionKitchenObject)
                 {
-                    //Bunu Burada Yapma Delay koyamýyorsun *************************
-
                     GameService.Instance.kitchenMechanics.SelectKitchenGD(
                         playerInteractionKitchenObject,
                         keepObject,
                         playerInteractionKitchenObject.GetComponent<KitchenObject>().kitchenObjectType,
                         playerAnchorPoint);
-
-                    //if (isGrabbable)
-                    //{
-                    //    GameService.Instance.kitchenMechanics.KitchenObjectDropItem
-                    //        (playerInteractionKitchenObject, playerInteractionKitchenObject.GetComponent<KitchenObject>().kitchenObjectType);
-                    //}
-                    //else if (!isGrabbable)
-                    //{
-                    //    GameService.Instance.kitchenMechanics.KitchenObjectGrabItem
-                    //        (playerInteractionKitchenObject,playerInteractionKitchenObject.GetComponent<KitchenObject>().kitchenObjectType,playerAnchorPoint);
-                    //    //GameService.Instance.kitchenMechanics.SetKitchenObject(playerInteractionKitchenObject);
-                    //}
                 }
                 else
                 {
@@ -148,7 +134,6 @@ public class PlayerAction : NetworkBehaviour
                         keepObject,
                         playerInteractionKitchenObject.GetComponent<KitchenObject>().kitchenObjectType);
                     //GameService.Instance.playerAnimationControl.RPC_CharacterKichenAction();
-                    
                 }
                 
             }

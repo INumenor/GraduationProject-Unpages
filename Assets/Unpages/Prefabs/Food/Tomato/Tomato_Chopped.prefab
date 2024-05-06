@@ -185,6 +185,6 @@ MonoBehaviour:
   itemType: 0
   foodType: 0
   choppingCount: 0
-  isSliced: 0
-  isPlateHolder: 0
+  isProcessed: 1
+  isPlateHolder: 1
   foodInteract: {fileID: 0}
