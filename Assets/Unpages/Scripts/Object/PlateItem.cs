@@ -1,5 +1,6 @@
 ﻿using Fusion;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,19 +14,46 @@ public class PlateItem : Item
 
     public PlateInteract plateInteract;
 
-    public Dictionary<int, GameObject> anchorPointsPlate = new Dictionary<int, GameObject>();
+    public Transform anchorPoint;
+
+    public NetworkObject networkFoodRecipe = null;
+
+    public List<FoodType> foodTypes = new List<FoodType>();
 
     public override void AddComponentInteract()
     {
         base.AddComponentInteract();
         plateInteract = gameObject.AddComponent<PlateInteract>();
+    }
 
+    public void DropItem(NetworkObject keepObject)
+    {
+        if (ItemType.Food == keepObject.GetComponent<Item>().itemType)
+        {
+            bool isThere = false;
+            foreach (FoodType foodType in foodTypes)
+            {
+                if(foodType == keepObject.GetComponent<FoodItem>().foodType)
+                {
+                    isThere = true;
+                }
+            }
+            if (!isThere)
+            {
+                foodTypes.Add(keepObject.GetComponent<FoodItem>().foodType);
+                networkFoodRecipe = GameService.Instance.spawnObject.SpawnFoodRecipe(GameService.Instance.networkItems.GetNetworkFoodRecipes(foodTypes),anchorPoint,keepObject);
+            }
+        } 
+    }
+
+    public  void GrabItem(NetworkObject networkObject)
+    {
+
+        networkFoodRecipe = GameService.Instance.spawnObject.ReSpawnFoodRecipe(networkObject,anchorPoint);
     }
 
 
 
-
-    
 
     //[Button]
     //public void SetFoodOnPlate(GameObject gameObject)

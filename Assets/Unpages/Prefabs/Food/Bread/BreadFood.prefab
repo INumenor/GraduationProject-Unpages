@@ -183,8 +183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
-  objcetInteract: {fileID: 0}
   foodType: 1
   choppingCount: 0
   isSliced: 0
   isPlateHolder: 1
+  foodInteract: {fileID: 0}

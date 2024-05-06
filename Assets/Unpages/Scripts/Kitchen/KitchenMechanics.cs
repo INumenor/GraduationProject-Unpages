@@ -9,13 +9,19 @@ public class KitchenMechanics : MonoBehaviour
     {
         if (_isInActivationDelay) return;
 
-        if(keepObject == null)
+        if (kitchenObject.GetComponent<KitchenObject>().onTheCupboardObject != null &&
+           kitchenObject.GetComponent<KitchenObject>().onTheCupboardObject.GetComponent<Item>().itemType == ItemType.Plate
+           && keepObject != null)
         {
-            KitchenObjectGrabItem(kitchenObject,kitchenObjectType,anchorPoint);
+            KitchenObjectPlateDropItem(kitchenObject, keepObject);
+        }
+        else if (keepObject == null)
+        {
+            KitchenObjectGrabItem(kitchenObject, kitchenObjectType, anchorPoint, keepObject);
         }
         else
         {
-            KitchenObjectDropItem(kitchenObject,keepObject,kitchenObjectType);
+            KitchenObjectDropItem(kitchenObject, keepObject, kitchenObjectType);
         }
         StartActivationDelay();
     }
@@ -40,11 +46,11 @@ public class KitchenMechanics : MonoBehaviour
 
     }
 
-    public void KitchenObjectGrabItem(NetworkObject kitchenObject, KitchenObjectType kitchenObjectType,Transform anchorPoint)
+    public void KitchenObjectGrabItem(NetworkObject kitchenObject, KitchenObjectType kitchenObjectType,Transform anchorPoint,NetworkObject keepObjcet)
     {
         if (_isInActivationDelay) return;
 
-        kitchenObject.GetComponent<KitchenObject>().GrabItem(kitchenObject, anchorPoint);
+         kitchenObject.GetComponent<KitchenObject>().GrabItem(kitchenObject, anchorPoint);
 
         //switch (kitchenObjectType)
         //{
@@ -56,6 +62,18 @@ public class KitchenMechanics : MonoBehaviour
         //}
         StartActivationDelay();
     }
+
+    public void KitchenObjectPlateDropItem(NetworkObject kitchenObject,NetworkObject keepObjcet)
+    {
+        if (_isInActivationDelay) return;
+
+        kitchenObject.GetComponent<KitchenObject>().PlateDrop(keepObjcet);
+
+        StartActivationDelay();
+    }
+
+
+
 
     public void SelectKitchenAction(NetworkObject kitchenObject, NetworkObject keepObject, KitchenObjectType kitchenObjectType)
     {

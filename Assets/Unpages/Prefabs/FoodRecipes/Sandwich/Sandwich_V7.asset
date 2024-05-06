@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8131801213e94d41a375a18667f82e8, type: 3}
-  m_Name: PlateFood
+  m_Script: {fileID: 11500000, guid: 8248ff55dcc459f47b30315d35609ca0, type: 3}
+  m_Name: Sandwich_V7
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,8 +21,6 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  item: {fileID: -8338275208414846468, guid: 7b005171a2294f44a8ba7d1e8627e9cd, type: 3}
-  foodtype: 4
-  isSpawnable: 0
-  minRandomGameSpawn: 0
-  maxRandomGameSpawn: 0
+  foodRecipe: {fileID: -5138219150320808607, guid: 832f68ffd8ac4ab4aa74d076aca32201, type: 3}
+  foodRecipeType: 1
+  foodTypes: 01000000000000000200000003000000

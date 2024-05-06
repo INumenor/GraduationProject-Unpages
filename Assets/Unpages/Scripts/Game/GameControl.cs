@@ -9,7 +9,7 @@ public class GameControl : MonoBehaviour
     {
         if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient)
         {
-            List<FoodInfo> spawnNetworkItem = GameService.Instance.networkItems.networkFoodItems;
+            List<ItemInfo> spawnNetworkItem = GameService.Instance.networkItems.networkFoodItems;
             int randomNumber = Random.Range(0, 101);
             foreach (FoodInfo itemInfo in spawnNetworkItem)
             {

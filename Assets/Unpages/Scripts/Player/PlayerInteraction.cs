@@ -50,7 +50,7 @@ public class PlayerInteraction : NetworkBehaviour
                     break;
                 case ItemType.Plate:
                     networkObject = GameService.Instance.networkItems.GetNetworkItemPlate(ItemType.Plate);
-                    GameService.Instance.spawnObject.PlayerGrabItem(networkObject, GameService.Instance.playerAction.playerAnchorPoint,false,interactionObjcet);
+                    GameService.Instance.spawnObject.PlayerPlateGrab(networkObject, GameService.Instance.playerAction.playerAnchorPoint,false,interactionObjcet);
                     break;
                 case ItemType.Other:
                     break;
@@ -61,14 +61,22 @@ public class PlayerInteraction : NetworkBehaviour
         StartActivationDelay();
     }
 
-    public void PlayerDrobObject(NetworkObject keepObject)
+    public void PlayerDrobObject(NetworkObject keepObject, ItemType itemType , NetworkObject interactionObjcet)
     {
         if (_isInActivationDelay) return;
 
         NetworkObject networkObject;
         if (keepObject)
         {
-            GameService.Instance.spawnObject.PlayerDropItem(keepObject,true);
+            if(itemType == ItemType.Plate)
+            {
+                interactionObjcet.GetComponent<PlateItem>().DropItem(keepObject);
+            }
+            else
+            {
+                GameService.Instance.spawnObject.PlayerDropItem(keepObject, true);
+            }
+            
         }
         StartActivationDelay();
     }

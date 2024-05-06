@@ -136,7 +136,7 @@ public class PlayerAction : NetworkBehaviour
                     }
                     else if (isGrabbable)
                     {
-                        playerInteraction.PlayerDrobObject(keepObject);
+                        playerInteraction.PlayerDrobObject(keepObject,interactionObjcetType,interactionObjcet);
                     }
                 }
             }

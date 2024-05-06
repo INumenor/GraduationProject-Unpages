@@ -1,4 +1,5 @@
 using Fusion;
+using System.Collections.Generic;
 using UnityEngine;
 using Unpages.Network;
 
@@ -21,6 +22,8 @@ public class SpawnObject : NetworkBehaviour
         //interactionObject = item;
         GameService.Instance.playerAction.isGrabbable = true;
         GameService.Instance.playerAction.keepObject = item;
+        GameService.Instance.playerAction.interactionObjcet = null;
+        GameService.Instance.playerAction.interactionObjcetType = ItemType.Null;
 
         if (isIntetactor) item.GetComponent<Item>().AddComponentInteract();
 
@@ -114,6 +117,59 @@ public class SpawnObject : NetworkBehaviour
         GameService.Instance.playerAction.keepObject = null;
         if (isInteractor) item.GetComponent<Item>().AddComponentInteract();
         return item;
+    }
+
+    #endregion
+
+    #region Spawn of Food Recipe into Plate
+
+    public NetworkObject SpawnFoodRecipe(NetworkObject interactionObjcet, Transform anchorPoint , NetworkObject keepObject)
+    {
+        NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(interactionObjcet, anchorPoint.position, this.transform.rotation, Object.StateAuthority);
+        item.name = interactionObjcet.name;
+        item.transform.SetParent(anchorPoint);
+        RPC_Despawn(GameService.Instance.playerAction.keepObject);
+        GameService.Instance.playerAction.isGrabbable = false;
+        GameService.Instance.playerAction.keepObject = null;
+        return item;
+    }
+
+    public NetworkObject ReSpawnFoodRecipe(NetworkObject interactionObjcet, Transform anchorPoint)
+    {
+        NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(interactionObjcet, anchorPoint.position, this.transform.rotation, Object.StateAuthority);
+        item.name = interactionObjcet.name;
+        item.transform.SetParent(anchorPoint);
+        return item;
+    }
+
+    public void PlayerPlateGrab(NetworkObject networkObject, Transform anchorPoint, bool isIntetactor, NetworkObject interactionObjcet)
+    {
+        
+        NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(networkObject, anchorPoint.position, this.transform.rotation, Object.StateAuthority);
+        item.transform.SetParent(anchorPoint);
+        item.gameObject.GetComponent<Rigidbody>().useGravity = false;
+        item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        item.name = networkObject.name;
+        //interactionObject = item;
+        GameService.Instance.playerAction.isGrabbable = true;
+        GameService.Instance.playerAction.keepObject = item;
+        GameService.Instance.playerAction.interactionObjcet = null;
+        GameService.Instance.playerAction.interactionObjcetType = ItemType.Null;
+
+        if (interactionObjcet.GetComponent<PlateItem>().networkFoodRecipe)
+        {
+            PlateItem plateItem = interactionObjcet.GetComponent<PlateItem>();
+            item.GetComponent<PlateItem>().GrabItem(plateItem.networkFoodRecipe);
+        }
+
+        if (isIntetactor) item.GetComponent<Item>().AddComponentInteract();
+
+        if (interactionObjcet)
+        {
+            interactionObjcet.ReleaseStateAuthority();
+            RPC_Despawn(interactionObjcet);
+        }
+        //}
     }
 
     #endregion

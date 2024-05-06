@@ -5210,7 +5210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7695745002120009076, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.98
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7695745002120009076, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5293,7 +5293,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   networkFoodItems:
   - {fileID: 11400000, guid: 14befe13c976d784ca48b2aa6fc5d687, type: 2}
-  - {fileID: 11400000, guid: db2d7afa0119dec4a9ba579bf03160d1, type: 2}
   - {fileID: 11400000, guid: e941168e1d400a64d8c8de641bb8bf25, type: 2}
   - {fileID: 11400000, guid: d314622514af6be4fa92eab7ff2382ff, type: 2}
   - {fileID: 11400000, guid: 8193283f6f586d14c8606c7e5a08137f, type: 2}
@@ -5301,6 +5300,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a6a7f42d2ba03c441ab951b9754d05b4, type: 2}
   - {fileID: 11400000, guid: 22ae739bd9cd9fe4a9b41c7de7f1c5e8, type: 2}
   - {fileID: 11400000, guid: b519a1175587a604fb5116a486acda95, type: 2}
+  networkFoodRecipes:
+  - {fileID: 11400000, guid: 0f8bc58ecab84fb45a4d018cc092f72f, type: 2}
+  - {fileID: 11400000, guid: 713eae521d57c7b4dbc4597197c903c9, type: 2}
+  - {fileID: 11400000, guid: 9231f7ffccefe5b46acbd47c0b52835f, type: 2}
+  - {fileID: 11400000, guid: de4923e4e7279a744b8953a1944b6ca1, type: 2}
+  - {fileID: 11400000, guid: 2f4355e572128874cba314e93f680922, type: 2}
+  - {fileID: 11400000, guid: c692f42ebb5b27943b0a0bdb430f4257, type: 2}
+  - {fileID: 11400000, guid: 6f196b8ebc8999c428f148b7bd59cddb, type: 2}
+  - {fileID: 11400000, guid: b064ac21460933246bb063d3158d0637, type: 2}
+  - {fileID: 11400000, guid: 4d94460765fd3794ea3371c1c44f07ed, type: 2}
+  - {fileID: 11400000, guid: 5b81ef01c73cdf2498a04b436e0c529d, type: 2}
+  - {fileID: 11400000, guid: dfe934a437c67c44099ae4533b69baf0, type: 2}
+  - {fileID: 11400000, guid: cdf923f68631ec949a1be25747fa188f, type: 2}
+  - {fileID: 11400000, guid: a25c95a2a40f76745abbeb9a9c5288fe, type: 2}
+  - {fileID: 11400000, guid: 7680cca4ecc8d9c45b3dc050ce29866e, type: 2}
+  - {fileID: 11400000, guid: bbe60d02519e76a4c9f3360369355377, type: 2}
   networkItems: []
   networkPlate: {fileID: -8338275208414846468, guid: 7b005171a2294f44a8ba7d1e8627e9cd, type: 3}
 --- !u!4 &1875248912
@@ -5890,7 +5905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8025476420586377032, guid: bfe26087c541057499169c9b493d0190, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.98
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8025476420586377032, guid: bfe26087c541057499169c9b493d0190, type: 3}
       propertyPath: m_LocalPosition.y

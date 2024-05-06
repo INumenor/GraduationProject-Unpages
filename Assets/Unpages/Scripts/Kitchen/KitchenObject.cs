@@ -20,4 +20,9 @@ public class KitchenObject : MonoBehaviour
     {
 
     }
+
+    public virtual void PlateDrop(NetworkObject networkObject)
+    {
+        onTheCupboardObject.GetComponent<PlateItem>().DropItem(networkObject);
+    }
 }

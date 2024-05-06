@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Fusion;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,8 +6,9 @@ using UnityEngine;
 
 public class NetworkItems : MonoBehaviour
 {
-    public List<FoodInfo> networkFoodItems;
+    public List<ItemInfo> networkFoodItems;
     public List<FoodInfo> networkItemsSlice;
+    public List<FoodRecipes> networkFoodRecipes;
     public List<FoodInfo> networkItems;
     public NetworkObject networkPlate;
 
@@ -54,4 +56,39 @@ public class NetworkItems : MonoBehaviour
     //    }
     //    return null;
     //}
+
+    public NetworkObject GetNetworkFoodRecipes(List<FoodType> foodTypes)
+    {
+        foreach(FoodRecipes foodRecipe in networkFoodRecipes)
+        {
+            if(foodTypes.Count == foodRecipe.foodTypes.Count)
+            {
+                int matchFood = 0;
+                for (int i = 0; i < foodTypes.Count; i++)
+                {
+                    if (foodRecipe.foodTypes.Contains(foodTypes[i]))
+                    {
+                        matchFood++;
+                    }
+                }
+                if(matchFood == foodTypes.Count)
+                {
+                    return foodRecipe.foodRecipe;
+                }
+            }
+        }
+        return null;
+    }
+
+    public NetworkObject GetNetworkRecipes(NetworkObject respawnRecipe)
+    {
+        foreach (FoodRecipes foodRecipe in networkFoodRecipes)
+        {
+            if (foodRecipe.foodRecipe == respawnRecipe)
+            {
+                return foodRecipe.foodRecipe;
+            }
+        }
+        return null;
+    }
 }
