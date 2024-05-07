@@ -29,7 +29,6 @@ public class MouseAI : NetworkBehaviour
             //grabbleNetworkObject = GameService.Instance.networkItems.GetNetworkFoodItem(other.GetComponent<FoodItem>().foodType);
             IsMouseGrab = true;
             GameService.Instance.playerAction.RPC_Despawn(other.GetComponent<NetworkObject>());
-            GameService.Instance.aiManagerSystem.ReturnBase();
         }
         else if (other.CompareTag("MouseBase"))
         {
@@ -38,7 +37,6 @@ public class MouseAI : NetworkBehaviour
                 IsMouseGrab = false;
                 grabbleNetworkObject = null;
             }
-            mouseAgent.speed = 5;
         }
     }
 

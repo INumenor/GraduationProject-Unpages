@@ -11,6 +11,7 @@ public class GameService : MonoBehaviour
     public NetworkItems networkItems;
     public GameControl gameControl;
     public AIManagerSystem aiManagerSystem;
+    public MouseStateManager mouseStateManager;
     public SpawnObject spawnObject;
     #endregion
 
