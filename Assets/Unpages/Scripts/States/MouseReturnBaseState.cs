@@ -8,6 +8,7 @@ public class MouseReturnBaseState : IMouseState
 
     public void EnterState()
     {
+        Debug.Log("returnbase'da");
         mouseStateManager.mouseAgent.SetDestination(mouseStateManager.mouseAgentBase.position);
     }
 
@@ -18,12 +19,11 @@ public class MouseReturnBaseState : IMouseState
 
     public void UpdateState()
     {
-        if (mouseStateManager.mouseAgentBase.position == mouseStateManager.mouseAgent.transform.position)
+        if (mouseStateManager.mouseAgentBase.position.x == mouseStateManager.mouseAgent.transform.position.x &&
+            mouseStateManager.mouseAgentBase.position.z == mouseStateManager.mouseAgent.transform.position.z)
         {
-            //bunlar network olucak !!!!!!!!!!!
-            mouseStateManager.mouseGrabbleObject = null;
-            mouseStateManager.targetFood = null;
-            mouseStateManager.expiredFood.RemoveAt(0);
+            //bunlar network olucak !!!!!!!!!!!        
+            mouseStateManager.ChangeState(new MouseIdleState());
         }
         if (mouseStateManager.isCatch)
         {

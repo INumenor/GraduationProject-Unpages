@@ -8,7 +8,8 @@ public class MouseStealFoodState : IMouseState
 
     public void EnterState()
     {
-       if(mouseStateManager.expiredFood.Count>0 && !mouseStateManager.mouseGrabbleObject)
+        Debug.Log("stelfood'da");
+        if (mouseStateManager.expiredFood.Count>0 && !mouseStateManager.mouseGrabbleObject)
         {
             mouseStateManager.targetFood = mouseStateManager.expiredFood[0];
             mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
@@ -23,15 +24,17 @@ public class MouseStealFoodState : IMouseState
 
     public void UpdateState()
     {
-        float targetDistance = Vector3.Distance(mouseStateManager.mouseAgent.transform.position, mouseStateManager.targetFood.transform.position);
-        if (mouseStateManager.mouseGrabbleObject && targetDistance<0.1f)
+        if (mouseStateManager.mouseGrabbleObject)
         {
             mouseStateManager.ChangeState(new MouseReturnBaseState());
         }
-        if(mouseStateManager.targetFood.transform != mouseStateManager.expiredFood[0].transform)
+        if (mouseStateManager.expiredFood.Count > 0)
         {
-            mouseStateManager.ChangeState(new MouseReturnBaseState());
-        }
+            if (!mouseStateManager.expiredFood[0])
+            {
+                mouseStateManager.ChangeState(new MouseReturnBaseState());
+            }
+        }     
         if (mouseStateManager.isCatch)
         {
             mouseStateManager.ChangeState(new MouseCatchState());

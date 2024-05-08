@@ -7,19 +7,25 @@ using UnityEngine.AI;
 public class MouseStateManager : NetworkBehaviour
 {
     public IMouseState currentState;
+
     public MouseAI mouseAI;
+    public NetworkMouseAI networkMouseAI;
+
     public NavMeshAgent mouseAgent;
     public Transform mouseAgentBase;
+
     public List<NetworkObject> expiredFood = new List<NetworkObject>();
+
     public NetworkObject mouseGrabbleObject;
     public NetworkObject targetFood;
+
     public bool isCatch;
 
 
-    [Networked] public NetworkBool isMouseIdle{ get; set; }
-    [Networked] public NetworkBool isStealFood { get; set; }
-    [Networked] public NetworkBool isReturnBase { get; set; }
-    [Networked] public NetworkBool isMouseCatch { get; set; }
+    //[Networked] public NetworkBool isMouseIdle{ get; set; }
+    //[Networked] public NetworkBool isStealFood { get; set; }
+    //[Networked] public NetworkBool isReturnBase { get; set; }
+    //[Networked] public NetworkBool isMouseCatch { get; set; }
     void Start()
     {
         //if (!HasStateAuthority) return;

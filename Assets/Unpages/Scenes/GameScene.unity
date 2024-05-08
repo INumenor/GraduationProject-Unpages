@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1248,6 +1248,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 863d08293df7288418c167a63030c8f7, type: 3}
+--- !u!114 &559701833 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8756364847212448393, guid: 863d08293df7288418c167a63030c8f7, type: 3}
+  m_PrefabInstance: {fileID: 559701832}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de505a0204830f4092b00cbf2e2af00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &559701834 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2712011348801935662, guid: 863d08293df7288418c167a63030c8f7, type: 3}
+  m_PrefabInstance: {fileID: 559701832}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea395c1e8c8b7814c83cd13b8ec0ae3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &565520869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1644,6 +1666,7 @@ MonoBehaviour:
   networkItems: {fileID: 1875248911}
   gameControl: {fileID: 1218952533}
   aiManagerSystem: {fileID: 1386869475}
+  mouseStateManager: {fileID: 1438080724}
   spawnObject: {fileID: 0}
 --- !u!4 &697803423
 Transform:
@@ -1663,6 +1686,7 @@ Transform:
   - {fileID: 1386869477}
   - {fileID: 2077348643}
   - {fileID: 1762762899}
+  - {fileID: 1438080725}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &704804417
@@ -3270,17 +3294,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050519875}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1099472842 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1412246489826035535, guid: 863d08293df7288418c167a63030c8f7, type: 3}
+--- !u!195 &1099472844 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 6178902363390223393, guid: 863d08293df7288418c167a63030c8f7, type: 3}
   m_PrefabInstance: {fileID: 559701832}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1205475532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3681,48 +3699,12 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1099472842}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: mouseList
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Fusion.NetworkObject,
-        Fusion.Runtime]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: Mouse1
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  mouseAgent: {fileID: 1412246489826035535, guid: 863d08293df7288418c167a63030c8f7, type: 3}
-  agentBase: {fileID: 1891922}
-  meshSurface: {fileID: 837119554}
+    SerializationNodes: []
 --- !u!114 &1386869476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3911,6 +3893,77 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4173241031698997641, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
   m_PrefabInstance: {fileID: 1434552524}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1438080723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1438080725}
+  - component: {fileID: 1438080724}
+  - component: {fileID: 1438080726}
+  m_Layer: 0
+  m_Name: MouseStatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1438080724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438080723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb10624a4da4cc498bfe7b5db76186f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseAI: {fileID: 559701833}
+  networkMouseAI: {fileID: 559701834}
+  mouseAgent: {fileID: 1099472844}
+  mouseAgentBase: {fileID: 1891922}
+  expiredFood: []
+  mouseGrabbleObject: {fileID: 0}
+  targetFood: {fileID: 0}
+  isCatch: 0
+--- !u!4 &1438080725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438080723}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 697803423}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1438080726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438080723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 1540289667
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 1438080724}
 --- !u!1001 &1466670332
 PrefabInstance:
   m_ObjectHideFlags: 0

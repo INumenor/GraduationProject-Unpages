@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class MouseIdleState : IMouseState
@@ -8,7 +9,14 @@ public class MouseIdleState : IMouseState
 
     public void EnterState()
     {
-        mouseStateManager.isCatch = false;
+        Debug.Log("ýdle'da");
+        if (mouseStateManager.mouseGrabbleObject)
+        {
+            mouseStateManager.networkMouseAI.DropItem(mouseStateManager.mouseGrabbleObject);
+        }
+        mouseStateManager.isCatch = false;         
+        mouseStateManager.mouseGrabbleObject = null;
+        mouseStateManager.mouseAgent.speed = 5;
     }
 
     public void ExitState()

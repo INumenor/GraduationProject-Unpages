@@ -8,10 +8,13 @@ public class MouseCatchState : IMouseState
 
     public void EnterState()
     {
+        Debug.Log("enter'da");
         if (mouseStateManager.mouseGrabbleObject)
         {
+            mouseStateManager.networkMouseAI.DropItem(mouseStateManager.mouseGrabbleObject);
             mouseStateManager.isCatch = false;
             mouseStateManager.mouseAgent.speed = 50;
+            mouseStateManager.mouseGrabbleObject = null;
         }
     }
 
