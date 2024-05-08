@@ -291,8 +291,6 @@ MonoBehaviour:
   mouseAgent: {fileID: 6178902363390223393}
   grabbleNetworkObject: {fileID: 0}
   grabbleCheck: {fileID: 796718274805483086}
-  _IsMouseGrab:
-    _value: 0
 --- !u!114 &2712011348801935662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,4 +303,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea395c1e8c8b7814c83cd13b8ec0ae3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbleNetworkObject: {fileID: 0}
