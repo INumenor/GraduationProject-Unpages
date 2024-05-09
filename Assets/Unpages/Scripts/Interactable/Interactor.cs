@@ -28,25 +28,35 @@ public class Interactor : MonoBehaviour
         }
         else if (targetObject.layer == LayerMask.NameToLayer("MouseInteractable"))
         {
-            GameService.Instance.aiManagerSystem.mouseList["Mouse1"].GetComponent<MouseAI>().DropItem();
+            if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
+            {
+                interactorData.InteractorObject = other.gameObject;
+                interactable.Interact(interactorData);
+            }
+         
         }
         else if (targetObject.layer == LayerMask.NameToLayer("KitchenInteractable"))
         {
-            switch (other.tag)
+            if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
-                case "Storage":
-                    other.gameObject.GetComponent<Storage>().InteractStorage();
-                    break;
-                case "Trash":
-                    other.gameObject.GetComponent<Trash>().InteractTrash();
-                    break;
-                case "Plate":
-                    other.gameObject.GetComponent<Plate>().InteractPlateArea();
-                    break;
-                case "ChoppingBoard":
-                    other.gameObject.GetComponent<Chopping>().InteractChoppingBoard();
-                    break;
+                interactorData.InteractorObject = other.gameObject;
+                interactable.Interact(interactorData);
             }
+            //switch (other.tag)
+            //{
+            //    case "Storage":
+            //        other.gameObject.GetComponent<Storage>().InteractStorage();
+            //        break;
+            //    case "Trash":
+            //        other.gameObject.GetComponent<Trash>().InteractTrash();
+            //        break;
+            //    case "Plate":
+            //        other.gameObject.GetComponent<PlateKitchen>().InteractPlateArea();
+            //        break;
+            //    case "ChoppingBoard":
+            //        other.gameObject.GetComponent<Chopping>().InteractChoppingBoard();
+            //        break;
+            //}
         }
     }
     private void OnTriggerExit(Collider other)
@@ -56,8 +66,7 @@ public class Interactor : MonoBehaviour
         {
             if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
-                interactorData.InteractorObject = null;
-                interactable.Interact(interactorData);
+                interactable.UnInteract();
             }
             else
             {
@@ -66,7 +75,11 @@ public class Interactor : MonoBehaviour
         }
         else if (targetObject.layer == LayerMask.NameToLayer("KitchenInteractable"))
         {
-            GameService.Instance.playerAction.playerInteractionKitchenObject = null;
+            if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
+            {
+                interactorData.InteractorObject = other.gameObject;
+                interactable.UnInteract();
+            }
         }
     }
 }

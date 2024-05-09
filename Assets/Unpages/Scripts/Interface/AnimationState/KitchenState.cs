@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class KitchenState : IState
 {
+    public StateManager stateManager { get; set; }
+
     public void EnterState()
     {
         RPC_CharacterKichenAction();
@@ -17,21 +19,19 @@ public class KitchenState : IState
 
     public void UpdateState()
     {
-        if (!GameService.Instance.playerAction.isKitchenAction)
+        if (!stateManager.isKitchenAction)
         {
-            GameService.Instance.playerAction.ChangeState(new IdleState());
+            stateManager.ChangeState(new IdleState());
         }
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterKichenAction()
     {
-        GameService.Instance.playerAnimationControl.characterAnimator.SetBool("isKitchenAction", true);
+        stateManager.characterAnimator.SetBool("isKitchenAction", true);
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterDontKichenAction()
     {
-        GameService.Instance.playerAnimationControl.characterAnimator.SetBool("isKitchenAction", false);
+        stateManager.characterAnimator.SetBool("isKitchenAction", false);
     }
 }

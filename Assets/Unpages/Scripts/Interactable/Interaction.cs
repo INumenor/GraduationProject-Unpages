@@ -12,7 +12,7 @@ public class Interaction : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //playerAction.isTriggered = false;
-        playerAction.grabbableObject = null;
+        playerAction.interactionObjcet = null;
         playerAction.playerInteractionKitchenObject = null;
     }
 }

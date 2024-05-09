@@ -126,6 +126,7 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
+  - {fileID: 3874628016083659287}
   - {fileID: 7360394464211208143}
 --- !u!114 &3874628016083659287
 MonoBehaviour:
@@ -139,6 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53278220452b4d247b285415239c4dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemType: 0
+  foodType: 0
+  choppingCount: 0
+  isProcessed: 0
+  isPlateHolder: 0
+  foodInteract: {fileID: 0}
 --- !u!114 &7360394464211208143
 MonoBehaviour:
   m_ObjectHideFlags: 0

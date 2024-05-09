@@ -1,49 +1,27 @@
+using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Fusion;
-using Unpages.Network;
-using Unity.VisualScripting;
 
-public enum ItemType {Tomato,Bread,Cheese,Lettuce,Null}
-public class Item : MonoBehaviour, IInteractable
+public enum ItemType { Food , Other ,Plate , Attributes , Null}
+public class Item : NetworkBehaviour
 {
-    public ItemType foodType;
-    public int choppingCount = 0;
-    int ItemTime = 0;
-    public bool isSliced;
-
-    public void Interact(InteractorData interactorData)
+    public ItemType itemType;
+    public override void Spawned()
     {
-        //GameService.Instance.playerAction.grabbableObject =this.gameObject;
-        GameService.Instance.playerAction.grabbableObject = interactorData.InteractorObject;
-        GameService.Instance.playerAction.grabbableObjectType = foodType;
+        RPCTrigger();
     }
 
-    private void OnCollisionStay(Collision other)
+    [Networked, OnChangedRender(nameof(RPCTrigger))] public NetworkBool isInteractable { get; set; } = false;
+
+    public void AddComponentInteract()
     {
-        if (other.gameObject.CompareTag("Floor"))
-        {           
-            if(ItemTime < 101 ) ItemTime++;
-            if (ItemTime == 100 /*1000*/)
-            {
-                GameService.Instance.aiManagerSystem.Init(transform.position);
-            }
-        }
-    }
-    private void OnCollisionExit(Collision col)
-    {
-            ItemTime = 0;
-            Debug.Log("TurnBase :" + ItemTime);
-            GameService.Instance.aiManagerSystem.ReturnBase();            
+        isInteractable = true;
     }
 
-
-
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_Despawn()
+    public virtual void RPCTrigger()
     {
-        //Destroy(gameObject);
-        NetworkManager.Instance.SessionRunner.Despawn(GetComponent<NetworkObject>());
+        
     }
+
 }

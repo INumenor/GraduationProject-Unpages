@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class IdleState : IState
 {
+    public StateManager stateManager { get; set; }
+
     public void EnterState()
     {
         Debug.Log("sela");
@@ -18,29 +20,29 @@ public class IdleState : IState
 
     public void UpdateState()
     {
-        if(GameService.Instance.playerAction.isRunning)
+        if(stateManager.isRunning)
         {
-            GameService.Instance.playerAction.ChangeState(new RunState());
+            stateManager.ChangeState(new RunState());
         }
-        else if (GameService.Instance.playerAction.isGrabbing)
+        else if (stateManager.isGrabbing)
         {
-            GameService.Instance.playerAction.ChangeState(new GrabState());
+            stateManager.ChangeState(new GrabState());
         }
-        else if (GameService.Instance.playerAction.isJumping && !GameService.Instance.playerAction.isGrabbing)
+        else if (stateManager.isJumping 
+            && !stateManager.isGrabbing)
         {
-            GameService.Instance.playerAction.ChangeState(new JumpState());
+            stateManager.ChangeState(new JumpState());
         }
-        else if (GameService.Instance.playerAction.isKitchenAction)
+        else if (stateManager.isKitchenAction)
         {
-            GameService.Instance.playerAction.ChangeState(new KitchenState());
+            stateManager.ChangeState(new KitchenState());
         }
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_CharacterIdle()
     {
-        GameService.Instance.playerAnimationControl.characterAnimator.SetBool("isRunning", false);
-        GameService.Instance.playerAnimationControl.characterAnimator.SetBool("isGrabbing", false);
-        GameService.Instance.playerAnimationControl.characterAnimator.SetBool("isJumping", false);
+        stateManager.characterAnimator.SetBool("isRunning", false);
+        stateManager.characterAnimator.SetBool("isGrabbing", false);
+        stateManager.characterAnimator.SetBool("isJumping", false);
     }
 }

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8713721372769837814}
   - component: {fileID: 6848193971458151996}
   - component: {fileID: 4143626868441439020}
+  - component: {fileID: 5046237509384636260}
+  - component: {fileID: 2715326018075485482}
   m_Layer: 12
   m_Name: Kitchen_ServiceArea
   m_TagString: Untagged
@@ -105,3 +107,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000002, y: 0.5502167, z: 1.0000002}
   m_Center: {x: 0, y: 0.27510834, z: -0}
+--- !u!114 &5046237509384636260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902537982672877545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35feac1f82f58e54ea33e5231bffaa3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2715326018075485482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902537982672877545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 3399688899
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours: []

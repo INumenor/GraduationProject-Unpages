@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5921,71 +5921,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4173241031698997641, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
   m_PrefabInstance: {fileID: 435398956}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &505155056
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2040992310087822207, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-      propertyPath: m_Name
-      value: TonkoV2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7868808597718404144, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-      propertyPath: SortKey
-      value: 2878916493
-      objectReference: {fileID: 0}
-    - target: {fileID: 9086039825255774564, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-      propertyPath: SortKey
-      value: 4079931744
-      objectReference: {fileID: 0}
-    - target: {fileID: 9165180602622225343, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 16.207567
-      objectReference: {fileID: 0}
-    - target: {fileID: 9165180602622225343, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.049999952
-      objectReference: {fileID: 0}
-    - target: {fileID: 9165180602622225343, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.8140693
-      objectReference: {fileID: 0}
-    - target: {fileID: 9165180602622225343, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9165180602622225343, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9165180602622225343, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9165180602622225343, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9165180602622225343, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9165180602622225343, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9165180602622225343, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
 --- !u!1001 &559701832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6707,10 +6642,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 754064779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae5b6ec0d8defb84293e378baf159459, type: 3}
+  m_Script: {fileID: 11500000, guid: d53aa385160ddf646b60539ff1fe2825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platePrefab: {fileID: 105516810065189154, guid: 44cee5c61851f1a4ab0460d7402f31a5, type: 3}
+  plateNetworkObject: {fileID: -8338275208414846468, guid: 7b005171a2294f44a8ba7d1e8627e9cd, type: 3}
+  plateLimit: 5
+  platesObjects: []
 --- !u!1 &790984761
 GameObject:
   m_ObjectHideFlags: 0
@@ -7023,7 +6960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4173241031698997641, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.011
+      value: 22.02
       objectReference: {fileID: 0}
     - target: {fileID: 4173241031698997641, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8612,7 +8549,7 @@ MonoBehaviour:
   SessionRunner: {fileID: 0}
   networkRunnerPrefab: {fileID: 6821837541494390122, guid: cfad2f42cde82594e9014949677e4336, type: 3}
   playerPreafab: {fileID: 2502306205790276012, guid: edd68f8a7f7eea24aa57478ae7029350, type: 3}
-  networkCharacterPrefab: {fileID: 7099868800434697647, guid: 8eb9d4bcfd0c3e94b8c98e9ca9ac4db8, type: 3}
+  networkCharacterPrefab: {fileID: 7868808597718404144, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
   Player1SpawnPoint: {fileID: 2027943253}
   Player2SpawnPoint: {fileID: 1852518903}
 --- !u!4 &1316430927
@@ -8659,17 +8596,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd4296a243dda64889c6f92b7619301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkItems:
+  networkFoodItems:
+  - {fileID: 11400000, guid: 14befe13c976d784ca48b2aa6fc5d687, type: 2}
+  - {fileID: 11400000, guid: db2d7afa0119dec4a9ba579bf03160d1, type: 2}
+  - {fileID: 11400000, guid: e941168e1d400a64d8c8de641bb8bf25, type: 2}
   - {fileID: 11400000, guid: d314622514af6be4fa92eab7ff2382ff, type: 2}
   - {fileID: 11400000, guid: 8193283f6f586d14c8606c7e5a08137f, type: 2}
-  - {fileID: 11400000, guid: e941168e1d400a64d8c8de641bb8bf25, type: 2}
-  - {fileID: 11400000, guid: 14befe13c976d784ca48b2aa6fc5d687, type: 2}
-  - {fileID: 11400000, guid: d128ecbf12b993245a83986ad9e74c85, type: 2}
-  - {fileID: 11400000, guid: ee06532685f4321448e4091985830652, type: 2}
   networkItemsSlice:
   - {fileID: 11400000, guid: a6a7f42d2ba03c441ab951b9754d05b4, type: 2}
   - {fileID: 11400000, guid: 22ae739bd9cd9fe4a9b41c7de7f1c5e8, type: 2}
   - {fileID: 11400000, guid: b519a1175587a604fb5116a486acda95, type: 2}
+  networkItems:
+  - {fileID: 0}
 --- !u!4 &1328692519
 Transform:
   m_ObjectHideFlags: 0
@@ -10008,6 +9946,7 @@ MonoBehaviour:
   circleBarImage: {fileID: 425959753}
   circleBarBackground: {fileID: 1495132149}
   circleBarRectTransform: {fileID: 1386438060}
+  itemAnchorPoint: {fileID: 0}
 --- !u!114 &1958472729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10468,4 +10407,3 @@ SceneRoots:
   - {fileID: 1891922}
   - {fileID: 559701832}
   - {fileID: 2146899776}
-  - {fileID: 505155056}
