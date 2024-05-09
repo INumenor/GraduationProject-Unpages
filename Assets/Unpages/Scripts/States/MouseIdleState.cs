@@ -9,14 +9,9 @@ public class MouseIdleState : IMouseState
 
     public void EnterState()
     {
-        Debug.Log("ýdle'da");
-        if (mouseStateManager.mouseGrabbleObject)
-        {
-            mouseStateManager.networkMouseAI.DropItem(mouseStateManager.mouseGrabbleObject);
-        }
         mouseStateManager.isCatch = false;         
         mouseStateManager.mouseGrabbleObject = null;
-        mouseStateManager.mouseAgent.speed = 5;
+        mouseStateManager.mouseAgent.speed = 10;
     }
 
     public void ExitState()

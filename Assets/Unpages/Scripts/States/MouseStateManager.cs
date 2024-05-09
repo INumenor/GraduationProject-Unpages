@@ -23,20 +23,6 @@ public class MouseStateManager : NetworkBehaviour
 
     public NetworkObject mouseAgentPrefab;
 
-    //[Networked] public NetworkBool isMouseIdle{ get; set; }
-    //[Networked] public NetworkBool isStealFood { get; set; }
-    //[Networked] public NetworkBool isReturnBase { get; set; }
-    //[Networked] public NetworkBool isMouseCatch { get; set; }
-
-    //public override void Spawned()
-    //{
-    //    NetworkObject mouseNetworkObject = Runner.Spawn(mouseAgentPrefab, mouseAgentBase.position, mouseAgentBase.rotation, Object.StateAuthority);
-    //    mouseAgent = mouseNetworkObject.GetComponent<NavMeshAgent>();
-    //    mouseAI = mouseNetworkObject.GetComponent<MouseAI>();
-    //    networkMouseAI = mouseNetworkObject.GetComponent<NetworkMouseAI>();
-    //    StartStation();
-    //}
-
     public void StartStation()
     {
         //if (!HasStateAuthority) return;

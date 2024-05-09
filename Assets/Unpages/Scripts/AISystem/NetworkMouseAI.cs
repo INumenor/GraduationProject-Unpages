@@ -19,4 +19,10 @@ public class NetworkMouseAI : NetworkBehaviour
            
         }
     }
+
+    //[Rpc(RpcSources.StateAuthority , RpcTargets.All)]
+    //public void RPC_Despawn(NetworkObject)
+    //{
+    //    Runner.Despawn(NetworkObject );
+    //}
 }

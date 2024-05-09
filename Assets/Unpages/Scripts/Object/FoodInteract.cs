@@ -26,10 +26,24 @@ public class FoodInteract : MonoBehaviour, IInteractable
             }
         }
     }
-    private void OnCollisionExit(Collision col)
+    private void OnCollisionExit(Collision other)
     {
         ItemTime = 0;
-        Debug.Log("TurnBase :" + ItemTime);
+        if (other.gameObject.CompareTag("Floor"))
+        {
+            GameService.Instance.mouseStateManager.expiredFood.Clear();
+            //if (GameService.Instance.mouseStateManager.expiredFood.Contains(other.gameObject.GetComponent<NetworkObject>()))
+            //{
+            //    GameService.Instance.mouseStateManager.expiredFood.Remove(other.gameObject.GetComponent<NetworkObject>());
+            //}
+        }
     }
-
+    public void RemoveFoodItem()
+    {
+        if (GameService.Instance.mouseStateManager.expiredFood.Contains(gameObject.GetComponent<NetworkObject>()))
+        {
+            GameService.Instance.mouseStateManager.expiredFood.Remove(gameObject.GetComponent<NetworkObject>());
+            GameService.Instance.mouseStateManager.isCatch =true ;
+        }
+    }
 }

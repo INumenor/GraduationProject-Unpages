@@ -308,6 +308,7 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects:
   - {fileID: 9086039825255774564}
+  - {fileID: 2030531670933399268}
   NetworkedBehaviours:
   - {fileID: 7878595375231303174}
 --- !u!114 &7878595375231303174
@@ -1349,6 +1350,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 835527270749366859}
+  - component: {fileID: 2030531670933399268}
+  - component: {fileID: 7989629612491827059}
   m_Layer: 0
   m_Name: ItemAnchorPoint
   m_TagString: Untagged
@@ -1371,6 +1374,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7679777885759957585}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2030531670933399268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7140860166763358855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 727969487
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 7989629612491827059}
+--- !u!114 &7989629612491827059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7140860166763358855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 1
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &7802535588708853132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1587,8 @@ MonoBehaviour:
   SortKey: 2476804834
   ObjectInterest: 1
   Flags: 262145
-  NestedObjects: []
+  NestedObjects:
+  - {fileID: 2030531670933399268}
   NetworkedBehaviours:
   - {fileID: 6189350198531924518}
   - {fileID: 3093700377929477110}
@@ -1572,7 +1610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SyncScale: 0
-  SyncParent: 0
+  SyncParent: 1
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 0
 --- !u!136 &4292875151354290747

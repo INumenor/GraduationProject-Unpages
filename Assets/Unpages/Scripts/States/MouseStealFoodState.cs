@@ -8,7 +8,7 @@ public class MouseStealFoodState : IMouseState
 
     public void EnterState()
     {
-        Debug.Log("stelfood'da");
+    
         if (mouseStateManager.expiredFood.Count>0 && !mouseStateManager.mouseGrabbleObject)
         {
             mouseStateManager.targetFood = mouseStateManager.expiredFood[0];
