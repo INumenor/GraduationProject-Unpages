@@ -93,7 +93,7 @@ public class NetworkItems : MonoBehaviour
         }
         return null;
     }
-    public Texture2D GetImageFoodItem(FoodType foodType)
+    public Sprite GetImageFoodItem(FoodType foodType)
     {
         foreach (FoodInfo itemObject in networkFoodItems)
         {

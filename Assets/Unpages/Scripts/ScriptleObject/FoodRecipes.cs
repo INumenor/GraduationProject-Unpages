@@ -2,6 +2,7 @@ using Fusion;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum FoodRecipeType {Default,Sandwich,Burger,Pizza,Soup,Salad}
 
@@ -11,6 +12,6 @@ public class FoodRecipes : SerializedScriptableObject
     public NetworkObject foodRecipe;
     public FoodRecipeType foodRecipeType;
     public List<FoodType> foodTypes = new List<FoodType>();
-    public Texture2D recipeImages;
+    public Sprite recipeImages;
     public float recipeTime;
 }

@@ -30,7 +30,6 @@ public class PlayerTask : NetworkBehaviour
         if (taskRecipes.Count<4) 
         {
            GameObject task= Instantiate(taskPrefab,taskScrollViewContent);
-            //task.transform.SetParent(taskScrollViewContent);
             task.GetComponent<TaskUI>().Init(foodRecipes.recipeImages,foodRecipes.foodTypes);
             taskRecipes.Add(foodRecipes);
         }
