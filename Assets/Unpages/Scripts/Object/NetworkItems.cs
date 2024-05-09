@@ -19,7 +19,7 @@ public class NetworkItems : MonoBehaviour
     {
         foreach (FoodInfo itemObject in networkFoodItems)
         {
-            if(itemObject.foodtype == foodType)
+            if (itemObject.foodtype == foodType)
             {
                 return itemObject.item;
             }

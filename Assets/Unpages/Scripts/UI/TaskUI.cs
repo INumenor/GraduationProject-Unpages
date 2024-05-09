@@ -8,15 +8,13 @@ public class TaskUI : MonoBehaviour
     public Transform taskMaterialScrollViewContent;
     public Image taskRawImage;
     public GameObject taskMaterialPrefab;
-    Image itemImage;
     public void Init(Sprite tex, List<FoodType> foodTypes)
     {
         taskRawImage.sprite = tex;
-        foreach (FoodType foodtype in foodTypes)
+        foreach (FoodType foodtype in foodTypes)//bura yanlýþ çalýþýyo hatta çalýþmýyo
         {
             GameObject taskMaterial = Instantiate(taskMaterialPrefab,taskMaterialScrollViewContent);
-             itemImage.sprite = GameService.Instance.networkItems.GetImageFoodItem(foodtype);
-            Debug.Log(GameService.Instance.networkItems.GetImageFoodItem(foodtype)+"  rjgdýorjgjg");
+            taskMaterial.GetComponent<Image>().sprite = GameService.Instance.networkItems.GetImageFoodItem(foodtype);
         }
     }
 }

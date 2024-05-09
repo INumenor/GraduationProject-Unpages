@@ -10,7 +10,7 @@ public class PlayerTask : NetworkBehaviour
     public FoodRecipes foodRecipes;
     public TaskUI taskUI;
 
-    public List<FoodRecipes> taskRecipes = new List<FoodRecipes>();
+    public List<FoodRecipes> taskRecipes;
     public int taskRandomNumber;
 
     public Transform taskScrollViewContent;
@@ -29,9 +29,10 @@ public class PlayerTask : NetworkBehaviour
         foodRecipes = GameService.Instance.networkItems.networkFoodRecipes[taskRandomNumber];
         if (taskRecipes.Count<4) 
         {
-           GameObject task= Instantiate(taskPrefab,taskScrollViewContent);
-            task.GetComponent<TaskUI>().Init(foodRecipes.recipeImages,foodRecipes.foodTypes);
             taskRecipes.Add(foodRecipes);
+            GameObject task= Instantiate(taskPrefab,taskScrollViewContent);
+            task.GetComponent<TaskUI>().Init(foodRecipes.recipeImages,foodRecipes.foodTypes);
+          
         }
     }
 }
