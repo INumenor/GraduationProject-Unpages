@@ -11,4 +11,6 @@ public class FoodRecipes : SerializedScriptableObject
     public NetworkObject foodRecipe;
     public FoodRecipeType foodRecipeType;
     public List<FoodType> foodTypes = new List<FoodType>();
+    public Texture2D recipeImages;
+    public float recipeTime;
 }

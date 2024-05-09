@@ -1748,10 +1748,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterAnimator: {fileID: 6514754251844787376}
   playerAction: {fileID: 6265987209088614195}
-  isGrabbing: 0
-  isRunning: 0
-  isJumping: 0
-  isKitchenAction: 0
+  _isGrabbing:
+    _value: 0
+  _isRunning:
+    _value: 0
+  _isJumping:
+    _value: 0
+  _isKitchenAction:
+    _value: 0
 --- !u!1 &8748265097726127362
 GameObject:
   m_ObjectHideFlags: 0

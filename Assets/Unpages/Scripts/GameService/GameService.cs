@@ -12,6 +12,7 @@ public class GameService : MonoBehaviour
     public GameControl gameControl;
     public AIManagerSystem aiManagerSystem;
     public SpawnObject spawnObject;
+    public PlayerTask playerTask;
     #endregion
 
 
