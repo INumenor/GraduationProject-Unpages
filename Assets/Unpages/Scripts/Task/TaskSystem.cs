@@ -11,11 +11,8 @@ public class TaskSystem : NetworkBehaviour
    [Button]
     public void RandomRecipe()
     {
-        //if (Runner.IsSharedModeMasterClient)
-        //{
             randomRecipeNumber = Random.RandomRange(0, GameService.Instance.networkItems.networkTaskFoodRecipes.Count);
-            GameService.Instance.playerTask.taskRandomNumber = randomRecipeNumber; 
-            GameService.Instance.playerTask.Task();
-        //}
+            GameService.Instance.playerTask.Task(randomRecipeNumber);
+
     }
 }

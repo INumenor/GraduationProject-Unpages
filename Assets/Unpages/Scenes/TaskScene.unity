@@ -638,9 +638,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eef4f487df9cf44493106d865171a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: taskRecipes
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[FoodRecipes, Assembly-CSharp],[UnityEngine.GameObject,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[FoodRecipes, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   foodRecipes: {fileID: 0}
-  taskUI: {fileID: 0}
-  taskRecipes: []
   taskRandomNumber: 0
   taskScrollViewContent: {fileID: 398447462}
   taskPrefab: {fileID: 5357906120501796384, guid: 85273dec6449aef4da0d8efa0cc01226, type: 3}
@@ -661,8 +688,7 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects:
   - {fileID: 592662075}
-  NetworkedBehaviours:
-  - {fileID: 162186609}
+  NetworkedBehaviours: []
 --- !u!1 &186383505
 GameObject:
   m_ObjectHideFlags: 0
@@ -4629,8 +4655,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   taskMaterialScrollViewContent: {fileID: 0}
-  taskRawImage: {fileID: 0}
+  taskImage: {fileID: 0}
+  taskTimeImage: {fileID: 0}
   taskMaterialPrefab: {fileID: 1150338014275036873, guid: 4f87e88f028397148befddc10a4c9dba, type: 3}
+  foodRecipes: {fileID: 0}
 --- !u!1001 &1545446210
 PrefabInstance:
   m_ObjectHideFlags: 0
