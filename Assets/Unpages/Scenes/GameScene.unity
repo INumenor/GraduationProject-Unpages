@@ -2622,6 +2622,80 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050519875}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1150932112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1150932115}
+  - component: {fileID: 1150932114}
+  - component: {fileID: 1150932113}
+  m_Layer: 0
+  m_Name: GameControl
+  m_TagString: Map
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1150932113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150932112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 2884637227
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 1150932114}
+--- !u!114 &1150932114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150932112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff40255369222ae41a5a628510350022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player1SpawnPoint: {fileID: 2027943253}
+  Player2SpawnPoint: {fileID: 1852518903}
+  timerText: {fileID: 0}
+  _ReadyPlayerCount: 0
+  _AllPlayersReady:
+    _value: 0
+  networkCharacterPrefab: {fileID: 7868808597718404144, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
+  networkCharacterPrefab2: {fileID: 7868808597718404144, guid: f9e9ecd62393c814da9445ccc383be84, type: 3}
+  OnPlayersReady:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1150932115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150932112}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24.297617, y: 1.561987, z: 12.183905}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1218952532
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,13 +2890,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1316430927}
   - component: {fileID: 1316430926}
+  - component: {fileID: 1316430928}
   m_Layer: 0
-  m_Name: networkmanager
+  m_Name: Networkmanager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1316430926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2839,8 +2914,8 @@ MonoBehaviour:
   networkRunnerPrefab: {fileID: 6821837541494390122, guid: cfad2f42cde82594e9014949677e4336, type: 3}
   playerPreafab: {fileID: 2502306205790276012, guid: edd68f8a7f7eea24aa57478ae7029350, type: 3}
   networkCharacterPrefab: {fileID: 7868808597718404144, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-  Player1SpawnPoint: {fileID: 2027943253}
-  Player2SpawnPoint: {fileID: 1852518903}
+  Player1SpawnPoint: {fileID: 0}
+  Player2SpawnPoint: {fileID: 0}
 --- !u!4 &1316430927
 Transform:
   m_ObjectHideFlags: 0
@@ -2856,6 +2931,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1316430928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316430925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a93abf1a391964a94e5c139605105b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsSceneTakeOverEnabled: 1
+  LogSceneLoadErrors: 1
 --- !u!1 &1349657871
 GameObject:
   m_ObjectHideFlags: 0
@@ -4900,3 +4989,4 @@ SceneRoots:
   - {fileID: 954472501}
   - {fileID: 1891922}
   - {fileID: 979761737}
+  - {fileID: 1150932115}

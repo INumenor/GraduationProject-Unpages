@@ -268,8 +268,8 @@ GameObject:
   - component: {fileID: 7868808597718404144}
   - component: {fileID: 7878595375231303174}
   m_Layer: 0
-  m_Name: TonkoV2
-  m_TagString: Untagged
+  m_Name: TonkoV2Pink
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 1275789583
+  SortKey: 2153975341
   ObjectInterest: 1
   Flags: 262145
   NestedObjects:
@@ -444,7 +444,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 83e0439f9b53b1e459efa17f2b4d472f, type: 2}
+  - {fileID: 2100000, guid: 7174d1682381d854b83b29398d90d254, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1386,7 +1386,7 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 727969487
+  SortKey: 1606155245
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
@@ -1584,7 +1584,7 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 2476804834
+  SortKey: 3354990592
   ObjectInterest: 1
   Flags: 262145
   NestedObjects:

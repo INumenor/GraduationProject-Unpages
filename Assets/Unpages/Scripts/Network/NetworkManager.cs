@@ -9,7 +9,7 @@ namespace Unpages.Network
     using UnityEngine;
     using UnityEngine.SceneManagement;
 
-
+    [RequireComponent(typeof(NetworkSceneManagerDefault))]
     public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     {
         public static NetworkManager Instance { get; private set; }
@@ -18,10 +18,12 @@ namespace Unpages.Network
 
         [SerializeField] private GameObject networkRunnerPrefab;
         [SerializeField] private NetworkObject playerPreafab;
-        [SerializeField] private NetworkObject networkCharacterPrefab;
+        //[SerializeField] private NetworkObject networkCharacterPrefab;
+        public INetworkSceneManager sceneManager;
 
-        [SerializeField] private Transform Player1SpawnPoint;
-        [SerializeField] private Transform Player2SpawnPoint;
+
+        //[SerializeField] private Transform Player1SpawnPoint;
+        //[SerializeField] private Transform Player2SpawnPoint;
 
         public static Dictionary<PlayerRef,NetworkPlayer> PlayerList { get; private set; }
         //[SerializeField] private NetworkObject networkCharacterPrefab;
@@ -29,27 +31,44 @@ namespace Unpages.Network
         public Action<PlayerRef, NetworkPlayer> OnNetworkPlayerCreated ; /*{ get; private set; }*/
 
 
+        public MapDefault GameMap
+        {
+            get
+            {
+                if (map == null) { map = FindObjectOfType<MapDefault>(); }
+                return map;
+
+            }
+            set
+            {
+                map = value;
+            }
+        }
+        private MapDefault map;
+
+
         //public delegate void OnPlayerSpawn(NetworkRunner runner, PlayerRef playerRef);
         //public event OnPlayerSpawn onPlayerSpawn;
         private void Awake()
         {
-            if (true)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
+            if (Instance != null && Instance != this)
             {
                 Destroy(gameObject);
 
             }
+            else
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            sceneManager = gameObject.GetComponent<NetworkSceneManagerDefault>();
             CreateNetworkRunner();
         }
 
         private void Start()
         {
             PlayerList = new();
-            ConnectGame();
+            //ConnectGame();
         }
 
         private void CreateNetworkRunner()
@@ -58,14 +77,53 @@ namespace Unpages.Network
             SessionRunner.AddCallbacks(this);
         }
 
-        public async void ConnectGame()
+        public enum SesssionType : int
         {
+            Public,
+            Private
+        }
+
+        public async void ConnectLobby(string sessionName = "")
+        {
+            var customProps = new Dictionary<string, SessionProperty>();
+
+            customProps["SessionType"] = sessionName == "" ? (int)SesssionType.Public : (int)SesssionType.Private;
+
             var args = new StartGameArgs()
             {
                 GameMode = GameMode.Shared,
-                SessionName = "Test",
-                Scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex),
-                SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
+                Scene = SceneRef.FromIndex(1),
+                SessionProperties = customProps,
+                SessionName = sessionName,
+                SceneManager = sceneManager
+            };
+
+            var connectionResult = await SessionRunner.StartGame(args);
+
+            if (connectionResult.Ok)
+            {
+                Debug.Log("Scene Successful");
+            }
+            else
+            {
+                Debug.LogError(connectionResult.ErrorMessage);
+            }
+        }
+
+        public async void ConnectGame(string sessionName = "")
+        {
+
+            var customProps = new Dictionary<string, SessionProperty>();
+
+            customProps["SessionType"] = sessionName == "" ? (int)SesssionType.Public : (int)SesssionType.Private;
+
+            var args = new StartGameArgs()
+            {
+                GameMode = GameMode.Shared,
+                Scene = SceneRef.FromIndex(2),
+                SessionProperties = customProps,
+                SessionName = sessionName,
+                SceneManager = sceneManager
             };
 
             var connectionResult = await SessionRunner.StartGame(args);
@@ -133,7 +191,7 @@ namespace Unpages.Network
 
             if (player.networkCharacter == null)
             {
-                CharacterSpawn(playerRef);
+                GameMap.CharacterSpawn(SessionRunner,playerRef);
             }
 
             OnNetworkPlayerCreated?.Invoke(playerRef, player);
@@ -155,28 +213,49 @@ namespace Unpages.Network
                 return null;
             }
         }
-
-        public void CharacterSpawn(PlayerRef playerRef)
+        public static void DoToAllPlayers(Action<NetworkPlayer> action)
         {
-            if (playerRef == SessionRunner.LocalPlayer && networkCharacterPrefab != null)
-            {               
-                NetworkObject networkPlayerObject;
-                if (playerRef.PlayerId == 1)
-                {
-                    networkPlayerObject = SessionRunner.Spawn(networkCharacterPrefab, new Vector3(Player1SpawnPoint.position.x, Player1SpawnPoint.position.y + 1f, Player1SpawnPoint.position.z), transform.rotation, playerRef, (runner, obj) => { });
-                    networkPlayerObject.gameObject.transform.GetChild(1).gameObject.layer= LayerMask.NameToLayer("Player1Kitchen");                  
-                    PlayerList[playerRef].networkCharacter = networkPlayerObject;
-                    
-                }
-                else
-                {
-                    networkPlayerObject = SessionRunner.Spawn(networkCharacterPrefab, new Vector3(Player2SpawnPoint.position.x, Player2SpawnPoint.position.y + 1f, Player2SpawnPoint.position.z), transform.rotation, playerRef, (runner, obj) => { });
-                    networkPlayerObject.gameObject.transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("Player2Kitchen");
-                    PlayerList[playerRef].networkCharacter = networkPlayerObject;
-                }
-
+            foreach (NetworkPlayer player in PlayerList.Values)
+            {
+                action(player);
             }
         }
+
+        public async void CahngeGameScene()
+        {
+
+            Debug.Log("Disconnecting");
+
+            await SessionRunner.Shutdown();
+
+            Destroy(SessionRunner);
+            SessionRunner = null;
+
+            // await SceneLoadManager.UnloadAllScenes();
+            ConnectGame();
+
+        }
+
+        //public void CharacterSpawn(PlayerRef playerRef)
+        //{
+        //    if (playerRef == SessionRunner.LocalPlayer && networkCharacterPrefab != null)
+        //    {               
+        //        NetworkObject networkPlayerObject;
+        //        if (playerRef.PlayerId == 1)
+        //        {
+        //            networkPlayerObject = SessionRunner.Spawn(networkCharacterPrefab, new Vector3(Player1SpawnPoint.position.x, Player1SpawnPoint.position.y + 1f, Player1SpawnPoint.position.z), transform.rotation, playerRef, (runner, obj) => { });
+        //            networkPlayerObject.gameObject.transform.GetChild(1).gameObject.layer= LayerMask.NameToLayer("Player1Kitchen");                  
+        //            PlayerList[playerRef].networkCharacter = networkPlayerObject;
+
+        //        }
+        //        else
+        //        {
+        //            networkPlayerObject = SessionRunner.Spawn(networkCharacterPrefab, new Vector3(Player2SpawnPoint.position.x, Player2SpawnPoint.position.y + 1f, Player2SpawnPoint.position.z), transform.rotation, playerRef, (runner, obj) => { });
+        //            networkPlayerObject.gameObject.transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("Player2Kitchen");
+        //            PlayerList[playerRef].networkCharacter = networkPlayerObject;
+        //        }
+        //    }
+        //}
 
 
         #region NetworkRunnerCallBacks

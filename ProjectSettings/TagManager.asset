@@ -17,6 +17,7 @@ TagManager:
   - Storage
   - ChoppingBoard
   - Plate
+  - Map
   layers:
   - Default
   - TransparentFX

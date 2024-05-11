@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Unpages/Scenes/MainMenu.unity
+    guid: 51c4789b9126aa54f9e5364c827e15bd
+  - enabled: 1
+    path: Assets/Unpages/Scenes/LobbyScene.unity
+    guid: bf90b8ba27e645540b77bff3feca9b3e
+  - enabled: 1
     path: Assets/Unpages/Scenes/GameScene.unity
     guid: bc817f307f38110478dc18aaac0dd731
   m_configObjects: {}
