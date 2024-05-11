@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Unpages/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Unpages/Scenes/GameScene.unity
+    guid: bc817f307f38110478dc18aaac0dd731
   m_configObjects: {}

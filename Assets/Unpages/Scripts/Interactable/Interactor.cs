@@ -26,10 +26,15 @@ public class Interactor : MonoBehaviour
                 interactable.Interact(interactorData);
             }
         }
-        //else if (targetObject.layer == LayerMask.NameToLayer("MouseInteractable"))
-        //{
-        //    GameService.Instance.aiManagerSystem.mouseList["Mouse1"].GetComponent<MouseAI>().DropItem();
-        //}
+        else if (targetObject.layer == LayerMask.NameToLayer("MouseInteractable"))
+        {
+            if (other.TryGetComponent<IInteractable>(out IInteractable interactable))
+            {
+                interactorData.InteractorObject = other.gameObject;
+                interactable.Interact(interactorData);
+            }
+         
+        }
         else if (targetObject.layer == LayerMask.NameToLayer("KitchenInteractable"))
         {
             if (other.TryGetComponent<IInteractable>(out IInteractable interactable))

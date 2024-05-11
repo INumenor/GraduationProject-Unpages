@@ -6,17 +6,17 @@ using UnityEngine;
 using UnityEngine.AI;
 using Unpages.Network;
 
-public class MouseAI : NetworkBehaviour
+public class MouseAI : NetworkBehaviour,IInteractable
 {
     public NavMeshAgent mouseAgent;
     public NetworkObject grabbleNetworkObject;
     public GameObject grabbleCheck;
-    [Networked, OnChangedRender(nameof(MouseGrabCheck))] public NetworkBool IsMouseGrab { get; set; } = false;
+    //[Networked, OnChangedRender(nameof(MouseGrabCheck))] public NetworkBool IsMouseGrab { get; set; } = false;
 
-    public void MouseAgentDestination(Vector3 targetPosition)
-    {
-        mouseAgent.SetDestination(targetPosition);
-    }
+    //public void MouseAgentDestination(Vector3 targetPosition)
+    //{
+    //    mouseAgent.SetDestination(targetPosition);
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,43 +27,55 @@ public class MouseAI : NetworkBehaviour
             //item.gameObject.GetComponent<Rigidbody>().useGravity = false;
             //grabbleNetworkObject = item;
             //grabbleNetworkObject = GameService.Instance.networkItems.GetNetworkFoodItem(other.GetComponent<FoodItem>().foodType);
-            IsMouseGrab = true;
+            //IsMouseGrab = true;
+            if (!other.GetComponent<FoodItem>().isProcessed) GameService.Instance.mouseStateManager.mouseGrabbleObject = GameService.Instance.networkItems.GetNetworkFoodItem(other.GetComponent<FoodItem>().foodType);
+            //GameService.Instance.mouseStateManager.mouseGrabbleObject = GameService.Instance.networkItems
+            GameService.Instance.mouseStateManager.expiredFood.Remove(other.gameObject.GetComponent<NetworkObject>());
             GameService.Instance.playerAction.RPC_Despawn(other.GetComponent<NetworkObject>());
-            GameService.Instance.aiManagerSystem.ReturnBase();
+
         }
-        else if (other.CompareTag("MouseBase"))
-        {
-            if (grabbleNetworkObject) 
-            {
-                IsMouseGrab = false;
-                grabbleNetworkObject = null;
-            }
-            mouseAgent.speed = 5;
-        }
+        //else if (other.CompareTag("MouseBase"))
+        //{
+        //    if (grabbleNetworkObject) 
+        //    {
+        //        IsMouseGrab = false;
+        //        grabbleNetworkObject = null;
+        //    }
+        //}
     }
 
-    public void DropItem()
+    //public void DropItem()
+    //{
+    //    if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient && grabbleNetworkObject)
+    //    {
+    //        Vector3 spawnPosition = transform.position + -transform.forward * 2f;
+    //        NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(grabbleNetworkObject, spawnPosition, this.transform.rotation, Object.StateAuthority);
+    //        item.name = grabbleNetworkObject.name;
+    //        item.gameObject.GetComponent<Rigidbody>().useGravity = true;
+    //        IsMouseGrab=false;
+    //        grabbleNetworkObject = null;
+    //        mouseAgent.speed = 50;
+    //    }
+    //}
+    //public void MouseGrabCheck()
+    //{
+    //    if(IsMouseGrab)
+    //    {
+    //        grabbleCheck.SetActive(true);
+    //    }
+    //    else
+    //    {
+    //        grabbleCheck.SetActive(false);
+    //    }
+    //}
+
+    public void Interact(InteractorData interactorData)
     {
-        if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient && grabbleNetworkObject)
-        {
-            Vector3 spawnPosition = transform.position + -transform.forward * 2f;
-            NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(grabbleNetworkObject, spawnPosition, this.transform.rotation, Object.StateAuthority);
-            item.name = grabbleNetworkObject.name;
-            item.gameObject.GetComponent<Rigidbody>().useGravity = true;
-            IsMouseGrab=false;
-            grabbleNetworkObject = null;
-            mouseAgent.speed = 50;
-        }
+        GameService.Instance.mouseStateManager.isCatch = true;
     }
-    public void MouseGrabCheck()
+
+    public void UnInteract()
     {
-        if(IsMouseGrab)
-        {
-            grabbleCheck.SetActive(true);
-        }
-        else
-        {
-            grabbleCheck.SetActive(false);
-        }
+        
     }
 }

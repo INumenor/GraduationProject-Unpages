@@ -28,7 +28,7 @@ public class SpawnObject : NetworkBehaviour
 
         if (interactionObjcet)
         {
-            //interactionObjcet.ReleaseStateAuthority();
+            if (interactionObjcet.GetComponent<Item>().itemType == ItemType.Food) interactionObjcet.GetComponent<FoodInteract>().RemoveFoodItem();
             RPC_Despawn(interactionObjcet);
         }
         //}

@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Unpages/Scenes/TaskScene.unity.meta
 guid: 26866b6ee8b3f6142a95c59f426248d3
+========
+guid: 3f9781d5eaeb1c84abc93dc78756807d
+folderAsset: yes
+>>>>>>>> Dev:Assets/Unpages/Scripts/States.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

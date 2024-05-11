@@ -22,15 +22,28 @@ public class FoodInteract : MonoBehaviour, IInteractable
             if (ItemTime < 101) ItemTime++;
             if (ItemTime == 100 /*1000*/)
             {
-                GameService.Instance.aiManagerSystem.Init(transform.position);
+                GameService.Instance.mouseStateManager.expiredFood.Add(this.gameObject.GetComponent<NetworkObject>());             
             }
         }
     }
-    private void OnCollisionExit(Collision col)
+    private void OnCollisionExit(Collision other)
     {
         ItemTime = 0;
-        Debug.Log("TurnBase :" + ItemTime);
-        GameService.Instance.aiManagerSystem.ReturnBase();
+        if (other.gameObject.CompareTag("Floor"))
+        {
+            GameService.Instance.mouseStateManager.expiredFood.Clear();
+            //if (GameService.Instance.mouseStateManager.expiredFood.Contains(other.gameObject.GetComponent<NetworkObject>()))
+            //{
+            //    GameService.Instance.mouseStateManager.expiredFood.Remove(other.gameObject.GetComponent<NetworkObject>());
+            //}
+        }
     }
-
+    public void RemoveFoodItem()
+    {
+        if (GameService.Instance.mouseStateManager.expiredFood.Contains(gameObject.GetComponent<NetworkObject>()))
+        {
+            GameService.Instance.mouseStateManager.expiredFood.Remove(gameObject.GetComponent<NetworkObject>());
+            GameService.Instance.mouseStateManager.isCatch =true ;
+        }
+    }
 }

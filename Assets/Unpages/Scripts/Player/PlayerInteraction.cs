@@ -32,23 +32,23 @@ public class PlayerInteraction : NetworkBehaviour
     //    }
     //}
 
-    public void PlayerGrabObject(ItemType itemType, NetworkObject interactionObjcet)
+    public void PlayerGrabObject(ItemType itemType, NetworkObject interactionObject)
     {
         if (_isInActivationDelay) return;
 
         NetworkObject networkObject = null;
-        if (interactionObjcet)
+        if (interactionObject)
         {
             switch (itemType)
             {
                 case ItemType.Food:
                     //Deðiþicek
-                    if (!interactionObjcet.GetComponent<FoodItem>().isProcessed) networkObject = GameService.Instance.networkItems.GetNetworkFoodItem(interactionObjcet.GetComponent<FoodItem>().foodType);
-                    else if (interactionObjcet.GetComponent<FoodItem>().isProcessed) networkObject = GameService.Instance.networkItems.GetNetworkItemSlice(interactionObjcet.GetComponent<FoodItem>().foodType);
-                    GameService.Instance.spawnObject.PlayerGrabItem(networkObject, GameService.Instance.playerAction.playerAnchorPoint, false, interactionObjcet);
+                    if (!interactionObject.GetComponent<FoodItem>().isProcessed) networkObject = GameService.Instance.networkItems.GetNetworkFoodItem(interactionObject.GetComponent<FoodItem>().foodType);
+                    else if (interactionObject.GetComponent<FoodItem>().isProcessed) networkObject = GameService.Instance.networkItems.GetNetworkItemSlice(interactionObject.GetComponent<FoodItem>().foodType);
+                    GameService.Instance.spawnObject.PlayerGrabItem(networkObject, GameService.Instance.playerAction.playerAnchorPoint, false, interactionObject);
                     break;
                 case ItemType.Plate:
-                    GameService.Instance.spawnObject.PlayerGrabPlate(GameService.Instance.networkItems.GetNetworkItemPlate(ItemType.Plate), GameService.Instance.playerAction.playerAnchorPoint, false, interactionObjcet);
+                    GameService.Instance.spawnObject.PlayerGrabPlate(GameService.Instance.networkItems.GetNetworkItemPlate(ItemType.Plate), GameService.Instance.playerAction.playerAnchorPoint, false, interactionObject);
                     break;
                 case ItemType.Other:
                     break;
