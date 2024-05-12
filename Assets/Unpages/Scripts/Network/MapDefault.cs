@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Fusion;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,10 +19,14 @@ public class MapDefault : NetworkBehaviour
 
     public TMP_Text timerText;
 
+
+    public GameObject WaitOtherPlayerCanvas;
+    public GameObject GameScrennCanvas;
+
     public NetworkManager networkManager => NetworkManager.Instance;
 
     [Networked] public int ReadyPlayerCount { get; set; }
-    [Networked,OnChangedRender(nameof(Timer))] public NetworkBool AllPlayersReady { get; set; } = false;
+    [Networked] public NetworkBool AllPlayersReady { get; set; } = false;
 
     [SerializeField] private NetworkObject networkCharacterPrefab;
     [SerializeField] private NetworkObject networkCharacterPrefab2;
@@ -38,15 +43,14 @@ public class MapDefault : NetworkBehaviour
     private void Start()
     {
         networkManager.GameMap = this;
-        
     }
     public override void FixedUpdateNetwork()
     {
-        CheckReadyPlayers();
+        if(!AllPlayersReady) CheckReadyPlayers();
     }
-    public void CheckReadyPlayers()
+    public async void CheckReadyPlayers()
     {
-        if (!AllPlayersReady)
+        if (!AllPlayersReady && Runner.IsSharedModeMasterClient && NetworkManager.PlayerList.Count > 1)
         {
             int readyPlayers = 0;
 
@@ -58,6 +62,7 @@ public class MapDefault : NetworkBehaviour
             {
                 AllPlayersReady = true;
                 Debug.Log("Ýyisin");
+                RPC_AllPlayerReady();
                 OnAllPlayersReady();
             }
             else
@@ -67,7 +72,6 @@ public class MapDefault : NetworkBehaviour
             }
         }
         Debug.Log("Deneme");
-
     }
 
     public void CharacterSpawn(NetworkRunner SessionRunner, PlayerRef playerRef)
@@ -88,17 +92,29 @@ public class MapDefault : NetworkBehaviour
                 networkPlayerObject.gameObject.transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("Player2Kitchen");
                 NetworkManager.PlayerList[playerRef].networkCharacter = networkPlayerObject;
             }
+            NetworkManager.PlayerList[playerRef].Ready = true;
         }
     }
 
-    public void Timer()
+    [Rpc(RpcSources.StateAuthority,RpcTargets.All)]
+    public async void RPC_AllPlayerReady()
+    {
+        await StartTimer();
+    }
+
+    public async UniTask StartTimer()
     {
         if (AllPlayersReady) 
         {
-            //NetworkManager.SetAllPlayersNotReady();
-            NetworkManager.Instance.CahngeGameScene();
-            timerText.text = "Hazýrýz";
-            //NetworkManager.Instance;
+            for(int i=3; i>=0; i--)
+            {
+                timerText.text = "Game Start \n"+i+" Seconds";
+                await UniTask.WaitForSeconds(1);
+            }
+            WaitOtherPlayerCanvas.active = false;
+            GameScrennCanvas.active = true;
+            GameService.Instance.playerAction.enabled = true;
+            //NetworkManager.Instance.CahngeGameScene();
         }
         else timerText.text = "Hazýr Deðiliz";
     }

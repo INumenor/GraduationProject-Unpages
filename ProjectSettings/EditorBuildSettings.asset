@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Unpages/Scenes/GameScene.unity
     guid: bc817f307f38110478dc18aaac0dd731
+  - enabled: 1
+    path: Assets/Unpages/Scenes/TaskScene.unity
+    guid: 26866b6ee8b3f6142a95c59f426248d3
   m_configObjects: {}
