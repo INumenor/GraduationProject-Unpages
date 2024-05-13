@@ -1,6 +1,7 @@
 using Fusion;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,7 +23,12 @@ public class MouseStateManager : NetworkBehaviour
     public bool isCatch;
 
     public NetworkObject mouseAgentPrefab;
+    public Animator MouseAnimatorController;
+    public NavMeshSurface meshSurface;
 
+    [Networked] public NetworkBool isIdle { get; set; }
+    [Networked] public NetworkBool isRunning { get; set; }
+    [Networked] public NetworkBool isJumping { get; set; }
     public void StartStation()
     {
         //if (!HasStateAuthority) return;
@@ -44,5 +50,11 @@ public class MouseStateManager : NetworkBehaviour
     {
         //if (!HasStateAuthority) return;
         if(mouseAgent) currentState.UpdateState();
+    }
+
+    public void AreaBake()
+    {     
+        meshSurface.BuildNavMesh();
+        //  MouseSpawned();      
     }
 }

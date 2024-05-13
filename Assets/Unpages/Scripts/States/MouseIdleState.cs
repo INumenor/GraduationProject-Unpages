@@ -9,6 +9,7 @@ public class MouseIdleState : IMouseState
 
     public void EnterState()
     {
+        CharacterIdle();
         mouseStateManager.isCatch = false;         
         mouseStateManager.mouseGrabbleObject = null;
         mouseStateManager.mouseAgent.speed = 10;
@@ -16,7 +17,7 @@ public class MouseIdleState : IMouseState
 
     public void ExitState()
     {
-      
+        CharacterDontIdle();
     }
 
     public void UpdateState()
@@ -26,5 +27,14 @@ public class MouseIdleState : IMouseState
             mouseStateManager.ChangeState(new MouseStealFoodState());
         }
     }
-
+    public void CharacterIdle()
+    {
+        mouseStateManager.MouseAnimatorController.SetBool("isIdle", true);
+        mouseStateManager.MouseAnimatorController.SetBool("isRunning", false);
+        mouseStateManager.MouseAnimatorController.SetBool("isJumping", false);
+    }
+    public void CharacterDontIdle()
+    {
+        mouseStateManager.MouseAnimatorController.SetBool("isIdle",false); 
+    }
 }

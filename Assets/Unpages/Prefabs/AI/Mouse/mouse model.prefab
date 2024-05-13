@@ -1693,6 +1693,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aa05d8e7df73ced479f1532dad3f0f17, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5314619249074497366}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aa05d8e7df73ced479f1532dad3f0f17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8466355574077347317}
   m_SourcePrefab: {fileID: 100100000, guid: aa05d8e7df73ced479f1532dad3f0f17, type: 3}
 --- !u!1 &5220011335650691584 stripped
 GameObject:
@@ -1772,7 +1775,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 15
+  m_Speed: 5
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 1
@@ -1832,7 +1835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de505a0204830f4092b00cbf2e2af00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseAgent: {fileID: 6178902363390223393, guid: 863d08293df7288418c167a63030c8f7, type: 3}
+  mouseAgent: {fileID: 5963374009911901021}
   grabbleNetworkObject: {fileID: 0}
   grabbleCheck: {fileID: 796718274805483086, guid: 863d08293df7288418c167a63030c8f7, type: 3}
 --- !u!114 &5314619249074497366
@@ -1847,3 +1850,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea395c1e8c8b7814c83cd13b8ec0ae3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &-8466355574077347317
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5220011335650691584}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85f31a460bae0924296756d659308e70, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -51,7 +51,7 @@ public class SpawnFoodBox : MonoBehaviour
                    
                 }
             }
-            //GameService.Instance.aiManagerSystem.AreaBake();
+            GameService.Instance.mouseStateManager.AreaBake();
         }       
     }
     private List<Vector3[]> gridAreas = new List<Vector3[]>()
