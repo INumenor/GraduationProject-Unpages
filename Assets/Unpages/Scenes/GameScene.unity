@@ -3118,6 +3118,7 @@ MonoBehaviour:
   isCatch: 0
   mouseAgentPrefab: {fileID: 6278030482951139999, guid: bd8080ca6cb0b7a45ba8fc3ac563afc9, type: 3}
   MouseAnimatorController: {fileID: 0}
+  meshSurface: {fileID: 837119554}
   _isIdle:
     _value: 0
   _isRunning:
