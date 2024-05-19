@@ -32,14 +32,11 @@ public class ServiceBoard : KitchenObject
 
     private void Update()
     {
-        Debug.Log("aaa");
         bool isThere = false;
         if (onTheCupboardObject && !isThere)
         {
-            Debug.Log("aaaaaa");
             if (onTheCupboardObject.GetComponent<Item>().itemType == ItemType.Plate /*&& onTheCupboardObject.GetComponent<PlateItem>().networkFoodRecipe*/)
             {
-                Debug.Log("aaaaaaa");
                 isThere = GameService.Instance.playerTask.ChecktaskRecipes(onTheCupboardObject.GetComponent<PlateItem>().networkFoodRecipe);
                 GameService.Instance.spawnObject.CheckServisSystem(onTheCupboardObject);
                 if (isThere) Debug.Log("aaaaattttttt");

@@ -20,6 +20,7 @@ public class PlayerTask : SerializedMonoBehaviour
 
     public Action onServiceStatus;
 
+    public AngryBar angryBar;
     
     public  void Start()
     {  
@@ -40,22 +41,32 @@ public class PlayerTask : SerializedMonoBehaviour
     {       
         Destroy(taskRecipes[taskRecipe]);
         taskRecipes.Remove(taskRecipe);
+        if(taskRecipes.Count < 1)
+        {
+            taskSystem.NewRecipe();
+        }
     }
 
     public bool ChecktaskRecipes(NetworkObject plateFoodRecipes)
     {
-        Debug.Log("aaaaaaaaaa");
         if(plateFoodRecipes == null) return false;
         foreach (FoodRecipes foodRecipes in taskRecipes.Keys)
         {
             if(foodRecipes.name == plateFoodRecipes.name)
             {
+                angryBar.playerScore += 10;
+                taskSystem.UpdateAngrBar();
                 DestroyTask(foodRecipes);
                 taskSystem.NewRecipe();
-                //onServiceStatus.Invoke();
                 return true;
             }
         }
         return false;
+    }
+    [Button]
+    public void SetScore()
+    {
+        angryBar.playerScore += 10;
+        taskSystem.UpdateAngrBar();
     }
 }

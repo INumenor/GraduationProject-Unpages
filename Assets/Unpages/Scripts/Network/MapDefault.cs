@@ -16,6 +16,8 @@ public class MapDefault : NetworkBehaviour
 
     [SerializeField] private Transform Player1SpawnPoint;
     [SerializeField] private Transform Player2SpawnPoint;
+    [SerializeField] private AngryBar Player1AngryBar;
+    [SerializeField] private AngryBar Player2AngryBar;
 
     public TMP_Text timerText;
 
@@ -88,13 +90,15 @@ public class MapDefault : NetworkBehaviour
                 networkPlayerObject = SessionRunner.Spawn(networkCharacterPrefab, new Vector3(Player1SpawnPoint.position.x, Player1SpawnPoint.position.y + 1f, Player1SpawnPoint.position.z), transform.rotation, playerRef, (runner, obj) => { });
                 networkPlayerObject.gameObject.transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("Player1Kitchen");
                 NetworkManager.PlayerList[playerRef].networkCharacter = networkPlayerObject;
-
+                GameService.Instance.playerTask.angryBar = Player1AngryBar;
             }
             else
             {
                 networkPlayerObject = SessionRunner.Spawn(networkCharacterPrefab2, new Vector3(Player2SpawnPoint.position.x, Player2SpawnPoint.position.y + 1f, Player2SpawnPoint.position.z), transform.rotation, playerRef, (runner, obj) => { });
                 networkPlayerObject.gameObject.transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("Player2Kitchen");
                 NetworkManager.PlayerList[playerRef].networkCharacter = networkPlayerObject;
+                Player2AngryBar.GetComponent<NetworkObject>().RequestStateAuthority();
+                GameService.Instance.playerTask.angryBar = Player2AngryBar;
             }
             NetworkManager.PlayerList[playerRef].Ready = true;
         }

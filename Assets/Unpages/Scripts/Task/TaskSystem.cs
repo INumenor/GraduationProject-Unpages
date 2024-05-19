@@ -47,4 +47,15 @@ public class TaskSystem : NetworkBehaviour
     {
         GameService.Instance.playerTask.Task(randomRecipeNumber);
     }
+
+    public void UpdateAngrBar()
+    {
+        RPC_UpdateAngrBar();
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_UpdateAngrBar()
+    {
+        GameService.Instance.playerTask.angryBar.playerScore -= 5;
+    }
 }
