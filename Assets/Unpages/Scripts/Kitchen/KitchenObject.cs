@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum KitchenObjectType { Null,Cupboard,Storage,PlateHolder,Trash,ChoppingBoard}
+public enum KitchenObjectType { Null,Cupboard,Storage,PlateHolder,Trash,ChoppingBoard,ServiceBoard}
 
 public class KitchenObject : MonoBehaviour
 {

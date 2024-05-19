@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Fusion;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,18 +16,14 @@ public class PlayerTask : SerializedMonoBehaviour
 
     public Transform taskScrollViewContent;
     public GameObject taskPrefab;
+    public TaskSystem taskSystem;
 
-    //public override void Spawned()
-    //{
-    //    if (Object.HasStateAuthority)
-    //    {
-    //        GameService.Instance.playerTask = this;
-           
-    //    }
-    //}
+    public Action onServiceStatus;
+
+    
     public  void Start()
-    {     
-            GameService.Instance.playerTask = this;
+    {  
+       GameService.Instance.playerTask = this;
     }
     public void Task(int recipeRandomNumber)
     {
@@ -43,5 +40,22 @@ public class PlayerTask : SerializedMonoBehaviour
     {       
         Destroy(taskRecipes[taskRecipe]);
         taskRecipes.Remove(taskRecipe);
+    }
+
+    public bool ChecktaskRecipes(NetworkObject plateFoodRecipes)
+    {
+        Debug.Log("aaaaaaaaaa");
+        if(plateFoodRecipes == null) return false;
+        foreach (FoodRecipes foodRecipes in taskRecipes.Keys)
+        {
+            if(foodRecipes.name == plateFoodRecipes.name)
+            {
+                DestroyTask(foodRecipes);
+                taskSystem.NewRecipe();
+                //onServiceStatus.Invoke();
+                return true;
+            }
+        }
+        return false;
     }
 }

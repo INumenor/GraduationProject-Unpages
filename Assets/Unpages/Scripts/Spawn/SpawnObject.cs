@@ -202,7 +202,16 @@ public class SpawnObject : NetworkBehaviour
         }
         //}
     }
+    #endregion
 
+    #region
+    public void CheckServisSystem(NetworkObject serviceNetworkObject)
+    {
+        if (serviceNetworkObject)
+        {
+            RPC_Despawn(serviceNetworkObject);
+        }
+    }
     #endregion
 
     #region RPC_System

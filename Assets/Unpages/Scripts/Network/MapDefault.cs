@@ -19,6 +19,9 @@ public class MapDefault : NetworkBehaviour
 
     public TMP_Text timerText;
 
+    [SerializeField] private NetworkObject taskSystemPrefab;
+    private NetworkObject taskSystem;
+    [SerializeField] private Transform taskTransform;
 
     public GameObject WaitOtherPlayerCanvas;
     public GameObject GameScrennCanvas;
@@ -63,6 +66,7 @@ public class MapDefault : NetworkBehaviour
                 AllPlayersReady = true;
                 Debug.Log("Ýyisin");
                 RPC_AllPlayerReady();
+                RPC_SetParentTask(Runner.Spawn(taskSystemPrefab, Vector3.zero, transform.rotation));
                 OnAllPlayersReady();
             }
             else
@@ -111,12 +115,17 @@ public class MapDefault : NetworkBehaviour
                 timerText.text = "Game Start \n"+i+" Seconds";
                 await UniTask.WaitForSeconds(1);
             }
-            WaitOtherPlayerCanvas.active = false;
-            GameScrennCanvas.active = true;
+            WaitOtherPlayerCanvas.SetActive(false);
+            GameScrennCanvas.SetActive(true);
             GameService.Instance.playerAction.enabled = true;
             //NetworkManager.Instance.CahngeGameScene();
         }
-        else timerText.text = "Hazýr Deðiliz";
+    }
+
+    [Rpc(RpcSources.StateAuthority,RpcTargets.All)]
+    public void RPC_SetParentTask(NetworkObject networkObject)
+    {
+        networkObject.transform.SetParent(taskTransform);
     }
 
     public virtual void OnAllPlayersReady() { OnPlayersReady?.Invoke(); }
