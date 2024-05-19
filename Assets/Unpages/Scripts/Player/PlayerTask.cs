@@ -55,7 +55,7 @@ public class PlayerTask : SerializedMonoBehaviour
             if(foodRecipes.name == plateFoodRecipes.name)
             {
                 angryBar.playerScore += 10;
-                taskSystem.UpdateAngrBar();
+                angryBar.Test();
                 DestroyTask(foodRecipes);
                 taskSystem.NewRecipe();
                 return true;
@@ -66,7 +66,7 @@ public class PlayerTask : SerializedMonoBehaviour
     [Button]
     public void SetScore()
     {
-        angryBar.playerScore += 10;
-        taskSystem.UpdateAngrBar();
+        angryBar.playerScore += 12;
+        angryBar.Test();
     }
 }
