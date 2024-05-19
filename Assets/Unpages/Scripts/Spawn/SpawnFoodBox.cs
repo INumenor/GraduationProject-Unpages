@@ -1,36 +1,32 @@
 using Fusion;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using Unpages.Network;
 using NetworkPlayer = Unpages.Network.NetworkPlayer;
 
 public class SpawnFoodBox : MonoBehaviour
 {
-    //[SerializeField] private NetworkObject _spawnBoxPrefab;
-    //[SerializeField] private NetworkObject _wall;
-    //[SerializeField] private GameObject _spawnedBox;
-    //private List<NetworkObject> _spawnedFoodBox = new List<NetworkObject>();
-    //private List<NetworkObject> _walls = new List<NetworkObject>();
-    //private int _wallSpawnedCount = 0;
-    //private int _boxSpawnedCount = 0;
-    //int SpawnXPoint;
-    //int SpawnYPoint;
     [SerializeField] private NetworkObject _spawnBoxPrefab;
     [SerializeField] private NetworkObject _wallPrefab;
     [SerializeField] private GameObject _spawnedBox;
-    private List<NetworkObject> _spawnedFoodBox = new List<NetworkObject>();
-    private List<NetworkObject> _spawnedWalls = new List<NetworkObject>();
+    [SerializeField] private List<NetworkObject> _spawnedFoodBox = new List<NetworkObject>();
+
     private List<Vector3> _occupiedPositions = new List<Vector3>();
     private int _boxSpawnedCount = 0;
     private int _wallSpawnedCount = 0;
     private void OnEnable()
     {
         NetworkManager.Instance.OnNetworkPlayerCreated += Spawn;
+      //  GameService.Instance.gameControl.BoxSpawn += SpawnMissingBox;
+        GameService.Instance.gameControl.BoxDestroy += RemoveListBox;
     }
     private void OnDisable()
     {
         NetworkManager.Instance.OnNetworkPlayerCreated -= Spawn;
+      //  GameService.Instance.gameControl.BoxSpawn -= SpawnMissingBox;
+        GameService.Instance.gameControl.BoxDestroy -= RemoveListBox;
     }
     public void Spawn(PlayerRef playerRef, NetworkPlayer player)
     {
@@ -41,12 +37,10 @@ public class SpawnFoodBox : MonoBehaviour
             {
                 if (i == 0 || i == 2)
                 {
-                    Debug.Log("BURAYA kaç kez giriyor");
                     SpawnObjectsInGrid(gridAreas[i], 10, 10);
                 }
                 else
                 {
-                    Debug.Log("i artmýyor mu");
                     SpawnObjectsInGrid(gridAreas[i], 5, 7);
                    
                 }
@@ -109,11 +103,12 @@ public class SpawnFoodBox : MonoBehaviour
             if (boxSpawned < boxCount)
             {
                 if (availablePositions.Count == 0)
-                    break; // No available positions left
+                    break; 
                 Vector3 position = availablePositions[0];
                 NetworkObject newBox = NetworkManager.Instance.SessionRunner.Spawn(_spawnBoxPrefab, position, Quaternion.identity);
                 newBox.gameObject.transform.SetParent(_spawnedBox.transform, false);
                 _occupiedPositions.Add(position);
+                _spawnedFoodBox.Add(newBox);
                 _boxSpawnedCount++;
                 boxSpawned++;
                 availablePositions.RemoveAt(0);
@@ -122,7 +117,7 @@ public class SpawnFoodBox : MonoBehaviour
             if (wallSpawned < wallCount)
             {
                 if (availablePositions.Count == 0)
-                    break; // No available positions left
+                    break; 
                 Vector3 position = availablePositions[0];
                 NetworkObject newWall = NetworkManager.Instance.SessionRunner.Spawn(_wallPrefab, new Vector3(position.x, 1.1f, position.z), Quaternion.identity);
                 newWall.gameObject.transform.SetParent(_spawnedBox.transform, false);
@@ -145,60 +140,45 @@ public class SpawnFoodBox : MonoBehaviour
             list[n] = value;
         }
     }
-    //private void SpawnBoxObject()
-    //{
-    //    bool validSpawn = false;
+    private int CountBoxesInGrid(Vector3[] area)
+    {
+        int count = 0;
+        foreach (var box in _spawnedFoodBox)
+        {
+            if (IsWithinGrid(area, box.transform.position))
+            {
+                count++;
+            }
+        }
+        return count;
+    }
 
-    //    while (!validSpawn)
-    //    {
-    //        GetRandomNumber(out SpawnXPoint, out SpawnYPoint);
-    //        Vector3 spawnPosition = new Vector3(Mathf.RoundToInt(SpawnXPoint), 0.5f, Mathf.RoundToInt(SpawnYPoint));
+    private bool IsWithinGrid(Vector3[] area, Vector3 position)
+    {
+        return position.x > area[0].x && position.x < area[1].x &&
+               position.z > area[0].z && position.z < area[2].z;
+    }
 
-    //        // Kutularýn ve duvarlarýn konumunu ayrý ayrý kontrol et
-    //        bool positionOccupied = _spawnedFoodBox.Exists(obj => Mathf.RoundToInt(obj.transform.position.x) == Mathf.RoundToInt(spawnPosition.x) &&
-    //                                                           Mathf.RoundToInt(obj.transform.position.z) == Mathf.RoundToInt(spawnPosition.z)) ||
-    //                             _walls.Exists(obj => Mathf.RoundToInt(obj.transform.position.x) == Mathf.RoundToInt(spawnPosition.x) &&
-    //                                                   Mathf.RoundToInt(obj.transform.position.z) == Mathf.RoundToInt(spawnPosition.z));
-    //        if (!positionOccupied)
-    //        {
-    //            NetworkObject newFood = NetworkManager.Instance.SessionRunner.Spawn(_spawnBoxPrefab, spawnPosition, _spawnBoxPrefab.transform.rotation);
-    //            newFood.gameObject.transform.SetParent(_spawnedBox.transform, false);
-    //            _spawnedFoodBox.Add(newFood);
-    //            _boxSpawnedCount++;
-    //            validSpawn = true;
-    //        }
-    //    }
-    //}
-
-    //private void SpawnWallObject()
-    //{
-    //    bool validSpawn = false;
-
-    //    while (!validSpawn)
-    //    {
-    //        GetRandomNumber(out SpawnXPoint, out SpawnYPoint);
-    //        Vector3 spawnPosition = new Vector3(Mathf.RoundToInt(SpawnXPoint), 1.1f, Mathf.RoundToInt(SpawnYPoint));
-
-    //        // Kutularýn ve duvarlarýn konumunu ayrý ayrý kontrol et
-    //        bool positionOccupied = _spawnedFoodBox.Exists(obj => Vector3Int.RoundToInt(obj.transform.position) == Vector3Int.RoundToInt(spawnPosition)) ||
-    //                                _walls.Exists(obj => Vector3Int.RoundToInt(obj.transform.position) == Vector3Int.RoundToInt(spawnPosition));
-
-    //        if (!positionOccupied)
-    //        {
-    //            NetworkObject newWall = NetworkManager.Instance.SessionRunner.Spawn(_wall, spawnPosition, _wall.transform.rotation);
-    //            newWall.gameObject.transform.SetParent(_spawnedBox.transform, false);
-    //            _walls.Add(newWall);
-    //            _wallSpawnedCount++;
-    //            validSpawn = true;
-    //        }
-    //    }
-    //}
-    //private void GetRandomNumber(out int SpawnXPoint, out int SpawnYPoint)
-    //{
-    //    do
-    //    {
-    //        SpawnXPoint = Random.Range(0, 51);
-    //        SpawnYPoint = Random.Range(0, 31);
-    //    } while ((SpawnXPoint >= 19 && SpawnXPoint <= 30) && (SpawnYPoint >= 10 && SpawnYPoint <= 20));
-    //}
+    public void SpawnMissingBox()
+    {     
+            for (int i = 0; i < gridAreas.Count; i++)
+            {
+                Vector3[] area = gridAreas[i];
+                int currentBoxCount = CountBoxesInGrid(area);
+                int requiredBoxCount = (i == 0 || i == 2) ? 10 : 5;
+                int boxesToSpawn = requiredBoxCount - currentBoxCount;
+                if (boxesToSpawn > 0)
+                {
+                    SpawnObjectsInGrid(area, boxesToSpawn, 0);
+                }
+            }       
+    }
+    public void RemoveListBox(GameObject boxObject)
+    {
+        _spawnedFoodBox.Remove(boxObject.GetComponent<NetworkObject>());
+        if (_spawnedFoodBox.Count <= 20)
+        {
+            SpawnMissingBox();
+        }
+    }
 }
