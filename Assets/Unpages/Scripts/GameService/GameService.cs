@@ -13,6 +13,7 @@ public class GameService : MonoBehaviour
     public AIManagerSystem aiManagerSystem;
     public MouseStateManager mouseStateManager;
     public SpawnObject spawnObject;
+    public PlayerTask playerTask;
     #endregion
 
 

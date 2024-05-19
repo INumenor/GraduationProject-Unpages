@@ -19,7 +19,6 @@ public class PlayerAction : NetworkBehaviour
     //Player Anchor Point
     public Transform playerAnchorPoint;
 
-
     public bool isGrabbable = false;
 
     [Header("KeepObject")]
@@ -33,25 +32,16 @@ public class PlayerAction : NetworkBehaviour
 
     public NetworkObject playerInteractionKitchenObject;
 
-    //----->
+    
     private async void Start()
     {
-        //bombManager = FindAnyObjectByType<BombManager>();
         if (Object.HasStateAuthority) 
         {
         GameService.Instance.playerAction = this;
-        //currentState = new IdleState();
-        //currentState.EnterState();
+        this.enabled = false;
         await TryGetPlayer();
         }
     }
-
-    //public void ChangeState(IState newState)
-    //{
-    //    currentState.ExitState();
-    //    currentState = newState;
-    //    currentState.EnterState();
-    //}
 
     private async UniTask<NetworkPlayer> TryGetPlayer()
     {

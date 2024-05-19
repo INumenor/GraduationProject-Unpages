@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Unpages/Scripts/Task.meta
+guid: b147c242847f1ac48a12d721325f3db5
+folderAsset: yes
+DefaultImporter:
+========
 guid: c4f46579a5264284e9d4ea3882645484
 NativeFormatImporter:
+>>>>>>>> Dev:Assets/Plugins/Sirenix/Odin Inspector/Config/Editor/AOTGenerationConfig.asset.meta
   externalObjects: {}
   mainObjectFileID: 11400000
   userData: 

@@ -3,12 +3,14 @@ using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NetworkItems : MonoBehaviour
 {
     public List<ItemInfo> networkFoodItems;
     public List<FoodInfo> networkItemsSlice;
     public List<FoodRecipes> networkFoodRecipes;
+    public List<FoodRecipes> networkTaskFoodRecipes;
     public List<FoodInfo> networkItems;
     public NetworkObject networkPlate;
 
@@ -17,7 +19,7 @@ public class NetworkItems : MonoBehaviour
     {
         foreach (FoodInfo itemObject in networkFoodItems)
         {
-            if(itemObject.foodtype == foodType)
+            if (itemObject.foodtype == foodType)
             {
                 return itemObject.item;
             }
@@ -87,6 +89,17 @@ public class NetworkItems : MonoBehaviour
             if (foodRecipe.foodRecipe == respawnRecipe)
             {
                 return foodRecipe.foodRecipe;
+            }
+        }
+        return null;
+    }
+    public Sprite GetImageFoodItem(FoodType foodType)
+    {
+        foreach (FoodInfo itemObject in networkFoodItems)
+        {
+            if (itemObject.foodtype == foodType)
+            {
+                return itemObject.itemImage;
             }
         }
         return null;

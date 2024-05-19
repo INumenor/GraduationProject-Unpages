@@ -15,7 +15,8 @@ namespace Unpages.Network{
 
         public NetworkObject networkCharacter;
 
-        [Button]
+
+
         public override void Spawned()
         {
             //NetworkManager.Instance.SetPlayer(Object.InputAuthority, this);

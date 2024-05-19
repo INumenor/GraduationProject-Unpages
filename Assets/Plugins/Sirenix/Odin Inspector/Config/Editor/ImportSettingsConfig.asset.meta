@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Unpages/Prefabs/UI/TaskUIPrefab.meta
+guid: b36ddd8e6604b72449a89c8ce73a74bb
+folderAsset: yes
+DefaultImporter:
+========
 guid: 20eebe27bbc4a654d8052d61892ddf1d
 NativeFormatImporter:
+>>>>>>>> Dev:Assets/Plugins/Sirenix/Odin Inspector/Config/Editor/ImportSettingsConfig.asset.meta
   externalObjects: {}
   mainObjectFileID: 11400000
   userData: 
