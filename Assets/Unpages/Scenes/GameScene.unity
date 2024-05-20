@@ -3411,6 +3411,7 @@ MonoBehaviour:
   _spawnBoxPrefab: {fileID: 3010347918898669061, guid: fddba8e56f18eb849945a43db6fe9cf2, type: 3}
   _wallPrefab: {fileID: -5803944534936537128, guid: 08c85927e0648ff48b78842e964ffdda, type: 3}
   _spawnedBox: {fileID: 1986256463}
+  _spawnedFoodBox: []
 --- !u!114 &1349657875
 MonoBehaviour:
   m_ObjectHideFlags: 0
