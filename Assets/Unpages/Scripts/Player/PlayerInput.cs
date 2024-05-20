@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Unpages.Network;
 
-public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
+public class PlayerInput : NetworkBehaviour , INetworkRunnerCallbacks
 {
     [SerializeField]
     private InputActionReference _moveInput;
@@ -50,6 +50,7 @@ public class PlayerInput : MonoBehaviour , INetworkRunnerCallbacks
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
+        if (!Object.HasInputAuthority) return;
         PlayerInputData inputData = new PlayerInputData();
 
         Vector2 direction2D = _moveInput.action.ReadValue<Vector2>();

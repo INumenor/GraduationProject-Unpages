@@ -11,14 +11,14 @@ public class AngryBar : NetworkBehaviour
     public TMP_Text textAngryBarScore;
     [Networked ,OnChangedRender(nameof(UpdateUI))] public int playerScore {get; set;}
 
-    public void UpdateAngryBar()
+    public void UpdateAngryBar(int recipeScore)
     {
-        RPC_UpdateAngryBar(Runner.LocalPlayer);
+        RPC_UpdateAngryBar(Runner.LocalPlayer,recipeScore);
     }
 
 
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    public void RPC_UpdateAngryBar(PlayerRef playerRef)
+    public void RPC_UpdateAngryBar(PlayerRef playerRef,int recipeScore)
     {
         if(Runner.LocalPlayer != playerRef)GameService.Instance.playerTask.angryBar.playerScore -= 5;
     }

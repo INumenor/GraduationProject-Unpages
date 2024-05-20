@@ -216,6 +216,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 2899527484845216122}
   - {fileID: 7023216042600215416}
+  - {fileID: 1142484772308264364}
   - {fileID: 252902074722606782}
   - {fileID: 4146116576328907147}
   - {fileID: 4647906390030779770}
@@ -296,6 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4653b87ac3494429b2b0831ff461ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _controller: {fileID: 0}
   MoveSpeed: 5
   JumpForce: 4.2
   GravityValue: -9.81
@@ -333,10 +335,12 @@ MonoBehaviour:
   bombManager: {fileID: 4661063772404637166}
   playerInteraction: {fileID: 4146116576328907147}
   playerCamera: {fileID: 4647906390030779770}
+  stateManager: {fileID: 0}
+  playerAnchorPoint: {fileID: 0}
   isGrabbable: 0
   keepObject: {fileID: 0}
-  grabbableObject: {fileID: 0}
-  grabbableObjectType: 4
+  interactionObjcet: {fileID: 0}
+  interactionObjcetType: 0
   playerInteractionKitchenObject: {fileID: 0}
 --- !u!114 &4661063772404637166
 MonoBehaviour:
@@ -365,7 +369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde8b138a19abd141ac173a64b4667b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionObject: {fileID: 0}
 --- !u!114 &4647906390030779770
 MonoBehaviour:
   m_ObjectHideFlags: 0

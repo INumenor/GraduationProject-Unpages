@@ -12,7 +12,7 @@ public class TaskUI : MonoBehaviour
     public Image taskImage;
     public Transform taskTimeImage;
     public GameObject taskMaterialPrefab;
-    public Action<FoodRecipes> taskTimeAction;
+    public Action<FoodRecipes,bool> taskTimeAction;
     public FoodRecipes foodRecipes;
     public void Init(FoodRecipes foodRecipes)
     {
@@ -29,7 +29,7 @@ public class TaskUI : MonoBehaviour
     {
         taskTimeImage.DOScale(new Vector3(1, 1, 1), recipeTime).SetEase(Ease.Linear).OnComplete(() => 
         {
-            taskTimeAction.Invoke(foodRecipes);
+            taskTimeAction.Invoke(foodRecipes,false);
             });
     }
 }

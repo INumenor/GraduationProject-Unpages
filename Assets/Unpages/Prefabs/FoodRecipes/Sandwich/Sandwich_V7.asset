@@ -26,3 +26,4 @@ MonoBehaviour:
   foodTypes: 01000000000000000200000003000000
   recipeImages: {fileID: 21300000, guid: dd0f7c30aae36eb41b6d3dc4f91da32d, type: 3}
   recipeTime: 60
+  recipeScore: 30
