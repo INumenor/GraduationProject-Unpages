@@ -29,7 +29,7 @@ public class PlayerTask : SerializedMonoBehaviour
     public void Task(int recipeRandomNumber)
     {
         foodRecipes = GameService.Instance.networkItems.networkFoodRecipes[recipeRandomNumber];
-        if (taskRecipes.Count<4 && !taskRecipes.ContainsKey(foodRecipes)) 
+        if (/*taskRecipes.Count<4 && */!taskRecipes.ContainsKey(foodRecipes)) 
         {
             GameObject task= Instantiate(taskPrefab,taskScrollViewContent);
             taskRecipes.Add(foodRecipes,task);
@@ -37,16 +37,17 @@ public class PlayerTask : SerializedMonoBehaviour
             task.GetComponent<TaskUI>().Init(foodRecipes);          
         }
     }
-    public void DestroyTask(FoodRecipes taskRecipe)
+    public void DestroyTask(FoodRecipes taskRecipe,bool isDone)
     {       
         Destroy(taskRecipes[taskRecipe]);
         taskRecipes.Remove(taskRecipe);
-        if(taskRecipes.Count < 1)
+        if (!isDone) angryBar.playerScore += 12;
+        if (taskRecipes.Count < 1)
         {
             taskSystem.NewRecipe();
         }
     }
-
+    
     public bool ChecktaskRecipes(NetworkObject plateFoodRecipes)
     {
         if(plateFoodRecipes == null) return false;
@@ -54,9 +55,9 @@ public class PlayerTask : SerializedMonoBehaviour
         {
             if(foodRecipes.name == plateFoodRecipes.name)
             {
-                angryBar.playerScore += 12;
-                angryBar.UpdateAngryBar();
-                DestroyTask(foodRecipes);
+                angryBar.playerScore += foodRecipes.recipeScore;
+                angryBar.UpdateAngryBar(foodRecipes.recipeScore/2);
+                DestroyTask(foodRecipes, true);
                 taskSystem.NewRecipe();
                 return true;
             }
@@ -66,7 +67,14 @@ public class PlayerTask : SerializedMonoBehaviour
     [Button]
     public void SetScore()
     {
-        angryBar.playerScore += 12;
-        angryBar.UpdateAngryBar();
+        angryBar.playerScore += 10;
+        angryBar.UpdateAngryBar(10/2);
+    }
+
+    [Button]
+    public void Test()
+    {
+        DestroyTask(foodRecipes, true);
+        taskSystem.NewRecipe();
     }
 }

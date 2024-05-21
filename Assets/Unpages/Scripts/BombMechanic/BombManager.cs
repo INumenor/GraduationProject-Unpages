@@ -36,7 +36,7 @@ public class BombManager : MonoBehaviour
     public async void StartActivationDelay()
     {
         _isInActivationDelay = true;
-        await UniTask.WaitForSeconds(1f, cancellationToken: destroyCancellationToken);
+        await UniTask.WaitForSeconds(.1f, cancellationToken: destroyCancellationToken);
         _isInActivationDelay = false;
     }
 }

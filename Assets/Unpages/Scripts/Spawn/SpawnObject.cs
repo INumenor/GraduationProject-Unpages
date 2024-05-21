@@ -215,7 +215,6 @@ public class SpawnObject : NetworkBehaviour
     #endregion
 
     #region RPC_System
-    [Rpc(RpcSources.All, RpcTargets.All)]//------> Change
     public void RPC_Despawn(NetworkObject networkObject)
     {
         NetworkManager.Instance.SessionRunner.Despawn(networkObject);

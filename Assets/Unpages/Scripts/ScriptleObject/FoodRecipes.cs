@@ -14,4 +14,5 @@ public class FoodRecipes : SerializedScriptableObject
     public List<FoodType> foodTypes = new List<FoodType>();
     public Sprite recipeImages;
     public float recipeTime;
+    public int recipeScore;
 }
