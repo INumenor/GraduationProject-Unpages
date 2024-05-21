@@ -2,15 +2,11 @@ using Fusion;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
 using Unpages.Network;
 
 public class GameControl : MonoBehaviour
 {
-    public System.Action<GameObject> BoxDestroy;
-    //public System.Action BoxSpawn;
-   // public int BoxDestroyCount;
-    public void ObjectSpawn(GameObject spawnObject)
+    public void ObjectSpawn(Transform spawnPoint)
     {
         if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient)
         {
@@ -20,16 +16,9 @@ public class GameControl : MonoBehaviour
             {
                 if (itemInfo.isSpawnable && itemInfo.minRandomGameSpawn < randomNumber && randomNumber < itemInfo.maxRandomGameSpawn)
                 {
-                    //BoxDestroyCount++;
-                    BoxDestroy(spawnObject);
-                    //if(BoxDestroyCount >= 10)
-                    //{
-                    //    BoxSpawn();
-                    //    BoxDestroyCount = 0;
-                    //}
                     Debug.Log(itemInfo.name + " " + randomNumber);
                     //Instantiate(itemInfo.item, spawnPoint);
-                    NetworkObject networkObject = NetworkManager.Instance.SessionRunner.Spawn(itemInfo.item, spawnObject.transform.position, spawnObject.transform.rotation);
+                    NetworkObject networkObject = NetworkManager.Instance.SessionRunner.Spawn(itemInfo.item, spawnPoint.position, spawnPoint.transform.rotation);
                     networkObject.name = itemInfo.name;
                     networkObject.GetComponent<Item>().AddComponentInteract();
                     //Runner.Spawn(itemInfo.item,position: spawnPoint.position,rotation : spawnPoint.rotation,Object.StateAuthority);
