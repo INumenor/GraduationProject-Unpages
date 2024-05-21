@@ -19,6 +19,8 @@ public class PlayerAction : NetworkBehaviour
     //Player Anchor Point
     public Transform playerAnchorPoint;
 
+    public GameObject interactor;
+
     public bool isGrabbable = false;
 
     [Header("KeepObject")]
@@ -30,6 +32,7 @@ public class PlayerAction : NetworkBehaviour
     public ItemType interactionObjcetType;
     //public bool isTriggered = false;
 
+    [Header("KitchenObject")]
     public NetworkObject playerInteractionKitchenObject;
 
     
@@ -40,6 +43,10 @@ public class PlayerAction : NetworkBehaviour
         GameService.Instance.playerAction = this;
         this.enabled = false;
         await TryGetPlayer();
+        }
+        else
+        {
+            interactor.SetActive(false);
         }
     }
 

@@ -27,6 +27,8 @@ public class MapDefault : NetworkBehaviour
 
     public GameObject WaitOtherPlayerCanvas;
     public GameObject GameScrennCanvas;
+    public GameObject Player1AngryBarCanvas;
+    public GameObject Player2AngryBarCanvas;
 
     public NetworkManager networkManager => NetworkManager.Instance;
 
@@ -121,6 +123,8 @@ public class MapDefault : NetworkBehaviour
             }
             WaitOtherPlayerCanvas.SetActive(false);
             GameScrennCanvas.SetActive(true);
+            Player1AngryBarCanvas.SetActive(true);
+            Player2AngryBarCanvas.SetActive(true);
             GameService.Instance.playerAction.enabled = true;
             //NetworkManager.Instance.CahngeGameScene();
         }

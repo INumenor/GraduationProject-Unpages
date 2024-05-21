@@ -1715,6 +1715,7 @@ MonoBehaviour:
   playerCamera: {fileID: 247904878623844965}
   stateManager: {fileID: 6543497796288071708}
   playerAnchorPoint: {fileID: 835527270749366859}
+  interactor: {fileID: 5987617279424536901}
   isGrabbable: 0
   keepObject: {fileID: 0}
   interactionObjcet: {fileID: 0}

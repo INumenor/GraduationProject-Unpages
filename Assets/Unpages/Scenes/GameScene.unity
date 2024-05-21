@@ -2992,6 +2992,8 @@ MonoBehaviour:
   taskTransform: {fileID: 781351918}
   WaitOtherPlayerCanvas: {fileID: 1259730433}
   GameScrennCanvas: {fileID: 1638645770}
+  Player1AngryBarCanvas: {fileID: 4374821599038766313}
+  Player2AngryBarCanvas: {fileID: 3957895554940569020}
   _ReadyPlayerCount: 0
   _AllPlayersReady:
     _value: 0
@@ -3148,7 +3150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1259730434
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4044,7 +4046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1638645771
 RectTransform:
   m_ObjectHideFlags: 0
