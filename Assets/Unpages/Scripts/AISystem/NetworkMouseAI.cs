@@ -10,7 +10,7 @@ public class NetworkMouseAI : NetworkBehaviour
     {
         if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient && grabbleNetworkObject)
         {
-            Vector3 spawnPosition = transform.position + -transform.forward * 1f;
+            Vector3 spawnPosition = transform.position + transform.forward * 1f;
             NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(grabbleNetworkObject, spawnPosition, this.transform.rotation, Object.StateAuthority);
             item.name = grabbleNetworkObject.name;
             item.gameObject.GetComponent<Rigidbody>().useGravity = true;

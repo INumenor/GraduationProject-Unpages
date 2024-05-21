@@ -14,10 +14,11 @@ public class SpawnMouse : NetworkBehaviour
     {
         if (Runner.IsSharedModeMasterClient)
         {
-            NetworkObject mouseNetworkObject = Runner.Spawn(mouseAgent, mouseAgentBase.position, mouseAgentBase.rotation, Object.StateAuthority);
+            NetworkObject mouseNetworkObject = Runner.Spawn(mouseAgent, mouseAgentBase.position,mouseAgent.transform.rotation, Object.StateAuthority);
             GameService.Instance.mouseStateManager.mouseAgent = mouseNetworkObject.GetComponent<NavMeshAgent>();
             GameService.Instance.mouseStateManager.mouseAI = mouseNetworkObject.GetComponent<MouseAI>();
             GameService.Instance.mouseStateManager.networkMouseAI = mouseNetworkObject.GetComponent<NetworkMouseAI>();
+            GameService.Instance.mouseStateManager.MouseAnimatorController = mouseNetworkObject.GetComponent<Animator>();
             GameService.Instance.mouseStateManager.StartStation();
         }
     }
