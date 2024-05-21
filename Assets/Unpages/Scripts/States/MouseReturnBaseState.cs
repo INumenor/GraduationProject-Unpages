@@ -8,13 +8,13 @@ public class MouseReturnBaseState : IMouseState
 
     public void EnterState()
     {
-        Debug.Log("returnbase'da");
+        CharacterRunning();
         mouseStateManager.mouseAgent.SetDestination(mouseStateManager.mouseAgentBase.position);
     }
 
     public void ExitState()
     {
-
+        CharacterDontRunning();
     }
 
     public void UpdateState()
@@ -29,5 +29,14 @@ public class MouseReturnBaseState : IMouseState
         {
             mouseStateManager.ChangeState(new MouseCatchState());
         }
+    }
+    public void CharacterRunning()
+    {
+        mouseStateManager.MouseAnimatorController.SetBool("isRunning", true);
+    }
+
+    public void CharacterDontRunning()
+    {
+        mouseStateManager.MouseAnimatorController.SetBool("isRunning", false);
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3420,7 +3420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnBoxPrefab: {fileID: 3010347918898669061, guid: fddba8e56f18eb849945a43db6fe9cf2, type: 3}
-  _wall: {fileID: -5803944534936537128, guid: 08c85927e0648ff48b78842e964ffdda, type: 3}
+  _wallPrefab: {fileID: -5803944534936537128, guid: 08c85927e0648ff48b78842e964ffdda, type: 3}
   _spawnedBox: {fileID: 1986256463}
 --- !u!114 &1349657875
 MonoBehaviour:
@@ -3434,7 +3434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce22ac2a014c43144a2ca14615ddb865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseAgent: {fileID: 1412246489826035535, guid: 863d08293df7288418c167a63030c8f7, type: 3}
+  mouseAgent: {fileID: 6278030482951139999, guid: bd8080ca6cb0b7a45ba8fc3ac563afc9, type: 3}
   mouseAgentBase: {fileID: 1891922}
 --- !u!114 &1349657876
 MonoBehaviour:
@@ -3627,13 +3627,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseAI: {fileID: 0}
   networkMouseAI: {fileID: 0}
-  mouseAgent: {fileID: 0}
+  mouseAgent: {fileID: 5963374009911901021, guid: bd8080ca6cb0b7a45ba8fc3ac563afc9, type: 3}
   mouseAgentBase: {fileID: 1891922}
   expiredFood: []
   mouseGrabbleObject: {fileID: 0}
   targetFood: {fileID: 0}
   isCatch: 0
-  mouseAgentPrefab: {fileID: 1412246489826035535, guid: 863d08293df7288418c167a63030c8f7, type: 3}
+  mouseAgentPrefab: {fileID: 6278030482951139999, guid: bd8080ca6cb0b7a45ba8fc3ac563afc9, type: 3}
+  MouseAnimatorController: {fileID: 0}
+  meshSurface: {fileID: 837119554}
+  _isIdle:
+    _value: 0
+  _isRunning:
+    _value: 0
+  _isJumping:
+    _value: 0
 --- !u!4 &1438080725
 Transform:
   m_ObjectHideFlags: 0
