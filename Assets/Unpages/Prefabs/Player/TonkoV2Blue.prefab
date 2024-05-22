@@ -1716,6 +1716,7 @@ MonoBehaviour:
   stateManager: {fileID: 6543497796288071708}
   playerAnchorPoint: {fileID: 835527270749366859}
   isGrabbable: 0
+  interactionCollable: {fileID: 5987617279424536901}
   keepObject: {fileID: 0}
   interactionObjcet: {fileID: 0}
   interactionObjcetType: 4

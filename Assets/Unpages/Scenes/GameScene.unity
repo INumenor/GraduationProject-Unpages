@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2987,6 +2987,8 @@ MonoBehaviour:
   Player2SpawnPoint: {fileID: 1852518903}
   Player1AngryBar: {fileID: 8864760386571373571}
   Player2AngryBar: {fileID: 4255814423165230730}
+  Player1AngryBarCanvas: {fileID: 4374821599038766313}
+  Player2AngryBarCanvas: {fileID: 3957895554940569020}
   timerText: {fileID: 887137713}
   taskSystemPrefab: {fileID: 2675207343980534658, guid: 91c5915940e86c64faffe1c92d5f9a9e, type: 3}
   taskTransform: {fileID: 781351918}
@@ -3148,7 +3150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1259730434
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3422,6 +3424,7 @@ MonoBehaviour:
   _spawnBoxPrefab: {fileID: 3010347918898669061, guid: fddba8e56f18eb849945a43db6fe9cf2, type: 3}
   _wallPrefab: {fileID: -5803944534936537128, guid: 08c85927e0648ff48b78842e964ffdda, type: 3}
   _spawnedBox: {fileID: 1986256463}
+  _spawnedFoodBox: []
 --- !u!114 &1349657875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4052,7 +4055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1638645771
 RectTransform:
   m_ObjectHideFlags: 0

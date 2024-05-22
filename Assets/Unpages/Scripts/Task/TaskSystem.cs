@@ -27,7 +27,7 @@ public class TaskSystem : NetworkBehaviour
     //}
     public void NewRecipe()
     {
-        /*if (Runner.IsSharedModeMasterClient && isRecipeDone)*/
+        if (Runner.IsSharedModeMasterClient)
         RPC_NewTask(Random.Range(0, GameService.Instance.networkItems.networkTaskFoodRecipes.Count));
     }
 

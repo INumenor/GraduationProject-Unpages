@@ -21,6 +21,9 @@ public class PlayerAction : NetworkBehaviour
 
     public bool isGrabbable = false;
 
+
+    public GameObject interactionCollable;
+
     [Header("KeepObject")]
     public NetworkObject keepObject;
     //public ItemType keepObjectType;
@@ -30,6 +33,7 @@ public class PlayerAction : NetworkBehaviour
     public ItemType interactionObjcetType;
     //public bool isTriggered = false;
 
+    [Header("KitchenObject")]
     public NetworkObject playerInteractionKitchenObject;
 
     
@@ -40,6 +44,10 @@ public class PlayerAction : NetworkBehaviour
         GameService.Instance.playerAction = this;
         this.enabled = false;
         await TryGetPlayer();
+        }
+        else
+        {
+            interactionCollable.SetActive(false);
         }
     }
 

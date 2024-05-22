@@ -19,6 +19,8 @@ public class MapDefault : NetworkBehaviour
     [SerializeField] private AngryBar Player1AngryBar;
     [SerializeField] private AngryBar Player2AngryBar;
 
+    [SerializeField] private GameObject Player1AngryBarCanvas;
+    [SerializeField] private GameObject Player2AngryBarCanvas;
     public TMP_Text timerText;
 
     [SerializeField] private NetworkObject taskSystemPrefab;
@@ -121,6 +123,8 @@ public class MapDefault : NetworkBehaviour
             }
             WaitOtherPlayerCanvas.SetActive(false);
             GameScrennCanvas.SetActive(true);
+            Player1AngryBarCanvas.SetActive(true);
+            Player2AngryBarCanvas.SetActive(true);
             GameService.Instance.playerAction.enabled = true;
             //NetworkManager.Instance.CahngeGameScene();
         }
