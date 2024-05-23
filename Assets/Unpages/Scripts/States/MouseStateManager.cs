@@ -31,7 +31,7 @@ public class MouseStateManager : NetworkBehaviour
     [Networked] public NetworkBool isJumping { get; set; }
     public void StartStation()
     {
-        //if (!HasStateAuthority) return;
+        if (!HasStateAuthority) return;
         currentState = new MouseIdleState();
         currentState.mouseStateManager = this;
         currentState.EnterState();
@@ -39,7 +39,7 @@ public class MouseStateManager : NetworkBehaviour
 
     public void ChangeState(IMouseState newState)
     {
-        //if (!HasStateAuthority) return;
+        if (!HasStateAuthority) return;
         currentState.ExitState();
         currentState = newState;
         currentState.mouseStateManager = this;
@@ -48,7 +48,7 @@ public class MouseStateManager : NetworkBehaviour
 
     private void Update()
     {
-        //if (!HasStateAuthority) return;
+        if (!HasStateAuthority) return;
         if(mouseAgent) currentState.UpdateState();
     }
 

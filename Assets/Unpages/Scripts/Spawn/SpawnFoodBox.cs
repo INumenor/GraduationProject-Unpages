@@ -31,7 +31,7 @@ public class SpawnFoodBox : MonoBehaviour
     public void Spawn(PlayerRef playerRef, NetworkPlayer player)
     {
         Debug.Log(playerRef.PlayerId);
-        if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient)
+        if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient && NetworkManager.PlayerList.Count<2)
         {
             for (int i = 0; i < gridAreas.Count; i++)
             {
