@@ -6,7 +6,7 @@ using UnityEngine;
 using Unpages.Network;
 using NetworkPlayer = Unpages.Network.NetworkPlayer;
 
-public class SpawnFoodBox : MonoBehaviour
+public class SpawnFoodBox : NetworkBehaviour
 {
     [SerializeField] private NetworkObject _spawnBoxPrefab;
     [SerializeField] private NetworkObject _wallPrefab;
@@ -19,13 +19,13 @@ public class SpawnFoodBox : MonoBehaviour
     private void OnEnable()
     {
         NetworkManager.Instance.OnNetworkPlayerCreated += Spawn;
-      //  GameService.Instance.gameControl.BoxSpawn += SpawnMissingBox;
+        GameService.Instance.gameControl.BoxSpawn += SpawnMissingBox;
         GameService.Instance.gameControl.BoxDestroy += RemoveListBox;
     }
     private void OnDisable()
     {
         NetworkManager.Instance.OnNetworkPlayerCreated -= Spawn;
-      //  GameService.Instance.gameControl.BoxSpawn -= SpawnMissingBox;
+        GameService.Instance.gameControl.BoxSpawn -= SpawnMissingBox;
         GameService.Instance.gameControl.BoxDestroy -= RemoveListBox;
     }
     public void Spawn(PlayerRef playerRef, NetworkPlayer player)
@@ -145,10 +145,15 @@ public class SpawnFoodBox : MonoBehaviour
         int count = 0;
         foreach (var box in _spawnedFoodBox)
         {
+            Debug.Log("1");
+
             if (IsWithinGrid(area, box.transform.position))
             {
+                Debug.Log("2");
                 count++;
             }
+            Debug.Log(count + " : 3");
+
         }
         return count;
     }
@@ -165,10 +170,14 @@ public class SpawnFoodBox : MonoBehaviour
             {
                 Vector3[] area = gridAreas[i];
                 int currentBoxCount = CountBoxesInGrid(area);
+                Debug.Log("4");
                 int requiredBoxCount = (i == 0 || i == 2) ? 10 : 5;
+                Debug.Log("5");
                 int boxesToSpawn = requiredBoxCount - currentBoxCount;
+                Debug.Log("6"); 
                 if (boxesToSpawn > 0)
-                {
+                {            
+                    Debug.Log("7");
                     SpawnObjectsInGrid(area, boxesToSpawn, 0);
                 }
             }       
@@ -176,9 +185,10 @@ public class SpawnFoodBox : MonoBehaviour
     public void RemoveListBox(GameObject boxObject)
     {
         _spawnedFoodBox.Remove(boxObject.GetComponent<NetworkObject>());
-        if (_spawnedFoodBox.Count <= 20)
-        {
-            SpawnMissingBox();
-        }
+        Destroy(boxObject);
+        //if (_spawnedFoodBox.Count <= 20)
+        //{
+        //    SpawnMissingBox();
+        //}
     }
 }

@@ -8,8 +8,8 @@ using Unpages.Network;
 public class GameControl : MonoBehaviour
 {
     public System.Action<GameObject> BoxDestroy;
-    //public System.Action BoxSpawn;
-   // public int BoxDestroyCount;
+    public System.Action BoxSpawn;
+    public int BoxDestroyCount;
     public void ObjectSpawn(GameObject spawnObject)
     {
         if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient)
@@ -20,13 +20,13 @@ public class GameControl : MonoBehaviour
             {
                 if (itemInfo.isSpawnable && itemInfo.minRandomGameSpawn < randomNumber && randomNumber < itemInfo.maxRandomGameSpawn)
                 {
-                    //BoxDestroyCount++;
+                    BoxDestroyCount++;
                     BoxDestroy(spawnObject);
-                    //if(BoxDestroyCount >= 10)
-                    //{
-                    //    BoxSpawn();
-                    //    BoxDestroyCount = 0;
-                    //}
+                    if (BoxDestroyCount >= 10)
+                    {
+                        BoxSpawn();
+                        BoxDestroyCount = 0;
+                    }
                     Debug.Log(itemInfo.name + " " + randomNumber);
                     //Instantiate(itemInfo.item, spawnPoint);
                     NetworkObject networkObject = NetworkManager.Instance.SessionRunner.Spawn(itemInfo.item, spawnObject.transform.position, spawnObject.transform.rotation);

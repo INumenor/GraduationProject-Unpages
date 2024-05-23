@@ -16,7 +16,7 @@ public class TaskSystem : NetworkBehaviour
         GameService.Instance.playerTask.onServiceStatus += RandomRecipe;
         GameService.Instance.playerTask.taskSystem = this;
         await UniTask.WaitForSeconds(5f);
-        /*if (Runner.IsSharedModeMasterClient)*/ RandomRecipe();
+        if (Runner.IsSharedModeMasterClient) RandomRecipe();
     }
     //public override FixedUpdateNetwork()
     //{
@@ -27,7 +27,7 @@ public class TaskSystem : NetworkBehaviour
     //}
     public void NewRecipe()
     {
-        if (Runner.IsSharedModeMasterClient)
+        //if (Runner.IsSharedModeMasterClient)
         RPC_NewTask(Random.Range(0, GameService.Instance.networkItems.networkTaskFoodRecipes.Count));
     }
 
