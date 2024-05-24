@@ -43,7 +43,7 @@ public class PlateItem : Item
             }
             if (!isThere)
             {
-                if(networkFoodRecipe != null)GameService.Instance.spawnObject.RPC_Despawn(networkFoodRecipe);
+                if(networkFoodRecipe != null)GameService.Instance.spawnObject.Despawn(networkFoodRecipe);
                 foodTypes.Add(keepObject.GetComponent<FoodItem>().foodType);
                 networkFoodRecipe = GameService.Instance.spawnObject.SpawnFoodRecipe(GameService.Instance.networkItems.GetNetworkFoodRecipes(foodTypes),anchorPoint,keepObject);
             }

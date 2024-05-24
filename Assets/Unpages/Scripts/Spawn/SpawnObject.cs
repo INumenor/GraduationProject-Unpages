@@ -29,7 +29,7 @@ public class SpawnObject : NetworkBehaviour
         if (interactionObjcet)
         {
             if (interactionObjcet.GetComponent<Item>().itemType == ItemType.Food) interactionObjcet.GetComponent<FoodInteract>().RemoveFoodItem();
-            RPC_Despawn(interactionObjcet);
+            Despawn(interactionObjcet);
         }
         //}
     }
@@ -44,7 +44,7 @@ public class SpawnObject : NetworkBehaviour
         item.name = interactionObjcet.name;
         item.gameObject.GetComponent<Rigidbody>().useGravity = true;
         item.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        RPC_Despawn(interactionObjcet);
+        Despawn(interactionObjcet);
 
         GameService.Instance.playerAction.isGrabbable = false;
         GameService.Instance.playerAction.keepObject = null;
@@ -81,7 +81,7 @@ public class SpawnObject : NetworkBehaviour
 
         if (isIntetactor) item.GetComponent<Item>().AddComponentInteract();
         interactionObjcet.ReleaseStateAuthority();
-        if (interactionObjcet) RPC_Despawn(interactionObjcet);
+        if (interactionObjcet) Despawn(interactionObjcet);
 
         //}
     }
@@ -95,7 +95,7 @@ public class SpawnObject : NetworkBehaviour
         item.transform.SetParent(anchorPoint);
         item.gameObject.GetComponent<Rigidbody>().useGravity = false;
         item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        RPC_Despawn(interactionObjcet);
+        Despawn(interactionObjcet);
         //Runner.Despawn(interactionObject); //--> Change
         GameService.Instance.playerAction.isGrabbable = false;
         GameService.Instance.playerAction.keepObject = null;
@@ -115,7 +115,7 @@ public class SpawnObject : NetworkBehaviour
 
     public void DestroyDropItemStorage(NetworkObject interactionObjcet)
     {
-        RPC_Despawn(interactionObjcet);
+        Despawn(interactionObjcet);
         GameService.Instance.playerAction.isGrabbable = false;
         GameService.Instance.playerAction.keepObject = null;
     }
@@ -126,7 +126,7 @@ public class SpawnObject : NetworkBehaviour
 
     public void DestroyDropItemKitchenPlate(NetworkObject interactionObjcet)
     {
-        RPC_Despawn(interactionObjcet);
+        Despawn(interactionObjcet);
         GameService.Instance.playerAction.isGrabbable = false;
         GameService.Instance.playerAction.keepObject = null;
     }
@@ -142,7 +142,7 @@ public class SpawnObject : NetworkBehaviour
         item.transform.SetParent(anchorPoint);
         item.gameObject.GetComponent<Rigidbody>().useGravity = false;
         item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        RPC_Despawn(defautObjcet);
+        Despawn(defautObjcet);
         GameService.Instance.playerAction.isGrabbable = false;
         GameService.Instance.playerAction.keepObject = null;
         if (isInteractor) item.GetComponent<Item>().AddComponentInteract();
@@ -157,8 +157,9 @@ public class SpawnObject : NetworkBehaviour
     {
         NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(interactionObjcet, anchorPoint.position, this.transform.rotation, Object.StateAuthority);
         item.name = interactionObjcet.name;
+        //RPC_Set(item,anchorPoint);
         item.transform.SetParent(anchorPoint);
-        RPC_Despawn(GameService.Instance.playerAction.keepObject);
+        Despawn(GameService.Instance.playerAction.keepObject);
         GameService.Instance.playerAction.isGrabbable = false;
         GameService.Instance.playerAction.keepObject = null;
         return item;
@@ -168,6 +169,7 @@ public class SpawnObject : NetworkBehaviour
     {
         NetworkObject item = NetworkManager.Instance.SessionRunner.Spawn(interactionObjcet, anchorPoint.position, this.transform.rotation, Object.StateAuthority);
         item.name = interactionObjcet.name;
+        //RPC_SetTransform(item, anchorPoint);
         item.transform.SetParent(anchorPoint);
         return item;
     }
@@ -198,7 +200,7 @@ public class SpawnObject : NetworkBehaviour
         if (interactionObjcet)
         {
             interactionObjcet.ReleaseStateAuthority();
-            RPC_Despawn(interactionObjcet);
+            Despawn(interactionObjcet);
         }
         //}
     }
@@ -209,15 +211,24 @@ public class SpawnObject : NetworkBehaviour
     {
         if (serviceNetworkObject)
         {
-            RPC_Despawn(serviceNetworkObject);
+            Despawn(serviceNetworkObject);
         }
     }
     #endregion
 
-    #region RPC_System
-    public void RPC_Despawn(NetworkObject networkObject)
+
+    #region Despawn
+    public void Despawn(NetworkObject networkObject)
     {
         NetworkManager.Instance.SessionRunner.Despawn(networkObject);
     }
+    #endregion
+
+    #region RPC_System
+    //[Rpc(RpcSources.All,RpcTargets.All)]
+    //public void RPC_Set(NetworkObject networkObject)
+    //{
+    //    networkObject.transform.SetParent(transform);
+    //}
     #endregion
 }

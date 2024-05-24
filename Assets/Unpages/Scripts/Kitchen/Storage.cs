@@ -34,7 +34,7 @@ public class Storage : KitchenObject
             GameService.Instance.spawnObject.PlayerGrabCupboardItem(onTheCupboardObject, anchorPoint, false);
             onTheCupboardObject = null;
         }
-        else if(onTheCupboardObject == null)
+        else if(onTheCupboardObject == null && storageFoodCount > 0)
         {
             NetworkObject foodNetworkObject = GameService.Instance.networkItems.GetNetworkFoodItem(foodType);
             GameService.Instance.spawnObject.PlayerGrabItem(foodNetworkObject,GameService.Instance.playerAction.playerAnchorPoint,false,null);
