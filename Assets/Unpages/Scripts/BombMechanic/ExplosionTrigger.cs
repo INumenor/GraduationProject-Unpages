@@ -20,9 +20,9 @@ public class ExplosionTrigger : MonoBehaviour
             isActiv = true;
             Destroy(other.gameObject);
         }
-        else if (!isActiv && other.CompareTag("Character"))
-        {
-            isActiv = true;
-        }
+        //else if (!isActiv && other.CompareTag("Character"))
+        //{
+        //    isActiv = true;
+        //}
     }
 }
