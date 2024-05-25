@@ -8,7 +8,6 @@ public class MouseCatchState : IMouseState
 
     public void EnterState()
     {
-        Debug.Log("enter'da");
         if (mouseStateManager.mouseGrabbleObject)
         {
             CharacterJumping();

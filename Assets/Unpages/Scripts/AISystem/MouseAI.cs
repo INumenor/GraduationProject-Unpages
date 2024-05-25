@@ -71,6 +71,7 @@ public class MouseAI : NetworkBehaviour,IInteractable
 
     public void Interact(InteractorData interactorData)
     {
+        Debug.Log("deðmesi lazým");
         GameService.Instance.mouseStateManager.isCatch = true;
     }
 

@@ -29,11 +29,8 @@ public class GameControl : MonoBehaviour
                     }
                     Debug.Log(itemInfo.name + " " + randomNumber);
                     //Instantiate(itemInfo.item, spawnPoint);
-                    NetworkObject networkObject = NetworkManager.Instance.SessionRunner.Spawn(itemInfo.item,
-                        new Vector3(spawnObject.transform.position.x,spawnObject.transform.position.y-0.3f,spawnObject.transform.position.z),
-                        spawnObject.transform.rotation);
-                    networkObject.gameObject.GetComponent<Rigidbody>().useGravity = false;
-                    networkObject.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    GameService.Instance.mouseStateManager.AreaBake();
+                    NetworkObject networkObject = NetworkManager.Instance.SessionRunner.Spawn(itemInfo.item, spawnObject.transform.position, spawnObject.transform.rotation);
                     networkObject.name = itemInfo.name;
                     networkObject.GetComponent<Item>().AddComponentInteract();
                     //Runner.Spawn(itemInfo.item,position: spawnPoint.position,rotation : spawnPoint.rotation,Object.StateAuthority);
