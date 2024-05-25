@@ -55,7 +55,7 @@ public class PlateItem : Item
         networkFoodRecipe = GameService.Instance.spawnObject.ReSpawnFoodRecipe(networkObject,anchorPoint);
     }
 
-
+    ////-----Bu kısımda Recipe olayı RPC yapılacak ......
 
 
     //[Button]
