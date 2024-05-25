@@ -29,6 +29,7 @@ public class GameControl : MonoBehaviour
                     }
                     Debug.Log(itemInfo.name + " " + randomNumber);
                     //Instantiate(itemInfo.item, spawnPoint);
+                    GameService.Instance.mouseStateManager.AreaBake();
                     NetworkObject networkObject = NetworkManager.Instance.SessionRunner.Spawn(itemInfo.item, spawnObject.transform.position, spawnObject.transform.rotation);
                     networkObject.name = itemInfo.name;
                     networkObject.GetComponent<Item>().AddComponentInteract();

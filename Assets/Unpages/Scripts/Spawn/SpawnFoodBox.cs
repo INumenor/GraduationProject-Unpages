@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Fusion;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ public class SpawnFoodBox : NetworkBehaviour
         GameService.Instance.gameControl.BoxSpawn -= SpawnMissingBox;
         GameService.Instance.gameControl.BoxDestroy -= RemoveListBox;
     }
-    public void Spawn(PlayerRef playerRef, NetworkPlayer player)
+    public async void Spawn(PlayerRef playerRef, NetworkPlayer player)
     {
         Debug.Log(playerRef.PlayerId);
         if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient && NetworkManager.PlayerList.Count<2)
@@ -45,6 +46,8 @@ public class SpawnFoodBox : NetworkBehaviour
                    
                 }
             }
+            await UniTask.WaitForSeconds(5f);
+            Debug.Log("bake alýyor");
             GameService.Instance.mouseStateManager.AreaBake();
         }       
     }
@@ -180,7 +183,8 @@ public class SpawnFoodBox : NetworkBehaviour
                     Debug.Log("7");
                     SpawnObjectsInGrid(area, boxesToSpawn, 0);
                 }
-            }       
+            }
+        GameService.Instance.mouseStateManager.AreaBake();
     }
     public void RemoveListBox(GameObject boxObject)
     {

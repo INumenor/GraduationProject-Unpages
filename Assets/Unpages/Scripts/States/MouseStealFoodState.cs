@@ -11,6 +11,7 @@ public class MouseStealFoodState : IMouseState
     
         if (mouseStateManager.expiredFood.Count>0 && !mouseStateManager.mouseGrabbleObject)
         {
+            Debug.Log("burasý");
             CharacterRunning();
             mouseStateManager.targetFood = mouseStateManager.expiredFood[0];
             mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
@@ -43,7 +44,6 @@ public class MouseStealFoodState : IMouseState
     }
     public void CharacterRunning()
     {
-        Debug.Log("buraya gelmek");
         mouseStateManager.MouseAnimatorController.SetBool("isRunning", true);
     }
 

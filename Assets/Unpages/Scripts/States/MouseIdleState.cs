@@ -24,6 +24,7 @@ public class MouseIdleState : IMouseState
     {
       if(mouseStateManager.expiredFood.Count>0 && !mouseStateManager.mouseGrabbleObject)
         {
+            Debug.Log("burasý 2");
             mouseStateManager.ChangeState(new MouseStealFoodState());
         }
     }
