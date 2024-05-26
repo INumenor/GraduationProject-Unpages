@@ -7,11 +7,22 @@ public class KitchenInteract : MonoBehaviour, IInteractable
 {
     public void Interact(InteractorData interactorData)
     {
-        GameService.Instance.playerAction.playerInteractionKitchenObject = interactorData.InteractorObject.GetComponent<NetworkObject>();
+        if(GameService.Instance.playerAction.playerInteractionKitchenObject == null)
+        {
+            GameService.Instance.playerAction.playerInteractionKitchenObject = interactorData.InteractorObject.GetComponent<NetworkObject>();
+            if (interactorData.InteractorObject.GetComponent<Outline>() != null)
+            {
+                interactorData.InteractorObject.GetComponent<Outline>().enabled = true;
+            }
+        } 
     }
 
     public void UnInteract()
     {
+        if (GameService.Instance.playerAction.playerInteractionKitchenObject.GetComponent<Outline>() != null)
+        {
+            GameService.Instance.playerAction.playerInteractionKitchenObject.GetComponent<Outline>().enabled = false;
+        }
         GameService.Instance.playerAction.playerInteractionKitchenObject = null;
     }
 }

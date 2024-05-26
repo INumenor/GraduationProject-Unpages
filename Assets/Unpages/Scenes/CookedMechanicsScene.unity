@@ -739,48 +739,12 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1099472842}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: mouseList
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Fusion.NetworkObject,
-        Fusion.Runtime]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: Mouse1
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  mouseAgent: {fileID: 1412246489826035535, guid: 863d08293df7288418c167a63030c8f7, type: 3}
-  agentBase: {fileID: 1891922}
-  meshSurface: {fileID: 837119554}
+    SerializationNodes: []
 --- !u!4 &343236910
 Transform:
   m_ObjectHideFlags: 0
@@ -1056,6 +1020,7 @@ GameObject:
   m_Component:
   - component: {fileID: 689553886}
   - component: {fileID: 689553885}
+  - component: {fileID: 689553887}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1140,6 +1105,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &689553887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689553884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1001 &704804417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1691,6 +1679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24f9270d19f0ed408921002046ddd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BoxDestroyCount: 0
 --- !u!4 &790984764
 Transform:
   m_ObjectHideFlags: 0
@@ -2639,13 +2628,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 977969009}
   m_SourcePrefab: {fileID: 100100000, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
 --- !u!4 &977969007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4173241031698997641, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
   m_PrefabInstance: {fileID: 977969006}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &977969008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
+  m_PrefabInstance: {fileID: 977969006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &977969009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977969008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &1026065025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2837,17 +2852,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050519875}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1099472842 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1412246489826035535, guid: 863d08293df7288418c167a63030c8f7, type: 3}
-  m_PrefabInstance: {fileID: 559701832}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1153872255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3322,9 +3326,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAction: {fileID: 0}
+  kitchenMechanics: {fileID: 0}
   networkItems: {fileID: 1328692518}
   gameControl: {fileID: 790984762}
   aiManagerSystem: {fileID: 343236909}
+  mouseStateManager: {fileID: 0}
+  spawnObject: {fileID: 0}
+  playerTask: {fileID: 0}
 --- !u!4 &1290727947
 Transform:
   m_ObjectHideFlags: 0
@@ -3353,6 +3361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1316430927}
   - component: {fileID: 1316430926}
+  - component: {fileID: 1316430928}
   m_Layer: 0
   m_Name: networkmanager
   m_TagString: Untagged
@@ -3375,9 +3384,6 @@ MonoBehaviour:
   SessionRunner: {fileID: 0}
   networkRunnerPrefab: {fileID: 6821837541494390122, guid: cfad2f42cde82594e9014949677e4336, type: 3}
   playerPreafab: {fileID: 2502306205790276012, guid: edd68f8a7f7eea24aa57478ae7029350, type: 3}
-  networkCharacterPrefab: {fileID: 7099868800434697647, guid: 8eb9d4bcfd0c3e94b8c98e9ca9ac4db8, type: 3}
-  Player1SpawnPoint: {fileID: 2027943253}
-  Player2SpawnPoint: {fileID: 1852518903}
 --- !u!4 &1316430927
 Transform:
   m_ObjectHideFlags: 0
@@ -3393,6 +3399,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1316430928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316430925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a93abf1a391964a94e5c139605105b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsSceneTakeOverEnabled: 1
+  LogSceneLoadErrors: 1
 --- !u!1 &1328692517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3422,6 +3442,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd4296a243dda64889c6f92b7619301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkFoodItems: []
+  networkItemsSlice: []
+  networkFoodRecipes: []
+  networkTaskFoodRecipes: []
   networkItems:
   - {fileID: 11400000, guid: d314622514af6be4fa92eab7ff2382ff, type: 2}
   - {fileID: 11400000, guid: 8193283f6f586d14c8606c7e5a08137f, type: 2}
@@ -3432,6 +3456,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b519a1175587a604fb5116a486acda95, type: 2}
   - {fileID: 11400000, guid: d128ecbf12b993245a83986ad9e74c85, type: 2}
   - {fileID: 11400000, guid: ee06532685f4321448e4091985830652, type: 2}
+  networkPlate: {fileID: 0}
 --- !u!4 &1328692519
 Transform:
   m_ObjectHideFlags: 0
@@ -3492,8 +3517,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnBoxPrefab: {fileID: 3010347918898669061, guid: fddba8e56f18eb849945a43db6fe9cf2, type: 3}
-  _wall: {fileID: -5803944534936537128, guid: 08c85927e0648ff48b78842e964ffdda, type: 3}
+  _wallPrefab: {fileID: 0}
   _spawnedBox: {fileID: 1986256463}
+  _spawnedFoodBox: []
 --- !u!1001 &1434552524
 PrefabInstance:
   m_ObjectHideFlags: 0

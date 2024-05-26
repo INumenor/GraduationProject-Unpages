@@ -14,5 +14,6 @@ public class Interaction : MonoBehaviour
         //playerAction.isTriggered = false;
         playerAction.interactionObjcet = null;
         playerAction.playerInteractionKitchenObject = null;
+        
     }
 }

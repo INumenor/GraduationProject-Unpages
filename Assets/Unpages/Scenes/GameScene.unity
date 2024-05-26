@@ -1181,6 +1181,10 @@ PrefabInstance:
       propertyPath: SortKey
       value: 3182913630
       objectReference: {fileID: 0}
+    - target: {fileID: 5279412479430952799, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5743746157252184357, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
       propertyPath: SortKey
       value: 156809439
@@ -4441,6 +4445,10 @@ PrefabInstance:
     - target: {fileID: 4231558642603759361, guid: f16c71594a4e11e4c931d0a3ed968cb3, type: 3}
       propertyPath: SortKey
       value: 2954712009
+      objectReference: {fileID: 0}
+    - target: {fileID: 4350655152965942877, guid: f16c71594a4e11e4c931d0a3ed968cb3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4607304800162267048, guid: f16c71594a4e11e4c931d0a3ed968cb3, type: 3}
       propertyPath: SortKey
