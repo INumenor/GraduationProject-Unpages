@@ -84,6 +84,10 @@ PrefabInstance:
       value: Kitchen_Bench2
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -175,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorPoints: {fileID: 5527841538073714876}
-  kitchenObjectType: 0
+  kitchenObjectType: 1
   onTheCupboardObject: {fileID: 0}
 --- !u!4 &4388376349249381858 stripped
 Transform:

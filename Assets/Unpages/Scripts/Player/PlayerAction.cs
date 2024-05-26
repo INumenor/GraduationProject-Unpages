@@ -16,6 +16,8 @@ public class PlayerAction : NetworkBehaviour
 
     //public IState currentState;
 
+    public Transform foodSpawnPoint;
+
     //Player Anchor Point
     public Transform playerAnchorPoint;
 
@@ -43,6 +45,7 @@ public class PlayerAction : NetworkBehaviour
         if (Object.HasStateAuthority) 
         {
         GameService.Instance.playerAction = this;
+        foodSpawnPoint = gameObject.transform;
         this.enabled = false;
         await TryGetPlayer();
         }

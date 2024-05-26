@@ -184,6 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
+  _isInteractable:
+    _value: 0
   foodType: 2
   choppingCount: 5
   isProcessed: 0

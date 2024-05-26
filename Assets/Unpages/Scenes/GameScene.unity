@@ -1077,6 +1077,10 @@ PrefabInstance:
       propertyPath: SortKey
       value: 2852818589
       objectReference: {fileID: 0}
+    - target: {fileID: 291451878713941799, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1143511510538619695, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
       propertyPath: SortKey
       value: 2452555540
@@ -1084,6 +1088,10 @@ PrefabInstance:
     - target: {fileID: 1310742926017400957, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
       propertyPath: SortKey
       value: 1039262203
+      objectReference: {fileID: 0}
+    - target: {fileID: 1865987671667197045, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1928297293785658367, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
       propertyPath: SortKey
@@ -1193,13 +1201,25 @@ PrefabInstance:
       propertyPath: SortKey
       value: 641412012
       objectReference: {fileID: 0}
+    - target: {fileID: 6599298360284043536, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
+      propertyPath: kitchenObjectType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6972038570221713975, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
       propertyPath: SortKey
       value: 3459436760
       objectReference: {fileID: 0}
+    - target: {fileID: 7409243996057795890, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7506021893664007206, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
       propertyPath: SortKey
       value: 2235669004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7715871752152673855, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8096638794442464532, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
       propertyPath: m_Name
