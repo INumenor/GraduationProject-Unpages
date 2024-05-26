@@ -25,6 +25,12 @@ public class FoodInteract : MonoBehaviour, IInteractable
                 GameService.Instance.mouseStateManager.expiredFood.Add(this.gameObject.GetComponent<NetworkObject>());             
             }
         }
+        if(other.gameObject.layer == LayerMask.NameToLayer("KitchenInteractable"))
+        {
+            //Vector3 kitchenObjectPosition = new Vector3(Mathf.RoundToInt(other.transform.position.x), Mathf.RoundToInt(other.transform.position.y), Mathf.RoundToInt(other.transform.position.z));
+            //Vector3 spawnPosition = kitchenObjectPosition + transform.forward * 1f;
+            gameObject.transform.position = GameService.Instance.playerAction.foodSpawnPoint.position;
+        }
     }
     private void OnCollisionExit(Collision other)
     {

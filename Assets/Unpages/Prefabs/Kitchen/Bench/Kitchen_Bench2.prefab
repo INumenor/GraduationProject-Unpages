@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &102659470366302497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5527841538073714876}
+  m_Layer: 0
+  m_Name: AnchorPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5527841538073714876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102659470366302497}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.52, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4388376349249381858}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4281828632462180873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53,16 +84,32 @@ PrefabInstance:
       value: Kitchen_Bench2
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5527841538073714876}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1704675075984354778}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7424395960165117309}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4357397552852151120}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7508466710368581999}
   m_SourcePrefab: {fileID: 100100000, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
 --- !u!1 &4011992196315905880 stripped
 GameObject:
@@ -90,3 +137,52 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.1520292, z: 1.0209515}
   m_Center: {x: 0, y: 0.5760146, z: 0.010475755}
+--- !u!114 &7424395960165117309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4011992196315905880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35feac1f82f58e54ea33e5231bffaa3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4357397552852151120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4011992196315905880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 1093736220
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours: []
+--- !u!114 &7508466710368581999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4011992196315905880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2ab8c119cbac104583efe61558339fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anchorPoints: {fileID: 5527841538073714876}
+  kitchenObjectType: 1
+  onTheCupboardObject: {fileID: 0}
+--- !u!4 &4388376349249381858 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
+  m_PrefabInstance: {fileID: 4281828632462180873}
+  m_PrefabAsset: {fileID: 0}

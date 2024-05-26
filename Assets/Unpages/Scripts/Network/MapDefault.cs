@@ -53,7 +53,7 @@ public class MapDefault : NetworkBehaviour
     }
     public override void FixedUpdateNetwork()
     {
-        if(!AllPlayersReady) CheckReadyPlayers();
+        if (!AllPlayersReady) CheckReadyPlayers();
     }
     public async void CheckReadyPlayers()
     {
@@ -63,23 +63,19 @@ public class MapDefault : NetworkBehaviour
 
 
             NetworkManager.DoToAllPlayers(x => { if (x.Ready) readyPlayers++; });
-            Debug.Log("22asd");
             ReadyPlayerCount = readyPlayers;
             if (readyPlayers == NetworkManager.PlayerList.Count)
             {
                 AllPlayersReady = true;
-                Debug.Log("Ýyisin");
                 RPC_AllPlayerReady();
                 RPC_SetParentTask(Runner.Spawn(taskSystemPrefab, Vector3.zero, transform.rotation));
                 OnAllPlayersReady();
             }
             else
             {
-                Debug.Log("Dineme");
                 AllPlayersReady = false;
             }
         }
-        Debug.Log("Deneme");
     }
 
     public void CharacterSpawn(NetworkRunner SessionRunner, PlayerRef playerRef)

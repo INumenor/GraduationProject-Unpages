@@ -46,6 +46,7 @@ public class PlateItem : Item
                 if(networkFoodRecipe != null)GameService.Instance.spawnObject.Despawn(networkFoodRecipe);
                 foodTypes.Add(keepObject.GetComponent<FoodItem>().foodType);
                 networkFoodRecipe = GameService.Instance.spawnObject.SpawnFoodRecipe(GameService.Instance.networkItems.GetNetworkFoodRecipes(foodTypes),anchorPoint,keepObject);
+                RPC_SetParent(networkFoodRecipe);
             }
         } 
     }
@@ -53,10 +54,17 @@ public class PlateItem : Item
     public void GrabItem(NetworkObject networkObject)
     {
         networkFoodRecipe = GameService.Instance.spawnObject.ReSpawnFoodRecipe(networkObject,anchorPoint);
+        RPC_SetParent(networkFoodRecipe);
     }
 
 
-
+    ////-----Bu kısımda Recipe olayı RPC yapılacak ......
+    ///
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_SetParent(NetworkObject networkObject)
+    {
+        networkObject.transform.SetParent(anchorPoint);
+    }
 
     //[Button]
     //public void SetFoodOnPlate(GameObject gameObject)
