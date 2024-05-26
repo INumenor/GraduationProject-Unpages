@@ -1773,6 +1773,7 @@ MonoBehaviour:
   playerInteraction: {fileID: 4219550076795375029}
   playerCamera: {fileID: 247904878623844965}
   stateManager: {fileID: 6543497796288071708}
+  foodSpawnPoint: {fileID: 0}
   playerAnchorPoint: {fileID: 835527270749366859}
   isGrabbable: 0
   isOpen: 0
@@ -1793,7 +1794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e56b14e9336d2428c7508623b7ea01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombPrefab: {fileID: 2952983368268198422, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
+  bombPrefab: {fileID: 7754843292453193659, guid: 1f511e73108fcd7498f14d46c92b3e2f, type: 3}
   bombSize: 1
   bombCounter: 2
 --- !u!114 &4219550076795375029
