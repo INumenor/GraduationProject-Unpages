@@ -77,7 +77,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
       propertyPath: m_LocalPosition.y
@@ -85,23 +85,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -109,7 +109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac42a51d3d77e614f8010831ba4bdd41, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -196,8 +196,8 @@ MonoBehaviour:
   anchorPoints: {fileID: 3746030386703530748}
   kitchenObjectType: 2
   onTheCupboardObject: {fileID: 0}
-  foodType: 0
-  storageFoodCount: 0
+  foodType: 1
+  storageFoodCount: 4
 --- !u!114 &1814872903977924536
 MonoBehaviour:
   m_ObjectHideFlags: 0

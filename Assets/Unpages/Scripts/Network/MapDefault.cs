@@ -53,7 +53,7 @@ public class MapDefault : NetworkBehaviour
     }
     public override void FixedUpdateNetwork()
     {
-        if(!AllPlayersReady) CheckReadyPlayers();
+        if (!AllPlayersReady) CheckReadyPlayers();
     }
     public async void CheckReadyPlayers()
     {

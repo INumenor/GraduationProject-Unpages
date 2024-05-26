@@ -116,9 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorPoints: {fileID: 0}
-  kitchenObjectType: 0
+  kitchenObjectType: 3
   onTheCupboardObject: {fileID: 0}
-  plateNetworkObject: {fileID: 0}
   plateLimit: 5
   platesObjects: []
 --- !u!114 &2149441030163502787

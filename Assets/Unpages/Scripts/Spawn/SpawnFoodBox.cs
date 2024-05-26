@@ -48,7 +48,7 @@ public class SpawnFoodBox : NetworkBehaviour
             }
             await UniTask.WaitForSeconds(5f);
             Debug.Log("bake alýyor");
-            GameService.Instance.mouseStateManager.AreaBake();
+            //GameService.Instance.mouseStateManager.AreaBake();
         }       
     }
     private List<Vector3[]> gridAreas = new List<Vector3[]>()
