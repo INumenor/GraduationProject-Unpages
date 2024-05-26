@@ -24,7 +24,7 @@ MonoBehaviour:
   item: {fileID: 7152774734982961225, guid: 3fb705351b52e1d40abf12e20bbe440c, type: 3}
   Type: 0
   isSpawnable: 1
-  itemImage: {fileID: 21300000, guid: 6dc70a96fbd07f04dadff23ab49c792e, type: 3}
+  itemImage: {fileID: 21300000, guid: f89b8c9ca7051e8438ba3f021219a277, type: 3}
   minRandomGameSpawn: 81
   maxRandomGameSpawn: 100
   foodtype: 0

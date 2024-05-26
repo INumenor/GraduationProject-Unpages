@@ -646,7 +646,8 @@ GameObject:
   - component: {fileID: 3133918582811993240}
   - component: {fileID: 405339827608171909}
   - component: {fileID: 3570279506200197382}
-  - component: {fileID: 2115823356634828328}
+  - component: {fileID: 7324982140195939916}
+  - component: {fileID: 8302495508198538129}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: Untagged
@@ -786,7 +787,7 @@ MonoBehaviour:
   rotateLeftKey: 122
   useMouseRotation: 1
   mouseRotationKey: 324
---- !u!114 &2115823356634828328
+--- !u!114 &7324982140195939916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -830,6 +831,19 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &8302495508198538129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363414392229005288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ab379f046a05b4aa423eeb33fa2e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 8520188694227489318}
 --- !u!1 &4366263585845788655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1780,7 +1794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e56b14e9336d2428c7508623b7ea01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombPrefab: {fileID: 2952983368268198422, guid: 6291891f72f724c4eae6be6052e78735, type: 3}
+  bombPrefab: {fileID: 7754843292453193659, guid: 1f511e73108fcd7498f14d46c92b3e2f, type: 3}
   bombSize: 1
   bombCounter: 2
 --- !u!114 &4219550076795375029
