@@ -130,7 +130,7 @@ MonoBehaviour:
   kitchenObjectType: 2
   onTheCupboardObject: {fileID: 0}
   foodType: 2
-  storageFoodCount: 0
+  storageFoodCount: 2
 --- !u!65 &494025046854022807
 BoxCollider:
   m_ObjectHideFlags: 0

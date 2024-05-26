@@ -211,6 +211,10 @@ PrefabInstance:
       propertyPath: Flags
       value: 262145
       objectReference: {fileID: 0}
+    - target: {fileID: 8039061375002229628, guid: 4a2cd41a7c038a44aa06043fe83af584, type: 3}
+      propertyPath: storageFoodCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8468522201358370051, guid: 4a2cd41a7c038a44aa06043fe83af584, type: 3}
       propertyPath: m_Name
       value: crate_buns

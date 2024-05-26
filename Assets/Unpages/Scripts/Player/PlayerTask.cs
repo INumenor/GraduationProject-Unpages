@@ -14,6 +14,8 @@ public class PlayerTask : SerializedMonoBehaviour
     public Dictionary<FoodRecipes,GameObject> taskRecipes =new Dictionary<FoodRecipes, GameObject>();
     public int taskRandomNumber;
 
+
+
     public Transform taskScrollViewContent;
     public GameObject taskPrefab;
     public TaskSystem taskSystem;
@@ -41,7 +43,8 @@ public class PlayerTask : SerializedMonoBehaviour
     {       
         Destroy(taskRecipes[taskRecipe]);
         taskRecipes.Remove(taskRecipe);
-        if (!isDone) angryBar.playerScore += 12;
+        if (!isDone) angryBar.playerScore -= taskRecipe.recipeScore/2;
+        else angryBar.playerScore = taskRecipe.recipeScore;
         if (taskRecipes.Count < 1)
         {
             taskSystem.NewRecipe();
