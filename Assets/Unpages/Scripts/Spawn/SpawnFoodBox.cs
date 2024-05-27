@@ -54,17 +54,17 @@ public class SpawnFoodBox : NetworkBehaviour
     {
         new Vector3[]
         {
-            new Vector3(5, 0, 10),
+            new Vector3(7, 0, 10),
             new Vector3(12, 0, 10),
             new Vector3(12, 0, 20),
-            new Vector3(5, 0, 20)
+            new Vector3(7, 0, 20)
         },
         new Vector3[]
         {
-            new Vector3(21, 0, 21),
-            new Vector3(28, 0, 21),
-            new Vector3(28, 0, 27),
-            new Vector3(21, 0, 27)        
+            new Vector3(21, 0, 19),
+            new Vector3(28, 0, 19),
+            new Vector3(28, 0, 25),
+            new Vector3(21, 0, 25)        
         },
         new Vector3[]
         {
