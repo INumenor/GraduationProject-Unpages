@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Fusion;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class AngryBar : NetworkBehaviour
     public TMP_Text textPlayerName;
     public TMP_Text textAngryBarScore;
     public int GameFinalScore;
+    public Transform angryScoreBarImage;
 
     public GameObject gameSceneCanvas;
     public GameObject gameFinishCanvas;
@@ -32,7 +34,8 @@ public class AngryBar : NetworkBehaviour
 
     public void UpdateUI()
     {
-        textAngryBarScore.text = playerScore.ToString();
+        angryScoreBarImage.DOScale(new Vector3(playerScore, 0.6f, 1), 0.1f).SetEase(Ease.Linear);
+        //textAngryBarScore.text = playerScore.ToString();
     }
 
     public void GameDone()

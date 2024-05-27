@@ -27,7 +27,7 @@ public class TaskUI : MonoBehaviour
     }
     public void TaskTime(float recipeTime)
     {
-        taskTimeImage.DOScale(new Vector3(1, 1, 1), recipeTime).SetEase(Ease.Linear).OnComplete(() => 
+        taskTimeImage.DOScale(new Vector3(0.97f,0.6f, 1), recipeTime).SetEase(Ease.Linear).OnComplete(() => 
         {
             taskTimeAction.Invoke(foodRecipes,false);
             });
