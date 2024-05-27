@@ -663,13 +663,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4363414392229005288}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
+  m_LocalRotation: {x: 0.3947427, y: 0.0022049504, z: -0.0009473214, w: 0.91878855}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9165180602622225343}
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 46.5, y: 0.275, z: 0}
 --- !u!20 &3133918582811993240
 Camera:
   m_ObjectHideFlags: 0
@@ -761,31 +761,31 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   maxHeight: 4
-  minHeight: 5
+  minHeight: 4
   heightDampening: 5
   keyboardZoomingSensitivity: 2
   scrollWheelZoomingSensitivity: 25
   limitMap: 1
   limitX: 50
-  limitY: 50
+  limitY: 35
   targetFollow: {fileID: 7679777885759957585}
-  targetOffset: {x: 0, y: 5, z: -10}
-  useScreenEdgeInput: 1
+  targetOffset: {x: 0, y: 0.5, z: -7}
+  useScreenEdgeInput: 0
   screenEdgeBorder: 25
-  useKeyboardInput: 1
+  useKeyboardInput: 0
   horizontalAxis: Horizontal
   verticalAxis: Vertical
-  usePanning: 1
+  usePanning: 0
   panningKey: 325
-  useKeyboardZooming: 1
+  useKeyboardZooming: 0
   zoomInKey: 101
   zoomOutKey: 113
   useScrollwheelZooming: 1
   zoomingAxis: Mouse ScrollWheel
-  useKeyboardRotation: 1
+  useKeyboardRotation: 0
   rotateRightKey: 120
   rotateLeftKey: 122
-  useMouseRotation: 1
+  useMouseRotation: 0
   mouseRotationKey: 324
 --- !u!114 &1247267809134201007
 MonoBehaviour:

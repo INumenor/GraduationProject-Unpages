@@ -64,6 +64,7 @@ public class PlateItem : Item
     public void RPC_SetParent(NetworkObject networkObject)
     {
         networkObject.transform.SetParent(anchorPoint);
+        networkObject.gameObject.transform.localScale = new Vector3(1,1,1);
     }
 
     //[Button]
