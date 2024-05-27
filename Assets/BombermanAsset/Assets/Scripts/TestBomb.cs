@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,12 @@ public class TestBomb : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject explosionPrefab;
+    public Transform PotBottom;
+    public Transform PotTop;
     void Start()
     {
-        Invoke("Explode", 3f);
+        BombTween();
+      
     }
 
     void Explode()
@@ -20,5 +24,10 @@ public class TestBomb : MonoBehaviour
         Destroy(gameObject, .3f); //4
         GameService.Instance.playerAction.bombManager.bombCounter++;
     }
-
+    public void BombTween()
+    {
+        PotBottom.DORotate(PotBottom.localRotation.eulerAngles + new Vector3(0, 0, 8),0.2f).SetLoops(12).OnComplete(() => PotTop.DOMoveY(1, 0.2f));
+        PotTop.DORotate(PotTop.localRotation.eulerAngles + new Vector3(0, 0, -8),0.2f).SetLoops(12);
+        Invoke("Explode", 3f);
+    }
 }
