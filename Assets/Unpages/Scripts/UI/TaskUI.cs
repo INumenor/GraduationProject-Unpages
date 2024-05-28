@@ -21,7 +21,7 @@ public class TaskUI : MonoBehaviour
         foreach (FoodType foodtype in foodRecipes.foodTypes)
         {
             GameObject taskMaterial = Instantiate(taskMaterialPrefab,taskMaterialScrollViewContent);
-            taskMaterial.GetComponent<Image>().sprite = GameService.Instance.networkItems.GetImageFoodItem(foodtype);
+            taskMaterial.transform.GetChild(0).GetComponent<Image>().sprite = GameService.Instance.networkItems.GetImageFoodItem(foodtype);
             TaskTime(foodRecipes.recipeTime);
         }
     }
