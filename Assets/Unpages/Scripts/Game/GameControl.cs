@@ -28,11 +28,11 @@ public class GameControl : MonoBehaviour
                         BoxDestroyCount = 0;
                     }
                     Debug.Log(itemInfo.name + " " + randomNumber);
-                    GameService.Instance.mouseStateManager.AreaBake();
+                    //GameService.Instance.mouseStateManager.AreaBake();
                     NetworkObject networkObject = NetworkManager.Instance.SessionRunner.Spawn(itemInfo.item,
                          new Vector3(spawnObject.transform.position.x, spawnObject.transform.position.y - 0.3f, spawnObject.transform.position.z),
                          spawnObject.transform.rotation);
-                    networkObject.gameObject.GetComponent<Rigidbody>().useGravity = false;
+                    networkObject.gameObject.GetComponent<Rigidbody>().useGravity = true;
                     networkObject.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                     networkObject.name = itemInfo.name;
                     networkObject.GetComponent<Item>().AddComponentInteract();
