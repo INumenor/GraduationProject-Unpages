@@ -185,10 +185,11 @@ public class SpawnFoodBox : NetworkBehaviour
             }
         GameService.Instance.mouseStateManager.AreaBake();
     }
-    public void RemoveListBox(GameObject boxObject)
+    public async void RemoveListBox(GameObject boxObject)
     {
         _spawnedFoodBox.Remove(boxObject.GetComponent<NetworkObject>());
-        Destroy(boxObject);
+        
+        Destroy(boxObject,0.3f);
         //if (_spawnedFoodBox.Count <= 20)
         //{
         //    SpawnMissingBox();

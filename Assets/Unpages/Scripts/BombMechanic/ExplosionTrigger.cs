@@ -8,9 +8,10 @@ public class ExplosionTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.name);
-        if (!isActiv && other.CompareTag("TouchableItem"))
+        if (!isActiv && other.CompareTag("Box"))
         {
             isActiv = true;
+            other.gameObject.GetComponent<SoundOneShotPlay>().PlaySound();
             GameService.Instance.gameControl.ObjectSpawn(other.gameObject);
             //Destroy(other.gameObject);
             //other.gameObject.SetActive(false);
