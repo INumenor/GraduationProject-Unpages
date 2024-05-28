@@ -1,5 +1,5 @@
+using Cysharp.Threading.Tasks;
 using Fusion;
-using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -29,9 +29,9 @@ public class MouseStateManager : NetworkBehaviour
     [Networked] public NetworkBool isIdle { get; set; }
     [Networked] public NetworkBool isRunning { get; set; }
     [Networked] public NetworkBool isJumping { get; set; }
-    public void StartStation()
+    public  void StartStation()
     {
-     //  if (!Object.HasStateAuthority) return;
+        //if (!Object.HasStateAuthority) return;
         currentState = new MouseIdleState();
         currentState.mouseStateManager = this;
         currentState.EnterState();
@@ -39,7 +39,7 @@ public class MouseStateManager : NetworkBehaviour
 
     public void ChangeState(IMouseState newState)
     {
-       //if (!Object.HasStateAuthority) return;
+        //if (!Object.HasStateAuthority) return;
         currentState.ExitState();
         currentState = newState;
         currentState.mouseStateManager = this;
@@ -48,13 +48,13 @@ public class MouseStateManager : NetworkBehaviour
 
     private void Update()
     {
-      
-       // if (!Object.HasStateAuthority) return;
-        if(mouseAgent) currentState.UpdateState();
+
+        // if (!Object.HasStateAuthority) return;
+        if (mouseAgent) currentState.UpdateState();
     }
 
     public void AreaBake()
-    {     
+    {
         meshSurface.BuildNavMesh();
         //  MouseSpawned();      
     }

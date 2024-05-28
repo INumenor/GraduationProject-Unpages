@@ -12,10 +12,10 @@ public class MouseCatchState : IMouseState
         {
             CharacterJumping();
             mouseStateManager.networkMouseAI.DropItem(mouseStateManager.mouseGrabbleObject);
-            mouseStateManager.isCatch = false;
             mouseStateManager.mouseAgent.speed = 50;
             mouseStateManager.mouseGrabbleObject = null;
         }
+        mouseStateManager.isCatch = false;
     }
 
     public void ExitState()

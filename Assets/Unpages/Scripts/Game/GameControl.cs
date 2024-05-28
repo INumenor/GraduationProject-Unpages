@@ -33,7 +33,7 @@ public class GameControl : MonoBehaviour
                          new Vector3(spawnObject.transform.position.x, spawnObject.transform.position.y - 0.3f, spawnObject.transform.position.z),
                          spawnObject.transform.rotation);
                     networkObject.gameObject.GetComponent<Rigidbody>().useGravity = true;
-                    networkObject.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    networkObject.gameObject.GetComponent<Rigidbody>().isKinematic = false;
                     networkObject.name = itemInfo.name;
                     networkObject.GetComponent<Item>().AddComponentInteract();
                 }

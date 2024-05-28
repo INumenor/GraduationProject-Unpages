@@ -3010,12 +3010,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979761734}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1986256464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &979761738
 MonoBehaviour:
@@ -3778,7 +3778,8 @@ MonoBehaviour:
   expiredFood: []
   mouseGrabbleObject: {fileID: 0}
   targetFood: {fileID: 0}
-  isCatch: 0
+  _isCatch:
+    _value: 0
   mouseAgentPrefab: {fileID: 6278030482951139999, guid: bd8080ca6cb0b7a45ba8fc3ac563afc9, type: 3}
   MouseAnimatorController: {fileID: 0}
   meshSurface: {fileID: 468766729}
@@ -3817,7 +3818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 1540289667
   ObjectInterest: 1
-  Flags: 262145
+  Flags: 131073
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1438080724}
@@ -4477,7 +4478,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 979761737}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2077348641
@@ -4788,7 +4790,6 @@ SceneRoots:
   - {fileID: 1316430927}
   - {fileID: 1150932115}
   - {fileID: 1986256464}
-  - {fileID: 979761737}
   - {fileID: 790074904}
   - {fileID: 468766725}
   - {fileID: 338801119}

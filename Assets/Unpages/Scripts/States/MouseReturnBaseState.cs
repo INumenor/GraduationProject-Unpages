@@ -9,6 +9,7 @@ public class MouseReturnBaseState : IMouseState
     public void EnterState()
     {
         CharacterRunning();
+        mouseStateManager.targetFood = null;
         mouseStateManager.mouseAgent.SetDestination(mouseStateManager.mouseAgentBase.position);
     }
 
@@ -19,8 +20,8 @@ public class MouseReturnBaseState : IMouseState
 
     public void UpdateState()
     {
-        if (mouseStateManager.mouseAgentBase.position.x == mouseStateManager.mouseAgent.transform.position.x &&
-            mouseStateManager.mouseAgentBase.position.z == mouseStateManager.mouseAgent.transform.position.z)
+        if ((int)mouseStateManager.mouseAgentBase.position.x == (int)mouseStateManager.mouseAgent.transform.position.x &&
+            (int)mouseStateManager.mouseAgentBase.position.z == (int)mouseStateManager.mouseAgent.transform.position.z)
         {
             //bunlar network olucak !!!!!!!!!!!        
             mouseStateManager.ChangeState(new MouseIdleState());
