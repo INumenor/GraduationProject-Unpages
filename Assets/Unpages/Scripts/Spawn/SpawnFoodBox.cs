@@ -121,7 +121,7 @@ public class SpawnFoodBox : NetworkBehaviour
                 if (availablePositions.Count == 0)
                     break; 
                 Vector3 position = availablePositions[0];
-                NetworkObject newWall = NetworkManager.Instance.SessionRunner.Spawn(_wallPrefab, new Vector3(position.x, 1.1f, position.z), Quaternion.identity);
+                NetworkObject newWall = NetworkManager.Instance.SessionRunner.Spawn(_wallPrefab, new Vector3(position.x,.2f, position.z), Quaternion.identity);
                 newWall.gameObject.transform.SetParent(_spawnedBox.transform, false);
                 _occupiedPositions.Add(position);
                 _wallSpawnedCount++;

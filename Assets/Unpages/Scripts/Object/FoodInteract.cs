@@ -19,6 +19,7 @@ public class FoodInteract : MonoBehaviour, IInteractable
     {
         if (other.gameObject.CompareTag("Floor"))
         {
+            Debug.Log("sea");
             if (ItemTime < 101) ItemTime++;
             if (ItemTime == 100 /*1000*/)
             {

@@ -21,13 +21,13 @@ public class TaskUI : MonoBehaviour
         foreach (FoodType foodtype in foodRecipes.foodTypes)
         {
             GameObject taskMaterial = Instantiate(taskMaterialPrefab,taskMaterialScrollViewContent);
-            taskMaterial.GetComponent<Image>().sprite = GameService.Instance.networkItems.GetImageFoodItem(foodtype);
+            taskMaterial.transform.GetChild(0).GetComponent<Image>().sprite = GameService.Instance.networkItems.GetImageFoodItem(foodtype);
             TaskTime(foodRecipes.recipeTime);
         }
     }
     public void TaskTime(float recipeTime)
     {
-        taskTimeImage.DOScale(new Vector3(1, 1, 1), recipeTime).SetEase(Ease.Linear).OnComplete(() => 
+        taskTimeImage.DOScale(new Vector3(0.97f,0.6f, 1), recipeTime).SetEase(Ease.Linear).OnComplete(() => 
         {
             taskTimeAction.Invoke(foodRecipes,false);
             });
