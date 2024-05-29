@@ -136,7 +136,7 @@ public class PlayerInteraction : NetworkBehaviour
         _isInActivationDelay = false;
     }
 
-    [Rpc(RpcSources.All, RpcTargets.All)]//------> Change
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]//------> Change
     public void RPC_Despawn(NetworkObject networkObject)
     {
         NetworkManager.Instance.SessionRunner.Despawn(networkObject);

@@ -25,7 +25,6 @@ public class MouseAI : NetworkBehaviour,IInteractable
 
     public void Interact(InteractorData interactorData)
     {
-        Debug.Log("SELAMIN ALEYKÜM");
         if(Runner.IsSharedModeMasterClient)GameService.Instance.mouseStateManager.isCatch = true;
         else RPC_SetCatch();
     }

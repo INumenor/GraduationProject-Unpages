@@ -18,7 +18,7 @@ public class AngryBar : NetworkBehaviour
 
     public void UpdateAngryBar(int recipeScore)
     {
-        RPC_UpdateAngryBar(Runner.LocalPlayer, recipeScore);
+        //RPC_UpdateAngryBar(Runner.LocalPlayer, recipeScore);
         if (playerScore >= GameFinalScore)
         {
             isGameFinish = true;
@@ -26,12 +26,12 @@ public class AngryBar : NetworkBehaviour
     }
 
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_UpdateAngryBar(PlayerRef playerRef, int recipeScore)
-    {
-        Debug.Log("playerscore : " + playerScore.ToString());
-        if (Runner.LocalPlayer != playerRef && playerScore > 5 ) GameService.Instance.playerTask.angryBar.playerScore -= 5;
-    }
+    //[Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    //public void RPC_UpdateAngryBar(PlayerRef playerRef, int recipeScore)
+    //{
+    //    Debug.Log("playerscore : " + playerScore.ToString());
+    //    if (Runner.LocalPlayer != playerRef && playerScore > 5 ) GameService.Instance.playerTask.angryBar.playerScore -= 5;
+    //}
 
     public void UpdateUI()
     {

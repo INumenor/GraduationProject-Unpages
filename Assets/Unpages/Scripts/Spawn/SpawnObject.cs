@@ -29,7 +29,7 @@ public class SpawnObject : NetworkBehaviour
         if (interactionObjcet)
         {
             if (interactionObjcet.GetComponent<Item>().itemType == ItemType.Food) interactionObjcet.GetComponent<FoodInteract>().RemoveFoodItem();
-            Despawn(interactionObjcet);
+            interactionObjcet.GetComponent<Item>().RPC_Despawn();
         }
         //}
     }
@@ -218,17 +218,18 @@ public class SpawnObject : NetworkBehaviour
 
 
     #region Despawn
-    public void Despawn(NetworkObject networkObject)
+    public async void Despawn(NetworkObject networkObject)
     {
+        networkObject.GetComponent<NetworkObject>().RequestStateAuthority();
         NetworkManager.Instance.SessionRunner.Despawn(networkObject);
     }
     #endregion
 
     #region RPC_System
-    //[Rpc(RpcSources.All,RpcTargets.All)]
-    //public void RPC_Set(NetworkObject networkObject)
+    //[Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    //public void RPC_Despawn(NetworkObject networkObject)
     //{
-    //    networkObject.transform.SetParent(transform);
+    //    Despawn(networkObject);
     //}
     #endregion
 }

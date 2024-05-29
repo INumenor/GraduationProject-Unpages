@@ -2,6 +2,7 @@ using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unpages.Network;
 
 public enum ItemType { Food , Other ,Plate , Attributes , Null}
 public class Item : NetworkBehaviour
@@ -22,6 +23,17 @@ public class Item : NetworkBehaviour
     public virtual void RPCTrigger()
     {
         
+    }
+
+    public void Despawn()
+    {
+       Runner.Despawn(Object);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_Despawn()
+    {
+        Despawn();
     }
 
 }
