@@ -26,7 +26,7 @@ public class TestBomb : MonoBehaviour
     }
     public void BombTween()
     {
-        PotBottom.DORotate(PotBottom.localRotation.eulerAngles + new Vector3(0, 0, 8),0.2f).SetLoops(12).OnComplete(() => PotTop.DOMoveY(1, 0.2f));
+        PotBottom.DORotate(PotBottom.localRotation.eulerAngles + new Vector3(0, 0, 8),0.2f).SetLoops(12).OnComplete(() => PotTop.DOMoveY(10, 0.4f));
         PotTop.DORotate(PotTop.localRotation.eulerAngles + new Vector3(0, 0, -8),0.2f).SetLoops(12);
         Invoke("Explode", 3f);
     }

@@ -4788,7 +4788,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 84bf572025922094b898ad390d5c1c6a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3310225086378637195}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84bf572025922094b898ad390d5c1c6a, type: 3}
 --- !u!4 &1519804390152220616 stripped
@@ -10347,6 +10350,76 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 47bc79f80410886439f10cbf00cac56a, type: 3}
   m_PrefabInstance: {fileID: 3255613643878647398}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3314397871117648419
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1519804390152220616}
+    m_Modifications:
+    - target: {fileID: 1648978194837340, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+      propertyPath: m_Name
+      value: FX_Fire_Small_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313797110543784, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313797110543784, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.088
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313797110543784, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313797110543784, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313797110543784, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313797110543784, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313797110543784, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313797110543784, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313797110543784, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313797110543784, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199509288731204518, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199633491803119046, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+--- !u!4 &3310225086378637195 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4313797110543784, guid: c3039019fa1c65840b1b35eed158363c, type: 3}
+  m_PrefabInstance: {fileID: 3314397871117648419}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3366146440921507277
 PrefabInstance:
@@ -18303,7 +18376,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.1
+  m_VoxelSize: 0.11666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 1a3481b00ed4e21468feea4b44092d68, type: 2}
   m_BuildHeightMesh: 0
