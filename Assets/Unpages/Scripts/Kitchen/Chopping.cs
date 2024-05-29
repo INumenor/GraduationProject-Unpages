@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Fusion;
 using Sirenix.OdinInspector;
 using System.Collections;
@@ -10,8 +11,6 @@ using Unpages.Network;
 public class Chopping : KitchenObject
 {
     //public ItemType itemType;
-    public int choppingCount=0;
-    private int foodChoppingCount;
     //public bool isFull =false;
     //public bool isSlice = false;
     //public NetworkObject item;
@@ -35,6 +34,7 @@ public class Chopping : KitchenObject
         {
             GameService.Instance.spawnObject.PlayerGrabCupboardItem(onTheCupboardObject, anchorPoint, false);
             onTheCupboardObject = null;
+            ResetChopping();
         }
 
     }

@@ -30,6 +30,7 @@ public class PlayerMovement : NetworkBehaviour
 
             _controller.Move((inputData.Direction * Runner.DeltaTime * MoveSpeed) + _velocity * Runner.DeltaTime);
 
+
             if (move != Vector3.zero)
             {
                 gameObject.transform.forward = move;
@@ -79,6 +80,14 @@ public class PlayerMovement : NetworkBehaviour
 
             }
             _jumpPressed = false;
+        }
+        if(gameObject.transform.localPosition.y < -1)
+        {
+            GameService.Instance.playerAction.isOpen = false;
+        }
+        else
+        {
+            GameService.Instance.playerAction.isOpen = true;
         }
     }
 
