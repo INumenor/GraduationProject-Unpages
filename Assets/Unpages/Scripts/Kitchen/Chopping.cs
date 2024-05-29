@@ -15,6 +15,8 @@ public class Chopping : KitchenObject
     //public bool isSlice = false;
     //public NetworkObject item;
     //public NetworkObject itemSlice;
+    public int choppingCount = 0;
+    private int foodChoppingCount;
 
     public Image circleBarImage;
     public Image circleBarBackground;
