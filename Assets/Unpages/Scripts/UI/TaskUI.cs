@@ -10,7 +10,7 @@ public class TaskUI : MonoBehaviour
 {
     public Transform taskMaterialScrollViewContent;
     public Image taskImage;
-    public Transform taskTimeImage;
+    public Image taskTimeImage;
     public GameObject taskMaterialPrefab;
     public Action<FoodRecipes,bool> taskTimeAction;
     public FoodRecipes foodRecipes;
@@ -27,9 +27,15 @@ public class TaskUI : MonoBehaviour
     }
     public void TaskTime(float recipeTime)
     {
-        taskTimeImage.DOScale(new Vector3(0.97f,0.6f, 1), recipeTime).SetEase(Ease.Linear).OnComplete(() => 
+        taskTimeImage.gameObject.transform.DOScale(new Vector3(0f,0.6f, 1), recipeTime).SetEase(Ease.Linear).OnUpdate(() => 
         {
-            taskTimeAction.Invoke(foodRecipes,false);
-            });
+            if (taskTimeImage.transform.localScale.x < 0.5f)
+            {
+                taskTimeImage.DOColor(Color.red, recipeTime / 2);
+            }
+        }).OnComplete(() =>
+        {
+            taskTimeAction.Invoke(foodRecipes, false);
+        });
     }
 }

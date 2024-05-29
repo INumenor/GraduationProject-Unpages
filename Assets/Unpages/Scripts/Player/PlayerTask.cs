@@ -43,8 +43,8 @@ public class PlayerTask : SerializedMonoBehaviour
     {       
         Destroy(taskRecipes[taskRecipe]);
         taskRecipes.Remove(taskRecipe);
-        if (!isDone) angryBar.playerScore -= taskRecipe.recipeScore/2;
-        else angryBar.playerScore = taskRecipe.recipeScore;
+        if (!isDone && angryBar.playerScore > taskRecipe.recipeScore/2) angryBar.playerScore -= taskRecipe.recipeScore/2;
+        if(isDone) angryBar.playerScore = taskRecipe.recipeScore;
         if (taskRecipes.Count < 1)
         {
             taskSystem.NewRecipe();

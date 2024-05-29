@@ -32,7 +32,7 @@ public class MouseStateManager : NetworkBehaviour
     public  void StartStation()
     {
         //if (!Object.HasStateAuthority) return;
-        currentState = new MouseIdleState();
+        currentState = new MouseReturnBaseState();
         currentState.mouseStateManager = this;
         currentState.EnterState();
     }

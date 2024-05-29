@@ -29,6 +29,10 @@ public class MouseStealFoodState : IMouseState
         {
             mouseStateManager.ChangeState(new MouseReturnBaseState());
         }
+        if(mouseStateManager.targetFood == null)
+        {
+            mouseStateManager.ChangeState(new MouseReturnBaseState());
+        }
         if (mouseStateManager.expiredFood.Count > 0)
         {
             if (!mouseStateManager.expiredFood[0])

@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskMaterialScrollViewContent: {fileID: 621118944454931952}
   taskImage: {fileID: 1442161057646805568}
-  taskTimeImage: {fileID: 4506411077575838305}
+  taskTimeImage: {fileID: 2633089268763333199}
   taskMaterialPrefab: {fileID: 837094490003257434, guid: 5c2ef8a26d92d8f44aae4607192f0bb7, type: 3}
   foodRecipes: {fileID: 0}
 --- !u!1 &6031719495137028440
@@ -248,15 +248,15 @@ RectTransform:
   m_GameObject: {fileID: 6031719495137028440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0.6, z: 1}
+  m_LocalScale: {x: 1, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8953108905181227580}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 1.4, y: 0.36}
-  m_SizeDelta: {x: 80, y: 10}
+  m_AnchoredPosition: {x: 1.4000244, y: 0.3599968}
+  m_SizeDelta: {x: 77.4888, y: 10}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &3912776284674321652
 CanvasRenderer:
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16458082, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

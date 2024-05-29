@@ -24,6 +24,7 @@ public class PlayerAction : NetworkBehaviour
     public bool isGrabbable = false;
 
     public bool isOpen = false;
+    public bool isGrounded = false;
 
     public GameObject interactionCollable;
 
@@ -101,7 +102,7 @@ public class PlayerAction : NetworkBehaviour
             //    playerMovement.PlayerJump();
             //}
 
-            if (!isOpen && inputData.isBombDrop == 1)
+            if (!isOpen && !isGrounded && inputData.isBombDrop == 1)
             {
                 bombManager.DropBomb(this.gameObject , Runner ,Object.StateAuthority);
             }

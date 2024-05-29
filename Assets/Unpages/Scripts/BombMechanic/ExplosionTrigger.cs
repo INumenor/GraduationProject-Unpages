@@ -1,3 +1,4 @@
+using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,11 @@ public class ExplosionTrigger : MonoBehaviour
         else if (!isActiv && other.CompareTag("Item"))
         {
             isActiv = true;
+            if (GameService.Instance.mouseStateManager.expiredFood.Contains(other.GetComponent<NetworkObject>()))
+            { 
+                GameService.Instance.mouseStateManager.expiredFood.Remove(other.gameObject.GetComponent<NetworkObject>());
+                GameService.Instance.mouseStateManager.targetFood = null;
+            }
             Destroy(other.gameObject);
         }
         //else if (!isActiv && other.CompareTag("Character"))

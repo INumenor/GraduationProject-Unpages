@@ -83,11 +83,11 @@ public class PlayerMovement : NetworkBehaviour
         }
         if(gameObject.transform.localPosition.y < -1)
         {
-            GameService.Instance.playerAction.isOpen = false;
+            GameService.Instance.playerAction.isGrounded = false;
         }
         else
         {
-            GameService.Instance.playerAction.isOpen = true;
+            GameService.Instance.playerAction.isGrounded = true;
         }
     }
 

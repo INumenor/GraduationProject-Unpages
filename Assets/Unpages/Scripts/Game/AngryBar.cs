@@ -44,6 +44,5 @@ public class AngryBar : NetworkBehaviour
         gameFinishCanvas.SetActive(true);
         gameSceneCanvas.SetActive(false);
         GameService.Instance.playerAction.enabled = false;
-        Debug.Log("OYUNNNNNN BÝTTTTTÝ");
     }
 }

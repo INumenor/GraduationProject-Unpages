@@ -54,31 +54,31 @@ public class SpawnFoodBox : NetworkBehaviour
     {
         new Vector3[]
         {
-            new Vector3(7, 0, 10),
-            new Vector3(12, 0, 10),
-            new Vector3(12, 0, 20),
-            new Vector3(7, 0, 20)
+            new Vector3(7, 0, 9),
+            new Vector3(12, 0, 9),
+            new Vector3(12, 0, 19),
+            new Vector3(7, 0, 19)
         },
         new Vector3[]
         {
-            new Vector3(21, 0, 19),
-            new Vector3(28, 0, 19),
-            new Vector3(28, 0, 25),
-            new Vector3(21, 0, 25)        
+            new Vector3(22, 0, 19),
+            new Vector3(29, 0, 19),
+            new Vector3(29, 0, 25),
+            new Vector3(22, 0, 25)        
         },
         new Vector3[]
         {
-            new Vector3(37, 0, 10),
-            new Vector3(44, 0, 10),
-            new Vector3(44, 0, 20),
-            new Vector3(37, 0, 20)                       
+            new Vector3(39, 0, 9),
+            new Vector3(46, 0, 9),
+            new Vector3(46, 0, 19),
+            new Vector3(39, 0, 19)                       
         },
         new Vector3[]
         {          
-            new Vector3(21, 0, 3),
-            new Vector3(28, 0, 3),
-            new Vector3(28, 0, 9),
-            new Vector3(21, 0, 9)                   
+            new Vector3(22, 0, 3),
+            new Vector3(29, 0, 3),
+            new Vector3(29, 0, 9),
+            new Vector3(22, 0, 9)                   
         }
     };
     private void SpawnObjectsInGrid(Vector3[] area, int boxCount, int wallCount)
@@ -121,7 +121,7 @@ public class SpawnFoodBox : NetworkBehaviour
                 if (availablePositions.Count == 0)
                     break; 
                 Vector3 position = availablePositions[0];
-                NetworkObject newWall = NetworkManager.Instance.SessionRunner.Spawn(_wallPrefab, new Vector3(position.x,.2f, position.z), Quaternion.identity);
+                NetworkObject newWall = NetworkManager.Instance.SessionRunner.Spawn(_wallPrefab, new Vector3(position.x,0f, position.z), Quaternion.identity);
                 newWall.gameObject.transform.SetParent(_spawnedBox.transform, false);
                 _occupiedPositions.Add(position);
                 _wallSpawnedCount++;
