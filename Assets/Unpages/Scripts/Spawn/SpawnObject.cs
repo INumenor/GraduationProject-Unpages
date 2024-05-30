@@ -28,7 +28,7 @@ public class SpawnObject : NetworkBehaviour
 
         if (interactionObjcet)
         {
-            if (interactionObjcet.GetComponent<Item>().itemType == ItemType.Food) interactionObjcet.GetComponent<FoodInteract>().RemoveFoodItem();
+            if (interactionObjcet.GetComponent<Item>().itemType == ItemType.Food) /*interactionObjcet.GetComponent<Item>().RPC_RemoveFoodList();*/
             interactionObjcet.GetComponent<Item>().RPC_Despawn();
         }
         //}

@@ -27,7 +27,13 @@ public class Item : NetworkBehaviour
 
     public void Despawn()
     {
-       Runner.Despawn(Object);
+        if (GameService.Instance.mouseStateManager.expiredFood.Contains(gameObject.GetComponent<NetworkObject>()))
+        {
+            GameService.Instance.mouseStateManager.expiredFood.Remove(gameObject.GetComponent<NetworkObject>());
+            GameService.Instance.mouseStateManager.isCatch = true;
+        }
+        UnityEngine.Debug.Log("Bari Buraya GEl Be");
+        Runner.Despawn(Object);
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
@@ -35,5 +41,22 @@ public class Item : NetworkBehaviour
     {
         Despawn();
     }
+
+    //public void RemoveFoodList()
+    //{
+    //    if (GameService.Instance.mouseStateManager.expiredFood.Contains(gameObject.GetComponent<NetworkObject>()))
+    //    {
+    //        GameService.Instance.mouseStateManager.expiredFood.Remove(gameObject.GetComponent<NetworkObject>());
+    //        GameService.Instance.mouseStateManager.isCatch = true;
+    //    }
+    //    UnityEngine.Debug.Log("Bari Buraya GEl Be");
+    //}
+
+    //[Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    //public void RPC_RemoveFoodList()
+    //{
+    //    RemoveFoodList();
+    //}
+
 
 }

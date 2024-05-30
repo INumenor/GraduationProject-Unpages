@@ -1,4 +1,5 @@
 using Fusion;
+using System.Diagnostics;
 using Unpages.Network;
 
 public enum FoodType { Tomato, Bread, Cheese, Lettuce, Null }
@@ -19,17 +20,18 @@ public class FoodItem : Item
         }
     }
 
-    public async void Despawn(NetworkObject networkObject)
-    {
-        networkObject.GetComponent<NetworkObject>().RequestStateAuthority();
-        NetworkManager.Instance.SessionRunner.Despawn(networkObject);
-    }
+    //public void Despawn(NetworkObject networkObject)
+    //{
+    //    networkObject.GetComponent<NetworkObject>().RequestStateAuthority();
+    //    UnityEngine.Debug.Log("Bari Buraya GEl Be");
+    //    NetworkManager.Instance.SessionRunner.Despawn(networkObject);
+    //}
 
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RPC_Despawn(NetworkObject networkObject)
-    {
-        Despawn(networkObject);
-    }
+    //[Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    //public void RPC_Despawn(NetworkObject networkObject)
+    //{
+    //    Despawn(networkObject);
+    //}
 
     //public void Interact(InteractorData interactorData)
     //{

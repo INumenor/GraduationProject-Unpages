@@ -38,6 +38,8 @@ public class FoodInteract : MonoBehaviour, IInteractable
         ItemTime = 0;
         if (other.gameObject.CompareTag("Floor"))
         {
+            //Debug.Log("Yerden Yüksek");
+            //RPC_RemoveFoodList();
             GameService.Instance.mouseStateManager.expiredFood.Clear();
             //if (GameService.Instance.mouseStateManager.expiredFood.Contains(other.gameObject.GetComponent<NetworkObject>()))
             //{
@@ -50,7 +52,19 @@ public class FoodInteract : MonoBehaviour, IInteractable
         if (GameService.Instance.mouseStateManager.expiredFood.Contains(gameObject.GetComponent<NetworkObject>()))
         {
             GameService.Instance.mouseStateManager.expiredFood.Remove(gameObject.GetComponent<NetworkObject>());
-            GameService.Instance.mouseStateManager.isCatch =true ;
+            GameService.Instance.mouseStateManager.isCatch = true;
         }
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    public void RPC_RemoveFoodList()
+    {
+        RemoveFoodItem();
+        //if (GameService.Instance.mouseStateManager.expiredFood.Contains(gameObject.GetComponent<NetworkObject>()))
+        //{
+        //Debug.Log(gameObject.name + " sNAME");
+        //GameService.Instance.mouseStateManager.expiredFood.Remove(gameObject.GetComponent<NetworkObject>());
+        //GameService.Instance.mouseStateManager.isCatch = true;
+        //}
     }
 }
