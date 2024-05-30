@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5a26d0ba900544f4eb448837788ffd10, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f2e8d3890ada79a47802330b37c8796c, type: 2}
     - target: {fileID: 919132149155446097, guid: 5a26d0ba900544f4eb448837788ffd10, type: 3}
       propertyPath: m_Name
       value: barrel
@@ -77,9 +81,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5a26d0ba900544f4eb448837788ffd10, type: 3}
       insertIndex: -1
       addedObject: {fileID: -3972496700788436440}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5a26d0ba900544f4eb448837788ffd10, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9072486294504689990}
   m_SourcePrefab: {fileID: 100100000, guid: 5a26d0ba900544f4eb448837788ffd10, type: 3}
 --- !u!1 &4687604553556968457 stripped
 GameObject:
@@ -141,18 +142,3 @@ MonoBehaviour:
   SyncParent: 1
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 0
---- !u!114 &9072486294504689990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4687604553556968457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57acc899a61c46040831e73266f07728, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeSpeed: 10
-  fadeAmount: 0.5
-  doFade: 0

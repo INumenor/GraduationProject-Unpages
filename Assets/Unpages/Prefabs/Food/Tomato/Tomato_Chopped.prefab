@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1724080987372072942, guid: 6f7a77b1d993af146a836b8a4d15ccac, type: 3}
+  - {fileID: 2100000, guid: 05f00c1a10d93c843a227f22fe56d92e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -184,6 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
+  _isInteractable:
+    _value: 0
   foodType: 0
   choppingCount: 0
   isProcessed: 1
