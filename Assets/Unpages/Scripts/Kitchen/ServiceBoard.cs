@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class ServiceBoard : KitchenObject
 {
+    public AudioSource audioSource;
     public override void DropItem(NetworkObject networkObject)
     {
         if (onTheCupboardObject == null && networkObject.GetComponent<Item>().itemType == ItemType.Plate)
@@ -38,6 +39,7 @@ public class ServiceBoard : KitchenObject
             if (onTheCupboardObject.GetComponent<Item>().itemType == ItemType.Plate /*&& onTheCupboardObject.GetComponent<PlateItem>().networkFoodRecipe*/)
             {
                 isThere = GameService.Instance.playerTask.ChecktaskRecipes(onTheCupboardObject.GetComponent<PlateItem>().networkFoodRecipe);
+                audioSource.Play();
                 GameService.Instance.spawnObject.CheckServisSystem(onTheCupboardObject);
                 if (isThere) Debug.Log("aaaaattttttt");
                 else Debug.Log("aaaaaaalllllllllll");
