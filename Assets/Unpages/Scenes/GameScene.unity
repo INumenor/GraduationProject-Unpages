@@ -1545,6 +1545,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1424965244121419284, guid: 8ea2d5635c3fdfd459bffa6b88bcd636, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8333738010590633046, guid: 8ea2d5635c3fdfd459bffa6b88bcd636, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.22528
@@ -2262,6 +2266,10 @@ PrefabInstance:
     - target: {fileID: 7715871752152673855, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807931578300036955, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
+      propertyPath: kitchenObjectType
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8066159019960841734, guid: d0e6b4a2a587634499e27dbe004c0faf, type: 3}
       propertyPath: plateLimit
@@ -5661,7 +5669,6 @@ GameObject:
   m_Component:
   - component: {fileID: 730103388}
   - component: {fileID: 730103387}
-  - component: {fileID: 730103386}
   - component: {fileID: 730103389}
   m_Layer: 0
   m_Name: Top_Dawn_GeneralCamera
@@ -5670,14 +5677,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &730103386
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730103385}
-  m_Enabled: 1
 --- !u!20 &730103387
 Camera:
   m_ObjectHideFlags: 0

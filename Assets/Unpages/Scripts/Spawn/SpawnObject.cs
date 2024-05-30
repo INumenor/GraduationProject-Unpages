@@ -111,6 +111,15 @@ public class SpawnObject : NetworkBehaviour
     }
     #endregion
 
+    #region Trash
+    public void PlayerDropTrash(NetworkObject interactionObjcet)
+    {
+        Despawn(interactionObjcet);
+        GameService.Instance.playerAction.isGrabbable = false;
+        GameService.Instance.playerAction.keepObject = null;
+    }
+#endregion
+
     #region Destroy of Object Drop into Storage
 
     public void DestroyDropItemStorage(NetworkObject interactionObjcet)
