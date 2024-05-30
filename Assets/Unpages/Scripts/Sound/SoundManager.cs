@@ -6,22 +6,17 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioMixer mixer;
-    public Slider musicSlider;
-
-    const string effectMusic = "Effect";
-    const string environmentMusic = "Environment";
-
+    public static SoundManager instance;
     void Awake()
     {
-        musicSlider.onValueChanged.AddListener(SetMusicVolume);
-    }
-    void SetMusicVolume(float value)
-    {
-        mixer.SetFloat(effectMusic,value);
-    }
-    void SetEnvironmentVolume(float value)
-    {
-        mixer.SetFloat(environmentMusic, value);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
