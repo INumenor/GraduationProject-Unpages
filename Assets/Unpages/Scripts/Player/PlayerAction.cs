@@ -40,7 +40,10 @@ public class PlayerAction : NetworkBehaviour
     [Header("KitchenObject")]
     public NetworkObject playerInteractionKitchenObject;
 
-    
+
+    [Header("AudioSource")]
+    public AudioSource playerInteractionAudioSoruce;
+
     private async void Start()
     {
         if (Object.HasStateAuthority) 
@@ -118,6 +121,7 @@ public class PlayerAction : NetworkBehaviour
                 }
                 else
                 {
+                    //playerInteractionAudioSoruce.Play();
                     if (!isGrabbable)
                     {
                         playerInteraction.PlayerGrabObject(interactionObjcetType, interactionObjcet);

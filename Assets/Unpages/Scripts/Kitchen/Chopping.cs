@@ -21,6 +21,8 @@ public class Chopping : KitchenObject
     public Image circleBarImage;
     public Image circleBarBackground;
     public RectTransform circleBarRectTransform;
+
+    public AudioSource audioSource;
     public override void DropItem(NetworkObject networkObject)
     {
         if (onTheCupboardObject == null)
@@ -49,6 +51,7 @@ public class Chopping : KitchenObject
             if(choppingCount < foodChoppingCount)
             {
                 GameService.Instance.playerAction.stateManager.isKitchenAction = true;
+                audioSource.Play();
                 choppingCount++;
                 CheckUI();
             }
