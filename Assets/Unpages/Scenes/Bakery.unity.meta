@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Unpages/Scenes/Bakery.unity.meta
 guid: a7d4cd4a2e46701458823fc88b51c048
+========
+guid: dbedacb7a90a4184097b74a872c08cce
+>>>>>>>> Dev_BugFix:Assets/Unpages/Materials/GameMaterials/Menu/Basic_GUI_Bundle/BoxesBanners/SVG/Banner_Blank.svg.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
