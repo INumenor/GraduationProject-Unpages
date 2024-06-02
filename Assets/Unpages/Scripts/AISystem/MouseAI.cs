@@ -17,8 +17,9 @@ public class MouseAI : NetworkBehaviour,IInteractable
         if (other.CompareTag("Item") && !grabbleNetworkObject)
         { 
             if (!other.GetComponent<FoodItem>().isProcessed) GameService.Instance.mouseStateManager.mouseGrabbleObject = GameService.Instance.networkItems.GetNetworkFoodItem(other.GetComponent<FoodItem>().foodType);
-            GameService.Instance.mouseStateManager.expiredFood.Remove(other.gameObject.GetComponent<NetworkObject>());
-            GameService.Instance.playerAction.RPC_Despawn(other.GetComponent<NetworkObject>());
+            //GameService.Instance.mouseStateManager.expiredFood.Remove(other.gameObject.GetComponent<NetworkObject>());
+            other.gameObject.GetComponent<Item>().RPC_Despawn();
+            //GameService.Instance.playerAction.RPC_Despawn(other.GetComponent<NetworkObject>());
         }
         if (other.CompareTag("Player"))
         {

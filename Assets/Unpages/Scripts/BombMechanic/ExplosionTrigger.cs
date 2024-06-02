@@ -12,6 +12,9 @@ public class ExplosionTrigger : MonoBehaviour
         if (!isActiv && other.CompareTag("Box"))
         {
             isActiv = true;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false;
+            other.gameObject.GetComponent<Rigidbody>().useGravity = false;
+            other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             other.gameObject.GetComponent<SoundOneShotPlay>().PlaySound();
             GameService.Instance.gameControl.ObjectSpawn(other.gameObject);
             //Destroy(other.gameObject);

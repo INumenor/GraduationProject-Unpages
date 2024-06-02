@@ -35,37 +35,34 @@ public class MouseStealFoodState : IMouseState
 
     public void UpdateState()
     {
-        Debug.Log("Sýra : 1");
         if (mouseStateManager.mouseGrabbleObject)
         {
-            Debug.Log("Sýra : 6");
             mouseStateManager.ChangeState(new MouseReturnBaseState());
         }
-        
-        if(mouseStateManager.targetFood == null)
+        else
         {
-            Debug.Log("Sýra : 2");
-            foreach (var networkObject in mouseStateManager.expiredFood)
+            if (mouseStateManager.targetFood == null)
             {
-                if (networkObject != null)
+                foreach (var networkObject in mouseStateManager.expiredFood)
                 {
-                    mouseStateManager.targetFood = networkObject;
+                    if (networkObject != null)
+                    {
+                        mouseStateManager.targetFood = networkObject;
+                        mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
+                        break;
+                    }
+                }
+                if (mouseStateManager.targetFood != null)
+                {
                     mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
-                    break;
+                }
+                else
+                {
+                    mouseStateManager.ChangeState(new MouseReturnBaseState());
                 }
             }
-            Debug.Log("Sýra : 3");
-            if (mouseStateManager.targetFood != null)
-            {
-                Debug.Log("Sýra : 4");
-                mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
-            }
-            else
-            {
-                Debug.Log("Sýra : 5");
-                mouseStateManager.ChangeState(new MouseReturnBaseState());
-            }
         }
+        
         //if (mouseStateManager.expiredFood.Count > 0)
         //{
         //    if (!mouseStateManager.expiredFood[0])

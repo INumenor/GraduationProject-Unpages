@@ -10113,17 +10113,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6887661522113504916, guid: 0889b9b4cd6e4474bab90ab1bc9cc659, type: 3}
---- !u!114 &842236688 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6650048340701928324, guid: c5e55f7ab1308b14babd0da52a459c26, type: 3}
-  m_PrefabInstance: {fileID: 468766725}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &847828574
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16638,8 +16627,6 @@ MonoBehaviour:
   _wallPrefab: {fileID: -7103061636960292382, guid: 39d3259851d3cfe42be987a963bcabc1, type: 3}
   _spawnedBox: {fileID: 1986256463}
   _spawnedFoodBox: []
-  navMeshData: {fileID: 23800000, guid: e4b290de67eafc64092c118dd7747b8c, type: 2}
-  navMeshSurface: {fileID: 842236688}
 --- !u!114 &1349657875
 MonoBehaviour:
   m_ObjectHideFlags: 0
