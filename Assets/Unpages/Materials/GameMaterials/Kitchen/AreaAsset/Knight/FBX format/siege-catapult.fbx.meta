@@ -31,7 +31,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties:
-    - '#BAKERY{"meshName":["wheel_3","wheel_2","wheel_1","wheel","catapult","siege-catapult"],"padding":[211,211,211,211,189,64],"unwrapper":[0,0,0,0,0,0]}'
+    - '#BAKERY{"meshName":["catapult","wheel","wheel_1","wheel_2","wheel_3","siege-catapult"],"padding":[189,211,211,211,211,64],"unwrapper":[0,0,0,0,0,0]}'
     clipAnimations: []
     isReadable: 0
   meshes:
