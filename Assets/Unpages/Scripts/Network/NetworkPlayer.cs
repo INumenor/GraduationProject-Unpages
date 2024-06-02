@@ -34,15 +34,15 @@ namespace Unpages.Network{
             NetworkManager.Instance.SetPlayer(playerRef, this);
         }
 
-        void Start()
-        {
+        //void Start()
+        //{
 
-        }
+        //}
 
-        // Update is called once per frame
-        void Update()
-        {
+        //// Update is called once per frame
+        //void Update()
+        //{
 
-        }
+        //}
     }
 }

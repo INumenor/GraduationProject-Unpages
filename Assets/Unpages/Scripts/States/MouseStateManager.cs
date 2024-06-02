@@ -1,10 +1,13 @@
+using Cysharp.Threading.Tasks;
 using Fusion;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
+using Unpages.Network;
 
-public class MouseStateManager : NetworkBehaviour
+public class MouseStateManager : SerializedMonoBehaviour
 {
     public IMouseState currentState;
 
@@ -22,23 +25,26 @@ public class MouseStateManager : NetworkBehaviour
     public bool isCatch;
 
     public NetworkObject mouseAgentPrefab;
-    public Animator MouseAnimatorController;
-    public NavMeshSurface meshSurface;
+    //public NavMeshSurface meshSurface;
 
-    [Networked] public NetworkBool isIdle { get; set; } = true;
-    [Networked] public NetworkBool isRunning { get; set; } = false;
-    [Networked] public NetworkBool isJumping { get; set; } = false;
+    async void Start()
+    {
+        await UniTask.WaitForSeconds(5f);
+        StartStation();
+    }
+
     public void StartStation()
     {
-        //if (!Object.HasStateAuthority) return;
-        currentState = new MouseReturnBaseState();
+        if (!NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient) return;
+        GameService.Instance.mouseStateManager = this;
+        currentState = new MouseIdleState();
         currentState.mouseStateManager = this;
         currentState.EnterState();
     }
 
     public void ChangeState(IMouseState newState)
     {
-        //if (!Object.HasStateAuthority) return;
+        if (!NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient) return;
         currentState.ExitState();
         currentState = newState;
         currentState.mouseStateManager = this;
@@ -47,8 +53,8 @@ public class MouseStateManager : NetworkBehaviour
 
     private void Update()
     {
-        Debug.Log(currentState);
-        if (mouseAgent) currentState.UpdateState();
+        if (!NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient) return;
+        if(currentState != null) currentState.UpdateState();
         //if (isIdle)
         //{
         //    MouseAnimatorController.SetBool("isIdle", true);
@@ -69,9 +75,9 @@ public class MouseStateManager : NetworkBehaviour
         //}
     }
 
-    public void AreaBake()
+    public void AreaBake(NavMeshData navMeshData)
     {
-        meshSurface.BuildNavMesh();
+        //meshSurface.UpdateNavMesh(navMeshData);
         //  MouseSpawned();      
     }
 }

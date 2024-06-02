@@ -8639,7 +8639,7 @@ MonoBehaviour:
   networkItems: {fileID: 1875248911}
   gameControl: {fileID: 1218952533}
   aiManagerSystem: {fileID: 1386869475}
-  mouseStateManager: {fileID: 1438080724}
+  mouseStateManager: {fileID: 0}
   spawnObject: {fileID: 0}
   playerTask: {fileID: 781351917}
 --- !u!4 &697803423
@@ -8660,7 +8660,6 @@ Transform:
   - {fileID: 1386869477}
   - {fileID: 2077348643}
   - {fileID: 1762762899}
-  - {fileID: 1438080725}
   - {fileID: 781351918}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10114,6 +10113,17 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6887661522113504916, guid: 0889b9b4cd6e4474bab90ab1bc9cc659, type: 3}
+--- !u!114 &842236688 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6650048340701928324, guid: c5e55f7ab1308b14babd0da52a459c26, type: 3}
+  m_PrefabInstance: {fileID: 468766725}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &847828574
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16628,6 +16638,8 @@ MonoBehaviour:
   _wallPrefab: {fileID: -7103061636960292382, guid: 39d3259851d3cfe42be987a963bcabc1, type: 3}
   _spawnedBox: {fileID: 1986256463}
   _spawnedFoodBox: []
+  navMeshData: {fileID: 23800000, guid: e4b290de67eafc64092c118dd7747b8c, type: 2}
+  navMeshSurface: {fileID: 842236688}
 --- !u!114 &1349657875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17320,86 +17332,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1231026096}
   m_LocalEulerAnglesHint: {x: 140.123, y: 0, z: 0}
---- !u!1 &1438080723
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1438080725}
-  - component: {fileID: 1438080724}
-  - component: {fileID: 1438080726}
-  m_Layer: 0
-  m_Name: MouseStatManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1438080724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438080723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fb10624a4da4cc498bfe7b5db76186f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseAI: {fileID: 0}
-  networkMouseAI: {fileID: 0}
-  mouseAgent: {fileID: 0}
-  mouseAgentBase: {fileID: 951137005}
-  expiredFood: []
-  mouseGrabbleObject: {fileID: 0}
-  targetFood: {fileID: 0}
-  isCatch: 0
-  mouseAgentPrefab: {fileID: 6278030482951139999, guid: bd8080ca6cb0b7a45ba8fc3ac563afc9, type: 3}
-  MouseAnimatorController: {fileID: 0}
-  meshSurface: {fileID: 0}
-  _isIdle:
-    _value: 0
-  _isRunning:
-    _value: 0
-  _isJumping:
-    _value: 0
---- !u!4 &1438080725
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438080723}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 697803423}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1438080726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438080723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortKey: 1540289667
-  ObjectInterest: 1
-  Flags: 131073
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 1438080724}
 --- !u!64 &1443005491
 MeshCollider:
   m_ObjectHideFlags: 0

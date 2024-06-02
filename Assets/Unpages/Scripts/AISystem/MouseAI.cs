@@ -11,10 +11,6 @@ public class MouseAI : NetworkBehaviour,IInteractable
     public NavMeshAgent mouseAgent;
     public NetworkObject grabbleNetworkObject;
 
-    private void Start()
-    {
-        GameService.Instance.mouseStateManager.MouseAnimatorController = this.GetComponent<Animator>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,13 +20,17 @@ public class MouseAI : NetworkBehaviour,IInteractable
             GameService.Instance.mouseStateManager.expiredFood.Remove(other.gameObject.GetComponent<NetworkObject>());
             GameService.Instance.playerAction.RPC_Despawn(other.GetComponent<NetworkObject>());
         }
+        if (other.CompareTag("Player"))
+        {
+            GameService.Instance.mouseStateManager.isCatch = true;
+        }
 
     }
 
     public void Interact(InteractorData interactorData)
     {
-        if(Runner.IsSharedModeMasterClient)GameService.Instance.mouseStateManager.isCatch = true;
-        else RPC_SetCatch();
+        //if(Runner.IsSharedModeMasterClient)GameService.Instance.mouseStateManager.isCatch = true;
+        //else RPC_SetCatch();
     }
 
     public void UnInteract()
@@ -38,9 +38,9 @@ public class MouseAI : NetworkBehaviour,IInteractable
         
     }
 
-    [Rpc(RpcSources.All,RpcTargets.StateAuthority)]
-    public void RPC_SetCatch()
-    {
-        GameService.Instance.mouseStateManager.isCatch = true;
-    }
+    //[Rpc(RpcSources.All,RpcTargets.StateAuthority)]
+    //public void RPC_SetCatch()
+    //{
+    //    GameService.Instance.mouseStateManager.isCatch = true;
+    //}
 }

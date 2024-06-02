@@ -1,16 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using UnityEngine;
-
 public class MouseIdleState : IMouseState
 {
-    public MouseStateManager mouseStateManager { get ; set ; }
+    public MouseStateManager mouseStateManager { get; set; }
 
     public void EnterState()
     {
         CharacterIdle();
-        mouseStateManager.isCatch = false;         
+        mouseStateManager.isCatch = false;
         mouseStateManager.mouseGrabbleObject = null;
         mouseStateManager.mouseAgent.speed = 10;
     }
@@ -22,19 +17,23 @@ public class MouseIdleState : IMouseState
 
     public void UpdateState()
     {
-      if(mouseStateManager.expiredFood.Count>0 && !mouseStateManager.mouseGrabbleObject)
+        if (mouseStateManager.expiredFood.Count > 0 && !mouseStateManager.mouseGrabbleObject)
         {
             mouseStateManager.ChangeState(new MouseStealFoodState());
         }
     }
     public void CharacterIdle()
     {
-        mouseStateManager.MouseAnimatorController.SetBool("isIdle", true);
-        mouseStateManager.MouseAnimatorController.SetBool("isRunning", false);
-        mouseStateManager.MouseAnimatorController.SetBool("isJumping", false);
+        mouseStateManager.networkMouseAI.isIdle = true;
+        mouseStateManager.networkMouseAI.isRunning = false;
+        mouseStateManager.networkMouseAI.isJumping = false;
+        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isIdle", true);
+        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isRunning", false);
+        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isJumping", false);
     }
     public void CharacterDontIdle()
     {
-        mouseStateManager.MouseAnimatorController.SetBool("isIdle",false); 
+        mouseStateManager.networkMouseAI.isIdle = false;
+        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isIdle", false);
     }
 }

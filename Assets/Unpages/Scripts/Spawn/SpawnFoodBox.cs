@@ -183,7 +183,7 @@ public class SpawnFoodBox : NetworkBehaviour
                     SpawnObjectsInGrid(area, boxesToSpawn, 0);
                 }
             }
-        GameService.Instance.mouseStateManager.AreaBake();
+        //GameService.Instance.mouseStateManager.AreaBake();
     }
     public async void RemoveListBox(GameObject boxObject)
     {

@@ -47,24 +47,24 @@ public class FoodInteract : MonoBehaviour, IInteractable
             //}
         }
     }
-    public void RemoveFoodItem()
-    {
-        if (GameService.Instance.mouseStateManager.expiredFood.Contains(gameObject.GetComponent<NetworkObject>()))
-        {
-            GameService.Instance.mouseStateManager.expiredFood.Remove(gameObject.GetComponent<NetworkObject>());
-            GameService.Instance.mouseStateManager.isCatch = true;
-        }
-    }
+    //public void RemoveFoodItem()
+    //{
+    //    if (GameService.Instance.mouseStateManager.expiredFood.Contains(gameObject.GetComponent<NetworkObject>()))
+    //    {
+    //        GameService.Instance.mouseStateManager.expiredFood.Remove(gameObject.GetComponent<NetworkObject>());
+    //       // GameService.Instance.mouseStateManager.isCatch = true;
+    //    }
+    //}
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    public void RPC_RemoveFoodList()
-    {
-        RemoveFoodItem();
-        //if (GameService.Instance.mouseStateManager.expiredFood.Contains(gameObject.GetComponent<NetworkObject>()))
-        //{
-        //Debug.Log(gameObject.name + " sNAME");
-        //GameService.Instance.mouseStateManager.expiredFood.Remove(gameObject.GetComponent<NetworkObject>());
-        //GameService.Instance.mouseStateManager.isCatch = true;
-        //}
-    }
+    //[Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    //public void RPC_RemoveFoodList()
+    //{
+    //    RemoveFoodItem();
+    //    //if (GameService.Instance.mouseStateManager.expiredFood.Contains(gameObject.GetComponent<NetworkObject>()))
+    //    //{
+    //    //Debug.Log(gameObject.name + " sNAME");
+    //    //GameService.Instance.mouseStateManager.expiredFood.Remove(gameObject.GetComponent<NetworkObject>());
+    //    //GameService.Instance.mouseStateManager.isCatch = true;
+    //    //}
+    //}
 }

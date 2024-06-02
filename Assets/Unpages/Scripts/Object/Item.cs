@@ -27,12 +27,12 @@ public class Item : NetworkBehaviour
 
     public void Despawn()
     {
-        if (GameService.Instance.mouseStateManager.expiredFood.Contains(gameObject.GetComponent<NetworkObject>()))
-        {
-            GameService.Instance.mouseStateManager.expiredFood.Remove(gameObject.GetComponent<NetworkObject>());
-            GameService.Instance.mouseStateManager.isCatch = true;
-        }
-        UnityEngine.Debug.Log("Bari Buraya GEl Be");
+        //if (GameService.Instance.mouseStateManager.expiredFood.Contains(gameObject.GetComponent<NetworkObject>()))
+        //{
+        //    GameService.Instance.mouseStateManager.expiredFood.Remove(gameObject.GetComponent<NetworkObject>());
+        //    GameService.Instance.mouseStateManager.isCatch = true;
+        //}
+        //UnityEngine.Debug.Log("Bari Buraya GEl Be");
         Runner.Despawn(Object);
     }
 

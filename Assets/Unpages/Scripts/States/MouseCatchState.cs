@@ -32,12 +32,13 @@ public class MouseCatchState : IMouseState
     }
     public void CharacterJumping()
     {
-        mouseStateManager.MouseAnimatorController.SetBool("isRunning", true);
+        mouseStateManager.networkMouseAI.isRunning = true;
+        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isRunning", true);
     }
 
     public void CharacterDontJumping()
     {
-       
-        mouseStateManager.MouseAnimatorController.SetBool("isRunning", false);
+        mouseStateManager.networkMouseAI.isRunning = false;
+        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isRunning", false);
     }
 }

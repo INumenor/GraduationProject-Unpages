@@ -33,11 +33,13 @@ public class MouseReturnBaseState : IMouseState
     }
     public void CharacterRunning()
     {
-        mouseStateManager.MouseAnimatorController.SetBool("isRunning", true);
+        mouseStateManager.networkMouseAI.isRunning = true;
+        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isRunning", true);
     }
 
     public void CharacterDontRunning()
     {
-        mouseStateManager.MouseAnimatorController.SetBool("isRunning", false);
+        mouseStateManager.networkMouseAI.isRunning = false;
+        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isRunning", false);
     }
 }

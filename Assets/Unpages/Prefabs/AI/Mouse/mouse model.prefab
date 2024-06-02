@@ -1,5 +1,91 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2865447092614107525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6380538333224797689}
+  - component: {fileID: 8017504555351244380}
+  - component: {fileID: 2308781735042357534}
+  m_Layer: 10
+  m_Name: EnemyAI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6380538333224797689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865447092614107525}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4844435088077263034}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8017504555351244380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865447092614107525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb10624a4da4cc498bfe7b5db76186f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: currentState
+      Entry: 6
+      Data: 
+  mouseAI: {fileID: -4169898457373476948}
+  networkMouseAI: {fileID: 2308781735042357534}
+  mouseAgent: {fileID: 5963374009911901021}
+  mouseAgentBase: {fileID: 0}
+  expiredFood: []
+  mouseGrabbleObject: {fileID: 0}
+  targetFood: {fileID: 0}
+  isCatch: 0
+  mouseAgentPrefab: {fileID: 6278030482951139999}
+  meshSurface: {fileID: 0}
+--- !u!114 &2308781735042357534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865447092614107525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea395c1e8c8b7814c83cd13b8ec0ae3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MouseAnimatorController: {fileID: -8466355574077347317}
+  _isIdle:
+    _value: 0
+  _isRunning:
+    _value: 0
+  _isJumping:
+    _value: 0
 --- !u!1001 &4949558755306370897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1674,7 +1760,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: aa05d8e7df73ced479f1532dad3f0f17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6380538333224797689}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aa05d8e7df73ced479f1532dad3f0f17, type: 3}
       insertIndex: -1
@@ -1696,11 +1785,13 @@ PrefabInstance:
       addedObject: {fileID: -4169898457373476948}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aa05d8e7df73ced479f1532dad3f0f17, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5314619249074497366}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aa05d8e7df73ced479f1532dad3f0f17, type: 3}
-      insertIndex: -1
       addedObject: {fileID: -8466355574077347317}
   m_SourcePrefab: {fileID: 100100000, guid: aa05d8e7df73ced479f1532dad3f0f17, type: 3}
+--- !u!4 &4844435088077263034 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: aa05d8e7df73ced479f1532dad3f0f17, type: 3}
+  m_PrefabInstance: {fileID: 4949558755306370897}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5220011335650691584 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: aa05d8e7df73ced479f1532dad3f0f17, type: 3}
@@ -1805,12 +1896,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 685991520
   ObjectInterest: 1
-  Flags: 262145
+  Flags: 131073
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: -4692746267803670337}
   - {fileID: -4169898457373476948}
-  - {fileID: 5314619249074497366}
+  - {fileID: 2308781735042357534}
 --- !u!114 &-4692746267803670337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1826,7 +1917,7 @@ MonoBehaviour:
   SyncScale: 0
   SyncParent: 1
   _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 0
+  DisableSharedModeInterpolation: 1
 --- !u!114 &-4169898457373476948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1841,18 +1932,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseAgent: {fileID: 5963374009911901021}
   grabbleNetworkObject: {fileID: 0}
---- !u!114 &5314619249074497366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5220011335650691584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea395c1e8c8b7814c83cd13b8ec0ae3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &-8466355574077347317
 Animator:
   serializedVersion: 5

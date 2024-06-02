@@ -44,27 +44,27 @@ public class MouseStealFoodState : IMouseState
         
         if(mouseStateManager.targetFood == null)
         {
-            //Debug.Log("Sýra : 2");
-            //foreach (var networkObject in mouseStateManager.expiredFood)
-            //{
-            //    if (networkObject != null)
-            //    {
-            //        mouseStateManager.targetFood = networkObject;
-            //        mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
-            //        break;
-            //    }
-            //}
-            //Debug.Log("Sýra : 3");
-            //if (mouseStateManager.targetFood != null)
-            //{
-            //    Debug.Log("Sýra : 4");
-            //    mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
-            //}
-            //else
-            //{
-                //Debug.Log("Sýra : 5");
+            Debug.Log("Sýra : 2");
+            foreach (var networkObject in mouseStateManager.expiredFood)
+            {
+                if (networkObject != null)
+                {
+                    mouseStateManager.targetFood = networkObject;
+                    mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
+                    break;
+                }
+            }
+            Debug.Log("Sýra : 3");
+            if (mouseStateManager.targetFood != null)
+            {
+                Debug.Log("Sýra : 4");
+                mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
+            }
+            else
+            {
+                Debug.Log("Sýra : 5");
                 mouseStateManager.ChangeState(new MouseReturnBaseState());
-            //}
+            }
         }
         //if (mouseStateManager.expiredFood.Count > 0)
         //{
@@ -75,35 +75,36 @@ public class MouseStealFoodState : IMouseState
         //}     
         if (mouseStateManager.isCatch)
         {
-            foreach (var networkObject in mouseStateManager.expiredFood)
-            {
-                if (networkObject != null)
-                {
-                    mouseStateManager.targetFood = networkObject;
-                    mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
-                    break;
-                }
-            }
-            if (mouseStateManager.targetFood != null)
-            {
-                mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
-            }
-            else
-            {
-                mouseStateManager.ChangeState(new MouseCatchState());
-            }
-            
+            //foreach (var networkObject in mouseStateManager.expiredFood)
+            //{
+            //    if (networkObject != null)
+            //    {
+            //        mouseStateManager.targetFood = networkObject;
+            //        mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
+            //        break;
+            //    }
+            //}
+            //if (mouseStateManager.targetFood != null)
+            //{
+            //    mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
+            //}
+            //else
+            //{
+            //    mouseStateManager.ChangeState(new MouseCatchState());
+            //}
+
+            mouseStateManager.ChangeState(new MouseCatchState());
         }
     }
     public void CharacterRunning()
     {   
-        
-        mouseStateManager.MouseAnimatorController.SetBool("isRunning", true);
+        mouseStateManager.networkMouseAI.isRunning = true;
+        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isRunning", true);
     }
 
     public void CharacterDontRunning()
     {
-        
-        mouseStateManager.MouseAnimatorController.SetBool("isRunning", false);
+        mouseStateManager.networkMouseAI.isRunning = false;
+        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isRunning", false);
     }
 }
