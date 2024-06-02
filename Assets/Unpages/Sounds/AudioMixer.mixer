@@ -102,6 +102,8 @@ AudioMixerController:
     name: Effect
   - guid: 42fefbda6c2e733419f95bd0e540e0f9
     name: Environment
+  - guid: 24fcd3b9f601e344aa5568c699b1d3f3
+    name: Master
   m_AudioMixerGroupViews:
   - guids:
     - b51ce91651292cc4dba4b4d228add8a3

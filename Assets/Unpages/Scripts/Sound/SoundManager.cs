@@ -6,17 +6,26 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance;
+    public static SoundManager Instance;
+
+    public AudioSource audioSource;
     void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    public void StartGameMusic(AudioClip audioClip)
+    {
+        audioSource.clip = audioClip;
+        audioSource.Play();
+        audioSource.loop = true;
     }
 }

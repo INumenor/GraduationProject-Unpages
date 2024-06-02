@@ -30,6 +30,9 @@ public class MapDefault : NetworkBehaviour
     public GameObject WaitOtherPlayerCanvas;
     public GameObject GameScrennCanvas;
 
+
+    public AudioClip audioClip;
+
     public NetworkManager networkManager => NetworkManager.Instance;
 
     [Networked] public int ReadyPlayerCount { get; set; }
@@ -117,6 +120,7 @@ public class MapDefault : NetworkBehaviour
                 timerText.text = "Game Start \n"+i+" Seconds";
                 await UniTask.WaitForSeconds(1);
             }
+            SoundManager.Instance.StartGameMusic(audioClip);
             WaitOtherPlayerCanvas.SetActive(false);
             GameScrennCanvas.SetActive(true);
             Player1AngryBarCanvas.SetActive(true);
