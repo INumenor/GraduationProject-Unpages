@@ -12,7 +12,15 @@ public class MouseStealFoodState : IMouseState
         if (mouseStateManager.expiredFood.Count>0 && !mouseStateManager.mouseGrabbleObject)
         {
             CharacterRunning();
-            mouseStateManager.targetFood = mouseStateManager.expiredFood[0];
+            foreach (var networkObject in mouseStateManager.expiredFood)
+            {
+                if(networkObject != null)
+                {
+                    Debug.Log("Easy");
+                    mouseStateManager.targetFood = networkObject;
+                    break;
+                }
+            }
             mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
            
         }
