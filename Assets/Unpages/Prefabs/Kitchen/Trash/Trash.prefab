@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8295408561165318533}
   - component: {fileID: 313839130108319510}
   - component: {fileID: 5912409300062504105}
-  - component: {fileID: 8980021737451265288}
+  - component: {fileID: 2150705161767516598}
   m_Layer: 12
   m_Name: Trash
   m_TagString: Trash
@@ -112,6 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e6cf2a38b3e994cb579da64887dfec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anchorPoints: {fileID: 0}
+  kitchenObjectType: 4
+  onTheCupboardObject: {fileID: 0}
 --- !u!114 &313839130108319510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +153,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.1540427, z: 1}
   m_Center: {x: 0, y: 0.57702136, z: 0}
---- !u!114 &8980021737451265288
+--- !u!114 &2150705161767516598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 1, g: 0.74357396, b: 0, a: 1}
+  outlineColor: {r: 1, g: 0.74509805, b: 0, a: 1}
   outlineWidth: 5
   precomputeOutline: 0
   bakeKeys: []

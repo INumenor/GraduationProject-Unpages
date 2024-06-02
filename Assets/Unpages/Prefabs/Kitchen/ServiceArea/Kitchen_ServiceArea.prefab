@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 3880725062742615881}
   - component: {fileID: 4177410470439443271}
   - component: {fileID: 7813390254753276088}
-  - component: {fileID: 8638164693889078979}
+  - component: {fileID: 2299922868099309461}
   m_Layer: 12
   m_Name: Kitchen_ServiceArea
   m_TagString: Untagged
@@ -458,7 +458,7 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours: []
---- !u!114 &8638164693889078979
+--- !u!114 &2299922868099309461
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 1, g: 0.74357396, b: 0, a: 1}
+  outlineColor: {r: 1, g: 0.74509805, b: 0, a: 1}
   outlineWidth: 5
   precomputeOutline: 0
   bakeKeys: []
