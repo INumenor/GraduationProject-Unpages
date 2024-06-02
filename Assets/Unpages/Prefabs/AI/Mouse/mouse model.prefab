@@ -1436,6 +1436,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6684295394808222897, guid: aa05d8e7df73ced479f1532dad3f0f17, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 92446baff77d407468a2a93d09d383aa, type: 2}
     - target: {fileID: 6705567424530170961, guid: aa05d8e7df73ced479f1532dad3f0f17, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -1801,7 +1805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 685991520
   ObjectInterest: 1
-  Flags: 131073
+  Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: -4692746267803670337}

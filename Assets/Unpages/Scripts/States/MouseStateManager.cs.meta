@@ -3,7 +3,16 @@ guid: 3fb10624a4da4cc498bfe7b5db76186f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - mouseAI: {instanceID: 0}
+  - networkMouseAI: {instanceID: 0}
+  - mouseAgent: {instanceID: 0}
+  - mouseAgentBase: {instanceID: 0}
+  - mouseGrabbleObject: {instanceID: 0}
+  - targetFood: {instanceID: 0}
+  - mouseAgentPrefab: {instanceID: 0}
+  - MouseAnimatorController: {instanceID: 0}
+  - meshSurface: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -16,13 +16,15 @@ public class MouseStealFoodState : IMouseState
             {
                 if(networkObject != null)
                 {
-                    Debug.Log("Easy");
                     mouseStateManager.targetFood = networkObject;
                     break;
                 }
             }
-            mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
-           
+            if (mouseStateManager.targetFood != null)
+            {
+                mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
+            }
+
         }
     }
 
@@ -33,13 +35,36 @@ public class MouseStealFoodState : IMouseState
 
     public void UpdateState()
     {
+        Debug.Log("Sýra : 1");
         if (mouseStateManager.mouseGrabbleObject)
         {
+            Debug.Log("Sýra : 6");
             mouseStateManager.ChangeState(new MouseReturnBaseState());
         }
+        
         if(mouseStateManager.targetFood == null)
         {
-            mouseStateManager.ChangeState(new MouseReturnBaseState());
+            //Debug.Log("Sýra : 2");
+            //foreach (var networkObject in mouseStateManager.expiredFood)
+            //{
+            //    if (networkObject != null)
+            //    {
+            //        mouseStateManager.targetFood = networkObject;
+            //        mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
+            //        break;
+            //    }
+            //}
+            //Debug.Log("Sýra : 3");
+            //if (mouseStateManager.targetFood != null)
+            //{
+            //    Debug.Log("Sýra : 4");
+            //    mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
+            //}
+            //else
+            //{
+                //Debug.Log("Sýra : 5");
+                mouseStateManager.ChangeState(new MouseReturnBaseState());
+            //}
         }
         //if (mouseStateManager.expiredFood.Count > 0)
         //{
@@ -50,16 +75,35 @@ public class MouseStealFoodState : IMouseState
         //}     
         if (mouseStateManager.isCatch)
         {
-            mouseStateManager.ChangeState(new MouseCatchState());
+            foreach (var networkObject in mouseStateManager.expiredFood)
+            {
+                if (networkObject != null)
+                {
+                    mouseStateManager.targetFood = networkObject;
+                    mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
+                    break;
+                }
+            }
+            if (mouseStateManager.targetFood != null)
+            {
+                mouseStateManager.mouseAgent.SetDestination(mouseStateManager.targetFood.transform.position);
+            }
+            else
+            {
+                mouseStateManager.ChangeState(new MouseCatchState());
+            }
+            
         }
     }
     public void CharacterRunning()
-    {
+    {   
+        
         mouseStateManager.MouseAnimatorController.SetBool("isRunning", true);
     }
 
     public void CharacterDontRunning()
     {
+        
         mouseStateManager.MouseAnimatorController.SetBool("isRunning", false);
     }
 }

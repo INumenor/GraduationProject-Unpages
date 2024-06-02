@@ -11,6 +11,10 @@ public class MouseAI : NetworkBehaviour,IInteractable
     public NavMeshAgent mouseAgent;
     public NetworkObject grabbleNetworkObject;
 
+    private void Start()
+    {
+        GameService.Instance.mouseStateManager.MouseAnimatorController = this.GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

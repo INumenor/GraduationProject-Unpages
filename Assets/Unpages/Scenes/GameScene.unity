@@ -9572,7 +9572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &790074900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17352,7 +17352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseAI: {fileID: 0}
   networkMouseAI: {fileID: 0}
-  mouseAgent: {fileID: 5963374009911901021, guid: bd8080ca6cb0b7a45ba8fc3ac563afc9, type: 3}
+  mouseAgent: {fileID: 0}
   mouseAgentBase: {fileID: 951137005}
   expiredFood: []
   mouseGrabbleObject: {fileID: 0}

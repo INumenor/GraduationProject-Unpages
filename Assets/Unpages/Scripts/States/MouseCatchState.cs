@@ -37,6 +37,7 @@ public class MouseCatchState : IMouseState
 
     public void CharacterDontJumping()
     {
+       
         mouseStateManager.MouseAnimatorController.SetBool("isRunning", false);
     }
 }

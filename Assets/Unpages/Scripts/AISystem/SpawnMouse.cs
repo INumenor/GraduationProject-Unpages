@@ -22,4 +22,5 @@ public class SpawnMouse : NetworkBehaviour
             GameService.Instance.mouseStateManager.StartStation();
         }
     }
+
 }

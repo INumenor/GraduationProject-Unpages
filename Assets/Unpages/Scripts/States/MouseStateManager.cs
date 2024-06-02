@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using Fusion;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
@@ -26,10 +25,10 @@ public class MouseStateManager : NetworkBehaviour
     public Animator MouseAnimatorController;
     public NavMeshSurface meshSurface;
 
-    [Networked] public NetworkBool isIdle { get; set; }
-    [Networked] public NetworkBool isRunning { get; set; }
-    [Networked] public NetworkBool isJumping { get; set; }
-    public  void StartStation()
+    [Networked] public NetworkBool isIdle { get; set; } = true;
+    [Networked] public NetworkBool isRunning { get; set; } = false;
+    [Networked] public NetworkBool isJumping { get; set; } = false;
+    public void StartStation()
     {
         //if (!Object.HasStateAuthority) return;
         currentState = new MouseReturnBaseState();
@@ -48,9 +47,26 @@ public class MouseStateManager : NetworkBehaviour
 
     private void Update()
     {
-
-        if (Runner.IsSharedModeMasterClient) return;
+        Debug.Log(currentState);
         if (mouseAgent) currentState.UpdateState();
+        //if (isIdle)
+        //{
+        //    MouseAnimatorController.SetBool("isIdle", true);
+        //}
+        //else if (isRunning)
+        //{
+        //    MouseAnimatorController.SetBool("isRunning", true);
+        //}
+        //else if (isJumping)
+        //{
+        //    MouseAnimatorController.SetBool("isJumping", false);
+        //}
+        //else
+        //{
+        //    MouseAnimatorController.SetBool("isIdle", true);
+        //    MouseAnimatorController.SetBool("isRunning", false);
+        //    MouseAnimatorController.SetBool("isJumping", false);
+        //}
     }
 
     public void AreaBake()
