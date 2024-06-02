@@ -49,7 +49,7 @@ public class MouseStateManager : NetworkBehaviour
     private void Update()
     {
 
-        // if (!Object.HasStateAuthority) return;
+        if (Runner.IsSharedModeMasterClient) return;
         if (mouseAgent) currentState.UpdateState();
     }
 
