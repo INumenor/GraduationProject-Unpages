@@ -12,7 +12,8 @@ public class AngryBar : NetworkBehaviour
     public Transform angryScoreBarImage;
 
     public GameObject gameSceneCanvas;
-    public GameObject gameFinishCanvas;
+    public GameObject gameWinCanvas;
+    public GameObject gameLoseCanvas;
     [Networked, OnChangedRender(nameof(UpdateUI))] public int playerScore { get; set; }
     [Networked, OnChangedRender(nameof(GameDone))] public NetworkBool isGameFinish { get; set; }
 
@@ -41,7 +42,14 @@ public class AngryBar : NetworkBehaviour
 
     public void GameDone()
     {
-        gameFinishCanvas.SetActive(true);
+        if(GameService.Instance.playerTask.angryBar.playerScore < 100)
+        {
+            gameLoseCanvas.SetActive(true);
+        }
+        else
+        {
+            gameWinCanvas.SetActive(true);
+        }
         gameSceneCanvas.SetActive(false);
         GameService.Instance.playerAction.enabled = false;
     }

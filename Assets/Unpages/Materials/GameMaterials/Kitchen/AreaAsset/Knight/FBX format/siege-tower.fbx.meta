@@ -31,7 +31,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties:
-    - '#BAKERY{"meshName":["wheel_3","wheel_2","wheel_1","wheel","siege-tower"],"padding":[129,129,129,129,18],"unwrapper":[0,0,0,0,0]}'
+    - '#BAKERY{"meshName":["wheel","wheel_1","wheel_2","wheel_3","siege-tower"],"padding":[129,129,129,129,18],"unwrapper":[0,0,0,0,0]}'
     clipAnimations: []
     isReadable: 0
   meshes:
