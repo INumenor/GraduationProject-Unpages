@@ -18747,6 +18747,10 @@ PrefabInstance:
       propertyPath: SortKey
       value: 2954712009
       objectReference: {fileID: 0}
+    - target: {fileID: 4262217865334999673, guid: f16c71594a4e11e4c931d0a3ed968cb3, type: 3}
+      propertyPath: plateLimit
+      value: 9999
+      objectReference: {fileID: 0}
     - target: {fileID: 4350655152965942877, guid: f16c71594a4e11e4c931d0a3ed968cb3, type: 3}
       propertyPath: m_Enabled
       value: 0
