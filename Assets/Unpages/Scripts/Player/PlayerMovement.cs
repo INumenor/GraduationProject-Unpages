@@ -10,7 +10,7 @@ public class PlayerMovement : NetworkBehaviour
 
     public CharacterController _controller;
 
-    public float MoveSpeed = 6f;
+    public float MoveSpeed = 8f;
 
     public float JumpForce = 10f;
     public float GravityValue = -9.81f;
@@ -38,7 +38,7 @@ public class PlayerMovement : NetworkBehaviour
                 {
                     GameService.Instance.playerAction.stateManager.isGrabbing = true;
                     //GameService.Instance.playerAnimationControl.RPC_CharacterGrabbing();
-                    GameService.Instance.playerAction.playerMovement.MoveSpeed = 4;
+                    GameService.Instance.playerAction.playerMovement.MoveSpeed = 6;
 
                 }
                 else
@@ -46,7 +46,7 @@ public class PlayerMovement : NetworkBehaviour
                     GameService.Instance.playerAction.stateManager.isRunning = true;
                     GameService.Instance.playerAction.stateManager.isGrabbing = false;
                     //GameService.Instance.playerAnimationControl.RPC_CharacterRunning();
-                    GameService.Instance.playerAction.playerMovement.MoveSpeed = 7.5f;
+                    GameService.Instance.playerAction.playerMovement.MoveSpeed = 8f;
 
                 }
             }
@@ -55,7 +55,7 @@ public class PlayerMovement : NetworkBehaviour
                 GameService.Instance.playerAction.stateManager.isRunning = false;
                 GameService.Instance.playerAction.stateManager.isGrabbing = false;
                 //GameService.Instance.playerAnimationControl.RPC_CharacterIdle();
-                GameService.Instance.playerAction.playerMovement.MoveSpeed = 6;
+                GameService.Instance.playerAction.playerMovement.MoveSpeed = 8;
             }
         }
     }

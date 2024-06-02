@@ -16,6 +16,7 @@ public class GameControl : MonoBehaviour
         {
             List<ItemInfo> spawnNetworkItem = GameService.Instance.networkItems.networkFoodItems;
             int randomNumber = Random.Range(0, 101);
+            Debug.Log(randomNumber+ " random numbeerrr");
             foreach (FoodInfo itemInfo in spawnNetworkItem)
             {
                 if (itemInfo.isSpawnable && itemInfo.minRandomGameSpawn < randomNumber && randomNumber < itemInfo.maxRandomGameSpawn)

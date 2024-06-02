@@ -27,15 +27,16 @@ public class TaskUI : MonoBehaviour
     }
     public void TaskTime(float recipeTime)
     {
-        taskTimeImage.gameObject.transform.DOScale(new Vector3(0f,0.6f, 1), recipeTime).SetEase(Ease.Linear).OnUpdate(() => 
-        {
-            if (taskTimeImage.transform.localScale.x < 0.5f)
-            {
-                taskTimeImage.DOColor(Color.red, recipeTime / 2);
-            }
-        }).OnComplete(() =>
+        Sequence taskSequence = DOTween.Sequence();
+        taskSequence.Append(taskTimeImage.gameObject.transform.DOScale(new Vector3(0f, 0.6f, 1), recipeTime).SetEase(Ease.Linear)).OnComplete(() =>
         {
             taskTimeAction.Invoke(foodRecipes, false);
         });
+        taskSequence.Insert(recipeTime / 2, taskTimeImage.DOColor(Color.red, recipeTime / 2));
+        //if (taskTimeImage.transform.localScale.x < 0.5f)
+        //{
+            //taskSequence.Append(taskTimeImage.DOColor(Color.red, recipeTime / 2));
+        //}
+           
     }
 }
