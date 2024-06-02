@@ -1,9 +1,10 @@
 using DG.Tweening;
+using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestBomb : MonoBehaviour
+public class TestBomb : NetworkBehaviour
 {
     // Start is called before the first frame update
     public GameObject explosionPrefab;
@@ -17,12 +18,18 @@ public class TestBomb : MonoBehaviour
 
     void Explode()
     {
-        GameObject Explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity); //1
-        Explosion.GetComponent<BombExplosion>().Init(GameService.Instance.playerAction.bombManager.bombSize);
-        GetComponent<MeshRenderer>().enabled = false; //2
-        transform.Find("Collider").gameObject.SetActive(false); //3
-        Destroy(gameObject, .3f); //4
-        GameService.Instance.playerAction.bombManager.bombCounter++;
+        if (Runner.IsSharedModeMasterClient)
+        {
+            GameObject Explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity); //1
+            Explosion.GetComponent<BombExplosion>().Init(GameService.Instance.playerAction.bombManager.bombSize);
+            GetComponent<MeshRenderer>().enabled = false; //2
+            transform.Find("Collider").gameObject.SetActive(false); //3
+        }
+        if (Object.HasStateAuthority)
+        {
+            Destroy(gameObject, .3f);
+            GameService.Instance.playerAction.bombManager.bombCounter++;
+        }
     }
     public void BombTween()
     {

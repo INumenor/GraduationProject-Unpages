@@ -227,6 +227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 6941301047096099186, guid: 99ace82de5ae1ee4fbd6eb9c81312de5, type: 3}
+  PotBottom: {fileID: 0}
+  PotTop: {fileID: 0}
 --- !u!114 &2952983368268198422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +246,7 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
+  - {fileID: -713024445205845792}
   - {fileID: 2007629670037667619}
 --- !u!114 &2007629670037667619
 MonoBehaviour:

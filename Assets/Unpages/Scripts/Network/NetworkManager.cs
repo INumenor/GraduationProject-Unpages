@@ -3,6 +3,7 @@ namespace Unpages.Network
     using Cysharp.Threading.Tasks;
     using Fusion;
     using Fusion.Sockets;
+    using Sirenix.OdinInspector;
     using System;
     using System.Collections.Generic;
     using System.Threading;
@@ -29,6 +30,7 @@ namespace Unpages.Network
         //[SerializeField] private NetworkObject networkCharacterPrefab;
 
         public Action<PlayerRef, NetworkPlayer> OnNetworkPlayerCreated ; /*{ get; private set; }*/
+        public Action OnNetworkPlayerDisconneted ;
 
 
         public MapDefault GameMap
@@ -137,6 +139,19 @@ namespace Unpages.Network
                 Debug.LogError(connectionResult.ErrorMessage);
             }
         }
+        public async void Disconnect()
+        {
+            Debug.Log("Disconnecting");
+
+            await SessionRunner.Shutdown();
+
+            Destroy(SessionRunner);
+            SessionRunner = null;
+
+            // await SceneLoadManager.UnloadAllScenes();
+            SceneManager.LoadScene(0);
+
+        }
 
         private static readonly int maxAttempt = 30;
         public static async UniTask<NetworkPlayer> GetPlayerAsync(CancellationToken token, Action<NetworkPlayer> action = default, PlayerRef ply = default)
@@ -221,20 +236,20 @@ namespace Unpages.Network
             }
         }
 
-        public async void CahngeGameScene()
-        {
+        //public async void CahngeGameScene()
+        //{
 
-            Debug.Log("Disconnecting");
+        //    Debug.Log("Disconnecting");
 
-            await SessionRunner.Shutdown();
+        //    await SessionRunner.Shutdown();
 
-            Destroy(SessionRunner);
-            SessionRunner = null;
+        //    Destroy(SessionRunner);
+        //    SessionRunner = null;
 
-            // await SceneLoadManager.UnloadAllScenes();
-            ConnectGame();
+        //    // await SceneLoadManager.UnloadAllScenes();
+        //    ConnectGame();
 
-        }
+        //}
 
         //public void CharacterSpawn(PlayerRef playerRef)
         //{
@@ -278,6 +293,7 @@ namespace Unpages.Network
         public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
         {
             Debug.Log("Player Out" + player);
+            Disconnect();
         }
 
         public void OnInput(NetworkRunner runner, NetworkInput input)
