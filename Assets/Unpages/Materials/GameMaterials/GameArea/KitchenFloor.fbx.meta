@@ -31,7 +31,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties:
-    - '#BAKERY{"meshName":["Floor tile.001","Floor tile.004","pillar_A","Plane"],"padding":[1,1,1,1],"unwrapper":[0,0,0,0]}'
+    - '#BAKERY{"meshName":["Floor tile.001","Floor tile.004","pillar_A","Plane"],"padding":[2,10,14,2],"unwrapper":[0,0,0,0]}'
     clipAnimations: []
     isReadable: 0
   meshes:
