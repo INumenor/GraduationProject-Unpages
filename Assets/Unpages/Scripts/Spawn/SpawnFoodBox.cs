@@ -166,7 +166,7 @@ public class SpawnFoodBox : NetworkBehaviour
                position.z > area[0].z && position.z < area[2].z;
     }
 
-    public void SpawnMissingBox()
+    public async void SpawnMissingBox()
     {     
             for (int i = 0; i < gridAreas.Count; i++)
             {
@@ -185,11 +185,11 @@ public class SpawnFoodBox : NetworkBehaviour
             }
         //GameService.Instance.mouseStateManager.AreaBake();
     }
-    public async void RemoveListBox(GameObject boxObject)
+    public void RemoveListBox(GameObject boxObject)
     {
         _spawnedFoodBox.Remove(boxObject.GetComponent<NetworkObject>());
         
-        Destroy(boxObject,0.3f);
+        Destroy(boxObject);
         //if (_spawnedFoodBox.Count <= 20)
         //{
         //    SpawnMissingBox();

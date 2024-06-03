@@ -16745,6 +16745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24f9270d19f0ed408921002046ddd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnFoodBox: {fileID: 1349657874}
   BoxDestroyCount: 0
 --- !u!4 &1218952534
 Transform:
