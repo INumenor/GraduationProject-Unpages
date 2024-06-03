@@ -42,7 +42,7 @@ public class AngryBar : NetworkBehaviour
 
     public void GameDone()
     {
-        if(GameService.Instance.playerTask.angryBar.playerScore < 100)
+        if(GameService.Instance.playerTask.angryBar.playerScore < 30)
         {
             gameLoseCanvas.SetActive(true);
         }

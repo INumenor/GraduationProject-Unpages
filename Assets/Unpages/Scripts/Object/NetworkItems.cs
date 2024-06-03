@@ -2,12 +2,13 @@ using DG.Tweening;
 using Fusion;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class NetworkItems : MonoBehaviour
 {
-    public List<ItemInfo> networkFoodItems;
+    [ReadOnly]public List<ItemInfo> networkFoodItems;
     public List<FoodInfo> networkItemsSlice;
     public List<FoodRecipes> networkFoodRecipes;
     public List<FoodRecipes> networkTaskFoodRecipes;
@@ -25,6 +26,11 @@ public class NetworkItems : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public List<ItemInfo> GetNetworkFoodItem()
+    {
+        return networkFoodItems.ToList();
     }
     public NetworkObject GetNetworkItemSlice(FoodType foodType)
     {

@@ -9,6 +9,7 @@ public class MainMenuUI : MonoBehaviour
     
     public GameObject optionsCanvas;
     public GameObject mainMenuCanvas;
+    public GameObject playMenuCanvas;
 
     private void Start()
     {
@@ -26,6 +27,13 @@ public class MainMenuUI : MonoBehaviour
     {
         currentCanvas.SetActive(false);
         currentCanvas = mainMenuCanvas;
+        currentCanvas.SetActive(true);
+    }
+
+    public void PlayMenuButton()
+    {
+        currentCanvas.SetActive(false);
+        currentCanvas = playMenuCanvas;
         currentCanvas.SetActive(true);
     }
 

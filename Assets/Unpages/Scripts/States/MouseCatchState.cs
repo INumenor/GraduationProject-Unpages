@@ -12,7 +12,7 @@ public class MouseCatchState : IMouseState
         {
             CharacterJumping();
             mouseStateManager.networkMouseAI.DropItem(mouseStateManager.mouseGrabbleObject);
-            mouseStateManager.mouseAgent.speed = 50;
+            mouseStateManager.mouseAgent.speed = 10;
             mouseStateManager.mouseGrabbleObject = null;
         }
         mouseStateManager.isCatch = false;
@@ -32,13 +32,13 @@ public class MouseCatchState : IMouseState
     }
     public void CharacterJumping()
     {
-        mouseStateManager.networkMouseAI.isRunning = true;
-        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isRunning", true);
+        mouseStateManager.networkMouseAI.isJumping = true;
+        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isJumping", true);
     }
 
     public void CharacterDontJumping()
     {
         mouseStateManager.networkMouseAI.isRunning = false;
-        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isRunning", false);
+        mouseStateManager.networkMouseAI.MouseAnimatorController.SetBool("isJumping", false);
     }
 }

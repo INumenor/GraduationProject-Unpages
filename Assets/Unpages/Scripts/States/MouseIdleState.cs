@@ -7,7 +7,7 @@ public class MouseIdleState : IMouseState
         CharacterIdle();
         mouseStateManager.isCatch = false;
         mouseStateManager.mouseGrabbleObject = null;
-        mouseStateManager.mouseAgent.speed = 10;
+        mouseStateManager.mouseAgent.speed = 5;
     }
 
     public void ExitState()
@@ -17,9 +17,13 @@ public class MouseIdleState : IMouseState
 
     public void UpdateState()
     {
-        if (mouseStateManager.expiredFood.Count > 0 && !mouseStateManager.mouseGrabbleObject)
+        foreach (var networkObject in mouseStateManager.expiredFood)
         {
-            mouseStateManager.ChangeState(new MouseStealFoodState());
+            if (networkObject != null && !mouseStateManager.mouseGrabbleObject)
+            {
+                mouseStateManager.ChangeState(new MouseStealFoodState());
+                break;
+            }
         }
     }
     public void CharacterIdle()
