@@ -8,6 +8,11 @@ public class NetworkMouseAI : NetworkBehaviour
 {
     public Animator MouseAnimatorController;
 
+    public AudioSource audioSource;
+    public AudioClip mouseIdleClip;
+    public AudioClip mouseGrabClip;
+    public AudioClip mouseDropClip;
+
     [Networked,OnChangedRender(nameof(AnimationChange))] public NetworkBool isIdle { get; set; } = false;
     [Networked, OnChangedRender(nameof(AnimationChange))] public NetworkBool isRunning { get; set; } = false;
     [Networked, OnChangedRender(nameof(AnimationChange))] public NetworkBool isJumping { get; set; } = false;
@@ -29,14 +34,20 @@ public class NetworkMouseAI : NetworkBehaviour
     {
         if (isIdle)
         {
+            audioSource.clip = mouseIdleClip;
+            audioSource.Play();
             MouseAnimatorController.SetBool("isIdle", true);
         }
         else if (isRunning)
         {
+            audioSource.clip = mouseGrabClip;
+            audioSource.Play();
             MouseAnimatorController.SetBool("isRunning", true);
         }
         else if (isJumping)
         {
+            audioSource.clip = mouseDropClip;
+            audioSource.Play();
             MouseAnimatorController.SetBool("isJumping", false);
         }
         else
