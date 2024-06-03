@@ -20,6 +20,7 @@ TagManager:
   - Map
   - ServiceBoard
   - Box
+  - SoliderWayPoints
   layers:
   - Default
   - TransparentFX
