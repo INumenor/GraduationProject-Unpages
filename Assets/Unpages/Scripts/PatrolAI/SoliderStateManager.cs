@@ -107,8 +107,9 @@ public class SoliderStateManager : SerializedMonoBehaviour
         //Debug.Log(distanceHere + " Distance Here : ");
         if (distanceHere < 1f)
         {
+            GameService.Instance.playerAction.stateManager.characterAnimator.SetTrigger("isCatch");
             GameService.Instance.playerAction.enabled = false;
-            await UniTask.WaitForSeconds(1.5f);
+            await UniTask.WaitForSeconds(3f);
             GameService.Instance.playerAction.enabled = true;
         }
     }

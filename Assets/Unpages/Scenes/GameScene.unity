@@ -16815,7 +16815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Agents:
-  - agentHorror: {fileID: 6278030482951139999, guid: c4535a951c8a9a947b45a919187d50a4, type: 3}
+  - agentHorror: {fileID: 7020242824085553846, guid: b80ef0b74bcb60243a56794dda8adeef, type: 3}
     agentSpawnPoint: {fileID: 1303894849}
   nawMash: {fileID: 0}
 --- !u!65 &1307720745
@@ -30364,7 +30364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1044248644293328871, guid: bea56165c56eb7242be656c398257d76, type: 3}
       propertyPath: GameFinalScore
-      value: 30
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1054702548367359785, guid: bea56165c56eb7242be656c398257d76, type: 3}
       propertyPath: m_text
@@ -30412,7 +30412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3540949581903861654, guid: bea56165c56eb7242be656c398257d76, type: 3}
       propertyPath: GameFinalScore
-      value: 30
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4709135778189030215, guid: bea56165c56eb7242be656c398257d76, type: 3}
       propertyPath: m_IsActive
