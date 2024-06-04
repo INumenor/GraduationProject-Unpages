@@ -60,6 +60,7 @@ public class PlayerTask : SerializedMonoBehaviour
             {
                 angryBar.playerScore += foodRecipes.recipeScore;
                 DestroyTask(foodRecipes, true);
+                angryBar.UpdateAngryBar();
                 taskSystem.NewRecipe();
                 return true;
             }
@@ -70,6 +71,7 @@ public class PlayerTask : SerializedMonoBehaviour
     public void SetScore()
     {
         angryBar.playerScore += 10;
+        angryBar.UpdateAngryBar();
     }
 
     [Button]

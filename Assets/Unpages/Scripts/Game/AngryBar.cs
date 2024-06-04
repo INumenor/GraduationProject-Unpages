@@ -42,13 +42,17 @@ public class AngryBar : NetworkBehaviour
 
     public void GameDone()
     {
-        if(GameService.Instance.playerTask.angryBar.playerScore < 30)
+        if(GameService.Instance.playerTask.angryBar.playerScore < GameFinalScore)
         {
             gameLoseCanvas.SetActive(true);
+            GameService.Instance.playerAction.stateManager.isLose = true;
+            GameService.Instance.playerAction.stateManager.characterAnimator.SetBool("isLose", true);
         }
         else
         {
             gameWinCanvas.SetActive(true);
+            GameService.Instance.playerAction.stateManager.isWin = true;
+            GameService.Instance.playerAction.stateManager.characterAnimator.SetBool("isWin", true);
         }
         gameSceneCanvas.SetActive(false);
         GameService.Instance.playerAction.enabled = false;

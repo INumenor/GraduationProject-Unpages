@@ -13,6 +13,8 @@ public class StateManager : NetworkBehaviour
     [Networked] public NetworkBool isRunning { get; set; }
     [Networked] public NetworkBool isJumping { get; set; }
     [Networked] public NetworkBool isKitchenAction { get; set; }
+    [Networked] public NetworkBool isWin { get; set; }
+    [Networked] public NetworkBool isLose { get; set; }
     //public bool isGrabbing;
     //public bool isRunning;
     //public bool isJumping;
