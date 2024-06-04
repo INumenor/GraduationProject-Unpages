@@ -17,7 +17,7 @@ public class AngryBar : NetworkBehaviour
     [Networked, OnChangedRender(nameof(UpdateUI))] public int playerScore { get; set; }
     [Networked, OnChangedRender(nameof(GameDone))] public NetworkBool isGameFinish { get; set; }
 
-    public void UpdateAngryBar(int recipeScore)
+    public void UpdateAngryBar()
     {
         //RPC_UpdateAngryBar(Runner.LocalPlayer, recipeScore);
         if (playerScore >= GameFinalScore)

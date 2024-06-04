@@ -16,7 +16,7 @@ public class Storage : KitchenObject
     {
         if(networkObject.GetComponent<Item>().itemType == ItemType.Food)
         {
-           if(networkObject.GetComponent<FoodItem>().foodType == foodType && networkObject.GetComponent<FoodItem>().isPlateHolder==false)
+           if(networkObject.GetComponent<FoodItem>().foodType == foodType && networkObject.GetComponent<FoodItem>().isProcessed==false)
             {
                 storageFoodCount += 1;
                 GameService.Instance.spawnObject.DestroyDropItemStorage(networkObject);

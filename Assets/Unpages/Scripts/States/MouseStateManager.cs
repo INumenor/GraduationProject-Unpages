@@ -37,7 +37,7 @@ public class MouseStateManager : SerializedMonoBehaviour
     {
         if (!NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient) return;
         GameService.Instance.mouseStateManager = this;
-        currentState = new MouseIdleState();
+        currentState = new MouseReturnBaseState();
         currentState.mouseStateManager = this;
         currentState.EnterState();
     }

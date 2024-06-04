@@ -185,6 +185,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4475056076641031312, guid: 1c8b57caed70d834ba870e7d1c1787d6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05f00c1a10d93c843a227f22fe56d92e, type: 2}
     - target: {fileID: 5476185772005376155, guid: 1c8b57caed70d834ba870e7d1c1787d6, type: 3}
       propertyPath: SortKey
       value: 1087097341
@@ -255,6 +259,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreadBottomFood
       objectReference: {fileID: 0}
+    - target: {fileID: 3728519299239706126, guid: affdc3168c1c86a4ba3950dc22a34d64, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05f00c1a10d93c843a227f22fe56d92e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
