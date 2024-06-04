@@ -44,7 +44,7 @@ public class PlayerTask : SerializedMonoBehaviour
         Destroy(taskRecipes[taskRecipe]);
         taskRecipes.Remove(taskRecipe);
         //if (!isDone && angryBar.playerScore > taskRecipe.recipeScore/2) angryBar.playerScore -= taskRecipe.recipeScore/2;
-        if(isDone) angryBar.playerScore = taskRecipe.recipeScore;
+        if(isDone) angryBar.playerScore += taskRecipe.recipeScore;
         if (taskRecipes.Count < 1)
         {
             taskSystem.NewRecipe();
@@ -58,7 +58,6 @@ public class PlayerTask : SerializedMonoBehaviour
         {
             if(foodRecipes.name == plateFoodRecipes.name)
             {
-                angryBar.playerScore += foodRecipes.recipeScore;
                 DestroyTask(foodRecipes, true);
                 angryBar.UpdateAngryBar();
                 taskSystem.NewRecipe();
