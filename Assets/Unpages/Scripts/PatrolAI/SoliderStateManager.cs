@@ -107,11 +107,9 @@ public class SoliderStateManager : SerializedMonoBehaviour
         //Debug.Log(distanceHere + " Distance Here : ");
         if (distanceHere < 1f)
         {
-            Debug.Log("Girdim 1");
             GameService.Instance.playerAction.enabled = false;
-            await UniTask.WaitForSeconds(3);
+            await UniTask.WaitForSeconds(1.5f);
             GameService.Instance.playerAction.enabled = true;
-            Debug.Log("Girdim 2");
         }
     }
     //#region Player RPC & Explosion
