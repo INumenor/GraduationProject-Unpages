@@ -3,6 +3,7 @@ using Fusion;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 using Unpages.Network;
@@ -15,9 +16,12 @@ public class SoliderStateManager : SerializedMonoBehaviour
     public ISoliderState startState;
     public NetworkObject parentNetworkObject;
     public NavMeshAgent agent;
+    public NavMeshSurface navMeshSurface;
+
+    public PlayerRef LocalPlayer;
     //public Animator characterAnimator;
     public string tagToWayPoints;
-    public Dictionary<PlayerRef, NetworkPlayer> allPlayer { get; private set; }
+    [SerializeField]public Dictionary<PlayerRef, NetworkPlayer> allPlayer { get; private set; }
 
     public List<GameObject> wayPoints;
 
@@ -28,6 +32,9 @@ public class SoliderStateManager : SerializedMonoBehaviour
     readonly float _explosionWaitInterval = 0.5f;
 
     public bool isLocked = false;
+
+    public bool isCache;
+
 
     public NetworkObject closestPlayer;
     public float circleRadius = 1f;
@@ -50,6 +57,7 @@ public class SoliderStateManager : SerializedMonoBehaviour
     }
     public void Init()
     {
+        LocalPlayer = NetworkManager.Instance.SessionRunner.LocalPlayer;
         if (!NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient) return;
         wayPoints.AddRange(GameObject.FindGameObjectsWithTag(tagToWayPoints));
         currentState = startState;
@@ -68,11 +76,9 @@ public class SoliderStateManager : SerializedMonoBehaviour
 
     private void Update()
     {
-
-        //ChasePlayer();
+        ChasePlayer();
         if (!NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient) return;
         currentState?.UpdateState();
-
     }
 
     private void OnEnable()
@@ -95,14 +101,19 @@ public class SoliderStateManager : SerializedMonoBehaviour
         allPlayer = NetworkManager.PlayerList;
     }
 
-    //public void ChasePlayer()
-    //{
-    //    float distanceHere = Vector3.Distance(transform.position, Player.Instance.characterTrackPoint.position);
-    //    if (distanceHere < 1f)
-    //    {
-    //        KillPlayer(Player.Instance.characterTrackPoint);
-    //    }
-    //}
+    public async void ChasePlayer()
+    {
+        float distanceHere = Vector3.Distance(transform.position, allPlayer[LocalPlayer].networkCharacter.transform.position);
+        Debug.Log(distanceHere + " Distance Here : ");
+        if (distanceHere < 1f)
+        {
+            Debug.Log("Girdim 1");
+            GameService.Instance.playerAction.enabled = false;
+            await UniTask.WaitForSeconds(3);
+            GameService.Instance.playerAction.enabled = true;
+            Debug.Log("Girdim 2");
+        }
+    }
     //#region Player RPC & Explosion
     //private void KillPlayer(Transform target)
     //{
