@@ -4363,7 +4363,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -5512887055391392599, guid: 7b610fe9c1858a640927ee2f77eb3227, type: 2}
   m_audioClip: {fileID: 8300000, guid: f21af2c4dbec70c4fbc5b59b0487b7c9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4371,8 +4371,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.1
-  MaxDistance: 1
+  MinDistance: 12
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -4407,7 +4407,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -25726,7 +25726,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -5512887055391392599, guid: 7b610fe9c1858a640927ee2f77eb3227, type: 2}
   m_audioClip: {fileID: 8300000, guid: f21af2c4dbec70c4fbc5b59b0487b7c9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -25734,8 +25734,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.1
-  MaxDistance: 1
+  MinDistance: 12
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -25770,7 +25770,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -29024,13 +29024,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8533236668266126026, guid: bea56165c56eb7242be656c398257d76, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 5274337420071727803, guid: bea56165c56eb7242be656c398257d76, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bea56165c56eb7242be656c398257d76, type: 3}
 --- !u!114 &8864760386571373571 stripped
 MonoBehaviour:

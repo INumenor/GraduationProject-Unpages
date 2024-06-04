@@ -212,14 +212,16 @@ MonoBehaviour:
       Data: 
   parentNetworkObject: {fileID: 6278030482951139999}
   agent: {fileID: 5963374009911901021}
+  navMeshSurface: {fileID: 0}
   tagToWayPoints: SoliderWayPoints
   wayPoints: []
   target: {x: 0, y: 0, z: 0}
   targetPlayer: {fileID: 0}
   isLocked: 0
+  isCatch: 0
   closestPlayer: {fileID: 0}
-  circleRadius: 1
-  circleFollowRadius: 5
+  circleRadius: 5
+  circleFollowRadius: 7
   patrolSpeed: 3
   chaseSpeed: 5
 --- !u!1001 &4949558755306370897

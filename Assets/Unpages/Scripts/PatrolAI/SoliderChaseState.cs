@@ -1,9 +1,5 @@
 using Fusion;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.AI.Navigation;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class SoliderChaseState : ISoliderState
 {
@@ -11,7 +7,6 @@ public class SoliderChaseState : ISoliderState
 
     public void EnterState()
     {
-
         if (soliderStateManager.closestPlayer)
         {
             ChasePlayer();
@@ -26,23 +21,24 @@ public class SoliderChaseState : ISoliderState
     {
 
         soliderStateManager.closestPlayer = ClosestPlayer();
-        if (soliderStateManager.targetPlayer)
+        if (soliderStateManager.targetPlayer != null)
         {
             ChasePlayer();
         }
         else
         {
-            if (soliderStateManager.isCache)
-            {
-                soliderStateManager.isCache = false;
-                soliderStateManager.ChangeState(new SoliderUnFollow());
-            }
-            else
-            {
-                soliderStateManager.ChangeState(new SoliderPatrolState());
-            }
+            soliderStateManager.ChangeState(new SoliderPatrolState());
+            //if (soliderStateManager.isCatch)
+            //{
+            //    soliderStateManager.isCatch = false;
+            //    soliderStateManager.ChangeState(new SoliderUnFollow());
+            //}
+            //else
+            //{
+            //    soliderStateManager.ChangeState(new SoliderPatrolState());
+            //}
         }
-        
+
     }
     public void ChasePlayer()
     {
@@ -51,27 +47,26 @@ public class SoliderChaseState : ISoliderState
             soliderStateManager.agent.SetDestination(soliderStateManager.targetPlayer.transform.position);
             soliderStateManager.agent.gameObject.transform.LookAt(new Vector3(soliderStateManager.targetPlayer.transform.position.x, soliderStateManager.agent.gameObject.transform.position.y, soliderStateManager.targetPlayer.transform.position.z));
             AgentSpeedUp();
-        }
-        NavMeshHit hit;
-        if ((NavMesh.SamplePosition(soliderStateManager.targetPlayer.transform.position, out hit, 1.5f,4)))
-        {
+
+
             float distanceHere = Vector3.Distance(soliderStateManager.transform.position, soliderStateManager.targetPlayer.transform.position);
             Debug.Log("Distance Here : " + distanceHere);
-        if (distanceHere > soliderStateManager.circleFollowRadius)
-        {
-            soliderStateManager.targetPlayer = null;
-            soliderStateManager.isLocked = false;
-        }
-        else if (distanceHere < 1f)
-        {
-            soliderStateManager.targetPlayer = null;
-            soliderStateManager.isLocked = false;
-            soliderStateManager.isCache = true;
-        }
-        }
-        else
-        {
-            soliderStateManager.targetPlayer = null;
+            if (distanceHere > soliderStateManager.circleFollowRadius)
+            {
+                soliderStateManager.targetPlayer = null;
+                soliderStateManager.isLocked = false;
+            }
+            else if (distanceHere < 1f)
+            {
+                soliderStateManager.targetPlayer = null;
+                soliderStateManager.isLocked = false;
+                soliderStateManager.ChangeState(new SoliderUnFollow());
+            }
+
+            if (soliderStateManager.targetPlayer != null && Vector3.Distance(soliderStateManager.agent.destination, soliderStateManager.targetPlayer.transform.position) > 2f)
+            {
+                soliderStateManager.ChangeState(new SoliderUnFollow());
+            }
         }
     }
 

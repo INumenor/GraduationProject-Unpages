@@ -33,7 +33,7 @@ public class SoliderStateManager : SerializedMonoBehaviour
 
     public bool isLocked = false;
 
-    public bool isCache;
+    public bool isCatch;
 
 
     public NetworkObject closestPlayer;
@@ -104,7 +104,7 @@ public class SoliderStateManager : SerializedMonoBehaviour
     public async void ChasePlayer()
     {
         float distanceHere = Vector3.Distance(transform.position, allPlayer[LocalPlayer].networkCharacter.transform.position);
-        Debug.Log(distanceHere + " Distance Here : ");
+        //Debug.Log(distanceHere + " Distance Here : ");
         if (distanceHere < 1f)
         {
             Debug.Log("Girdim 1");
