@@ -9,9 +9,18 @@ public class FoodInteract : MonoBehaviour, IInteractable
         //GameService.Instance.playerAction.grabbableObject = this.GetComponent<NetworkObject>();
         GameService.Instance.playerAction.interactionObjcet = interactorData.InteractorObject.GetComponent<NetworkObject>();
         GameService.Instance.playerAction.interactionObjcetType = this.GetComponent<FoodItem>().itemType;
+        if (interactorData.InteractorObject.GetComponent<Outline>() != null)
+        {
+            interactorData.InteractorObject.GetComponent<Outline>().enabled = true;
+        }
     }
     public void UnInteract()
     {
+       
+        if (GameService.Instance.playerAction.interactionObjcet.GetComponent<Outline>() != null)
+        {
+            GameService.Instance.playerAction.interactionObjcet.GetComponent<Outline>().enabled = false;
+        }
         GameService.Instance.playerAction.interactionObjcet = null;
         GameService.Instance.playerAction.interactionObjcetType = ItemType.Null;
     }

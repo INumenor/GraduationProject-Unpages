@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties:
     - '#BAKERY{"meshName":["food_ingredient_bun_bottom"],"padding":[70],"unwrapper":[0]}'
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 0.5

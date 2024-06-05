@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7445518785124897135}
   - component: {fileID: 9115338911661693887}
   - component: {fileID: -8065890571960684100}
+  - component: {fileID: 6199547806741954488}
   m_Layer: 6
   m_Name: Lettuce_Chopped
   m_TagString: Item
@@ -191,3 +192,21 @@ MonoBehaviour:
   isProcessed: 1
   isPlateHolder: 1
   foodInteract: {fileID: 0}
+--- !u!114 &6199547806741954488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4883688726746626202}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
