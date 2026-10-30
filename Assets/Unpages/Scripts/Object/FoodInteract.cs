@@ -16,10 +16,15 @@ public class FoodInteract : MonoBehaviour, IInteractable
     }
     public void UnInteract()
     {
-       
-        if (GameService.Instance.playerAction.interactionObjcet.GetComponent<Outline>() != null)
+        // Interaction.OnTriggerExit may already have cleared interactionObjcet.
+        NetworkObject interactionObjcet = GameService.Instance.playerAction.interactionObjcet;
+        if (interactionObjcet != null && interactionObjcet.TryGetComponent(out Outline outline))
         {
-            GameService.Instance.playerAction.interactionObjcet.GetComponent<Outline>().enabled = false;
+            outline.enabled = false;
+        }
+        else if (TryGetComponent(out Outline ownOutline))
+        {
+            ownOutline.enabled = false;
         }
         GameService.Instance.playerAction.interactionObjcet = null;
         GameService.Instance.playerAction.interactionObjcetType = ItemType.Null;
@@ -28,14 +33,14 @@ public class FoodInteract : MonoBehaviour, IInteractable
     {
         if (other.gameObject.CompareTag("Floor"))
         {
-            Debug.Log("sea");
             if (ItemTime < 101) ItemTime++;
-            if (ItemTime == 100 /*1000*/)
+            // mouseStateManager only exists on the shared-mode master client.
+            if (ItemTime == 100 /*1000*/ && GameService.Instance.mouseStateManager != null)
             {
-                GameService.Instance.mouseStateManager.expiredFood.Add(this.gameObject.GetComponent<NetworkObject>());             
+                GameService.Instance.mouseStateManager.expiredFood.Add(this.gameObject.GetComponent<NetworkObject>());
             }
         }
-        if(other.gameObject.layer == LayerMask.NameToLayer("KitchenInteractable"))
+        if(other.gameObject.layer == LayerMask.NameToLayer("KitchenInteractable") && GameService.Instance.playerAction != null)
         {
             //Vector3 kitchenObjectPosition = new Vector3(Mathf.RoundToInt(other.transform.position.x), Mathf.RoundToInt(other.transform.position.y), Mathf.RoundToInt(other.transform.position.z));
             //Vector3 spawnPosition = kitchenObjectPosition + transform.forward * 1f;
@@ -45,9 +50,9 @@ public class FoodInteract : MonoBehaviour, IInteractable
     private void OnCollisionExit(Collision other)
     {
         ItemTime = 0;
-        if (other.gameObject.CompareTag("Floor"))
+        if (other.gameObject.CompareTag("Floor") && GameService.Instance.mouseStateManager != null)
         {
-            //Debug.Log("Yerden Yüksek");
+            //Debug.Log("Yerden YÃ¼ksek");
             //RPC_RemoveFoodList();
             GameService.Instance.mouseStateManager.expiredFood.Clear();
             //if (GameService.Instance.mouseStateManager.expiredFood.Contains(other.gameObject.GetComponent<NetworkObject>()))

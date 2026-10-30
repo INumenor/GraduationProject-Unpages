@@ -58,7 +58,7 @@ public class MapDefault : NetworkBehaviour
     {
         if (!AllPlayersReady) CheckReadyPlayers();
     }
-    public async void CheckReadyPlayers()
+    public void CheckReadyPlayers()
     {
         if (!AllPlayersReady && Runner.IsSharedModeMasterClient && NetworkManager.PlayerList.Count > 1)
         {

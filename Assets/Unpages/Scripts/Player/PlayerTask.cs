@@ -30,7 +30,8 @@ public class PlayerTask : SerializedMonoBehaviour
     }
     public void Task(int recipeRandomNumber)
     {
-        foodRecipes = GameService.Instance.networkItems.networkFoodRecipes[recipeRandomNumber];
+        // TaskSystem picks the index from networkTaskFoodRecipes, so read from that same list.
+        foodRecipes = GameService.Instance.networkItems.networkTaskFoodRecipes[recipeRandomNumber];
         if (/*taskRecipes.Count<4 && */!taskRecipes.ContainsKey(foodRecipes)) 
         {
             GameObject task= Instantiate(taskPrefab,taskScrollViewContent);
@@ -40,8 +41,9 @@ public class PlayerTask : SerializedMonoBehaviour
         }
     }
     public void DestroyTask(FoodRecipes taskRecipe,bool isDone)
-    {       
-        Destroy(taskRecipes[taskRecipe]);
+    {
+        if (!taskRecipes.TryGetValue(taskRecipe, out GameObject task)) return;
+        Destroy(task);
         taskRecipes.Remove(taskRecipe);
         //if (!isDone && angryBar.playerScore > taskRecipe.recipeScore/2) angryBar.playerScore -= taskRecipe.recipeScore/2;
         if(isDone) angryBar.playerScore += taskRecipe.recipeScore;

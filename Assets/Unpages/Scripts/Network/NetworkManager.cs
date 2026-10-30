@@ -37,7 +37,7 @@ namespace Unpages.Network
         {
             get
             {
-                if (map == null) { map = FindObjectOfType<MapDefault>(); }
+                if (map == null) { map = FindFirstObjectByType<MapDefault>(); }
                 return map;
 
             }
@@ -55,22 +55,21 @@ namespace Unpages.Network
         {
             if (Instance != null && Instance != this)
             {
+                // Duplicate (e.g. the one placed in GameScene): don't create a second runner.
                 Destroy(gameObject);
+                return;
+            }
 
-            }
-            else
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            PlayerList = new();
             sceneManager = gameObject.GetComponent<NetworkSceneManagerDefault>();
             CreateNetworkRunner();
         }
 
-        private void Start()
+        private void OnDestroy()
         {
-            PlayerList = new();
-            //ConnectGame();
+            if (Instance == this) Instance = null;
         }
 
         private void CreateNetworkRunner()
@@ -139,18 +138,23 @@ namespace Unpages.Network
                 Debug.LogError(connectionResult.ErrorMessage);
             }
         }
+        private bool _isDisconnecting;
+
         public async void Disconnect()
         {
+            if (_isDisconnecting) return;
+            _isDisconnecting = true;
             Debug.Log("Disconnecting");
 
-            await SessionRunner.Shutdown();
+            if (SessionRunner) await SessionRunner.Shutdown();
 
-            Destroy(SessionRunner);
-            SessionRunner = null;
+            // A NetworkRunner can't be restarted after Shutdown, so drop this whole manager.
+            // The MainMenu scene has its own NetworkManager that becomes the new Instance.
+            PlayerList.Clear();
+            Instance = null;
+            Destroy(gameObject);
 
-            // await SceneLoadManager.UnloadAllScenes();
             SceneManager.LoadScene(0);
-
         }
 
         private static readonly int maxAttempt = 30;
@@ -175,7 +179,7 @@ namespace Unpages.Network
 
                 }
 
-                await UniTask.WaitForSeconds(1, token.IsCancellationRequested);
+                await UniTask.WaitForSeconds(1, cancellationToken: token);
                 attempt++;
             }
             if (player == null) Debug.LogError("player not found. Attempt: " + attempt);
@@ -351,7 +355,7 @@ namespace Unpages.Network
 
         }
 
-        public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key, ArraySegment<byte> data)
+        public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key, ReadOnlySpan<byte> data)
         {
 
         }

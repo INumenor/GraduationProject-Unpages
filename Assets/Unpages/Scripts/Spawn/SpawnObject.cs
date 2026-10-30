@@ -227,7 +227,7 @@ public class SpawnObject : NetworkBehaviour
 
 
     #region Despawn
-    public async void Despawn(NetworkObject networkObject)
+    public void Despawn(NetworkObject networkObject)
     {
         networkObject.GetComponent<NetworkObject>().RequestStateAuthority();
         NetworkManager.Instance.SessionRunner.Despawn(networkObject);

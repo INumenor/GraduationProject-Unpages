@@ -9,13 +9,11 @@ public class IdleState : IState
 
     public void EnterState()
     {
-        Debug.Log("sela");
         //RPC_CharacterIdle();
     }
 
     public void ExitState()
     {
-        Debug.Log("Exit");
     }
 
     public void UpdateState()

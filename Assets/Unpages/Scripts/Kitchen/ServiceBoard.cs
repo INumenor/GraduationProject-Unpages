@@ -33,17 +33,15 @@ public class ServiceBoard : KitchenObject
 
     private void Update()
     {
-        bool isThere = false;
-        if (onTheCupboardObject && !isThere)
+        if (onTheCupboardObject)
         {
             if (onTheCupboardObject.GetComponent<Item>().itemType == ItemType.Plate /*&& onTheCupboardObject.GetComponent<PlateItem>().networkFoodRecipe*/)
             {
-                isThere = GameService.Instance.playerTask.ChecktaskRecipes(onTheCupboardObject.GetComponent<PlateItem>().networkFoodRecipe);
+                GameService.Instance.playerTask.ChecktaskRecipes(onTheCupboardObject.GetComponent<PlateItem>().networkFoodRecipe);
                 audioSource.Play();
                 GameService.Instance.spawnObject.CheckServisSystem(onTheCupboardObject);
-                if (isThere) Debug.Log("aaaaattttttt");
-                else Debug.Log("aaaaaaalllllllllll");
-                isThere = false;
+                // Serve once; despawning can take a frame, which used to replay the sound every frame.
+                onTheCupboardObject = null;
             }
         }
     }

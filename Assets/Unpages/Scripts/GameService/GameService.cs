@@ -45,10 +45,16 @@ public class GameService : MonoBehaviour
         }
         else
         {
+            // Scene-scoped on purpose: its references (kitchenMechanics, networkItems, gameControl...)
+            // live in the game scene, so a persisted instance would point at destroyed objects
+            // after returning to the menu and starting a new game.
             Instance = this;
-            DontDestroyOnLoad(this);
-
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
     }
 
     #endregion

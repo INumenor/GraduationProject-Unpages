@@ -21,15 +21,13 @@ public class SoliderStateManager : SerializedMonoBehaviour
     public PlayerRef LocalPlayer;
     //public Animator characterAnimator;
     public string tagToWayPoints;
-    [SerializeField]public Dictionary<PlayerRef, NetworkPlayer> allPlayer { get; private set; }
+    public Dictionary<PlayerRef, NetworkPlayer> allPlayer { get; private set; }
 
     public List<GameObject> wayPoints;
 
     public Vector3 target;
     public NetworkObject targetPlayer = null;
 
-    bool _canTriggerExplosion = true;
-    readonly float _explosionWaitInterval = 0.5f;
 
     public bool isLocked = false;
 
@@ -45,11 +43,12 @@ public class SoliderStateManager : SerializedMonoBehaviour
     public float patrolSpeed = 6;
     public float chaseSpeed = 8;
 
+    private bool _isCatching;
+
     private void Awake()
     {
-        NetworkManager.Instance.OnNetworkPlayerCreated += UpdateCreatedPlayerList;
-        //NetworkManager.Instance.OnNetworkPlayerDestroyed += UpdateDestroyedPlayerList;
-        //NetworkManager.Instance.OnMasterClientChanged += Init;
+        // Agents can spawn after the players were created, so don't wait for the event to fill the list.
+        allPlayer = NetworkManager.PlayerList;
     }
     public void Start()
     {
@@ -76,6 +75,7 @@ public class SoliderStateManager : SerializedMonoBehaviour
 
     private void Update()
     {
+        if (NetworkManager.Instance == null || NetworkManager.Instance.SessionRunner == null) return;
         ChasePlayer();
         if (!NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient) return;
         currentState?.UpdateState();
@@ -83,12 +83,12 @@ public class SoliderStateManager : SerializedMonoBehaviour
 
     private void OnEnable()
     {
-        NetworkManager.Instance.OnNetworkPlayerCreated += UpdateCreatedPlayerList;
+        if (NetworkManager.Instance != null) NetworkManager.Instance.OnNetworkPlayerCreated += UpdateCreatedPlayerList;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        NetworkManager.Instance.OnNetworkPlayerCreated -= UpdateCreatedPlayerList;
+        if (NetworkManager.Instance != null) NetworkManager.Instance.OnNetworkPlayerCreated -= UpdateCreatedPlayerList;
     }
 
     public void UpdateCreatedPlayerList(PlayerRef playerRef, NetworkPlayer networkPlayer)
@@ -103,14 +103,23 @@ public class SoliderStateManager : SerializedMonoBehaviour
 
     public async void ChasePlayer()
     {
-        float distanceHere = Vector3.Distance(transform.position, allPlayer[LocalPlayer].networkCharacter.transform.position);
-        //Debug.Log(distanceHere + " Distance Here : ");
+        if (_isCatching || allPlayer == null) return;
+        if (!allPlayer.TryGetValue(LocalPlayer, out NetworkPlayer localPlayer) || localPlayer.networkCharacter == null) return;
+
+        PlayerAction playerAction = GameService.Instance != null ? GameService.Instance.playerAction : null;
+        if (playerAction == null) return;
+
+        float distanceHere = Vector3.Distance(transform.position, localPlayer.networkCharacter.transform.position);
         if (distanceHere < 1f)
         {
-            GameService.Instance.playerAction.stateManager.characterAnimator.SetTrigger("isCatch");
-            GameService.Instance.playerAction.enabled = false;
-            await UniTask.WaitForSeconds(3f);
-            GameService.Instance.playerAction.enabled = true;
+            _isCatching = true;
+            playerAction.stateManager.characterAnimator.SetTrigger("isCatch");
+            playerAction.enabled = false;
+            if (await UniTask.WaitForSeconds(3f, cancellationToken: destroyCancellationToken).SuppressCancellationThrow()) return;
+            // Don't give control back if the match ended while the player was stunned.
+            if (playerAction != null && !playerAction.stateManager.isWin && !playerAction.stateManager.isLose)
+                playerAction.enabled = true;
+            _isCatching = false;
         }
     }
     //#region Player RPC & Explosion

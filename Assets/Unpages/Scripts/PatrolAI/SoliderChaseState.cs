@@ -50,7 +50,6 @@ public class SoliderChaseState : ISoliderState
 
 
             float distanceHere = Vector3.Distance(soliderStateManager.transform.position, soliderStateManager.targetPlayer.transform.position);
-            Debug.Log("Distance Here : " + distanceHere);
             if (distanceHere > soliderStateManager.circleFollowRadius)
             {
                 soliderStateManager.targetPlayer = null;

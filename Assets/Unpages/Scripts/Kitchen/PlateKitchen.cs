@@ -33,7 +33,7 @@ public class PlateKitchen : KitchenObject
 
     }
 
-    //public void GrabAndDropPlate(GameObject gameObject)//tabak yerine gidið bastýðýnda tabak almasý ancak tabak olan bir yere bastýðýnda eli boþsa önündeki tabaðý almasý lazým ve eðer elinde varsa da tabaðý koymasý gerekiyor.
+    //public void GrabAndDropPlate(GameObject gameObject)//tabak yerine gidiÄŸ bastÄ±ÄŸÄ±nda tabak almasÄ± ancak tabak olan bir yere bastÄ±ÄŸÄ±nda eli boÅŸsa Ã¶nÃ¼ndeki tabaÄŸÄ± almasÄ± lazÄ±m ve eÄŸer elinde varsa da tabaÄŸÄ± koymasÄ± gerekiyor.
     //{
     //    //Debug.Log("aaaaaa");
     //    //if (!gameObject && plateLimit > 0)
@@ -42,7 +42,7 @@ public class PlateKitchen : KitchenObject
     //    //}
     //    //else if(gameObject && gameObject.GetComponent<FoodItem>().foodType == ItemType.Plate)
     //    //{
-    //    //    Debug.Log("tabaðý býrak");
+    //    //    Debug.Log("tabaÄŸÄ± bÄ±rak");
     //    //    DropPlate(gameObject.GetComponent<NetworkObject>());
     //    //}
     //}
@@ -53,7 +53,7 @@ public class PlateKitchen : KitchenObject
     //    GameService.Instance.playerAction.isGrabbable = false;
     //    GameService.Instance.playerAction.keepObject = null;
     //    plateLimit++;
-    //    Debug.Log("tabak yok olup oluþtu");
+    //    Debug.Log("tabak yok olup oluÅŸtu");
     //}
     //public void GetPlate()
     //{

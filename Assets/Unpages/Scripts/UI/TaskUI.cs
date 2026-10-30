@@ -14,6 +14,7 @@ public class TaskUI : MonoBehaviour
     public GameObject taskMaterialPrefab;
     public Action<FoodRecipes,bool> taskTimeAction;
     public FoodRecipes foodRecipes;
+    private Sequence taskSequence;
     public void Init(FoodRecipes foodRecipes)
     {
         this.foodRecipes = foodRecipes;
@@ -22,21 +23,28 @@ public class TaskUI : MonoBehaviour
         {
             GameObject taskMaterial = Instantiate(taskMaterialPrefab,taskMaterialScrollViewContent);
             taskMaterial.transform.GetChild(0).GetComponent<Image>().sprite = GameService.Instance.networkItems.GetImageFoodItem(foodtype);
-            TaskTime(foodRecipes.recipeTime);
         }
+        // One timer per task (it used to start one per ingredient, firing the timeout several times).
+        TaskTime(foodRecipes.recipeTime);
     }
     public void TaskTime(float recipeTime)
     {
-        Sequence taskSequence = DOTween.Sequence();
+        taskSequence = DOTween.Sequence();
         taskSequence.Append(taskTimeImage.gameObject.transform.DOScale(new Vector3(0f, 0.6f, 1), recipeTime).SetEase(Ease.Linear)).OnComplete(() =>
         {
-            taskTimeAction.Invoke(foodRecipes, false);
+            taskTimeAction?.Invoke(foodRecipes, false);
         });
         taskSequence.Insert(recipeTime / 2, taskTimeImage.DOColor(Color.red, recipeTime / 2));
         //if (taskTimeImage.transform.localScale.x < 0.5f)
         //{
             //taskSequence.Append(taskTimeImage.DOColor(Color.red, recipeTime / 2));
         //}
-           
+
+    }
+
+    private void OnDestroy()
+    {
+        // A served task is destroyed before its timer ends; don't let the timer fire afterwards.
+        taskSequence?.Kill();
     }
 }

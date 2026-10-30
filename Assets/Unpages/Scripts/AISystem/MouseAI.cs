@@ -14,9 +14,13 @@ public class MouseAI : NetworkBehaviour,IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Item") && !grabbleNetworkObject)
-        { 
-            if (!other.GetComponent<FoodItem>().isProcessed) GameService.Instance.mouseStateManager.mouseGrabbleObject = GameService.Instance.networkItems.GetNetworkFoodItem(other.GetComponent<FoodItem>().foodType);
+        // The mouse AI only runs on the shared-mode master client (mouseStateManager is null elsewhere).
+        if (GameService.Instance == null || GameService.Instance.mouseStateManager == null) return;
+
+        // Plates are tagged "Item" too, but only food can be stolen.
+        if (other.CompareTag("Item") && !grabbleNetworkObject && other.TryGetComponent(out FoodItem foodItem))
+        {
+            if (!foodItem.isProcessed) GameService.Instance.mouseStateManager.mouseGrabbleObject = GameService.Instance.networkItems.GetNetworkFoodItem(foodItem.foodType);
             //GameService.Instance.mouseStateManager.expiredFood.Remove(other.gameObject.GetComponent<NetworkObject>());
             other.gameObject.GetComponent<Item>().RPC_Despawn();
             //GameService.Instance.playerAction.RPC_Despawn(other.GetComponent<NetworkObject>());

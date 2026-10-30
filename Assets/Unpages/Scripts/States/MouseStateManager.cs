@@ -53,6 +53,7 @@ public class MouseStateManager : SerializedMonoBehaviour
 
     private void Update()
     {
+        if (NetworkManager.Instance == null || NetworkManager.Instance.SessionRunner == null) return;
         if (!NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient) return;
         if(currentState != null) currentState.UpdateState();
         //if (isIdle)

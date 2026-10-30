@@ -8,7 +8,6 @@ public class ExplosionTrigger : MonoBehaviour
     bool isActiv = false;
     private  void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         if (!isActiv && other.CompareTag("Box"))
         {
             isActiv = true;

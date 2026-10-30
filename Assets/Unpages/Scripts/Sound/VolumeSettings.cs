@@ -26,16 +26,18 @@ public class VolumeSettings : MonoBehaviour
     }
     void SetGeneralMusicVolume(float value)
     {
-        mixer.SetFloat(generalSoundMusic, Mathf.Log10(value) * 20);
+        mixer.SetFloat(generalSoundMusic, ToDecibel(value));
     }
     void SetMusicVolume(float value)
     {
-        mixer.SetFloat(effectMusic, Mathf.Log10(value) * 20);
+        mixer.SetFloat(effectMusic, ToDecibel(value));
     }
     void SetEnvironmentVolume(float value)
     {
-        mixer.SetFloat(environmentMusic, Mathf.Log10(value) * 20);
+        mixer.SetFloat(environmentMusic, ToDecibel(value));
     }
+    // Log10(0) is -Infinity, which the mixer rejects; clamp to the -80 dB floor.
+    static float ToDecibel(float value) => Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20;
 
     public void MuteMusic()
     {

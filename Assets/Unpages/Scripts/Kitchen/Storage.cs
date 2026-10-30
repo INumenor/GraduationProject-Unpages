@@ -21,7 +21,9 @@ public class Storage : KitchenObject
                 storageFoodCount += 1;
                 GameService.Instance.spawnObject.DestroyDropItemStorage(networkObject);
             }
-            else onTheCupboardObject = GameService.Instance.spawnObject.PlayerDropCupboardItem(networkObject, anchorPoints, false);
+            // Only one item fits on top; dropping another used to orphan the first one.
+            else if (onTheCupboardObject == null)
+                onTheCupboardObject = GameService.Instance.spawnObject.PlayerDropCupboardItem(networkObject, anchorPoints, false);
         }
         else if (onTheCupboardObject == null)
             onTheCupboardObject = GameService.Instance.spawnObject.PlayerDropCupboardItem(networkObject, anchorPoints, false);

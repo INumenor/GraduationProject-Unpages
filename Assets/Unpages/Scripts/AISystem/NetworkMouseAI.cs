@@ -48,7 +48,7 @@ public class NetworkMouseAI : NetworkBehaviour
         {
             audioSource.clip = mouseDropClip;
             audioSource.Play();
-            MouseAnimatorController.SetBool("isJumping", false);
+            MouseAnimatorController.SetBool("isJumping", true);
         }
         else
         {

@@ -24,13 +24,16 @@ public class SpawnFoodBox : NetworkBehaviour
     }
     private void OnDisable()
     {
-        NetworkManager.Instance.OnNetworkPlayerCreated -= Spawn;
-        GameService.Instance.gameControl.BoxSpawn -= SpawnMissingBox;
-        GameService.Instance.gameControl.BoxDestroy -= RemoveListBox;
+        // Either singleton can already be gone while the scene is unloading.
+        if (NetworkManager.Instance != null) NetworkManager.Instance.OnNetworkPlayerCreated -= Spawn;
+        if (GameService.Instance != null && GameService.Instance.gameControl != null)
+        {
+            GameService.Instance.gameControl.BoxSpawn -= SpawnMissingBox;
+            GameService.Instance.gameControl.BoxDestroy -= RemoveListBox;
+        }
     }
     public async void Spawn(PlayerRef playerRef, NetworkPlayer player)
     {
-        Debug.Log(playerRef.PlayerId);
         if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient && NetworkManager.PlayerList.Count<2)
         {
             for (int i = 0; i < gridAreas.Count; i++)
@@ -46,7 +49,6 @@ public class SpawnFoodBox : NetworkBehaviour
                 }
             }
             await UniTask.WaitForSeconds(5f);
-            Debug.Log("bake alýyor");
             //GameService.Instance.mouseStateManager.AreaBake();
         }       
     }
@@ -145,17 +147,13 @@ public class SpawnFoodBox : NetworkBehaviour
     private int CountBoxesInGrid(Vector3[] area)
     {
         int count = 0;
+        _spawnedFoodBox.RemoveAll(box => box == null);
         foreach (var box in _spawnedFoodBox)
         {
-            Debug.Log("1");
-
             if (IsWithinGrid(area, box.transform.position))
             {
-                Debug.Log("2");
                 count++;
             }
-            Debug.Log(count + " : 3");
-
         }
         return count;
     }
@@ -166,20 +164,16 @@ public class SpawnFoodBox : NetworkBehaviour
                position.z > area[0].z && position.z < area[2].z;
     }
 
-    public async void SpawnMissingBox()
+    public void SpawnMissingBox()
     {     
             for (int i = 0; i < gridAreas.Count; i++)
             {
                 Vector3[] area = gridAreas[i];
                 int currentBoxCount = CountBoxesInGrid(area);
-                Debug.Log("4");
                 int requiredBoxCount = (i == 0 || i == 2) ? 10 : 5;
-                Debug.Log("5");
                 int boxesToSpawn = requiredBoxCount - currentBoxCount;
-                Debug.Log("6"); 
                 if (boxesToSpawn > 0)
-                {            
-                    Debug.Log("7");
+                {
                     SpawnObjectsInGrid(area, boxesToSpawn, 0);
                 }
             }
@@ -187,9 +181,18 @@ public class SpawnFoodBox : NetworkBehaviour
     }
     public void RemoveListBox(GameObject boxObject)
     {
-        _spawnedFoodBox.Remove(boxObject.GetComponent<NetworkObject>());
-        
-        Destroy(boxObject);
+        NetworkObject boxNetworkObject = boxObject.GetComponent<NetworkObject>();
+        _spawnedFoodBox.Remove(boxNetworkObject);
+
+        // Free the grid cell so SpawnMissingBox can use it again (boxes are spawned at local (x, 0.5, z)).
+        Vector3 localPosition = boxObject.transform.localPosition;
+        _occupiedPositions.Remove(new Vector3(Mathf.Round(localPosition.x), 0.5f, Mathf.Round(localPosition.z)));
+
+        // Despawn through the runner so the box disappears for every client, not only locally.
+        if (boxNetworkObject != null && boxNetworkObject.IsValid && boxNetworkObject.HasStateAuthority)
+            Runner.Despawn(boxNetworkObject);
+        else
+            Destroy(boxObject);
         //if (_spawnedFoodBox.Count <= 20)
         //{
         //    SpawnMissingBox();

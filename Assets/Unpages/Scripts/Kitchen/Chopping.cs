@@ -58,7 +58,9 @@ public class Chopping : KitchenObject
             else if(choppingCount == foodChoppingCount)
             {
                 NetworkObject choppedObject = GameService.Instance.networkItems.GetNetworkItemSlice(onTheCupboardObject.GetComponent<FoodItem>().foodType);
+                if (choppedObject == null) return; // This food has no chopped version.
                 onTheCupboardObject = GameService.Instance.spawnObject.SpawnChoppedItem(onTheCupboardObject, choppedObject ,anchorPoints,false);
+                ResetChopping();
             }
         }
         
@@ -90,7 +92,7 @@ public class Chopping : KitchenObject
         circleBarRectTransform.rotation = Quaternion.Euler(new Vector3(0f, 0f, ((float)choppingCount / (float)foodChoppingCount) * -360));
     }
 
-    //public void GrabAndDropChoppingBoard(GameObject gameObject)// objeyi doðradýktan sonra ele alýnca eski halindeki objeden baþka bir tane spawn oluyo sanýrým hata var
+    //public void GrabAndDropChoppingBoard(GameObject gameObject)// objeyi doÄŸradÄ±ktan sonra ele alÄ±nca eski halindeki objeden baÅŸka bir tane spawn oluyo sanÄ±rÄ±m hata var
     //{
     //    if (!gameObject && isFull && itemType!=null)
     //    {        

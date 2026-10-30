@@ -23,31 +23,34 @@ public class GameControl : MonoBehaviour
         if (NetworkManager.Instance.SessionRunner.IsSharedModeMasterClient)
         {
             int randomNumber = Random.Range(0, spawnNetworkItem.Count);
-            Debug.Log(randomNumber + " random numbeerrr");
             //foreach (FoodInfo itemInfo in spawnNetworkItem)
             //{
             //if (itemInfo.isSpawnable && itemInfo.minRandomGameSpawn < randomNumber && randomNumber < itemInfo.maxRandomGameSpawn)
             //{
+            // Read the transform before the box is despawned.
+            Vector3 foodPosition = spawnObject.transform.position + Vector3.down * 0.3f;
+            Quaternion foodRotation = spawnObject.transform.rotation;
+
             BoxDestroyCount++;
-            //BoxDestroy(spawnObject);
-            spawnFoodBox.RemoveListBox(spawnObject);
             if (BoxDestroyCount >= 10)
             {
+                // Refill before freeing this box's cell, so no new box lands on the dropped food.
                 spawnFoodBox.SpawnMissingBox();
                 //BoxSpawn();
                 BoxDestroyCount = 0;
             }
+            //BoxDestroy(spawnObject);
+            spawnFoodBox.RemoveListBox(spawnObject);
             //Debug.Log(itemInfo.name + " " + randomNumber);
             //GameService.Instance.mouseStateManager.AreaBake();
             NetworkObject networkObject = NetworkManager.Instance.SessionRunner.Spawn(spawnNetworkItem[randomNumber].item,
-                 new Vector3(spawnObject.transform.position.x, spawnObject.transform.position.y - 0.3f, spawnObject.transform.position.z),
-                 spawnObject.transform.rotation);
+                 foodPosition,
+                 foodRotation);
             networkObject.gameObject.GetComponent<Rigidbody>().useGravity = true;
             networkObject.gameObject.GetComponent<Rigidbody>().isKinematic = false;
             networkObject.name = spawnNetworkItem[randomNumber].name;
             networkObject.GetComponent<Item>().AddComponentInteract();
             spawnNetworkItem.RemoveAt(randomNumber);
-            Debug.Log(spawnNetworkItem.Count);
             if (spawnNetworkItem.Count < 1)
             {
                spawnNetworkItem = GameService.Instance.networkItems.GetNetworkFoodItem();

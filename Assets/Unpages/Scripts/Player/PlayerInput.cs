@@ -129,7 +129,7 @@ public class PlayerInput : NetworkBehaviour , INetworkRunnerCallbacks
         
     }
 
-    public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key, ArraySegment<byte> data)
+    public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ReliableKey key, ReadOnlySpan<byte> data)
     {
         
     }

@@ -65,7 +65,6 @@ public class PlayerAction : NetworkBehaviour
         while (networkPlayer == null)
         {
             networkPlayer = NetworkManager.Instance.GetPlayer(Object.StateAuthority);
-            Debug.LogWarning("TryToGet");
             await UniTask.WaitForSeconds(1, cancellationToken: destroyCancellationToken);
 
         }

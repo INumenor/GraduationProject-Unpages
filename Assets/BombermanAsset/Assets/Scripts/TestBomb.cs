@@ -27,9 +27,21 @@ public class TestBomb : NetworkBehaviour
         }
         if (Object.HasStateAuthority)
         {
-            Destroy(gameObject, .3f);
+            // Despawn (not Destroy) so the bomb also disappears on the other client.
+            Invoke(nameof(DespawnBomb), .3f);
             GameService.Instance.playerAction.bombManager.bombCounter++;
         }
+    }
+
+    void DespawnBomb()
+    {
+        if (Object != null && Object.IsValid) Runner.Despawn(Object);
+    }
+
+    void OnDestroy()
+    {
+        if (PotBottom) PotBottom.DOKill();
+        if (PotTop) PotTop.DOKill();
     }
     public void BombTween()
     {

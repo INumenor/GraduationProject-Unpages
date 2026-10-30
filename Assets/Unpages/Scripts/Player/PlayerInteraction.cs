@@ -42,7 +42,7 @@ public class PlayerInteraction : NetworkBehaviour
             switch (itemType)
             {
                 case ItemType.Food:
-                    //Deðiþicek
+                    //DeÄŸiÅŸicek
                     if (!interactionObject.GetComponent<FoodItem>().isProcessed) networkObject = GameService.Instance.networkItems.GetNetworkFoodItem(interactionObject.GetComponent<FoodItem>().foodType);
                     else if (interactionObject.GetComponent<FoodItem>().isProcessed) networkObject = GameService.Instance.networkItems.GetNetworkItemSlice(interactionObject.GetComponent<FoodItem>().foodType);
                     GameService.Instance.spawnObject.PlayerGrabItem(networkObject, GameService.Instance.playerAction.playerAnchorPoint, false, interactionObject);
@@ -63,7 +63,6 @@ public class PlayerInteraction : NetworkBehaviour
     {
         if (_isInActivationDelay) return;
 
-        NetworkObject networkObject;
         if (keepObject)
         {
             if (itemType == ItemType.Plate)

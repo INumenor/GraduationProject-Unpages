@@ -6,7 +6,6 @@ using Fusion;
 public class PlayerMovement : NetworkBehaviour
 {
     private Vector3 _velocity;
-    private bool _jumpPressed;
 
     public CharacterController _controller;
 
@@ -79,7 +78,6 @@ public class PlayerMovement : NetworkBehaviour
                 GameService.Instance.playerAction.stateManager.isJumping = true;
 
             }
-            _jumpPressed = false;
         }
         if(gameObject.transform.localPosition.y < -1)
         {
