@@ -53,32 +53,12 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: allPlayer
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[Fusion.PlayerRef, Fusion.Runtime],[Unpages.Network.NetworkPlayer,
-        Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[Fusion.PlayerRef,
-        Fusion.Runtime]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: currentState
       Entry: 6
       Data: 
     - Name: startState
       Entry: 7
-      Data: 2|SoliderPatrolState, Assembly-CSharp
+      Data: 0|SoliderPatrolState, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -189,11 +169,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 3576561965
-  ObjectInterest: 1
-  Flags: 262145
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 262402
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 97954552561491452}
+  ForceRemoteRenderTimeframe: 0
 --- !u!114 &97954552561491452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,10 +188,35 @@ MonoBehaviour:
   m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
   SyncScale: 0
   SyncParent: 1
   _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 1
+  ConfigFlags: 0
+  PhysicsSettings:
+    ForecastEnabled: 1
+    DebugPhysics: 0
+    GravityForecast: 2
+    MaxExtrapolationTime: 0.15
+    MinLinearDetectedError: 0.02
+    MinAngularDetectedError: 3
+    DeadzoneVelocityMode: 0
+    MaxLinearError: 0
+    MaxAngularError: 0
+    LowCorrectionProgressThreshold: 0.015
+    HighErrorSimilarityThreshold: 1
+    MaxErrorTotalTime: 0.5
+    MaxRemoteSleepIgnoreTime: 0.5
+    ErrorCorrectionType: 0
+    LinearVelCorrectionMul: 1
+    AngularVelCorrectionMul: 1
+    PositionCorrectionLerp: 0.15
+    RotationCorrectionLerp: 0.15
+    Spring: 75
+    Damper: 2
+    MinImpactfulCollisionAlignment: 0.3
+    ImpactStartCorrectionTime: 0.1
+    ImpactCorrectionTimeComplete: 0.3
 --- !u!1001 &1868469529236797632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -459,7 +466,7 @@ PrefabInstance:
       value: TonkoV2
       objectReference: {fileID: 0}
     - target: {fileID: 1180193037407832053, guid: 7823ae1522975b0448862b7e791442e2, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 1d413d2a1501ac647bc7f9895a2363e5, type: 2}
     - target: {fileID: 1330755669629619180, guid: 7823ae1522975b0448862b7e791442e2, type: 3}
@@ -633,7 +640,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &7296951896599426242
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -647,6 +654,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1

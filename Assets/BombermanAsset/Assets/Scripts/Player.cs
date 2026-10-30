@@ -98,28 +98,28 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey (KeyCode.W))
         { //Up movement
-            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
+            rigidBody.linearVelocity = new Vector3 (rigidBody.linearVelocity.x, rigidBody.linearVelocity.y, moveSpeed);
             myTransform.rotation = Quaternion.Euler (0, 0, 0);
             animator.SetBool ("Walking", true);
         }
 
         if (Input.GetKey (KeyCode.A))
         { //Left movement
-            rigidBody.velocity = new Vector3 (-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            rigidBody.linearVelocity = new Vector3 (-moveSpeed, rigidBody.linearVelocity.y, rigidBody.linearVelocity.z);
             myTransform.rotation = Quaternion.Euler (0, 270, 0);
             animator.SetBool ("Walking", true);
         }
 
         if (Input.GetKey (KeyCode.S))
         { //Down movement
-            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
+            rigidBody.linearVelocity = new Vector3 (rigidBody.linearVelocity.x, rigidBody.linearVelocity.y, -moveSpeed);
             myTransform.rotation = Quaternion.Euler (0, 180, 0);
             animator.SetBool ("Walking", true);
         }
 
         if (Input.GetKey (KeyCode.D))
         { //Right movement
-            rigidBody.velocity = new Vector3 (moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            rigidBody.linearVelocity = new Vector3 (moveSpeed, rigidBody.linearVelocity.y, rigidBody.linearVelocity.z);
             myTransform.rotation = Quaternion.Euler (0, 90, 0);
             animator.SetBool ("Walking", true);
         }
@@ -137,28 +137,28 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey (KeyCode.UpArrow))
         { //Up movement
-            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, moveSpeed);
+            rigidBody.linearVelocity = new Vector3 (rigidBody.linearVelocity.x, rigidBody.linearVelocity.y, moveSpeed);
             myTransform.rotation = Quaternion.Euler (0, 0, 0);
             animator.SetBool ("Walking", true);
         }
 
         if (Input.GetKey (KeyCode.LeftArrow))
         { //Left movement
-            rigidBody.velocity = new Vector3 (-moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            rigidBody.linearVelocity = new Vector3 (-moveSpeed, rigidBody.linearVelocity.y, rigidBody.linearVelocity.z);
             myTransform.rotation = Quaternion.Euler (0, 270, 0);
             animator.SetBool ("Walking", true);
         }
 
         if (Input.GetKey (KeyCode.DownArrow))
         { //Down movement
-            rigidBody.velocity = new Vector3 (rigidBody.velocity.x, rigidBody.velocity.y, -moveSpeed);
+            rigidBody.linearVelocity = new Vector3 (rigidBody.linearVelocity.x, rigidBody.linearVelocity.y, -moveSpeed);
             myTransform.rotation = Quaternion.Euler (0, 180, 0);
             animator.SetBool ("Walking", true);
         }
 
         if (Input.GetKey (KeyCode.RightArrow))
         { //Right movement
-            rigidBody.velocity = new Vector3 (moveSpeed, rigidBody.velocity.y, rigidBody.velocity.z);
+            rigidBody.linearVelocity = new Vector3 (moveSpeed, rigidBody.linearVelocity.y, rigidBody.linearVelocity.z);
             myTransform.rotation = Quaternion.Euler (0, 90, 0);
             animator.SetBool ("Walking", true);
         }

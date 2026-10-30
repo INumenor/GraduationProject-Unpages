@@ -45,9 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4441bbac0d5501940af8be5b2b5732f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PlayerName: 
-  _Ready:
-    _value: 0
   networkCharacter: {fileID: 0}
 --- !u!114 &2502306205790276012
 MonoBehaviour:
@@ -62,8 +59,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 907486643
-  ObjectInterest: 1
-  Flags: 262145
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 262146
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 6644188530082528814}
+  ForceRemoteRenderTimeframe: 0

@@ -59,6 +59,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,9 +85,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &6741132023986067864
 CapsuleCollider:
@@ -172,6 +179,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -193,9 +205,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &4972266140441258904
 SphereCollider:
@@ -253,13 +267,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 159345334
-  ObjectInterest: 1
-  Flags: 131073
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 131330
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1740677457164182708}
   - {fileID: 8756364847212448393}
   - {fileID: 2712011348801935662}
+  ForceRemoteRenderTimeframe: 0
 --- !u!114 &1740677457164182708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,10 +288,35 @@ MonoBehaviour:
   m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
   SyncScale: 0
   SyncParent: 1
   _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 0
+  ConfigFlags: 0
+  PhysicsSettings:
+    ForecastEnabled: 1
+    DebugPhysics: 0
+    GravityForecast: 2
+    MaxExtrapolationTime: 0.15
+    MinLinearDetectedError: 0.02
+    MinAngularDetectedError: 3
+    DeadzoneVelocityMode: 0
+    MaxLinearError: 0
+    MaxAngularError: 0
+    LowCorrectionProgressThreshold: 0.015
+    HighErrorSimilarityThreshold: 1
+    MaxErrorTotalTime: 0.5
+    MaxRemoteSleepIgnoreTime: 0.5
+    ErrorCorrectionType: 0
+    LinearVelCorrectionMul: 1
+    AngularVelCorrectionMul: 1
+    PositionCorrectionLerp: 0.15
+    RotationCorrectionLerp: 0.15
+    Spring: 75
+    Damper: 2
+    MinImpactfulCollisionAlignment: 0.3
+    ImpactStartCorrectionTime: 0.1
+    ImpactCorrectionTimeComplete: 0.3
 --- !u!114 &8756364847212448393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +331,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseAgent: {fileID: 6178902363390223393}
   grabbleNetworkObject: {fileID: 0}
-  grabbleCheck: {fileID: 796718274805483086}
 --- !u!114 &2712011348801935662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,3 +343,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea395c1e8c8b7814c83cd13b8ec0ae3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MouseAnimatorController: {fileID: 0}
+  audioSource: {fileID: 0}
+  mouseIdleClip: {fileID: 0}
+  mouseGrabClip: {fileID: 0}
+  mouseDropClip: {fileID: 0}

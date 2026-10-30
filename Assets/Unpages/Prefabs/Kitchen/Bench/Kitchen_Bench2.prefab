@@ -73,7 +73,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4278311429020391890, guid: 7b610fe9c1858a640927ee2f77eb3227, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 49a75e811beac3349988a780d63f7c79, type: 3}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 49a75e811beac3349988a780d63f7c79, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -296,10 +297,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 1093736220
-  ObjectInterest: 1
-  Flags: 262145
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 262146
   NestedObjects: []
   NetworkedBehaviours: []
+  ForceRemoteRenderTimeframe: 0
 --- !u!114 &7508466710368581999
 MonoBehaviour:
   m_ObjectHideFlags: 0

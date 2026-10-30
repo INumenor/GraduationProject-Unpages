@@ -102,3 +102,7 @@ crashlytics-build.properties
 Assets/PlugIns/V_Plugins/vHierarchy/vHierarchy Data.asset
 bakery_times.log
 
+
+# IDE
+.vscode/
+*.slnx

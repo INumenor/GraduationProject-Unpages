@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00148e338f28014ba037096a2076801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomRecipeNumber: 3
 --- !u!114 &2675207343980534658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,8 +58,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 2879421186
-  ObjectInterest: 1
-  Flags: 262145
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 262146
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 4335121031684251725}
+  ForceRemoteRenderTimeframe: 0

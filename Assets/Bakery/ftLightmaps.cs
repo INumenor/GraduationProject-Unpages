@@ -30,7 +30,7 @@ public class ftLightmaps {
 
     static List<int> lightmapRefCount;
     static List<LightmapAdditionalData> globalMapsAdditional;
-    static int directionalMode; // -1 undefined, 0 off, 1 on
+    static int directionalMode = -1; // -1 undefined, 0 off, 1 on
     //static List<ftLightmapsStorage> loadedStorages;
 
 #if UNITY_EDITOR
@@ -211,6 +211,11 @@ public class ftLightmaps {
         return pstorage;
     }
 
+    public static bool PropIsBakery(string prop)
+    {
+        return (prop.Length >= 7 && prop.Substring(0,7) == "#BAKERY");
+    }
+
     static void CreateGlobalStorageAsset()
     {
         if (gstorage == null) gstorage = GetGlobalStorage();
@@ -254,7 +259,7 @@ public class ftLightmaps {
                 int propID = -1;
                 for(int p=0; p<props.Length; p++)
                 {
-                    if (props[p].Substring(0,7) == "#BAKERY")
+                    if (PropIsBakery(props[p]))
                     {
                         propID = p;
                         break;
@@ -380,7 +385,8 @@ public class ftLightmaps {
     }
 #endif
 
-    public static void RefreshFull() {
+    public static void RefreshFull()
+    {
         var activeScene = SceneManager.GetActiveScene();
         var sceneCount = SceneManager.sceneCount;
 
@@ -388,13 +394,21 @@ public class ftLightmaps {
         {
             var scene = SceneManager.GetSceneAt(i);
             if (!scene.isLoaded) continue;
+#if UNITY_6000_0_OR_NEWER
+            if (scene.isSubScene) continue;
+#endif
             SceneManager.SetActiveScene(scene);
+            if (!FindInScene("!ftraceLightmaps", scene)) continue;
             LightmapSettings.lightmaps = new LightmapData[0];
         }
 
         for(int i=0; i<sceneCount; i++)
         {
-            RefreshScene(SceneManager.GetSceneAt(i), null, true);
+            var scene = SceneManager.GetSceneAt(i);
+#if UNITY_6000_0_OR_NEWER
+            if (scene.isSubScene) continue;
+#endif
+            RefreshScene(scene, null, true);
         }
         SceneManager.SetActiveScene(activeScene);
     }
@@ -415,7 +429,7 @@ public class ftLightmaps {
         RefreshScene(scene);
     }*/
 
-    static Texture2D GetEmptyDirectionTex(ftLightmapsStorage storage)
+    public static Texture2D GetEmptyDirectionTex(ftLightmapsStorage storage)
     {
 #if UNITY_EDITOR
         if (storage.emptyDirectionTex == null)
@@ -427,14 +441,21 @@ public class ftLightmaps {
         return storage.emptyDirectionTex;
     }
 
-    public static void RefreshScene(Scene scene, ftLightmapsStorage storage = null, bool updateNonBaked = false) {
+    public static void RefreshScene(Scene scene, ftLightmapsStorage storage = null, bool updateNonBaked = false, bool incrementRefcount = false, bool forceManual = true) {
+        
         var sceneCount = SceneManager.sceneCount;
 
         if (globalMapsAdditional == null) globalMapsAdditional = new List<LightmapAdditionalData>();
 
-        var lmaps = new List<LightmapData>();
-        var lmapsAdditional = new List<LightmapAdditionalData>();
-        var existingLmaps = LightmapSettings.lightmaps;
+        List<LightmapData> lmaps = null;
+        List<LightmapAdditionalData> lmapsAdditional = null;
+        LightmapData[] existingLmaps = null;
+        //if (manualLink)
+        {
+            lmaps = new List<LightmapData>();
+            lmapsAdditional = new List<LightmapAdditionalData>();
+            existingLmaps = LightmapSettings.lightmaps;
+        }
         var existingLmapsAdditional = globalMapsAdditional;
 
         // Acquire storage
@@ -459,9 +480,18 @@ public class ftLightmaps {
                 return;
             }
         }
-        if (storage.idremap == null || storage.idremap.Length != storage.maps.Count)
+
+        bool needsExtraMaps = storage.rnmMaps0 != null && storage.rnmMaps0.Count > 0 && !storage.tripleSH; // assuming all dir maps are SH, if triple mode is used
+        bool manualLink = needsExtraMaps || !storage.applyViaLightingDataAsset || forceManual;
+
+        //Debug.LogError("manual:"+manualLink+" "+needsExtraMaps+" "+storage.applyViaLightingDataAsset+" "+forceManual );
+
+        if (manualLink)
         {
-            storage.idremap = new int[storage.maps.Count];
+            if (storage.idremap == null || storage.idremap.Length != storage.maps.Count)
+            {
+                storage.idremap = new int[storage.maps.Count];
+            }
         }
 
         // Decide which global engine lightmapping mode to use
@@ -470,187 +500,190 @@ public class ftLightmaps {
         bool patchedDirection = false;
         SetDirectionalMode();
 
-        // Set dummy directional tex for non-directional lightmaps in directional mode
-        if (directionalMode == 1)
-        {
-            for(int i=0; i<existingLmaps.Length; i++)
-            {
-                if (existingLmaps[i].lightmapDir == null)
-                {
-                    var lm = existingLmaps[i];
-                    lm.lightmapDir = GetEmptyDirectionTex(storage);
-                    existingLmaps[i] = lm;
-                    patchedDirection = true;
-                }
-            }
-        }
-
-        // Detect if changes to lightmap array are necessary
         bool sameArray = false;
-        if (existingLmaps.Length == storage.maps.Count)
+        if (manualLink)
         {
-            sameArray = true;
-            for(int i=0; i<storage.maps.Count; i++)
+            // Set dummy directional tex for non-directional lightmaps in directional mode
+            if (directionalMode == 1)
             {
-                if (existingLmaps[i].lightmapColor != storage.maps[i])
+                for(int i=0; i<existingLmaps.Length; i++)
                 {
-                    sameArray = false;
-                    break;
-                }
-                if (storage.rnmMaps0.Count > i && (existingLmapsAdditional.Count <= i || existingLmapsAdditional[i].rnm0 != storage.rnmMaps0[i]))
-                {
-                    sameArray = false;
-                    break;
-                }
-            }
-        }
-
-        if (!sameArray) // create new lightmap array
-        {
-            if (sceneCount >= 1)
-            {
-                // first add old
-                for(int i=0; i<existingLmaps.Length; i++) {
-                    // skip empty lightmaps (can be created by 5.6 ldata asset or vertex color)
-                    // ... unless there are valid lightmaps around them
-                    bool lightmapIsEmpty = existingLmaps[i] == null || (existingLmaps[i].lightmapColor == null && existingLmaps[i].shadowMask == null);
-                    bool lightmapCanBeSkipped = lightmapIsEmpty && (i == 0 || i == existingLmaps.Length - 1);
-                    if (!lightmapCanBeSkipped)
+                    if (existingLmaps[i].lightmapDir == null)
                     {
-                        lmaps.Add(existingLmaps[i]);
-                        if (existingLmapsAdditional.Count > i) lmapsAdditional.Add(existingLmapsAdditional[i]);
+                        var lm = existingLmaps[i];
+                        lm.lightmapDir = GetEmptyDirectionTex(storage);
+                        existingLmaps[i] = lm;
+                        patchedDirection = true;
                     }
                 }
             }
 
-            for(int i=0; i<storage.maps.Count; i++) {
-
-                var texlm = storage.maps[i];
-                Texture2D texmask = null;
-                Texture2D texdir = null;
-                Texture2D texrnm0 = null;
-                Texture2D texrnm1 = null;
-                Texture2D texrnm2 = null;
-                int mapMode = 0;
-                if (storage.masks.Count > i) texmask = storage.masks[i];
-                if (storage.dirMaps.Count > i) texdir = storage.dirMaps[i];
-                if (storage.rnmMaps0.Count > i)
+            // Detect if changes to lightmap array are necessary
+            if (existingLmaps.Length == storage.maps.Count)
+            {
+                sameArray = true;
+                for(int i=0; i<storage.maps.Count; i++)
                 {
-                    texrnm0 = storage.rnmMaps0[i];
-                    texrnm1 = storage.rnmMaps1[i];
-                    texrnm2 = storage.rnmMaps2[i];
-                    mapMode = storage.mapsMode[i];
+                    if (existingLmaps[i].lightmapColor != storage.maps[i])
+                    {
+                        sameArray = false;
+                        break;
+                    }
+                    if (storage.rnmMaps0.Count > i && (existingLmapsAdditional.Count <= i || existingLmapsAdditional[i].rnm0 != storage.rnmMaps0[i]))
+                    {
+                        sameArray = false;
+                        break;
+                    }
+                }
+            }
+
+            if (!sameArray) // create new lightmap array
+            {
+                if (sceneCount >= 1)
+                {
+                    // first add old
+                    for(int i=0; i<existingLmaps.Length; i++) {
+                        // skip empty lightmaps (can be created by 5.6 ldata asset or vertex color)
+                        // ... unless there are valid lightmaps around them
+                        bool lightmapIsEmpty = existingLmaps[i] == null || (existingLmaps[i].lightmapColor == null && existingLmaps[i].shadowMask == null);
+                        bool lightmapCanBeSkipped = lightmapIsEmpty && (i == 0 || i == existingLmaps.Length - 1);
+                        if (!lightmapCanBeSkipped)
+                        {
+                            lmaps.Add(existingLmaps[i]);
+                            if (existingLmapsAdditional.Count > i) lmapsAdditional.Add(existingLmapsAdditional[i]);
+                        }
+                    }
                 }
 
-                bool found = false;
-                int firstEmpty = -1;
-                for(int j=0; j<lmaps.Count; j++) {
-                    if (lmaps[j].lightmapColor == texlm && lmaps[j].shadowMask == texmask)
+                for(int i=0; i<storage.maps.Count; i++) {
+
+                    var texlm = storage.maps[i];
+                    Texture2D texmask = null;
+                    Texture2D texdir = null;
+                    Texture2D texrnm0 = null;
+                    Texture2D texrnm1 = null;
+                    Texture2D texrnm2 = null;
+                    int mapMode = 0;
+                    if (storage.masks.Count > i) texmask = storage.masks[i];
+                    if (storage.dirMaps.Count > i) texdir = storage.dirMaps[i];
+                    if (storage.rnmMaps0.Count > i)
                     {
-                        // lightmap already added - reuse
-                        storage.idremap[i] = j;
-                        found = true;
+                        texrnm0 = storage.rnmMaps0[i];
+                        texrnm1 = storage.rnmMaps1[i];
+                        texrnm2 = storage.rnmMaps2[i];
+                        mapMode = storage.mapsMode[i];
+                    }
 
-                        //Debug.LogError("reused "+j);
-
-                        // additional maps array could be flushed due to script recompilation - recover
-                        if (texrnm0 != null && (lmapsAdditional.Count <= j || lmapsAdditional[j].rnm0 == null))
+                    bool found = false;
+                    int firstEmpty = -1;
+                    for(int j=0; j<lmaps.Count; j++) {
+                        if (lmaps[j].lightmapColor == texlm && lmaps[j].shadowMask == texmask)
                         {
-                            while(lmapsAdditional.Count <= j) lmapsAdditional.Add(new LightmapAdditionalData());
+                            // lightmap already added - reuse
+                            storage.idremap[i] = j;
+                            found = true;
+
+                            //Debug.LogError("reused "+j);
+
+                            // additional maps array could be flushed due to script recompilation - recover
+                            if (texrnm0 != null && (lmapsAdditional.Count <= j || lmapsAdditional[j].rnm0 == null))
+                            {
+                                while(lmapsAdditional.Count <= j) lmapsAdditional.Add(new LightmapAdditionalData());
+                                var l = new LightmapAdditionalData();
+                                l.rnm0 = texrnm0;
+                                l.rnm1 = texrnm1;
+                                l.rnm2 = texrnm2;
+                                l.mode = mapMode;
+                                lmapsAdditional[j] = l;
+                            }
+
+                            break;
+                        }
+                        else if (firstEmpty < 0 && lmaps[j].lightmapColor == null && lmaps[j].shadowMask == null)
+                        {
+                            // free (deleted) entry in existing lightmap list - possibly reuse
+                            storage.idremap[i] = j;
+                            firstEmpty = j;
+                        }
+                    }
+
+                    if (!found)
+                    {
+                        LightmapData lm;
+                        if (firstEmpty >= 0)
+                        {
+                            lm = lmaps[firstEmpty];
+                        }
+                        else
+                        {
+                            lm = new LightmapData();
+                        }
+
+                        lm.lightmapColor = texlm;
+                        if (storage.masks.Count > i)
+                        {
+                            lm.shadowMask = texmask;
+                        }
+                        if (storage.dirMaps.Count > i && texdir != null)
+                        {
+                            lm.lightmapDir = texdir;
+                        }
+                        else if (directionalMode == 1)
+                        {
+                            lm.lightmapDir = GetEmptyDirectionTex(storage);
+                        }
+
+                        if (firstEmpty < 0)
+                        {
+                            lmaps.Add(lm);
+                            storage.idremap[i] = lmaps.Count - 1;
+                        }
+                        else
+                        {
+                            lmaps[firstEmpty] = lm;
+                        }
+
+                        if (storage.rnmMaps0.Count > i)
+                        {
                             var l = new LightmapAdditionalData();
                             l.rnm0 = texrnm0;
                             l.rnm1 = texrnm1;
                             l.rnm2 = texrnm2;
                             l.mode = mapMode;
-                            lmapsAdditional[j] = l;
-                        }
 
-                        break;
-                    }
-                    else if (firstEmpty < 0 && lmaps[j].lightmapColor == null && lmaps[j].shadowMask == null)
-                    {
-                        // free (deleted) entry in existing lightmap list - possibly reuse
-                        storage.idremap[i] = j;
-                        firstEmpty = j;
-                    }
-                }
-
-                if (!found)
-                {
-                    LightmapData lm;
-                    if (firstEmpty >= 0)
-                    {
-                        lm = lmaps[firstEmpty];
-                    }
-                    else
-                    {
-                        lm = new LightmapData();
-                    }
-
-                    lm.lightmapColor = texlm;
-                    if (storage.masks.Count > i)
-                    {
-                        lm.shadowMask = texmask;
-                    }
-                    if (storage.dirMaps.Count > i && texdir != null)
-                    {
-                        lm.lightmapDir = texdir;
-                    }
-                    else if (directionalMode == 1)
-                    {
-                        lm.lightmapDir = GetEmptyDirectionTex(storage);
-                    }
-
-                    if (firstEmpty < 0)
-                    {
-                        lmaps.Add(lm);
-                        storage.idremap[i] = lmaps.Count - 1;
-                    }
-                    else
-                    {
-                        lmaps[firstEmpty] = lm;
-                    }
-
-                    if (storage.rnmMaps0.Count > i)
-                    {
-                        var l = new LightmapAdditionalData();
-                        l.rnm0 = texrnm0;
-                        l.rnm1 = texrnm1;
-                        l.rnm2 = texrnm2;
-                        l.mode = mapMode;
-
-                        if (firstEmpty < 0)
-                        {
-                            //Debug.LogError("added "+(lmaps.Count-1));
-                            while(lmapsAdditional.Count < lmaps.Count-1) lmapsAdditional.Add(new LightmapAdditionalData());
-                            lmapsAdditional.Add(l);
-                        }
-                        else
-                        {
-                            //Debug.LogError("set " + firstEmpty);
-                            while(lmapsAdditional.Count < firstEmpty+1) lmapsAdditional.Add(new LightmapAdditionalData());
-                            lmapsAdditional[firstEmpty] = l;
+                            if (firstEmpty < 0)
+                            {
+                                //Debug.LogError("added "+(lmaps.Count-1));
+                                while(lmapsAdditional.Count < lmaps.Count-1) lmapsAdditional.Add(new LightmapAdditionalData());
+                                lmapsAdditional.Add(l);
+                            }
+                            else
+                            {
+                                //Debug.LogError("set " + firstEmpty);
+                                while(lmapsAdditional.Count < firstEmpty+1) lmapsAdditional.Add(new LightmapAdditionalData());
+                                lmapsAdditional[firstEmpty] = l;
+                            }
                         }
                     }
                 }
             }
-        }
-        else // reuse existing lightmap array, only remap IDs
-        {
-            for(int i=0; i<storage.maps.Count; i++) {
-                storage.idremap[i] = i;
+            else // reuse existing lightmap array, only remap IDs
+            {
+                for(int i=0; i<storage.maps.Count; i++) {
+                    storage.idremap[i] = i;
 
-                //Debug.LogError("full reuse");
+                    //Debug.LogError("full reuse");
 
-                /*if (storage.rnmMaps0.Count > i)
-                {
-                    var l = new LightmapAdditionalData();
-                    l.rnm0 = storage.rnmMaps0[i];
-                    l.rnm1 = storage.rnmMaps1[i];
-                    l.rnm2 = storage.rnmMaps2[i];
-                    l.mode = storage.mapsMode[i];
-                    lmapsAdditional.Add(l);
-                }*/
+                    /*if (storage.rnmMaps0.Count > i)
+                    {
+                        var l = new LightmapAdditionalData();
+                        l.rnm0 = storage.rnmMaps0[i];
+                        l.rnm1 = storage.rnmMaps1[i];
+                        l.rnm2 = storage.rnmMaps2[i];
+                        l.mode = storage.mapsMode[i];
+                        lmapsAdditional.Add(l);
+                    }*/
+                }
             }
         }
 
@@ -664,12 +697,15 @@ public class ftLightmaps {
         }
 #endif
 
-        // Replace the lightmap array if needed
-        if (sameArray && patchedDirection) LightmapSettings.lightmaps = existingLmaps;
-        if (!sameArray)
+        if (manualLink)
         {
-            LightmapSettings.lightmaps = lmaps.ToArray();
-            globalMapsAdditional = lmapsAdditional;
+            // Replace the lightmap array if needed
+            if (sameArray && patchedDirection) LightmapSettings.lightmaps = existingLmaps;
+            if (!sameArray)
+            {
+                LightmapSettings.lightmaps = lmaps.ToArray();
+                globalMapsAdditional = lmapsAdditional;
+            }
         }
 
         /*
@@ -709,7 +745,18 @@ public class ftLightmaps {
             }
             if (isEmpty != 0)
             {
-               DynamicGI.UpdateEnvironment();
+#if UNITY_2023_2_OR_NEWER
+                if (SystemInfo.graphicsDeviceType != UnityEngine.Rendering.GraphicsDeviceType.WebGPU)
+                {
+                    DynamicGI.UpdateEnvironment();
+                }
+                else
+                {
+                    Debug.LogError("Unity doesn't support DynamicGI.UpdateEnvironment() on WebGPU.");
+                }
+#else
+                DynamicGI.UpdateEnvironment();
+#endif
             }
         }
 
@@ -745,33 +792,36 @@ public class ftLightmaps {
                 continue;
             }
 
-            int globalID = (id < 0 || id >= storage.idremap.Length) ? id : storage.idremap[id];
-            r.lightmapIndex = globalID;
-
-            if (!r.isPartOfStaticBatch)
+            if (manualLink)
             {
-                // scaleOffset is baked on static batches already
-                var scaleOffset = id < 0 ? emptyVec4 : storage.bakedScaleOffset[i];
-                r.lightmapScaleOffset = scaleOffset;
-            }
+                int globalID = (id < 0 || id >= storage.idremap.Length) ? id : storage.idremap[id];
+                r.lightmapIndex = globalID;
 
-            if (r.lightmapIndex >= 0 && globalID < globalMapsAdditional.Count)
-            {
-                var lmap = globalMapsAdditional[globalID];
-                if (lmap.rnm0 != null)
+                if (!r.isPartOfStaticBatch)
                 {
-                    var prop = new MaterialPropertyBlock();
-                    prop.SetTexture("_RNM0", lmap.rnm0);
-                    prop.SetTexture("_RNM1", lmap.rnm1);
-                    prop.SetTexture("_RNM2", lmap.rnm2);
-                    prop.SetFloat("bakeryLightmapMode", lmap.mode);
-                    r.SetPropertyBlock(prop);
+                    // scaleOffset is baked on static batches already
+                    var scaleOffset = id < 0 ? emptyVec4 : storage.bakedScaleOffset[i];
+                    r.lightmapScaleOffset = scaleOffset;
+                }
+
+                if (r.lightmapIndex >= 0 && globalID < globalMapsAdditional.Count)
+                {
+                    var lmap = globalMapsAdditional[globalID];
+                    if (lmap.rnm0 != null)
+                    {
+                        var prop = new MaterialPropertyBlock();
+                        prop.SetTexture("_RNM0", lmap.rnm0);
+                        prop.SetTexture("_RNM1", lmap.rnm1);
+                        prop.SetTexture("_RNM2", lmap.rnm2);
+                        prop.SetFloat("bakeryLightmapMode", lmap.mode);
+                        r.SetPropertyBlock(prop);
+                    }
                 }
             }
         }
 
         // Set lightmap data on definitely-not-baked mesh renderers (can be possibly avoided)
-        if (updateNonBaked)
+        if (updateNonBaked && manualLink)
         {
             for(int i=0; i<storage.nonBakedRenderers.Count; i++)
             {
@@ -783,73 +833,82 @@ public class ftLightmaps {
         }
 
 #if USE_TERRAINS
-        // Set lightmap data on terrains
-        for(int i=0; i<storage.bakedRenderersTerrain.Count; i++)
+        if (manualLink)
         {
-            var r = storage.bakedRenderersTerrain[i];
-            if (r == null)
+            // Set lightmap data on terrains
+            for(int i=0; i<storage.bakedRenderersTerrain.Count; i++)
             {
-                continue;
-            }
-            var id = storage.bakedIDsTerrain[i];
-            r.lightmapIndex = (id < 0 || id >= storage.idremap.Length) ? id : storage.idremap[id];
-
-            var scaleOffset = id < 0 ? emptyVec4 : storage.bakedScaleOffsetTerrain[i];
-            r.lightmapScaleOffset = scaleOffset;
-
-            if (r.lightmapIndex >= 0 && r.lightmapIndex < globalMapsAdditional.Count)
-            {
-                var lmap = globalMapsAdditional[r.lightmapIndex];
-                if (lmap.rnm0 != null)
+                var r = storage.bakedRenderersTerrain[i];
+                if (r == null)
                 {
-                    var prop = new MaterialPropertyBlock();
-                    prop.SetTexture("_RNM0", lmap.rnm0);
-                    prop.SetTexture("_RNM1", lmap.rnm1);
-                    prop.SetTexture("_RNM2", lmap.rnm2);
-                    prop.SetFloat("bakeryLightmapMode", lmap.mode);
-                    r.SetSplatMaterialPropertyBlock(prop);
+                    continue;
+                }
+                var id = storage.bakedIDsTerrain[i];
+                r.lightmapIndex = (id < 0 || id >= storage.idremap.Length) ? id : storage.idremap[id];
+
+                var scaleOffset = id < 0 ? emptyVec4 : storage.bakedScaleOffsetTerrain[i];
+                r.lightmapScaleOffset = scaleOffset;
+
+                if (r.lightmapIndex >= 0 && r.lightmapIndex < globalMapsAdditional.Count)
+                {
+                    var lmap = globalMapsAdditional[r.lightmapIndex];
+                    if (lmap.rnm0 != null)
+                    {
+                        var prop = new MaterialPropertyBlock();
+                        prop.SetTexture("_RNM0", lmap.rnm0);
+                        prop.SetTexture("_RNM1", lmap.rnm1);
+                        prop.SetTexture("_RNM2", lmap.rnm2);
+                        prop.SetFloat("bakeryLightmapMode", lmap.mode);
+                        r.SetSplatMaterialPropertyBlock(prop);
+                    }
                 }
             }
         }
 #endif
 
-        // Set shadowmask parameters on lights
-        for(int i=0; i<storage.bakedLights.Count; i++)
+        if (manualLink)
         {
-#if UNITY_2017_3_OR_NEWER
-            if (storage.bakedLights[i] == null) continue;
-
-            int channel = storage.bakedLightChannels[i];
-            var output = new LightBakingOutput();
-            output.isBaked = true;
-            if (channel < 0)
+            // Set shadowmask parameters on lights
+            for(int i=0; i<storage.bakedLights.Count; i++)
             {
-                output.lightmapBakeType = LightmapBakeType.Baked;
+    #if UNITY_2017_3_OR_NEWER
+                if (storage.bakedLights[i] == null) continue;
+
+                int channel = storage.bakedLightChannels[i];
+                var output = new LightBakingOutput();
+                output.isBaked = true;
+                if (channel < 0)
+                {
+                    output.lightmapBakeType = LightmapBakeType.Baked;
+                }
+                else
+                {
+                    output.lightmapBakeType = LightmapBakeType.Mixed;
+                    output.mixedLightingMode = channel >= 100 ? MixedLightingMode.Subtractive : MixedLightingMode.Shadowmask;
+                    output.occlusionMaskChannel = channel >= 100 ? (channel-100) : channel;
+                    output.probeOcclusionLightIndex  = storage.bakedLights[i].bakingOutput.probeOcclusionLightIndex;
+                }
+                storage.bakedLights[i].bakingOutput = output;
+    #endif
             }
-            else
+
+            // Increment lightmap refcounts
+            if (incrementRefcount)
             {
-                output.lightmapBakeType = LightmapBakeType.Mixed;
-                output.mixedLightingMode = channel > 100 ? MixedLightingMode.Subtractive : MixedLightingMode.Shadowmask;
-                output.occlusionMaskChannel = channel > 100 ? -1 : channel;
-                output.probeOcclusionLightIndex  = storage.bakedLights[i].bakingOutput.probeOcclusionLightIndex;
+                if (lightmapRefCount == null) lightmapRefCount = new List<int>();
+                for(int i=0; i<storage.idremap.Length; i++)
+                {
+                    int currentID = storage.idremap[i];
+                    while(lightmapRefCount.Count <= currentID) lightmapRefCount.Add(0);
+                    if (lightmapRefCount[currentID] < 0) lightmapRefCount[currentID] = 0;
+                    lightmapRefCount[currentID]++;
+                }
             }
-            storage.bakedLights[i].bakingOutput = output;
-#endif
-        }
+            //if (loadedStorages == null) loadedStorages = new List<ftLightmapsStorage>();
+            //if (loadedStorages.Contains(storage)) loadedStorages.Add(storage);
 
-        // Increment lightmap refcounts
-        if (lightmapRefCount == null) lightmapRefCount = new List<int>();
-        for(int i=0; i<storage.idremap.Length; i++)
-        {
-            int currentID = storage.idremap[i];
-            while(lightmapRefCount.Count <= currentID) lightmapRefCount.Add(0);
-            if (lightmapRefCount[currentID] < 0) lightmapRefCount[currentID] = 0;
-            lightmapRefCount[currentID]++;
+            //return appendOffset;
         }
-        //if (loadedStorages == null) loadedStorages = new List<ftLightmapsStorage>();
-        //if (loadedStorages.Contains(storage)) loadedStorages.Add(storage);
-
-        //return appendOffset;
     }
 
     public static void UnloadScene(ftLightmapsStorage storage)
@@ -924,30 +983,36 @@ public class ftLightmaps {
         if (existingLmaps != null) LightmapSettings.lightmaps = existingLmaps;
     }
 
-    public static void RefreshScene2(Scene scene, ftLightmapsStorage storage)
+    public static void RefreshScene2(Scene scene, ftLightmapsStorage storage, bool forceManual = false)
     {
-        Renderer r;
-        int id;
-        for(int i=0; i<storage.bakedRenderers.Count; i++)
+        bool needsExtraMaps = storage.rnmMaps0 != null && storage.rnmMaps0.Count > 0 && !storage.tripleSH; // assuming all dir maps are SH, if triple mode is used
+        bool manualLink = needsExtraMaps || !storage.applyViaLightingDataAsset || forceManual;
+
+        if (manualLink)
         {
-            r = storage.bakedRenderers[i];
-            if (r == null) continue;
+            Renderer r;
+            int id;
+            for(int i=0; i<storage.bakedRenderers.Count; i++)
+            {
+                r = storage.bakedRenderers[i];
+                if (r == null) continue;
 
-            id = storage.bakedIDs[i];
-            r.lightmapIndex = (id < 0 || id >= storage.idremap.Length) ? id : storage.idremap[id];
+                id = storage.bakedIDs[i];
+                r.lightmapIndex = (id < 0 || id >= storage.idremap.Length) ? id : storage.idremap[id];
+            }
+
+    #if USE_TERRAINS
+            Terrain r2;
+            for(int i=0; i<storage.bakedRenderersTerrain.Count; i++)
+            {
+                r2 = storage.bakedRenderersTerrain[i];
+                if (r2 == null) continue;
+
+                id = storage.bakedIDsTerrain[i];
+                r2.lightmapIndex = (id < 0 || id >= storage.idremap.Length) ? id : storage.idremap[id];
+            }
+    #endif
         }
-
-#if USE_TERRAINS
-        Terrain r2;
-        for(int i=0; i<storage.bakedRenderersTerrain.Count; i++)
-        {
-            r2 = storage.bakedRenderersTerrain[i];
-            if (r2 == null) continue;
-
-            id = storage.bakedIDsTerrain[i];
-            r2.lightmapIndex = (id < 0 || id >= storage.idremap.Length) ? id : storage.idremap[id];
-        }
-#endif
 
         if (storage.anyVolumes)
         {
@@ -959,6 +1024,25 @@ public class ftLightmaps {
             {
                 Shader.DisableKeyword("BAKERY_COMPRESSED_VOLUME");
             }
+
+            if (storage.multiVolumes)
+            {
+                Shader.EnableKeyword("BAKERY_MULTIVOLUME");
+            }
+            else
+            {
+                Shader.DisableKeyword("BAKERY_MULTIVOLUME");
+            }            
         }
+
+        // Set per-material instead
+        /*if (storage.tripleSH)
+        {
+            Shader.EnableKeyword("BAKERY_TRIPLESH");
+        }
+        else
+        {
+            Shader.DisableKeyword("BAKERY_TRIPLESH");
+        }*/
     }
 }
