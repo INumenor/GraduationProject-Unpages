@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -67,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -181,10 +177,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -202,9 +203,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1891921
 MeshFilter:
@@ -236,10 +239,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891918}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -398,6 +401,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6121983532816493602, guid: a33d04740d6e87c4e914327735502d6f, type: 3}
+      propertyPath: SortKey
+      value: 282861029
+      objectReference: {fileID: 0}
     - target: {fileID: 8705049477171640944, guid: a33d04740d6e87c4e914327735502d6f, type: 3}
       propertyPath: SortKey
       value: 2920325734
@@ -510,6 +517,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 2715326018075485482, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
+      propertyPath: SortKey
+      value: 2961653135
+      objectReference: {fileID: 0}
     - target: {fileID: 4902537982672877545, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
       propertyPath: m_Name
       value: Kitchen_ServiceArea
@@ -572,6 +583,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 4855139688210289716, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 3444706351
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 1306971194
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner (1)
@@ -639,6 +658,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 2149441030163502787, guid: bfe26087c541057499169c9b493d0190, type: 3}
+      propertyPath: SortKey
+      value: 763648449
+      objectReference: {fileID: 0}
     - target: {fileID: 7218118894695962098, guid: bfe26087c541057499169c9b493d0190, type: 3}
       propertyPath: m_Name
       value: Kitchen_Plates
@@ -755,10 +778,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -776,9 +804,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &186383508
 MeshFilter:
@@ -897,6 +927,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 4855139688210289716, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 556004438
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 2713236577
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner
@@ -959,6 +997,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 4855139688210289716, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 2856774375
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 719039218
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner (3)
@@ -1138,10 +1184,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1159,9 +1210,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &295088754
 MeshFilter:
@@ -1225,7 +1278,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!199 &325330016
 ParticleSystemRenderer:
-  serializedVersion: 6
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1241,6 +1294,11 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1262,9 +1320,11 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -1296,7 +1356,6 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
-  m_MaskInteraction: 0
 --- !u!198 &325330017
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -6121,6 +6180,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 3155211102
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.000015
@@ -6165,6 +6228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kitchen_Storage_2
       objectReference: {fileID: 0}
+    - target: {fileID: 6512816063544310659, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 683411462
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6208,48 +6275,12 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1099472842}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: mouseList
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Fusion.NetworkObject,
-        Fusion.Runtime]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: Mouse1
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  mouseAgent: {fileID: 1412246489826035535, guid: 863d08293df7288418c167a63030c8f7, type: 3}
-  agentBase: {fileID: 1891922}
-  meshSurface: {fileID: 837119554}
+    SerializationNodes: []
 --- !u!4 &343236910
 Transform:
   m_ObjectHideFlags: 0
@@ -6278,10 +6309,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 3818386663
-  ObjectInterest: 1
-  Flags: 262145
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 262146
   NestedObjects: []
   NetworkedBehaviours: []
+  ForceRemoteRenderTimeframe: 0
 --- !u!1001 &345579202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6859,6 +6892,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 3371045628952024882, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 3045512332
+      objectReference: {fileID: 0}
     - target: {fileID: 7027612005782097870, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_Name
       value: Kitchen_Bench
@@ -6903,6 +6940,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 3483078865
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6921,6 +6962,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 3371045628952024882, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 2722564108
+      objectReference: {fileID: 0}
     - target: {fileID: 7027612005782097870, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_Name
       value: Kitchen_Bench
@@ -6965,6 +7010,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 3160130641
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6983,6 +7032,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 391434282
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.999987
@@ -7026,6 +7079,10 @@ PrefabInstance:
     - target: {fileID: 4185393535067561054, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Storage_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512816063544310659, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 2214601938
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7089,6 +7146,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 3371045628952024882, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 85074591
+      objectReference: {fileID: 0}
     - target: {fileID: 7027612005782097870, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_Name
       value: Kitchen_Bench (3)
@@ -7132,6 +7193,10 @@ PrefabInstance:
     - target: {fileID: 7695745002120009076, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 522641124
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7181,7 +7246,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c49044c6ff6fa49a7d675d7045eeb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 0
+  anchorPoints: {fileID: 0}
+  kitchenObjectType: 0
+  onTheCupboardObject: {fileID: 0}
+  foodType: 0
   storageFoodCount: 0
 --- !u!1 &689553884
 GameObject:
@@ -7208,15 +7276,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689553884}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 12
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -7260,8 +7327,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!4 &689553886
 Transform:
   m_ObjectHideFlags: 0
@@ -7555,6 +7626,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 2715326018075485482, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
+      propertyPath: SortKey
+      value: 1498523390
+      objectReference: {fileID: 0}
     - target: {fileID: 4902537982672877545, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
       propertyPath: m_Name
       value: Kitchen_ServiceArea
@@ -7750,6 +7825,10 @@ PrefabInstance:
     - target: {fileID: 3165455233057437910, guid: a33d04740d6e87c4e914327735502d6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6121983532816493602, guid: a33d04740d6e87c4e914327735502d6f, type: 3}
+      propertyPath: SortKey
+      value: 3667332446
       objectReference: {fileID: 0}
     - target: {fileID: 8705049477171640944, guid: a33d04740d6e87c4e914327735502d6f, type: 3}
       propertyPath: SortKey
@@ -7980,7 +8059,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5b6ec0d8defb84293e378baf159459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platePrefab: {fileID: 105516810065189154, guid: 44cee5c61851f1a4ab0460d7402f31a5, type: 3}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
 --- !u!1 &790984761
 GameObject:
   m_ObjectHideFlags: 0
@@ -8010,6 +8097,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24f9270d19f0ed408921002046ddd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnFoodBox: {fileID: 0}
+  spawnNetworkItem: []
+  BoxDestroyCount: 0
 --- !u!4 &790984764
 Transform:
   m_ObjectHideFlags: 0
@@ -8082,10 +8172,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8103,9 +8198,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &800728774
 MeshFilter:
@@ -8278,6 +8375,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -8299,9 +8401,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &837119552
 MeshFilter:
@@ -8338,6 +8442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
   m_AgentTypeID: 0
   m_CollectObjects: 0
   m_Size: {x: 10, y: 10, z: 10}
@@ -8353,7 +8458,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.10333333
+  m_VoxelSize: 0.11666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: f71daafc9775b9443bdc58aaf690c4cb, type: 2}
   m_BuildHeightMesh: 0
@@ -8500,6 +8605,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 2715326018075485482, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
+      propertyPath: SortKey
+      value: 1289459401
+      objectReference: {fileID: 0}
     - target: {fileID: 4902537982672877545, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
       propertyPath: m_Name
       value: Kitchen_ServiceArea (1)
@@ -8683,10 +8792,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8704,9 +8818,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &925311738
 MeshFilter:
@@ -8724,6 +8840,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 3371045628952024882, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 3944310932
+      objectReference: {fileID: 0}
     - target: {fileID: 7027612005782097870, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_Name
       value: Kitchen_Bench (1)
@@ -8767,6 +8887,10 @@ PrefabInstance:
     - target: {fileID: 7695745002120009076, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 86910169
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9048,10 +9172,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9069,9 +9198,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &975429094
 MeshFilter:
@@ -9340,10 +9471,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9361,9 +9497,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1050519879
 MeshFilter:
@@ -9378,17 +9516,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
   m_PrefabInstance: {fileID: 1187980542}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1099472842 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1412246489826035535, guid: 863d08293df7288418c167a63030c8f7, type: 3}
-  m_PrefabInstance: {fileID: 559701832}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1111490451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10082,6 +10209,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6121983532816493602, guid: a33d04740d6e87c4e914327735502d6f, type: 3}
+      propertyPath: SortKey
+      value: 2002303897
+      objectReference: {fileID: 0}
     - target: {fileID: 8705049477171640944, guid: a33d04740d6e87c4e914327735502d6f, type: 3}
       propertyPath: SortKey
       value: 344801306
@@ -10104,6 +10235,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 2715326018075485482, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
+      propertyPath: SortKey
+      value: 3482714620
+      objectReference: {fileID: 0}
     - target: {fileID: 4902537982672877545, guid: 62deb9a447bf8c749987d216a1d7923c, type: 3}
       propertyPath: m_Name
       value: Kitchen_ServiceArea (1)
@@ -10282,7 +10417,9 @@ MonoBehaviour:
   networkItems: {fileID: 1328692518}
   gameControl: {fileID: 790984762}
   aiManagerSystem: {fileID: 343236909}
-  playerAnimationControl: {fileID: 0}
+  mouseStateManager: {fileID: 0}
+  spawnObject: {fileID: 0}
+  playerTask: {fileID: 0}
 --- !u!4 &1290727947
 Transform:
   m_ObjectHideFlags: 0
@@ -10402,6 +10539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1316430927}
   - component: {fileID: 1316430926}
+  - component: {fileID: 1316430928}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -10424,9 +10562,6 @@ MonoBehaviour:
   SessionRunner: {fileID: 0}
   networkRunnerPrefab: {fileID: 6821837541494390122, guid: cfad2f42cde82594e9014949677e4336, type: 3}
   playerPreafab: {fileID: 2502306205790276012, guid: edd68f8a7f7eea24aa57478ae7029350, type: 3}
-  networkCharacterPrefab: {fileID: 7868808597718404144, guid: a25544ae3f276be40a57a8a6909c490c, type: 3}
-  Player1SpawnPoint: {fileID: 1889179325}
-  Player2SpawnPoint: {fileID: 890001313}
 --- !u!4 &1316430927
 Transform:
   m_ObjectHideFlags: 0
@@ -10442,6 +10577,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1316430928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316430925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a93abf1a391964a94e5c139605105b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Unity::Fusion.NetworkSceneManagerDefault
+  IsSceneTakeOverEnabled: 1
+  LogSceneLoadErrors: 1
 --- !u!1 &1328692517
 GameObject:
   m_ObjectHideFlags: 0
@@ -10471,6 +10620,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd4296a243dda64889c6f92b7619301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkFoodItems: []
+  networkItemsSlice:
+  - {fileID: 11400000, guid: a6a7f42d2ba03c441ab951b9754d05b4, type: 2}
+  - {fileID: 11400000, guid: 22ae739bd9cd9fe4a9b41c7de7f1c5e8, type: 2}
+  - {fileID: 11400000, guid: b519a1175587a604fb5116a486acda95, type: 2}
+  networkFoodRecipes: []
+  networkTaskFoodRecipes: []
   networkItems:
   - {fileID: 11400000, guid: d314622514af6be4fa92eab7ff2382ff, type: 2}
   - {fileID: 11400000, guid: 8193283f6f586d14c8606c7e5a08137f, type: 2}
@@ -10478,10 +10634,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 14befe13c976d784ca48b2aa6fc5d687, type: 2}
   - {fileID: 11400000, guid: d128ecbf12b993245a83986ad9e74c85, type: 2}
   - {fileID: 11400000, guid: ee06532685f4321448e4091985830652, type: 2}
-  networkItemsSlice:
-  - {fileID: 11400000, guid: a6a7f42d2ba03c441ab951b9754d05b4, type: 2}
-  - {fileID: 11400000, guid: 22ae739bd9cd9fe4a9b41c7de7f1c5e8, type: 2}
-  - {fileID: 11400000, guid: b519a1175587a604fb5116a486acda95, type: 2}
+  networkPlate: {fileID: 0}
 --- !u!4 &1328692519
 Transform:
   m_ObjectHideFlags: 0
@@ -10542,8 +10695,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnBoxPrefab: {fileID: 3010347918898669061, guid: fddba8e56f18eb849945a43db6fe9cf2, type: 3}
-  _wall: {fileID: -5803944534936537128, guid: 08c85927e0648ff48b78842e964ffdda, type: 3}
+  _wallPrefab: {fileID: 0}
   _spawnedBox: {fileID: 1986256463}
+  _spawnedFoodBox: []
 --- !u!1 &1374340902 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3648342545210063667, guid: cf870ed52ab07b94eaa3af3f112e6284, type: 3}
@@ -10593,6 +10747,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 4855139688210289716, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 567149478
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 2724381617
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner (1)
@@ -10741,6 +10903,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 3371045628952024882, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 1390465544
+      objectReference: {fileID: 0}
     - target: {fileID: 7027612005782097870, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_Name
       value: Kitchen_Bench (1)
@@ -10784,6 +10950,10 @@ PrefabInstance:
     - target: {fileID: 7695745002120009076, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 1828032077
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10995,6 +11165,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 4855139688210289716, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 1061943370
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 3219175509
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner
@@ -11134,6 +11312,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 4855139688210289716, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 2460712100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 322976943
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner (1)
@@ -11281,6 +11467,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 2251239303
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23
@@ -11328,6 +11518,10 @@ PrefabInstance:
     - target: {fileID: 4620522341115169463, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: itemType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512816063544310659, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 4074406959
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11528,6 +11722,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 4855139688210289716, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 4062967615
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 1925232458
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner
@@ -11900,6 +12102,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6121983532816493602, guid: a33d04740d6e87c4e914327735502d6f, type: 3}
+      propertyPath: SortKey
+      value: 895818202
+      objectReference: {fileID: 0}
     - target: {fileID: 8705049477171640944, guid: a33d04740d6e87c4e914327735502d6f, type: 3}
       propertyPath: SortKey
       value: 3533282907
@@ -12043,7 +12249,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c49044c6ff6fa49a7d675d7045eeb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 1
+  anchorPoints: {fileID: 0}
+  kitchenObjectType: 0
+  onTheCupboardObject: {fileID: 0}
+  foodType: 0
   storageFoodCount: 0
 --- !u!1 &1733287640
 GameObject:
@@ -12102,10 +12311,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12123,9 +12337,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1733287643
 MeshFilter:
@@ -12226,6 +12442,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 3026325141
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -12273,6 +12493,10 @@ PrefabInstance:
     - target: {fileID: 4620522341115169463, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: itemType
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512816063544310659, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 554525501
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12378,6 +12602,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 1151404593
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21
@@ -12422,6 +12650,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kitchen_Storage_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6512816063544310659, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 2974572249
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12440,6 +12672,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 3371045628952024882, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 2261988216
+      objectReference: {fileID: 0}
     - target: {fileID: 7027612005782097870, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_Name
       value: Kitchen_Bench (2)
@@ -12483,6 +12719,10 @@ PrefabInstance:
     - target: {fileID: 7695745002120009076, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 2699554749
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12566,10 +12806,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12587,9 +12832,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1849236282
 MeshFilter:
@@ -12643,6 +12890,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 3371045628952024882, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 2146259281
+      objectReference: {fileID: 0}
     - target: {fileID: 7027612005782097870, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_Name
       value: Kitchen_Bench (2)
@@ -12687,6 +12938,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 2583825814
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12705,6 +12960,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 963511457
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.006
@@ -12748,6 +13007,10 @@ PrefabInstance:
     - target: {fileID: 4185393535067561054, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Storage
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512816063544310659, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 2786679113
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13043,16 +13306,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c432e991d8eaf8479b75e1d4dc23bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 0
+  anchorPoints: {fileID: 0}
+  kitchenObjectType: 0
+  onTheCupboardObject: {fileID: 0}
   choppingCount: 0
-  isFull: 0
-  isSlice: 0
-  item: {fileID: 0}
-  itemSlice: {fileID: 0}
   circleBarImage: {fileID: 425959753}
   circleBarBackground: {fileID: 1495132149}
   circleBarRectTransform: {fileID: 1386438060}
-  itemAnchorPoint: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &1958472729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13066,11 +13327,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 2130257634
-  ObjectInterest: 1
-  Flags: 262145
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 262146
   NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 1958472728}
+  NetworkedBehaviours: []
+  ForceRemoteRenderTimeframe: 0
 --- !u!1001 &1960731044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13079,6 +13341,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 3371045628952024882, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 843036271
+      objectReference: {fileID: 0}
     - target: {fileID: 7027612005782097870, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_Name
       value: Kitchen_Bench
@@ -13122,6 +13388,10 @@ PrefabInstance:
     - target: {fileID: 7695745002120009076, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740094177601546449, guid: 9b592d5021ae94847b0836b575be2c04, type: 3}
+      propertyPath: SortKey
+      value: 1280602804
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13171,7 +13441,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c49044c6ff6fa49a7d675d7045eeb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 2
+  anchorPoints: {fileID: 0}
+  kitchenObjectType: 0
+  onTheCupboardObject: {fileID: 0}
+  foodType: 0
   storageFoodCount: 0
 --- !u!1001 &1977128433
 PrefabInstance:
@@ -13181,6 +13454,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 2656076389
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23
@@ -13228,6 +13505,10 @@ PrefabInstance:
     - target: {fileID: 4620522341115169463, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: itemType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512816063544310659, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 184276749
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13606,6 +13887,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e6cf2a38b3e994cb579da64887dfec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anchorPoints: {fileID: 0}
+  kitchenObjectType: 0
+  onTheCupboardObject: {fileID: 0}
 --- !u!1001 &2061971016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13614,6 +13898,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 4855139688210289716, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 755833217
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055572842302864541, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
+      propertyPath: SortKey
+      value: 2913065356
+      objectReference: {fileID: 0}
     - target: {fileID: 8081186440212696257, guid: 298731e72110c844391f63cffaa60a3d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Corner (2)
@@ -13676,6 +13968,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1500476774}
     m_Modifications:
+    - target: {fileID: 2573354572659192193, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 1307126715
+      objectReference: {fileID: 0}
     - target: {fileID: 3557370443920525028, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.999987
@@ -13719,6 +14015,10 @@ PrefabInstance:
     - target: {fileID: 4185393535067561054, guid: af73ad3094346234298d87e5e399362d, type: 3}
       propertyPath: m_Name
       value: Kitchen_Storage_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6512816063544310659, guid: af73ad3094346234298d87e5e399362d, type: 3}
+      propertyPath: SortKey
+      value: 3130294371
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13768,7 +14068,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c49044c6ff6fa49a7d675d7045eeb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 3
+  anchorPoints: {fileID: 0}
+  kitchenObjectType: 0
+  onTheCupboardObject: {fileID: 0}
+  foodType: 0
   storageFoodCount: 0
 --- !u!1001 &2119157597
 PrefabInstance:
@@ -13778,6 +14081,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 372387779}
     m_Modifications:
+    - target: {fileID: 2149441030163502787, guid: bfe26087c541057499169c9b493d0190, type: 3}
+      propertyPath: SortKey
+      value: 548093419
+      objectReference: {fileID: 0}
     - target: {fileID: 7218118894695962098, guid: bfe26087c541057499169c9b493d0190, type: 3}
       propertyPath: m_Name
       value: Kitchen_Plates

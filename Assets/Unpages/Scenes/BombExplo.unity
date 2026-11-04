@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -38,13 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -67,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -97,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -152,6 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd4296a243dda64889c6f92b7619301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkFoodItems: []
+  networkItemsSlice: []
+  networkFoodRecipes: []
+  networkTaskFoodRecipes: []
   networkItems:
   - {fileID: 11400000, guid: d314622514af6be4fa92eab7ff2382ff, type: 2}
   - {fileID: 11400000, guid: 8193283f6f586d14c8606c7e5a08137f, type: 2}
@@ -162,6 +162,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b519a1175587a604fb5116a486acda95, type: 2}
   - {fileID: 11400000, guid: d128ecbf12b993245a83986ad9e74c85, type: 2}
   - {fileID: 11400000, guid: ee06532685f4321448e4091985830652, type: 2}
+  networkPlate: {fileID: 0}
 --- !u!4 &50049990
 Transform:
   m_ObjectHideFlags: 0
@@ -547,10 +548,15 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -568,9 +574,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &790688128
 MeshFilter:
@@ -652,6 +660,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -673,9 +686,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &812347076
 MeshFilter:
@@ -730,6 +745,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24f9270d19f0ed408921002046ddd5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnFoodBox: {fileID: 0}
+  spawnNetworkItem: []
+  BoxDestroyCount: 0
 --- !u!4 &1037940445
 Transform:
   m_ObjectHideFlags: 0
@@ -758,11 +776,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 3809174163
-  ObjectInterest: 1
-  Flags: 262145
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 262146
   NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 1037940444}
+  NetworkedBehaviours: []
+  ForceRemoteRenderTimeframe: 0
 --- !u!1 &1314234643
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,15 +807,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314234643}
   m_Enabled: 1
-  serializedVersion: 10
+  serializedVersion: 12
   m_Type: 1
-  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -840,8 +858,12 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!4 &1314234645
 Transform:
   m_ObjectHideFlags: 0
@@ -959,6 +981,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1695035838}
   - component: {fileID: 1695035837}
+  - component: {fileID: 1695035839}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -981,7 +1004,6 @@ MonoBehaviour:
   SessionRunner: {fileID: 0}
   networkRunnerPrefab: {fileID: 6821837541494390122, guid: cfad2f42cde82594e9014949677e4336, type: 3}
   playerPreafab: {fileID: 2502306205790276012, guid: edd68f8a7f7eea24aa57478ae7029350, type: 3}
-  networkCharacterPrefab: {fileID: 7099868800434697647, guid: 8eb9d4bcfd0c3e94b8c98e9ca9ac4db8, type: 3}
 --- !u!4 &1695035838
 Transform:
   m_ObjectHideFlags: 0
@@ -997,6 +1019,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1695035839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695035836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a93abf1a391964a94e5c139605105b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Fusion.Unity::Fusion.NetworkSceneManagerDefault
+  IsSceneTakeOverEnabled: 1
+  LogSceneLoadErrors: 1
 --- !u!1 &1876197240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,8 +1063,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAction: {fileID: 0}
+  kitchenMechanics: {fileID: 0}
   networkItems: {fileID: 50049989}
   gameControl: {fileID: 1037940444}
+  aiManagerSystem: {fileID: 0}
+  mouseStateManager: {fileID: 0}
+  spawnObject: {fileID: 0}
+  playerTask: {fileID: 0}
 --- !u!4 &1876197242
 Transform:
   m_ObjectHideFlags: 0
